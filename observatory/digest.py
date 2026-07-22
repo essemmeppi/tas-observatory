@@ -18,9 +18,11 @@ def build_digest(items: list, run_date: str) -> str:
         return f"• <{r['url']}|{r['name']}> ({countries}) — {r.get('description', '')}"
 
     if agentic:
-        lines += ["", f"*Agentic AI ({len(agentic)})*"] + [fmt(r) for r in agentic]
+        header = f"*New today ({len(agentic)})*" if not other else f"*Agentic AI ({len(agentic)})*"
+        lines += ["", header] + [fmt(r) for r in agentic]
     if other:
         lines += ["", f"*AI in government ({len(other)})*"] + [fmt(r) for r in other]
+    lines += ["", f"<{config.SITE_URL}|Browse the full observatory →>"]
     return "\n".join(lines)
 
 

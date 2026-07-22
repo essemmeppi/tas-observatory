@@ -26,6 +26,12 @@ SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL", "")
 # Safety valve for a single run.
 MAX_ITEMS_PER_RUN = int(os.getenv("MAX_ITEMS_PER_RUN", "150"))
 
+# Only store items classified as agentic AI (the observatory's focus).
+AGENTIC_ONLY = os.getenv("AGENTIC_ONLY", "1") == "1"
+
+# Public frontend, linked from the Slack digest.
+SITE_URL = "https://essemmeppi.github.io/tas-observatory/site/"
+
 # How far back to look for near-duplicate names when deduping.
 DEDUP_WINDOW_DAYS = 60
 

@@ -1,18 +1,20 @@
 # TAS Observatory
 
-Daily observatory of news about **AI and agentic AI in government**, run by [The Agentic State](https://agenticstate.org).
+Daily observatory of **agentic AI entering government**, run by [The Agentic State](https://agenticstate.org).
+
+**Browse it:** [essemmeppi.github.io/tas-observatory](https://essemmeppi.github.io/tas-observatory/site/) — filterable feed, framework-layer and country breakdowns, updated daily.
 
 ## How it works
 
 One GitHub Action runs every morning ([.github/workflows/observatory.yml](.github/workflows/observatory.yml)):
 
 1. **Ingest** — multilingual Google News RSS search queries (EN/FR/ES/DE/IT/PT + IN/SG editions, no Google account needed; redirect links decoded to real article URLs) + gov-tech RSS feeds ([data/feeds.json](data/feeds.json)) + a daily X sweep via Grok's `x_search` tool.
-2. **Filter & extract** — each new article's text is extracted (trafilatura) and assessed in a single LLM call: is it a concrete AI-in-government development? Is it *agentic*? Which layer(s) of the [Agentic State framework](https://agenticstate.org/paper.html) does it map to? Structured fields are extracted (name, organisation, countries, description, novelty, stakeholders, year, tags, layers).
+2. **Filter & extract** — each new article's text is extracted (trafilatura) and assessed in a single LLM call: is it a concrete AI-in-government development? Is it *agentic*? Which layer(s) of the [Agentic State framework](https://agenticstate.org/paper.html) does it map to? Structured fields are extracted (name, organisation, countries, description, novelty, stakeholders, year, tags, layers). Only agentic items are stored (`AGENTIC_ONLY=0` widens scope to all AI-in-gov).
 3. **Dedupe** — by URL (ever) and by initiative name (last 60 days, catches the same story from multiple outlets).
 4. **Store** — records are appended to [data/innovations.jsonl](data/innovations.jsonl) (one JSON object per line) and committed. Git history is the archive; no snapshot files.
 5. **Digest** — a short Slack message (LLM-written lede + one line per item, agentic items first) posted via incoming webhook.
 
-There are no servers: GitHub Actions runs the pipeline, the repo is the database. A future public frontend (Cloudflare Pages) can read the JSONL directly.
+There are no servers: GitHub Actions runs the pipeline, the repo is the database, GitHub Pages serves the frontend ([site/index.html](site/index.html), a single static page reading the JSONL).
 
 ## Setup
 

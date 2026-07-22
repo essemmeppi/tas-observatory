@@ -44,6 +44,9 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
     if not assessment:
         print(f"  not relevant: {title[:70]}")
         return None
+    if config.AGENTIC_ONLY and not assessment.get("agentic"):
+        print(f"  not agentic: {title[:70]}")
+        return None
     if not deduper.is_new(url, assessment.get("name", "")):
         print(f"  duplicate story: {title[:70]}")
         return None

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TAS Observatory — AI &amp; Agentic AI in Government</title>
+<title>TAS Observatory — Agentic AI in Government</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <style>
@@ -62,7 +62,7 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
 <header><div class="wrap">
   <div class="kicker">The Agentic State</div>
   <h1>Observatory</h1>
-  <p class="sub">A daily, machine-curated record of AI and agentic AI entering government — deployments, pilots, policies and procurements across the world, mapped to the Agentic State framework.</p>
+  <p class="sub">A daily, machine-curated record of agentic AI entering government — deployments, pilots, policies and procurements across the world, mapped to the twelve layers of the Agentic State framework.</p>
 </div></header>
 
 <div class="wrap">
@@ -134,9 +134,9 @@ function fill(id, pairs){
 function stats(){
   const week = new Date(Date.now()-7*864e5).toISOString().slice(0,10);
   const tiles = [
-    [all.length.toLocaleString(), "entries in the database"],
-    [all.filter(r => r.agentic).length.toLocaleString(), "agentic AI initiatives"],
+    [all.length.toLocaleString(), "agentic AI initiatives"],
     [new Set(all.flatMap(r => r.countries||[])).size, "countries"],
+    [new Set(all.flatMap(r => r.layers||[])).size, "framework layers covered"],
     [all.filter(r => (r.date_added||"") >= week).length, "added in the last 7 days"]
   ];
   document.getElementById("stats").innerHTML =
