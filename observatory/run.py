@@ -3,6 +3,7 @@
 Usage: python -m observatory.run [--dry-run] [--no-slack] [--no-x] [--max-items N]
 """
 import argparse
+import time
 from datetime import date, timedelta
 
 from . import config, db, digest, extract, llm, sources
@@ -90,8 +91,14 @@ def main():
     fresh = [i for i in items if deduper.is_new(i["url"], i.get("title", ""))]
     print(f"{len(items)} items fetched, {len(fresh)} new, processing up to {args.max_items}")
 
+    # Stop early rather than hit the workflow's hard 45-min kill, which would
+    # lose the whole harvest (the commit step never runs on a killed job).
+    deadline = time.monotonic() + config.TIME_BUDGET_MIN * 60
     new_records = []
     for item in fresh[: args.max_items]:
+        if time.monotonic() > deadline:
+            print(f"  time budget ({config.TIME_BUDGET_MIN} min) reached, stopping early")
+            break
         try:
             record = process_item(item, deduper, run_date)
         except Exception as e:

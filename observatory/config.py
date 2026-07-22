@@ -23,8 +23,9 @@ XSWEEP_MODEL = os.getenv("XSWEEP_MODEL", "x-ai/grok-4.3")
 # Slack incoming webhook for the daily digest. Optional: skipped if unset.
 SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL", "")
 
-# Safety valve for a single run.
+# Safety valves for a single run.
 MAX_ITEMS_PER_RUN = int(os.getenv("MAX_ITEMS_PER_RUN", "150"))
+TIME_BUDGET_MIN = int(os.getenv("TIME_BUDGET_MIN", "30"))  # processing loop cutoff
 
 # Only store items classified as agentic AI (the observatory's focus).
 AGENTIC_ONLY = os.getenv("AGENTIC_ONLY", "1") == "1"
