@@ -2,12 +2,37 @@
 import json
 import re
 import urllib.parse
+from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import TimeoutError as FutureTimeout
 
 import feedparser
 import requests
 from googlenewsdecoder import gnewsdecoder
 
 from . import config
+
+UA = {"User-Agent": "Mozilla/5.0 (compatible; TAS-Observatory/1.0)"}
+
+
+def _parse_feed(url: str):
+    """feedparser.parse(url) fetches with NO timeout and can hang a run forever;
+    fetch ourselves with a timeout and hand feedparser the bytes."""
+    resp = requests.get(url, timeout=config.REQUEST_TIMEOUT, headers=UA)
+    resp.raise_for_status()
+    return feedparser.parse(resp.content)
+
+
+def _decode_gnews(link: str) -> str | None:
+    """gnewsdecoder's internal requests have no timeout either; enforce one."""
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        future = pool.submit(gnewsdecoder, link, 1)
+        try:
+            decoded = future.result(timeout=25)
+        except (FutureTimeout, Exception):
+            return None
+    if not decoded.get("status"):
+        return None
+    return decoded["decoded_url"]
 
 
 def _clean_google_url(url: str) -> str:
@@ -23,7 +48,7 @@ def _strip_html(text: str) -> str:
 
 def fetch_feed(feed_url: str, source_label: str, is_google_alert: bool) -> list:
     """Fetch one feed and return items as {title, url, published, source}."""
-    parsed = feedparser.parse(feed_url)
+    parsed = _parse_feed(feed_url)
     items = []
     for entry in parsed.entries:
         link = entry.get("link", "")
@@ -49,18 +74,12 @@ def fetch_google_news(query: dict, max_entries: int = 25) -> list:
         "gl": query.get("gl", "US"),
         "ceid": query.get("ceid", "US:en"),
     })
-    parsed = feedparser.parse(f"https://news.google.com/rss/search?{params}")
+    parsed = _parse_feed(f"https://news.google.com/rss/search?{params}")
     items = []
     for entry in parsed.entries[:max_entries]:
         link = entry.get("link", "")
         if "news.google.com" in link:
-            try:
-                decoded = gnewsdecoder(link, interval=1)
-                if not decoded.get("status"):
-                    continue
-                link = decoded["decoded_url"]
-            except Exception:
-                continue
+            link = _decode_gnews(link)
         if not link:
             continue
         items.append({
