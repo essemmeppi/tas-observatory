@@ -1,0 +1,23 @@
+{
+  "_comment": "Ingestion sources. google_news: Google News RSS search queries (no account needed, 'when:1d' = last 24h). rss: standard RSS/Atom feeds. google_alerts: optional Google Alerts RSS feed URLs.",
+  "google_news": [
+    {"q": "\"agentic AI\" (government OR \"public sector\") when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"},
+    {"q": "\"AI agents\" (government OR \"public sector\" OR ministry) when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"},
+    {"q": "government (\"artificial intelligence\" OR AI) (launch OR pilot OR deploy) when:1d", "hl": "en-GB", "gl": "GB", "ceid": "GB:en"},
+    {"q": "\"intelligence artificielle\" (gouvernement OR \"service public\" OR administration) when:1d", "hl": "fr", "gl": "FR", "ceid": "FR:fr"},
+    {"q": "\"inteligencia artificial\" (gobierno OR \"sector público\" OR administración) when:1d", "hl": "es", "gl": "ES", "ceid": "ES:es"},
+    {"q": "\"künstliche Intelligenz\" (Regierung OR Verwaltung OR Behörde) when:1d", "hl": "de", "gl": "DE", "ceid": "DE:de"},
+    {"q": "\"intelligenza artificiale\" (governo OR \"pubblica amministrazione\") when:1d", "hl": "it", "gl": "IT", "ceid": "IT:it"},
+    {"q": "\"inteligência artificial\" (governo OR \"setor público\") when:1d", "hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"},
+    {"q": "\"AI\" (government OR ministry OR \"public sector\") when:1d", "hl": "en-IN", "gl": "IN", "ceid": "IN:en"},
+    {"q": "\"AI\" (government OR ministry) when:1d", "hl": "en-SG", "gl": "SG", "ceid": "SG:en"}
+  ],
+  "google_alerts": [],
+  "rss": [
+    "https://fedscoop.com/feed/",
+    "https://statescoop.com/feed/",
+    "https://gds.blog.gov.uk/feed/",
+    "https://oecd-opsi.org/feed/",
+    "https://digital-strategy.ec.europa.eu/en/rss.xml"
+  ]
+}
