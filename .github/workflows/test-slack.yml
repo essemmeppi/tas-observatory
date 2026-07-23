@@ -1,0 +1,20 @@
+name: Test Slack webhook
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Post test message
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          url="$SLACK_WEBHOOK_URL"
+          case "$url" in http*) ;; *) url="https://$url";; esac
+          code=$(curl -s -o /tmp/resp -w "%{http_code}" -X POST -H 'Content-type: application/json' \
+            --data '{"text":"TAS Observatory webhook test — if you can read this, the digest will arrive."}' "$url")
+          echo "HTTP $code"; cat /tmp/resp; echo
+          [ "$code" = "200" ]
