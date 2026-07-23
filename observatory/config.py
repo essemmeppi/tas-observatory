@@ -21,7 +21,9 @@ DIGEST_MODEL = os.getenv("DIGEST_MODEL", LLM_MODEL)
 XSWEEP_MODEL = os.getenv("XSWEEP_MODEL", "x-ai/grok-4.3")
 
 # Slack incoming webhook for the daily digest. Optional: skipped if unset.
-SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL", "")
+SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL", "").strip()
+if SLACK_WEBHOOK_URL and not SLACK_WEBHOOK_URL.startswith("http"):
+    SLACK_WEBHOOK_URL = "https://" + SLACK_WEBHOOK_URL
 
 # Safety valves for a single run.
 MAX_ITEMS_PER_RUN = int(os.getenv("MAX_ITEMS_PER_RUN", "150"))

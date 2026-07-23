@@ -118,11 +118,15 @@ def main():
     db.append_records(new_records)
     print(f"Appended to {config.DB_PATH}")
 
-    text = digest.build_digest(new_records, run_date)
-    print("\n" + text)
-    if not args.no_slack:
-        if digest.post_to_slack(text):
+    # Digest problems must never fail the run: the DB is already written and
+    # a non-zero exit would skip the commit step and lose the harvest.
+    try:
+        text = digest.build_digest(new_records, run_date)
+        print("\n" + text)
+        if not args.no_slack and digest.post_to_slack(text):
             print("Posted digest to Slack")
+    except Exception as e:
+        print(f"  warning: digest/slack failed ({e})")
 
 
 if __name__ == "__main__":
