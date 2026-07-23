@@ -2,7 +2,9 @@ name: Daily observatory
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    # Odd minute on purpose: minute-0 crons on GitHub are congested and often
+    # delayed or skipped; off-peak times fire much more reliably.
+    - cron: "23 5 * * *"
   workflow_dispatch: {}
 
 permissions:
