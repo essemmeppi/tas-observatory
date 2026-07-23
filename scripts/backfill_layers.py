@@ -44,7 +44,7 @@ def main():
         try:
             raw = llm._chat(
                 [{"role": "system", "content": PROMPT}, {"role": "user", "content": text[:2000]}],
-                model=config.LLM_MODEL, json_mode=True, max_tokens=100,
+                model=config.LLM_MODEL, json_mode=True, max_tokens=600,
             )
             data = llm._parse_json(raw) or {}
             layers = [l for l in (data.get("layers") or []) if l in VALID]

@@ -61,7 +61,8 @@ def _chat(messages: list, model: str, json_mode: bool = False, max_tokens: int =
         timeout=120,
     )
     resp.raise_for_status()
-    return resp.json()["choices"][0]["message"]["content"]
+    # Thinking models can return content=None when reasoning exhausts max_tokens.
+    return resp.json()["choices"][0]["message"]["content"] or ""
 
 
 def _parse_json(text: str) -> dict | None:
