@@ -34,7 +34,7 @@ Respond with ONLY a JSON object:
   "description": "2-3 sentences: what it is, purpose, results if available",
   "novelty": "1-2 sentences: what is new about it",
   "stakeholders": "1 sentence: users, beneficiaries, parties involved",
-  "agentic_rationale": "1-2 sentences: WHY this qualifies as agentic — what does the system do autonomously (multi-step tasks, tool use, decisions)? Empty if not agentic.",
+  "agentic_rationale": "1-2 sentences: the SPECIFIC autonomous behaviour reported for THIS system — what does it concretely decide, execute or coordinate without a human initiating each step? Quote the concrete capability from the source. Do NOT use generic phrases like 'multi-step workflows', 'autonomous task execution' or 'agentic capabilities' unless the source itself describes them concretely. Empty if not agentic.",
   "tech_details": "1-2 sentences: models, platforms, architecture, integration — only what the source states",
   "providers": ["..."],           // named tech providers/models, e.g. "OpenAI", "Anthropic", "Microsoft", "Salesforce", "Palantir", "sovereign/local model"; [] if unstated
   "autonomy_level": 0-5 or null,  // Agentic State autonomy ladder: 0 manual, 1 rule-based automation, 2 intelligent process automation, 3 agentic workflows, 4 semi-autonomous agents, 5 fully autonomous agents; null if undeterminable

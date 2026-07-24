@@ -6,6 +6,8 @@
 <title>TAS Observatory — Agentic AI in Government</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,200..700;1,200..700&family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 <style>
 :root{
   --accent:#8b7ae8; --accent-soft:#e9e6ff; --accent-tint:#faf9ff;
@@ -29,8 +31,12 @@ h1:hover{color:var(--accent)}
 .stat{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--card)}
 .stat .n{font-family:"Newsreader",Georgia,serif; font-style:italic; font-size:30px; font-weight:350; line-height:1.1}
 .stat .l{font-size:12px; color:var(--ink-3); margin-top:2px}
-.charts{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:28px}
+.charts{display:grid; grid-template-columns:2fr 1fr; gap:14px; margin-bottom:28px}
 @media(max-width:760px){.charts{grid-template-columns:1fr}}
+#chart-map svg{width:100%; height:auto; display:block}
+#chart-map path{transition:opacity .15s}
+#chart-map path.land:hover{opacity:.75; cursor:pointer}
+#chart-map path.land.active{stroke:var(--ink); stroke-width:1}
 .chart{border:1px solid var(--line); border-radius:10px; padding:16px; background:var(--card)}
 .chart h3{font-size:13px; font-weight:500; margin-bottom:12px}
 .bar-row{display:flex; align-items:center; gap:10px; margin-bottom:7px; font-size:12px; cursor:pointer; border-radius:4px}
@@ -95,8 +101,8 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
 <div class="wrap">
   <div class="stats" id="stats"></div>
   <div class="charts">
+    <div class="chart map"><h3>Where</h3><div id="chart-map"></div></div>
     <div class="chart"><h3>By framework layer</h3><div id="chart-layers"></div></div>
-    <div class="chart"><h3>Top countries</h3><div id="chart-countries"></div></div>
   </div>
 
   <div class="controls">
@@ -144,6 +150,7 @@ async function load(){
     }
     const text = await resp.text();
     all = text.split("\n").filter(Boolean).map(l => JSON.parse(l))
+      .filter(r => !r.hidden)
       .sort((a,b) => (b.date_added||"").localeCompare(a.date_added||""));
     all.forEach(r => byId[r.id] = r);
     init();
@@ -181,7 +188,6 @@ function stats(){
   const tiles = [
     [all.length.toLocaleString(), "agentic AI initiatives"],
     [new Set(all.flatMap(r => r.countries||[])).size, "countries"],
-    [new Set(all.flatMap(r => r.layers||[])).size, "framework layers covered"],
     [all.filter(r => (r.date_added||"") >= week).length, "added in the last 7 days"]
   ];
   $("stats").innerHTML =
@@ -208,14 +214,74 @@ function barChart(el, counts, labelFn, max, selectId){
     row.addEventListener("click", () => setFilter(selectId, row.dataset.v)));
 }
 
-function charts(){
-  const lc = new Map(), cc = new Map();
-  all.forEach(r => {
-    (r.layers||[]).forEach(l => lc.set(l,(lc.get(l)||0)+1));
-    (r.countries||[]).forEach(c => cc.set(c,(cc.get(c)||0)+1));
+// Our country names -> world-atlas feature names, where they differ.
+const MAP_ALIASES = {
+  "United States":"United States of America","UK":"United Kingdom","USA":"United States of America",
+  "UAE":"United Arab Emirates","Czech Republic":"Czechia","Russia":"Russia",
+  "South Korea":"South Korea","North Korea":"North Korea","Vietnam":"Vietnam",
+  "Ivory Coast":"Côte d'Ivoire","DR Congo":"Dem. Rep. Congo","Bosnia and Herzegovina":"Bosnia and Herz.",
+  "Great Britain":"United Kingdom","Scotland":"United Kingdom","England":"United Kingdom","Wales":"United Kingdom","Northern Ireland":"United Kingdom",
+  "Dominican Republic":"Dominican Rep.","Hong Kong":"Hong Kong","Taiwan":"Taiwan"
+};
+let mapFeatures = null;
+
+async function drawMap(){
+  const el = $("chart-map");
+  if(!window.d3 || !window.topojson){ el.innerHTML = '<div class="err">Map unavailable offline.</div>'; return; }
+  try{
+    if(!mapFeatures){
+      const world = await (await fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")).json();
+      mapFeatures = topojson.feature(world, world.objects.countries).features;
+    }
+  }catch(e){ el.innerHTML = '<div class="err">Map could not load.</div>'; return; }
+
+  const counts = new Map();
+  all.forEach(r => (r.countries||[]).forEach(c => counts.set(c,(counts.get(c)||0)+1)));
+  // Aggregate by map feature: several of our names can share one polygon
+  // (e.g. Scotland + United Kingdom). Filter clicks use the most frequent name.
+  const byFeature = new Map();
+  counts.forEach((n, name) => {
+    const key = MAP_ALIASES[name] || name;
+    const cur = byFeature.get(key);
+    if(cur){ cur.n += n; if(n > cur.topN){ cur.name = name; cur.topN = n; } }
+    else byFeature.set(key, {name, n, topN: n});
   });
+  const peak = Math.max(1, ...[...byFeature.values()].map(v => v.n));
+  const current = $("f-country").value;
+
+  const W = 640, H = 340;
+  const proj = d3.geoNaturalEarth1();
+  const path = d3.geoPath(proj.fitSize([W, H], {type:"FeatureCollection", features: mapFeatures.filter(f => f.properties.name !== "Antarctica")}));
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Initiatives by country"></svg>`;
+  const svg = d3.select(el).select("svg");
+  svg.selectAll("path").data(mapFeatures.filter(f => f.properties.name !== "Antarctica")).join("path")
+    .attr("d", path)
+    .attr("class", d => {
+      const hit = byFeature.get(d.properties.name);
+      return "land" + (hit && hit.name === current ? " active" : "");
+    })
+    .style("fill", d => {
+      const hit = byFeature.get(d.properties.name);
+      if(!hit) return "color-mix(in srgb, var(--ink-3) 12%, var(--bg))";
+      const pct = 18 + 82 * Math.sqrt(hit.n / peak);
+      return `color-mix(in srgb, var(--accent) ${pct.toFixed(0)}%, var(--bg))`;
+    })
+    .style("stroke", "var(--bg)").style("stroke-width", .4)
+    .on("click", (e, d) => {
+      const hit = byFeature.get(d.properties.name);
+      if(hit) setFilter("f-country", hit.name);
+    })
+    .append("title").text(d => {
+      const hit = byFeature.get(d.properties.name);
+      return hit ? `${hit.name}: ${hit.n} initiative${hit.n>1?"s":""}` : d.properties.name;
+    });
+}
+
+function charts(){
+  const lc = new Map();
+  all.forEach(r => (r.layers||[]).forEach(l => lc.set(l,(lc.get(l)||0)+1)));
   barChart($("chart-layers"), lc, k => LAYERS[k]||k, 12, "f-layer");
-  barChart($("chart-countries"), cc, k => k, 10, "f-country");
+  drawMap();
 }
 
 function apply(){
@@ -280,29 +346,34 @@ function chipRow(items, selectId){
 }
 
 function openCard(r){
+  const why = [r.novelty, r.agentic_rationale].filter(Boolean).join(" ");
   const dl = [
     r.description ? `<dt>Summary</dt><dd>${esc(r.description)}</dd>` : "",
-    r.agentic_rationale ? `<dt>Why agentic</dt><dd>${esc(r.agentic_rationale)}</dd>` : "",
-    r.novelty ? `<dt>Why it matters</dt><dd>${esc(r.novelty)}</dd>` : "",
-    (r.tech_details || (r.providers||[]).length) ?
-      `<dt>Tech</dt><dd>${esc(r.tech_details||"")}${(r.providers||[]).length?` — ${esc(r.providers.join(", "))}`:""}</dd>` : "",
-    (r.functions||[]).length ? `<dt>Government functions</dt><dd>${esc(r.functions.map(f => FUNCS[f]||f).join(" · "))}</dd>` : "",
+    why ? `<dt>Why it matters</dt><dd>${esc(why)}</dd>` : "",
+    r.tech_details ? `<dt>What technology</dt><dd>${esc(r.tech_details)}</dd>` : "",
+    (r.functions||[]).length ?
+      `<dt>Government functions <a href="https://agenticforgov.com/" target="_blank" rel="noopener">(WEF, 2026)</a></dt>
+       <dd>${esc(r.functions.map(f => FUNCS[f]||f).join(" · "))}</dd>` : "",
     r.stakeholders ? `<dt>Stakeholders</dt><dd>${esc(r.stakeholders)}</dd>` : ""
   ].join("");
   const srcs = [r.url, ...(r.sources||[])].filter(Boolean).map(u =>
     `<a class="srcbtn" href="${esc(u)}" target="_blank" rel="noopener">Source</a>`).join("");
-  const statusLine =
-    "Status: " + (r.status && r.status!=="unclear" ? esc(r.status) : "not determined") +
-    " · Autonomy: " + (Number.isInteger(r.autonomy_level) ? AUTONOMY[r.autonomy_level] : "not determined");
   const date = esc(fmtDate(r.news_date||r.date_added||r.year));
+  const statusChip = (r.status && r.status !== "unclear")
+    ? chipRow([[r.status, r.status]], "f-status")
+    : '<span class="chip layer">not determined</span>';
+  const autonomyChip = Number.isInteger(r.autonomy_level)
+    ? `<span class="chip layer">${AUTONOMY[r.autonomy_level]}</span>`
+    : '<span class="chip layer">not determined</span>';
   $("peek").innerHTML = `
     <button class="close" onclick="closeCard()" aria-label="Close">×</button>
     <h2>${esc(r.name)}</h2>
     <div class="p-org">${esc(r.organisation||"")}</div>
-    <div class="p-org">${statusLine}</div>
     <div class="p-row"><span class="p-label">Country:</span>${chipRow((r.countries||[]).map(c => [c, c]), "f-country")}</div>
     <div class="p-row"><span class="p-label">Layer:</span>${chipRow((r.layers||[]).map(l => [l, LAYERS[l]||l]), "f-layer")}</div>
     <dl>${dl}</dl>
+    <div class="p-row" style="margin-top:16px"><span class="p-label">Status:</span>${statusChip}</div>
+    <div class="p-row"><span class="p-label">Autonomy:</span>${autonomyChip}</div>
     <div class="srcs">${srcs}${date ? `<span class="p-date">${date}</span>` : ""}</div>`;
   $("peek").querySelectorAll(".chip.click").forEach(ch =>
     ch.addEventListener("click", () => { closeCard(); setFilter(ch.dataset.s, ch.dataset.v); }));
