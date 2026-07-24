@@ -4,7 +4,7 @@ on:
   schedule:
     # Odd minute on purpose: minute-0 crons on GitHub are congested and often
     # delayed or skipped; off-peak times fire much more reliably.
-    - cron: "23 5 * * *"
+    - cron: "7 3 * * *"
   workflow_dispatch: {}
 
 permissions:
