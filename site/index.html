@@ -16,13 +16,14 @@
 }
 *{box-sizing:border-box; margin:0}
 body{font-family:"Inter",Helvetica,sans-serif; font-weight:300; color:var(--ink); background:var(--bg); line-height:1.55; font-size:15px}
-.serif{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350}
 a{color:var(--accent); text-decoration:none}
 a:hover{text-decoration:underline}
 .wrap{max-width:1080px; margin:0 auto; padding:0 24px}
 header{border-bottom:1px solid var(--line); padding:28px 0 22px; margin-bottom:28px}
-.kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:450; margin-bottom:6px}
-h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:34px; line-height:1.15}
+.kicker{font-size:12px; color:var(--ink-3); font-weight:400; margin-bottom:6px}
+.kicker .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11.5px; color:var(--ink-2)}
+h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:34px; line-height:1.15; cursor:pointer; display:inline-block}
+h1:hover{color:var(--accent)}
 .sub{color:var(--ink-3); margin-top:6px; max-width:640px}
 .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-bottom:28px}
 .stat{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--card)}
@@ -32,38 +33,63 @@ h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; f
 @media(max-width:760px){.charts{grid-template-columns:1fr}}
 .chart{border:1px solid var(--line); border-radius:10px; padding:16px; background:var(--card)}
 .chart h3{font-size:13px; font-weight:500; margin-bottom:12px}
-.bar-row{display:flex; align-items:center; gap:10px; margin-bottom:7px; font-size:12px}
+.bar-row{display:flex; align-items:center; gap:10px; margin-bottom:7px; font-size:12px; cursor:pointer; border-radius:4px}
+.bar-row:hover .bar-label{color:var(--accent)}
+.bar-row.active .bar-label{color:var(--accent); font-weight:500}
+.bar-row.active .bar-fill{background:var(--ink)}
 .bar-label{width:150px; text-align:right; color:var(--ink-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0}
 .bar-track{flex:1; height:14px; display:flex; align-items:center}
-.bar-fill{height:14px; background:var(--accent); border-radius:3px; min-width:2px}
-.bar-fill.muted{background:var(--accent-soft)}
+.bar-fill{height:14px; background:var(--accent); border-radius:3px; min-width:2px; transition:background .15s}
 .bar-n{color:var(--ink-3); width:34px; flex-shrink:0}
 .controls{display:flex; flex-wrap:wrap; gap:10px; padding:14px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:8px; position:sticky; top:0; background:var(--bg); z-index:5}
 .controls input,.controls select{font:inherit; font-size:13px; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px 10px}
 .controls input{flex:1; min-width:180px}
-.controls label.toggle{display:flex; align-items:center; gap:6px; font-size:13px; color:var(--ink-2); cursor:pointer; padding:8px 4px}
 .count-line{font-size:12px; color:var(--ink-3); padding:10px 0 18px}
-.card{border-bottom:1px solid var(--line); padding:18px 0}
+.count-line .clear{color:var(--accent); cursor:pointer; margin-left:8px}
+.card{border-bottom:1px solid var(--line); padding:18px 0; cursor:pointer}
+.card:hover h2 a{color:var(--accent)}
 .card h2{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:20px; line-height:1.25}
 .card h2 a{color:var(--ink)}
-.meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:6px 0 8px; font-size:12px; color:var(--ink-3)}
+.card-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:8px 0 0; font-size:12px; color:var(--ink-3)}
+.mdate{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11.5px; color:var(--ink-3)}
 .chip{background:var(--accent-soft); color:var(--ink-2); border-radius:20px; padding:2px 9px; font-size:11px}
-.chip.agentic{background:var(--accent); color:#fff; font-weight:500}
 .chip.layer{background:transparent; border:1px solid var(--line)}
+.chip.click{cursor:pointer}
+.chip.click:hover{border-color:var(--accent); color:var(--accent)}
 .desc{color:var(--ink-2); max-width:760px}
-.more{font-size:12px; color:var(--accent); cursor:pointer; margin-top:6px; display:inline-block}
-.extra{display:none; margin-top:8px; font-size:13px; color:var(--ink-2); max-width:760px}
-.extra dt{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); margin-top:8px}
 .loadmore{display:block; margin:26px auto 60px; font:inherit; font-size:13px; font-weight:450; color:var(--accent); background:var(--accent-tint); border:1px solid var(--accent-soft); border-radius:8px; padding:10px 26px; cursor:pointer}
 footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px solid var(--line)}
 .err{padding:40px 0; color:var(--ink-3)}
+
+/* Side peek */
+#overlay{position:fixed; inset:0; background:rgba(15,12,25,.35); z-index:20; opacity:0; pointer-events:none; transition:opacity .4s ease}
+#overlay.open{opacity:1; pointer-events:auto}
+#peek{position:fixed; top:0; right:0; bottom:0; width:min(520px,100%); background:var(--bg); border-left:1px solid var(--line);
+  z-index:21; overflow-y:auto; padding:28px 30px 40px; box-shadow:-12px 0 40px rgba(15,12,25,.12);
+  transform:translateX(105%); visibility:hidden;
+  transition:transform .45s cubic-bezier(.32,.72,.28,1), visibility 0s .45s}
+#peek.open{transform:none; visibility:visible; transition:transform .45s cubic-bezier(.32,.72,.28,1), visibility 0s 0s}
+@media(max-width:760px){#peek{width:100%; border-left:none}}
+#peek .close{position:sticky; top:0; float:right; font-size:22px; line-height:1; color:var(--ink-3); cursor:pointer; background:var(--bg); border:none; padding:2px 6px}
+#peek .close:hover{color:var(--ink)}
+#peek h2{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:26px; line-height:1.2; margin:8px 0 4px; max-width:90%}
+#peek .p-org{color:var(--ink-3); font-size:13px; margin-bottom:10px}
+#peek .p-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:8px 0}
+#peek .p-label{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3)}
+#peek .p-date{margin-left:auto; align-self:center; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11.5px; color:var(--ink-3)}
+#peek dt{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); margin-top:16px}
+#peek dd{color:var(--ink-2); font-size:14px; margin-top:3px}
+#peek .srcs{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; padding-top:16px; border-top:1px solid var(--line)}
+#peek .srcbtn{font-size:12px; font-weight:450; color:var(--accent); background:var(--accent-tint); border:1px solid var(--accent-soft); border-radius:8px; padding:7px 14px}
+#peek .srcbtn:hover{text-decoration:none; border-color:var(--accent)}
 </style>
 </head>
 <body>
 <header><div class="wrap">
-  <div class="kicker">The Agentic State</div>
-  <h1>Observatory</h1>
-  <p class="sub">A daily, machine-curated record of agentic AI entering government — deployments, pilots, policies and procurements across the world, mapped to the twelve layers of the Agentic State framework.</p>
+  <div class="kicker" id="lastupdate">Last update: —</div>
+  <h1 onclick="goHome()" title="Reset all filters">The Agentic State Observatory</h1>
+  <p class="sub">A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework. Curated by agents for humans.</p>
 </div></header>
 
 <div class="wrap">
@@ -77,8 +103,7 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
     <input id="q" type="search" placeholder="Search initiatives, organisations, descriptions…">
     <select id="f-country"><option value="">All countries</option></select>
     <select id="f-layer"><option value="">All layers</option></select>
-    <select id="f-source"><option value="">All sources</option></select>
-    <label class="toggle"><input type="checkbox" id="f-agentic"> Agentic only</label>
+    <select id="f-status"><option value="">All statuses</option></select>
   </div>
   <div class="count-line" id="countline"></div>
   <div id="feed"></div>
@@ -86,6 +111,9 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
 
   <footer>TAS Observatory · updated daily by an automated pipeline · entries are AI-assessed and may contain errors · <a href="https://agenticstate.org">agenticstate.org</a></footer>
 </div>
+
+<div id="overlay"></div>
+<aside id="peek" role="dialog" aria-modal="true"></aside>
 
 <script>
 const LAYERS = {
@@ -96,39 +124,55 @@ const LAYERS = {
   "tech-stack":"Tech stack","cybersecurity":"Cyber security","public-finance":"Public finance",
   "people-culture":"People & culture"
 };
+const AUTONOMY = {0:"L0 manual",1:"L1 rule-based",2:"L2 process automation",3:"L3 agentic workflows",4:"L4 semi-autonomous",5:"L5 fully autonomous"};
 const PAGE = 50;
-let all = [], filtered = [], shown = 0;
+let all = [], filtered = [], shown = 0, FUNCS = {}, byId = {};
 
 const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtDate = d => /^\d{4}-\d{2}-\d{2}/.test(d||"") ? d.slice(0,10).split("-").reverse().join("-") : (d||"");
+const $ = id => document.getElementById(id);
 
 async function load(){
   try{
-    const resp = await fetch("../data/innovations.jsonl");
+    const [resp, fresp] = await Promise.all([
+      fetch("../data/innovations.jsonl"),
+      fetch("../data/functions.json").catch(() => null)
+    ]);
     if(!resp.ok) throw new Error(resp.status);
+    if(fresp && fresp.ok){
+      (await fresp.json()).functions.forEach(f => FUNCS[f.function_id] = f.function_title);
+    }
     const text = await resp.text();
     all = text.split("\n").filter(Boolean).map(l => JSON.parse(l))
       .sort((a,b) => (b.date_added||"").localeCompare(a.date_added||""));
+    all.forEach(r => byId[r.id] = r);
     init();
   }catch(e){
-    document.getElementById("feed").innerHTML =
+    $("feed").innerHTML =
       '<div class="err">Could not load the database. If you opened this file directly, serve the repo instead: <code>python3 -m http.server</code> from the repo root, then open <code>localhost:8000/site/</code>.</div>';
   }
 }
 
 function init(){
   const countries = [...new Set(all.flatMap(r => r.countries||[]))].sort();
-  const sources = [...new Set(all.map(r => r.source))].sort();
+  const statuses = [...new Set(all.map(r => r.status).filter(s => s && s !== "unclear"))].sort();
   fill("f-country", countries.map(c => [c,c]));
   fill("f-layer", Object.entries(LAYERS));
-  fill("f-source", sources.map(s => [s,s]));
-  ["q","f-country","f-layer","f-source","f-agentic"].forEach(id =>
-    document.getElementById(id).addEventListener(id==="q"?"input":"change", apply));
-  document.getElementById("loadmore").addEventListener("click", () => render(false));
-  stats(); charts(); apply();
+  fill("f-status", statuses.map(s => [s,s]));
+  ["q","f-country","f-layer","f-status"].forEach(id =>
+    $(id).addEventListener(id==="q"?"input":"change", apply));
+  $("loadmore").addEventListener("click", () => render(false));
+  $("overlay").addEventListener("click", closeCard);
+  document.addEventListener("keydown", e => { if(e.key === "Escape") closeCard(); });
+  window.addEventListener("hashchange", openFromHash);
+  const latest = all.reduce((m, r) => (r.date_added||"") > m ? r.date_added : m, "");
+  if(latest) $("lastupdate").innerHTML =
+    'Last update: <span class="mono">' + latest.split("-").reverse().join("-") + "</span>";
+  stats(); apply(); openFromHash();
 }
 
 function fill(id, pairs){
-  const el = document.getElementById(id);
+  const el = $(id);
   pairs.forEach(([v,t]) => { const o=document.createElement("option"); o.value=v; o.textContent=t; el.appendChild(o); });
 }
 
@@ -140,17 +184,28 @@ function stats(){
     [new Set(all.flatMap(r => r.layers||[])).size, "framework layers covered"],
     [all.filter(r => (r.date_added||"") >= week).length, "added in the last 7 days"]
   ];
-  document.getElementById("stats").innerHTML =
+  $("stats").innerHTML =
     tiles.map(([n,l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
 }
 
-function barChart(el, counts, labelFn, max){
+function setFilter(selectId, value){
+  const el = $(selectId);
+  el.value = (el.value === value) ? "" : value;  // click again to clear
+  apply();
+  $("countline").scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function barChart(el, counts, labelFn, max, selectId){
   const top = [...counts.entries()].sort((a,b) => b[1]-a[1]).slice(0, max);
   const peak = top[0]?.[1] || 1;
+  const current = $(selectId).value;
   el.innerHTML = top.map(([k,n]) =>
-    `<div class="bar-row"><div class="bar-label">${esc(labelFn(k))}</div>
+    `<div class="bar-row${k===current?" active":""}" data-v="${esc(k)}" title="Filter by ${esc(labelFn(k))}">
+     <div class="bar-label">${esc(labelFn(k))}</div>
      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(2, n/peak*100)}%"></div></div>
      <div class="bar-n">${n}</div></div>`).join("") || '<div class="err">No data yet.</div>';
+  el.querySelectorAll(".bar-row").forEach(row =>
+    row.addEventListener("click", () => setFilter(selectId, row.dataset.v)));
 }
 
 function charts(){
@@ -159,58 +214,111 @@ function charts(){
     (r.layers||[]).forEach(l => lc.set(l,(lc.get(l)||0)+1));
     (r.countries||[]).forEach(c => cc.set(c,(cc.get(c)||0)+1));
   });
-  barChart(document.getElementById("chart-layers"), lc, k => LAYERS[k]||k, 12);
-  barChart(document.getElementById("chart-countries"), cc, k => k, 10);
+  barChart($("chart-layers"), lc, k => LAYERS[k]||k, 12, "f-layer");
+  barChart($("chart-countries"), cc, k => k, 10, "f-country");
 }
 
 function apply(){
-  const q = document.getElementById("q").value.trim().toLowerCase();
-  const country = document.getElementById("f-country").value;
-  const layer = document.getElementById("f-layer").value;
-  const source = document.getElementById("f-source").value;
-  const agentic = document.getElementById("f-agentic").checked;
+  const q = $("q").value.trim().toLowerCase();
+  const country = $("f-country").value;
+  const layer = $("f-layer").value;
+  const status = $("f-status").value;
   filtered = all.filter(r =>
-    (!agentic || r.agentic) &&
     (!country || (r.countries||[]).includes(country)) &&
     (!layer || (r.layers||[]).includes(layer)) &&
-    (!source || r.source === source) &&
+    (!status || r.status === status) &&
     (!q || [r.name,r.organisation,r.description,r.novelty,(r.countries||[]).join(" ")]
       .join(" ").toLowerCase().includes(q))
   );
+  charts();
   render(true);
 }
 
-function card(r, i){
-  const chips = [
-    r.agentic ? '<span class="chip agentic">agentic</span>' : "",
-    ...(r.layers||[]).map(l => `<span class="chip layer">${esc(LAYERS[l]||l)}</span>`),
-    ...(r.tags||[]).slice(0,3).map(t => `<span class="chip">${esc(t)}</span>`)
-  ].join("");
-  const extra = (r.novelty||r.stakeholders) ?
-    `<span class="more" onclick="this.nextElementSibling.style.display='block';this.remove()">More ↓</span>
-     <dl class="extra">${r.novelty?`<dt>Why it matters</dt><dd>${esc(r.novelty)}</dd>`:""}
-     ${r.stakeholders?`<dt>Stakeholders</dt><dd>${esc(r.stakeholders)}</dd>`:""}</dl>` : "";
-  return `<article class="card">
-    <h2><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a></h2>
-    <div class="meta">
-      <span>${esc((r.countries||[]).join(", ") || "—")}</span>
-      <span>·</span><span>${esc(r.organisation||"")}</span>
-      <span>·</span><span>${esc(r.date_added||r.year||"")}</span>
-      ${chips}
-    </div>
-    <p class="desc">${esc(r.description)}</p>${extra}
+function clearFilters(){
+  ["q","f-country","f-layer","f-status"].forEach(id => $(id).value = "");
+  apply();
+}
+
+function goHome(){
+  closeCard();
+  clearFilters();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function listItem(r){
+  const countryChips = (r.countries||[]).map(c =>
+    `<span class="chip layer click" data-s="f-country" data-v="${esc(c)}">${esc(c)}</span>`).join("");
+  return `<article class="card" data-id="${r.id}">
+    <div class="card-head"><h2><a href="#r=${r.id}">${esc(r.name)}</a></h2>${countryChips}</div>
+    <p class="desc">${esc(r.description)}</p>
+    <div class="meta"><span class="mdate">${fmtDate(r.news_date||r.date_added||r.year)}</span></div>
   </article>`;
 }
 
 function render(reset){
-  const feed = document.getElementById("feed");
+  const feed = $("feed");
   if(reset){ feed.innerHTML=""; shown = 0; }
   const next = filtered.slice(shown, shown+PAGE);
-  feed.insertAdjacentHTML("beforeend", next.map(card).join(""));
+  feed.insertAdjacentHTML("beforeend", next.map(listItem).join(""));
+  feed.querySelectorAll(".card:not([data-bound])").forEach(el => {
+    el.dataset.bound = "1";
+    el.addEventListener("click", e => { e.preventDefault(); location.hash = "r=" + el.dataset.id; });
+    el.querySelectorAll(".chip.click").forEach(ch =>
+      ch.addEventListener("click", e => { e.stopPropagation(); e.preventDefault(); setFilter(ch.dataset.s, ch.dataset.v); }));
+  });
   shown += next.length;
-  document.getElementById("loadmore").hidden = shown >= filtered.length;
-  document.getElementById("countline").textContent =
-    `${filtered.length.toLocaleString()} entries` + (filtered.length!==all.length ? ` (of ${all.length.toLocaleString()})` : "");
+  $("loadmore").hidden = shown >= filtered.length;
+  const filtersOn = filtered.length !== all.length;
+  $("countline").innerHTML =
+    `${filtered.length.toLocaleString()} entries` +
+    (filtersOn ? ` (of ${all.length.toLocaleString()})<span class="clear" onclick="clearFilters()">clear filters ×</span>` : "");
+}
+
+function chipRow(items, selectId){
+  return items.map(([v, label]) =>
+    `<span class="chip layer click" data-s="${selectId}" data-v="${esc(v)}">${esc(label)}</span>`).join("");
+}
+
+function openCard(r){
+  const dl = [
+    r.description ? `<dt>Summary</dt><dd>${esc(r.description)}</dd>` : "",
+    r.agentic_rationale ? `<dt>Why agentic</dt><dd>${esc(r.agentic_rationale)}</dd>` : "",
+    r.novelty ? `<dt>Why it matters</dt><dd>${esc(r.novelty)}</dd>` : "",
+    (r.tech_details || (r.providers||[]).length) ?
+      `<dt>Tech</dt><dd>${esc(r.tech_details||"")}${(r.providers||[]).length?` — ${esc(r.providers.join(", "))}`:""}</dd>` : "",
+    (r.functions||[]).length ? `<dt>Government functions</dt><dd>${esc(r.functions.map(f => FUNCS[f]||f).join(" · "))}</dd>` : "",
+    r.stakeholders ? `<dt>Stakeholders</dt><dd>${esc(r.stakeholders)}</dd>` : ""
+  ].join("");
+  const srcs = [r.url, ...(r.sources||[])].filter(Boolean).map(u =>
+    `<a class="srcbtn" href="${esc(u)}" target="_blank" rel="noopener">Source</a>`).join("");
+  const statusLine =
+    "Status: " + (r.status && r.status!=="unclear" ? esc(r.status) : "not determined") +
+    " · Autonomy: " + (Number.isInteger(r.autonomy_level) ? AUTONOMY[r.autonomy_level] : "not determined");
+  const date = esc(fmtDate(r.news_date||r.date_added||r.year));
+  $("peek").innerHTML = `
+    <button class="close" onclick="closeCard()" aria-label="Close">×</button>
+    <h2>${esc(r.name)}</h2>
+    <div class="p-org">${esc(r.organisation||"")}</div>
+    <div class="p-org">${statusLine}</div>
+    <div class="p-row"><span class="p-label">Country:</span>${chipRow((r.countries||[]).map(c => [c, c]), "f-country")}</div>
+    <div class="p-row"><span class="p-label">Layer:</span>${chipRow((r.layers||[]).map(l => [l, LAYERS[l]||l]), "f-layer")}</div>
+    <dl>${dl}</dl>
+    <div class="srcs">${srcs}${date ? `<span class="p-date">${date}</span>` : ""}</div>`;
+  $("peek").querySelectorAll(".chip.click").forEach(ch =>
+    ch.addEventListener("click", () => { closeCard(); setFilter(ch.dataset.s, ch.dataset.v); }));
+  $("peek").classList.add("open"); $("overlay").classList.add("open");
+  $("peek").scrollTop = 0;
+}
+
+function closeCard(){
+  $("peek").classList.remove("open"); $("overlay").classList.remove("open");
+  if(location.hash.startsWith("#r=")) history.pushState("", document.title, location.pathname + location.search);
+}
+
+function openFromHash(){
+  const m = location.hash.match(/^#r=([0-9a-f]+)/);
+  if(m && byId[m[1]]) openCard(byId[m[1]]);
+  else closeCard();
 }
 
 load();

@@ -15,7 +15,12 @@ def build_digest(items: list, run_date: str) -> str:
 
     def fmt(r):
         countries = ", ".join(r.get("countries") or []) or "—"
-        return f"• <{r['url']}|{r['name']}> ({countries}) — {r.get('description', '')}"
+        card = f"{config.SITE_URL}#r={r['id']}"
+        urls = [r["url"]] + (r.get("sources") or [])
+        src = " ".join(
+            f"<{u}|source{' ' + str(i + 1) if len(urls) > 1 else ''}>" for i, u in enumerate(urls)
+        )
+        return f"• <{card}|{r['name']}> ({countries}) — {r.get('description', '')} · {src}"
 
     if agentic:
         header = f"*New today ({len(agentic)})*" if not other else f"*Agentic AI ({len(agentic)})*"

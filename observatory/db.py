@@ -53,6 +53,11 @@ class Deduper:
             self.recent_names.add(_norm_name(name))
 
 
+def recent_record_names(records: list, days: int = 14) -> list:
+    cutoff = (date.today() - timedelta(days=days)).isoformat()
+    return [r["name"] for r in records if (r.get("date_added") or "") >= cutoff and r.get("name")]
+
+
 def append_records(records: list, db_path=config.DB_PATH):
     with open(db_path, "a", encoding="utf-8") as fh:
         for r in records:

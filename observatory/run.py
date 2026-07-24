@@ -28,6 +28,11 @@ def gather_items(no_x: bool) -> list:
             if got:
                 items += got
                 break
+        print("Running web sweep")
+        try:
+            items += sources.fetch_web_sweep()
+        except Exception as e:
+            print(f"  warning: web sweep failed ({e})")
     return items
 
 
@@ -57,16 +62,25 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
         "name": assessment.get("name", "") or title,
         "organisation": assessment.get("organisation", ""),
         "countries": assessment.get("countries") or [],
+        "country_codes": assessment.get("country_codes") or [],
         "description": assessment.get("description", ""),
         "novelty": assessment.get("novelty", ""),
         "stakeholders": assessment.get("stakeholders", ""),
+        "agentic_rationale": assessment.get("agentic_rationale", ""),
+        "tech_details": assessment.get("tech_details", ""),
+        "providers": assessment.get("providers") or [],
+        "autonomy_level": assessment.get("autonomy_level"),
+        "status": assessment.get("status", "unclear"),
+        "news_date": assessment.get("news_date", ""),
         "year": str(assessment.get("year", "")),
         "url": url,
+        "sources": [],
         "source": item["source"],
         "date_added": run_date,
         "agentic": bool(assessment.get("agentic")),
         "tags": assessment.get("tags") or [],
         "layers": assessment.get("layers") or [],
+        "functions": assessment.get("functions") or [],
     }
     deduper.add(url, record["name"])
     print(f"  ADDED [{'agentic' if record['agentic'] else 'ai-gov'}]: {record['name']}")
@@ -106,6 +120,29 @@ def main():
             continue
         if record:
             new_records.append(record)
+
+    # Editorial dedupe: one call over the whole batch catches the same story
+    # reported by several outlets under different names, and re-tells of
+    # recently stored records. Non-fatal: on failure we keep all records.
+    if len(new_records) > 1:
+        try:
+            recent_names = db.recent_record_names(existing, days=14)
+            verdict = llm.dedupe_batch(new_records, recent_names)
+            drop = set(verdict["already_known"])
+            for group in verdict["merge_groups"]:
+                keep, dups = group[0], group[1:]
+                if keep in drop or keep >= len(new_records):
+                    continue
+                for d in dups:
+                    if 0 <= d < len(new_records):
+                        new_records[keep]["sources"].append(new_records[d]["url"])
+                        drop.add(d)
+            if drop:
+                dropped = [new_records[i]["name"] for i in sorted(drop) if i < len(new_records)]
+                print(f"  editorial dedupe removed {len(dropped)}: " + "; ".join(dropped))
+                new_records = [r for i, r in enumerate(new_records) if i not in drop]
+        except Exception as e:
+            print(f"  warning: editorial dedupe failed ({e}), keeping all")
 
     print(f"\n{len(new_records)} new records")
     if not new_records:

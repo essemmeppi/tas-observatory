@@ -1,0 +1,36 @@
+{
+  "autonomy_levels": {
+    "_source": "The Agentic State vision paper (agenticstate.org/paper.html), autonomy ladder L0-L5",
+    "0": "Manual (human-only)",
+    "1": "Rule-based automation",
+    "2": "Intelligent process automation",
+    "3": "Agentic workflows",
+    "4": "Semi-autonomous agents",
+    "5": "Fully autonomous agents"
+  },
+  "status": {
+    "_source": "Anchored to EU JRC AI Watch 'AI in public services' lifecycle, extended for observatory use",
+    "announced": "Publicly announced, no build evidence yet",
+    "in-development": "Being built or procured",
+    "pilot": "Limited trial in production conditions",
+    "implemented": "Live in regular operation",
+    "scaled": "Expanded beyond initial scope (agencies, regions, volume)",
+    "discontinued": "Stopped or withdrawn",
+    "unclear": "Cannot be determined from the source"
+  },
+  "layers": {
+    "_source": "The Agentic State framework, 12 layers",
+    "service-design-ux": "Public Service Design and UX",
+    "workflows": "Government Workflows",
+    "policy-rulemaking": "Policy- and Rule-Making",
+    "compliance-supervision": "Regulatory Compliance and Supervision",
+    "crisis-response": "Crisis Response",
+    "procurement": "Public Procurement",
+    "agent-governance": "Agent Governance",
+    "data-privacy": "Data and Privacy",
+    "tech-stack": "Tech Stack",
+    "cybersecurity": "Cyber Security and Resilience",
+    "public-finance": "Public Finance and Buying Agents",
+    "people-culture": "People, Culture, and Leadership"
+  }
+}

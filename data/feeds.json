@@ -10,7 +10,12 @@
     {"q": "\"intelligenza artificiale\" (governo OR \"pubblica amministrazione\") when:1d", "hl": "it", "gl": "IT", "ceid": "IT:it"},
     {"q": "\"inteligência artificial\" (governo OR \"setor público\") when:1d", "hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"},
     {"q": "\"AI\" (government OR ministry OR \"public sector\") when:1d", "hl": "en-IN", "gl": "IN", "ceid": "IN:en"},
-    {"q": "\"AI\" (government OR ministry) when:1d", "hl": "en-SG", "gl": "SG", "ceid": "SG:en"}
+    {"q": "\"AI\" (government OR ministry) when:1d", "hl": "en-SG", "gl": "SG", "ceid": "SG:en"},
+    {"q": "\"algorithmic decision-making\" OR \"automated decisions\" government welfare when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"},
+    {"q": "AI (\"civil servants\" OR \"public servants\" OR \"government workers\") automation when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"},
+    {"q": "\"national AI strategy\" public administration when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"},
+    {"q": "government AI (watchdog OR oversight OR audit OR failure OR hallucination) when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"},
+    {"q": "government AI (\"white paper\" OR playbook OR toolkit OR registry) when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"}
   ],
   "google_alerts": [],
   "rss": [

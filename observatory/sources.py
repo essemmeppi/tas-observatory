@@ -132,13 +132,24 @@ Return ONLY a JSON array (no other text). Each element:
 Return [] if nothing substantive was found. Maximum 10 items, deduplicated."""
 
 
-def fetch_x_sweep(from_date: str, to_date: str) -> list:
-    """Daily X sweep: Grok via OpenRouter with the web/x_search plugin enabled."""
+WEB_SWEEP_PROMPT = """Search the web for PRIMARY SOURCES from the last 3 days about agentic AI \
+and AI agents in GOVERNMENT and the PUBLIC SECTOR worldwide (any language; report in English): \
+official government publications, white papers, strategies, playbooks, procurement notices, \
+tool/registry launches, and official announcements on government websites — the things that \
+news outlets have NOT covered yet. Not vendor marketing, not news articles.
+
+Return ONLY a JSON array (no other text). Each element:
+{"title": "...", "url": "<direct link to the primary source>", "summary": "2-3 sentences: what it is, which government body, which country"}
+Return [] if nothing substantive was found. Maximum 8 items, deduplicated."""
+
+
+def _grok_sweep(prompt: str, source_label: str, extra: dict) -> list:
+    """Shared Grok-via-OpenRouter sweep used for both the X and web legs."""
     if not config.XSWEEP_MODEL:
-        print("  x sweep: XSWEEP_MODEL disabled, skipping")
+        print(f"  {source_label}: XSWEEP_MODEL disabled, skipping")
         return []
     if "openrouter" not in config.LLM_BASE_URL or not config.LLM_API_KEY:
-        print("  x sweep: requires OpenRouter LLM_BASE_URL + LLM_API_KEY, skipping")
+        print(f"  {source_label}: requires OpenRouter LLM_BASE_URL + LLM_API_KEY, skipping")
         return []
 
     resp = requests.post(
@@ -146,9 +157,9 @@ def fetch_x_sweep(from_date: str, to_date: str) -> list:
         headers={"Authorization": f"Bearer {config.LLM_API_KEY}"},
         json={
             "model": config.XSWEEP_MODEL,
-            "messages": [{"role": "user", "content": X_SWEEP_PROMPT}],
+            "messages": [{"role": "user", "content": prompt}],
             "plugins": [{"id": "web", "engine": "native"}],
-            "x_search_filter": {"from_date": from_date, "to_date": to_date},
+            **extra,
         },
         timeout=300,
     )
@@ -157,12 +168,12 @@ def fetch_x_sweep(from_date: str, to_date: str) -> list:
 
     match = re.search(r"\[.*\]", text, re.DOTALL)
     if not match:
-        print("  x sweep: no JSON array in response, skipping")
+        print(f"  {source_label}: no JSON array in response, skipping")
         return []
     try:
         stories = json.loads(match.group(0))
     except json.JSONDecodeError:
-        print("  x sweep: could not parse JSON, skipping")
+        print(f"  {source_label}: could not parse JSON, skipping")
         return []
 
     items = []
@@ -172,10 +183,24 @@ def fetch_x_sweep(from_date: str, to_date: str) -> list:
         items.append({
             "title": (s.get("title") or "").strip(),
             "url": s["url"].strip(),
-            "published": to_date,
-            "source": "x_grok",
-            # X items carry their own summary; used instead of article extraction.
+            "published": "",
+            "source": source_label,
+            # Sweep items carry their own summary; used instead of article extraction.
             "prefetched_text": (s.get("summary") or "").strip(),
         })
-    print(f"  x sweep: {len(items)} items")
+    print(f"  {source_label}: {len(items)} items")
     return items
+
+
+def fetch_x_sweep(from_date: str, to_date: str) -> list:
+    """Daily X sweep: Grok via OpenRouter with the x_search plugin, date-bounded."""
+    return _grok_sweep(
+        X_SWEEP_PROMPT, "x_grok",
+        {"x_search_filter": {"from_date": from_date, "to_date": to_date}},
+    )
+
+
+def fetch_web_sweep() -> list:
+    """Daily web sweep for primary sources (official publications, white papers,
+    tool launches) that news-shaped queries miss."""
+    return _grok_sweep(WEB_SWEEP_PROMPT, "web_grok", {})

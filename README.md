@@ -46,11 +46,16 @@ python scripts/test_pipeline_local.py  # smoke test, no API keys needed
 
 ```json
 {"id": "…", "name": "…", "organisation": "…", "countries": ["…"], "description": "…",
- "novelty": "…", "stakeholders": "…", "year": "2026", "url": "…",
- "source": "google_news:<gl> | rss:<domain> | x_grok", "date_added": "YYYY-MM-DD",
- "agentic": true, "tags": ["pilot", "…"], "layers": ["workflows", "…"]}
+ "novelty": "…", "stakeholders": "…", "agentic_rationale": "why this is agentic",
+ "tech_details": "…", "providers": ["Anthropic", "…"], "autonomy_level": 4,
+ "status": "pilot", "news_date": "YYYY-MM-DD", "year": "2026",
+ "url": "…", "sources": ["further urls for the same story"],
+ "source": "google_news:<gl> | rss:<domain> | x_grok | web_grok", "date_added": "YYYY-MM-DD",
+ "agentic": true, "tags": ["pilot", "…"], "layers": ["workflows", "…"], "functions": ["f46", "…"]}
 ```
 
-`layers` maps each record to the Agentic State framework: `service-design-ux`, `workflows`, `policy-rulemaking`, `compliance-supervision`, `crisis-response`, `procurement`, `agent-governance`, `data-privacy`, `tech-stack`, `cybersecurity`, `public-finance`, `people-culture`.
+Controlled vocabularies live in [data/taxonomies.json](data/taxonomies.json): `layers` (the framework's 12 layers), `autonomy_level` (the vision paper's L0 manual → L5 fully autonomous ladder), `status` (anchored to EU JRC AI Watch lifecycle: announced / in-development / pilot / implemented / scaled / discontinued / unclear). `functions` uses the 70 government functions from the WEF Agentic State report ([data/functions.json](data/functions.json)).
+
+Same-story duplicates across outlets are merged by an LLM editorial pass at the end of each run (extra URLs land in `sources`); re-tells of records from the last 14 days are dropped.
 
 Records with `"source": "google_alerts_legacy"` were seeded from the predecessor project ([GovServiceX](https://github.com/essemmeppi/GovServiceX)); keyword-flagged agentic ones have `"agentic": true`, the rest `null` (unclassified). To remove a bad entry, delete its line and commit.
