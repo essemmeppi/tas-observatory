@@ -41,18 +41,25 @@ h1:hover{color:var(--accent)}
 .chart h3{font-size:13px; font-weight:500; margin-bottom:12px}
 .bar-row{display:flex; align-items:center; gap:10px; margin-bottom:7px; font-size:12px; cursor:pointer; border-radius:4px}
 .bar-row:hover .bar-label{color:var(--accent)}
+.bar-row:hover .bar-fill{background:color-mix(in srgb, var(--accent) 75%, var(--accent-soft))}
 .bar-row.active .bar-label{color:var(--accent); font-weight:500}
-.bar-row.active .bar-fill{background:var(--ink)}
+.bar-row.active .bar-fill{background:var(--accent)}
 .bar-label{width:150px; text-align:right; color:var(--ink-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0}
 .bar-track{flex:1; height:14px; display:flex; align-items:center}
-.bar-fill{height:14px; background:var(--accent); border-radius:3px; min-width:2px; transition:background .15s}
+.bar-fill{height:14px; background:var(--accent-soft); border-radius:3px; min-width:2px; transition:background .15s}
 .bar-n{color:var(--ink-3); width:34px; flex-shrink:0}
 .controls{display:flex; flex-wrap:wrap; gap:10px; padding:14px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:8px; position:sticky; top:0; background:var(--bg); z-index:5}
 .controls input,.controls select{font:inherit; font-size:13px; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px 10px}
 .controls input{flex:1; min-width:180px}
 .count-line{font-size:12px; color:var(--ink-3); padding:10px 0 18px}
 .count-line .clear{color:var(--accent); cursor:pointer; margin-left:8px}
-.card{border-bottom:1px solid var(--line); padding:18px 0; cursor:pointer}
+.card{border-bottom:1px solid var(--line); padding:18px 0; cursor:pointer; position:relative}
+.card-shape{position:absolute; right:8px; top:50%; transform:translateY(-50%); width:150px; height:86%;
+  opacity:0; transition:opacity .45s ease; pointer-events:none}
+.card-shape svg{width:100%; height:100%}
+.card-shape path{fill:color-mix(in srgb, var(--accent) 14%, var(--bg)); stroke:color-mix(in srgb, var(--accent) 38%, var(--bg)); stroke-width:.8}
+.card:hover .card-shape{opacity:1}
+@media(max-width:900px){.card-shape{display:none}}
 .card:hover h2 a{color:var(--accent)}
 .card h2{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:20px; line-height:1.25}
 .card h2 a{color:var(--ink)}
@@ -223,7 +230,7 @@ const MAP_ALIASES = {
   "Great Britain":"United Kingdom","Scotland":"United Kingdom","England":"United Kingdom","Wales":"United Kingdom","Northern Ireland":"United Kingdom",
   "Dominican Republic":"Dominican Rep.","Hong Kong":"Hong Kong","Taiwan":"Taiwan"
 };
-let mapFeatures = null;
+let mapFeatures = null, featureByName = new Map(), shapeCache = new Map();
 
 async function drawMap(){
   const el = $("chart-map");
@@ -232,6 +239,7 @@ async function drawMap(){
     if(!mapFeatures){
       const world = await (await fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")).json();
       mapFeatures = topojson.feature(world, world.objects.countries).features;
+      mapFeatures.forEach(f => featureByName.set(f.properties.name, f));
     }
   }catch(e){ el.innerHTML = '<div class="err">Map could not load.</div>'; return; }
 
@@ -311,10 +319,23 @@ function goHome(){
   window.scrollTo({top:0, behavior:"smooth"});
 }
 
+function countryShapeSvg(country){
+  if(shapeCache.has(country)) return shapeCache.get(country);
+  let svg = "";
+  const f = featureByName.get(MAP_ALIASES[country] || country);
+  if(f && window.d3){
+    const proj = d3.geoNaturalEarth1().fitSize([150, 86], f);
+    svg = `<svg viewBox="0 0 150 86" aria-hidden="true"><path d="${d3.geoPath(proj)(f)}"></path></svg>`;
+  }
+  shapeCache.set(country, svg);
+  return svg;
+}
+
 function listItem(r){
   const countryChips = (r.countries||[]).map(c =>
     `<span class="chip layer click" data-s="f-country" data-v="${esc(c)}">${esc(c)}</span>`).join("");
-  return `<article class="card" data-id="${r.id}">
+  return `<article class="card" data-id="${r.id}" data-country="${esc((r.countries||[])[0]||"")}">
+    <div class="card-shape"></div>
     <div class="card-head"><h2><a href="#r=${r.id}">${esc(r.name)}</a></h2>${countryChips}</div>
     <p class="desc">${esc(r.description)}</p>
     <div class="meta"><span class="mdate">${fmtDate(r.news_date||r.date_added||r.year)}</span></div>
@@ -331,6 +352,11 @@ function render(reset){
     el.addEventListener("click", e => { e.preventDefault(); location.hash = "r=" + el.dataset.id; });
     el.querySelectorAll(".chip.click").forEach(ch =>
       ch.addEventListener("click", e => { e.stopPropagation(); e.preventDefault(); setFilter(ch.dataset.s, ch.dataset.v); }));
+    el.addEventListener("mouseenter", () => {
+      const holder = el.querySelector(".card-shape");
+      if(holder && !holder.innerHTML && el.dataset.country)
+        holder.innerHTML = countryShapeSvg(el.dataset.country);
+    });
   });
   shown += next.length;
   $("loadmore").hidden = shown >= filtered.length;
