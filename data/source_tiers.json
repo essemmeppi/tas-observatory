@@ -1,5 +1,5 @@
 {
-  "_comment": "Source authority tiers, lower is better. Used to pick the canonical URL of a merged record, to order the 'sources' list, and to spend a limited LLM budget on the best articles first. Unlisted domains get default_tier. 'suffixes' match the end of the hostname (official government domains); 'domains' match a host exactly or as a subdomain. Expected to grow as the feed mix shifts.",
+  "_comment": "Source authority tiers, lower is better. Used to pick the canonical URL of a merged record, to order the 'sources' list, and to spend a limited LLM budget on the best articles first. Unlisted domains get default_tier. 'suffixes' match the end of the hostname (official government domains); 'domains' match a host exactly or as a subdomain. Tier 1 is government and IGO sources only — a vendor's own blog is a primary source for technical detail but is commercially interested, so those sit at tier 3 alongside the trade press. Expected to grow as the feed mix shifts.",
   "default_tier": 4,
   "suffixes": {
     "1": [
@@ -37,13 +37,7 @@
       "who.int",
       "europarl.europa.eu",
       "digital-strategy.ec.europa.eu",
-      "gds.blog.gov.uk",
-      "anthropic.com",
-      "openai.com",
-      "salesforce.com",
-      "microsoft.com",
-      "google.com",
-      "aws.amazon.com"
+      "gds.blog.gov.uk"
     ],
     "2": [
       "reuters.com",
@@ -86,6 +80,13 @@
       "technologyreview.com"
     ],
     "3": [
+      "anthropic.com",
+      "openai.com",
+      "salesforce.com",
+      "microsoft.com",
+      "ukstories.microsoft.com",
+      "google.com",
+      "aws.amazon.com",
       "fedscoop.com",
       "statescoop.com",
       "meritalk.com",

@@ -167,8 +167,15 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str, touched: list |
 
 
 def _name_target(candidate: dict, pool: list):
+    """The stored record this candidate re-tells, by name, or None.
+
+    Both records carry countries here, so the similarity branch of names_match is
+    available — unlike the headline check in Deduper, which has no country to go on.
+    """
     return next(
-        (r for r in pool if db.names_match(candidate.get("name", ""), r.get("name", ""))),
+        (r for r in pool if db.names_match(
+            candidate.get("name", ""), r.get("name", ""),
+            candidate.get("countries"), r.get("countries"))),
         None,
     )
 

@@ -8,13 +8,15 @@ Two halves:
 Run: python scripts/test_pipeline_local.py [--offline]
 """
 import argparse
+import itertools
 import sys
+from datetime import date
 from pathlib import Path
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).parents[1]))
 
-from observatory import db, digest, llm, merge, run, sources, urls  # noqa: E402
+from observatory import config, db, digest, llm, merge, run, sources, urls  # noqa: E402
 
 RUN_DATE = "2026-07-25"
 
@@ -56,6 +58,10 @@ def test_tiers():
         "https://www.hrreporter.com/focus-areas/x": 3,
         "https://www.miragenews.com/x-1715429/": 4,
         "https://247wallst.com/investing/x": 5,
+        # A vendor blog is primary for technical detail but commercially
+        # interested, so it ranks with the trade press, not with governments.
+        "https://cloud.google.com/blog/topics/public-sector/x": 3,
+        "https://www.anthropic.com/news/x": 3,
         "https://some-unlisted-blog.example/x": urls.DEFAULT_TIER,
     }
     for url, want in expected.items():
@@ -76,6 +82,24 @@ def test_name_matching():
           not db.names_match("AI Strategy", "AI Strategy for the Public Sector of Ruritania"))
     check("unrelated names do not match",
           not db.names_match("Ajman Trade Licence Renewal", "K-Digital Training AI Campus"))
+
+    # Licence/License: one character apart, so neither equality nor containment
+    # sees it. Needs the similarity branch, which needs a shared country.
+    uae, us = ["United Arab Emirates"], ["United States"]
+    check("similarity catches the Ajman Licence/License pair",
+          db.names_match("Ajman Agentic AI Trade Licence Renewal",
+                         "Ajman Agentic AI Trade License Renewal", uae, uae))
+    check("similarity needs a shared country",
+          not db.names_match("Ajman Agentic AI Trade Licence Renewal",
+                             "Ajman Agentic AI Trade License Renewal", uae, us))
+    # Two real deployments of one product, in different countries: not a duplicate.
+    check("same product in two countries is not a duplicate",
+          not db.names_match("Microsoft 365 Copilot", "Microsoft 365 Copilot Chat", ["United Kingdom"], us))
+    # And the limit worth being explicit about: no string method links these two
+    # reports of the Warner package. That is what the LLM pass is for.
+    check("similarity does NOT catch a full rename",
+          not db.names_match("Framework for America's AI Future",
+                             "Federal AI Oversight Legislative Package (AI AGENT Act)", us, us))
 
 
 def _record(rid, url, name, news_date, **extra):
@@ -274,6 +298,27 @@ def test_real_db():
             owner[key] = r["id"]
     check(f"no URL is claimed by two records ({len(owner)} URLs checked)",
           not clashes, "; ".join(clashes[:5]))
+    # Same-story duplicates, not just same-URL ones. Two Ajman records and two
+    # Warner records sat in the database for a day because nothing scanned for
+    # this; the URL check above cannot see them, since the outlets differ.
+    # Time-bounded, matching the pipeline's own policy: a re-tell within days is a
+    # duplicate, but the same initiative resurfacing months later is a new
+    # development. "Gemini for Government" legitimately appears for the Aug 2025
+    # GSA OneGov deal and again in Apr 2026 — collapsing those would flatten the
+    # timeline rather than clean it.
+    near = []
+    for a, b in itertools.combinations(records, 2):
+        gap = abs((date.fromisoformat(a["date_added"]) - date.fromisoformat(b["date_added"])).days)
+        if gap > config.DEDUP_WINDOW_DAYS:
+            continue
+        if db.names_match(a.get("name", ""), b.get("name", ""),
+                          a.get("countries"), b.get("countries")):
+            near.append(f"{a['id']}/{b['id']} ({gap}d) "
+                        f"{a.get('name','')[:30]!r} ~ {b.get('name','')[:30]!r}")
+    check(f"no two records within {config.DEDUP_WINDOW_DAYS} days describe the same initiative "
+          f"({len(records) * (len(records) - 1) // 2} pairs compared)",
+          not near, "; ".join(near[:6]))
+
     deduper = db.Deduper(records)
     check("dedup by URL works", not deduper.is_new(records[0]["url"]))
     check("a fresh URL is not deduped", deduper.is_new("https://example.org/brand-new"))

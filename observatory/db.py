@@ -1,4 +1,5 @@
 """The database is data/innovations.jsonl: one JSON record per line."""
+import difflib
 import hashlib
 import json
 import re
@@ -27,23 +28,44 @@ def _norm_name(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", (name or "").lower()).strip()
 
 
-def names_match(a: str, b: str) -> bool:
-    """Equal, or one name contains the other.
+NAME_SIMILARITY = 0.90
+
+
+def names_match(a: str, b: str, countries_a=None, countries_b=None) -> bool:
+    """Equal, one name contains the other, or the two are near-identical strings.
 
     Equality alone was too strict: "Public Consultation on AI Transparency" and
     "Public consultation on AI transparency and agentic AI regulation" are the
-    same story, and the second sailed straight past an equality test. The length
-    and token floors stop a generic fragment matching half the database.
+    same story, and the second sailed past an equality test. Containment was still
+    too strict: "Ajman Agentic AI Trade Licence Renewal" and "...Trade License
+    Renewal" differ by one character and neither contains the other.
+
+    The similarity branch requires a shared country. That is what separates the
+    Jacksonville "NAVI"/"Navi" pair (one initiative, merge) from "Microsoft 365
+    Copilot" in the UK civil service and "Microsoft 365 Copilot Chat" in San
+    Francisco (two deployments, leave alone).
+
+    At 0.90 this matches exactly one pair across the 8,778 pairs in the current
+    database, and that pair is a true duplicate.
     """
     x, y = _norm_name(a), _norm_name(b)
     if not x or not y:
+        return False
+    if countries_a and countries_b and not (set(countries_a) & set(countries_b)):
         return False
     if x == y:
         return True
     shorter, longer = sorted((x, y), key=len)
     if len(shorter) < 18 or len(shorter.split()) < 3:
         return False
-    return shorter in longer
+    if shorter in longer:
+        return True
+    # Spelling and inflection variants only. SequenceMatcher penalises length
+    # mismatch steeply, so a long headline cannot reach this bar against a short
+    # initiative name.
+    if countries_a and countries_b:
+        return difflib.SequenceMatcher(None, x, y).ratio() >= NAME_SIMILARITY
+    return False
 
 
 class Deduper:
