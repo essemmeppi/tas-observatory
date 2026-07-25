@@ -115,12 +115,26 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str, touched: list |
         print(f"  no text: {title[:70]}")
         return None
 
-    assessment = llm.assess_article(text, url, item.get("published", ""))
-    if not assessment:
+    published = item.get("published", "")
+    # Two stages on purpose. The gate is small; extraction carries the 12 layers,
+    # the 70 government functions and a dozen generated prose fields, and ~83% of
+    # screened articles are rejected — so it only runs on what survives.
+    screen = llm.screen_article(text, url, published)
+    if not screen.get("relevant"):
         print(f"  not relevant: {title[:70]}")
         return None
-    if config.AGENTIC_ONLY and not assessment.get("agentic"):
+    if config.AGENTIC_ONLY and not screen.get("agentic"):
         print(f"  not agentic: {title[:70]}")
+        return None
+
+    assessment = llm.extract_record(text, url, published)
+    if not assessment:
+        print(f"  extraction failed: {title[:70]}")
+        return None
+    if config.AGENTIC_ONLY and not assessment.get("agentic"):
+        # The gate said agentic and the detailed pass disagrees; trust the pass
+        # that actually read the schema.
+        print(f"  not agentic on extraction: {title[:70]}")
         return None
 
     record = {

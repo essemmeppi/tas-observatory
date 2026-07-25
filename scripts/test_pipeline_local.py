@@ -283,6 +283,10 @@ def test_real_db():
                              "lift-enterprise-software/"))
 
 
+def fake_screen(agentic=True):
+    return lambda text, url, published="": {"relevant": True, "agentic": agentic, "subject": "x"}
+
+
 def fake_assess(text, url, published, agentic=True):
     return {
         "relevant": True,
@@ -317,7 +321,8 @@ def test_live_feeds():
     check("best sources are queued first", tiers == sorted(tiers), f"{tiers[:12]}")
     check("the queue is not all one tier", len(set(tiers)) > 1, str(set(tiers)))
 
-    with patch.object(run.llm, "assess_article", side_effect=fake_assess):
+    with patch.object(run.llm, "screen_article", side_effect=fake_screen()), \
+         patch.object(run.llm, "extract_record", side_effect=fake_assess):
         built = [r for r in (run.process_item(i, deduper, RUN_DATE) for i in fresh[:4]) if r]
     check("records are built from live feeds", bool(built), "extraction or link decoding failing?")
     for r in built:
@@ -329,11 +334,15 @@ def test_live_feeds():
     check("a second pass over the same item is deduped",
           run.process_item(fresh[0], deduper, RUN_DATE) is None)
 
-    not_agentic = lambda text, url, published: fake_assess(text, url, published, agentic=False)
-    with patch.object(run.llm, "assess_article", side_effect=not_agentic):
-        with patch.object(run.config, "AGENTIC_ONLY", True):
-            check("the agentic-only gate drops a non-agentic item",
-                  run.process_item(fresh[5], deduper, RUN_DATE) is None)
+    # The gate must reject without ever reaching extraction — that is the whole
+    # point of splitting them, since ~83% of screened articles are rejected.
+    extract_calls = []
+    with patch.object(run.llm, "screen_article", side_effect=fake_screen(agentic=False)), \
+         patch.object(run.llm, "extract_record", side_effect=lambda *a: extract_calls.append(a)), \
+         patch.object(run.config, "AGENTIC_ONLY", True):
+        check("the agentic-only gate drops a non-agentic item",
+              run.process_item(fresh[5], deduper, RUN_DATE) is None)
+    check("a gated-out item never reaches extraction", not extract_calls, str(extract_calls))
 
 
 def main():

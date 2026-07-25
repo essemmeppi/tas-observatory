@@ -13,19 +13,37 @@ FUNCTIONS_PROMPT_LIST = "\n".join(
     f"- {f['function_id']}: {f['function_title']} ({f['category_title']})" for f in _FUNCTIONS
 )
 
-ASSESS_PROMPT = """You screen news for an observatory of AGENTIC AI IN GOVERNMENT run by The Agentic State.
+GATE_PROMPT = """You screen news for an observatory of AGENTIC AI IN GOVERNMENT run by The Agentic State.
 
-You get the text of one article. Decide if it reports a concrete development involving \
-AI, AI agents, or automation in GOVERNMENT or the PUBLIC SECTOR: a deployment, pilot, \
-procurement, policy, strategy, regulation or official announcement by a public body \
-(any country, any level of government).
+You get the text of one article. Decide two things, and nothing else.
+
+RELEVANT: does it report a concrete development involving AI, AI agents, or automation in \
+GOVERNMENT or the PUBLIC SECTOR — a deployment, pilot, procurement, policy, strategy, \
+regulation or official announcement by a public body (any country, any level of government)?
 
 NOT relevant: private-sector-only news, academic papers without government adoption, \
 opinion pieces with no concrete development, vendor marketing with no named public buyer.
 
+AGENTIC: does it involve AI agents / agentic AI / autonomous task execution, as opposed to \
+any AI, an analytics tool or a plain chatbot?
+
 Respond with ONLY a JSON object:
 {
   "relevant": true/false,
+  "agentic": true/false,
+  "subject": "the initiative in 8 words or fewer"
+}"""
+
+
+EXTRACT_PROMPT = """You extract structured records for an observatory of AGENTIC AI IN \
+GOVERNMENT run by The Agentic State.
+
+The article you are given has ALREADY been judged relevant to AI in government. Do not \
+re-litigate that: extract the record.
+
+Respond with ONLY a JSON object:
+{
+  "relevant": true,               // always true here; kept for schema stability
   "agentic": true/false,          // true only if it involves AI agents / agentic AI / autonomous task execution, not just any AI or chatbot
   "name": "short name of the initiative",
   "organisation": "public body responsible",
@@ -61,9 +79,7 @@ Agentic State framework layers (use these exact slugs in "layers"):
 - "people-culture": people, culture & leadership — skills, workforce, organisational capacity
 
 Government functions (use ids in "functions"):
-""" + FUNCTIONS_PROMPT_LIST + """
-
-If relevant is false, the other fields may be empty."""
+""" + FUNCTIONS_PROMPT_LIST
 
 VALID_STATUS = {"announced", "in-development", "pilot", "implemented", "scaled", "discontinued", "unclear"}
 
@@ -130,27 +146,64 @@ def _clean_assessment(data: dict) -> dict:
     return data
 
 
-def assess_article(text: str, url: str, published: str) -> dict | None:
-    """One call: relevance filter + structured extraction. None if irrelevant/unparseable."""
-    user = f'Text: """{text}"""\nPublication date: "{published}"\nURL: "{url}"'
+def _call_with_prompt(prompt: str, user: str, max_tokens: int = 1600) -> dict | None:
     try:
         raw = _chat(
-            [{"role": "system", "content": ASSESS_PROMPT}, {"role": "user", "content": user}],
-            model=config.LLM_MODEL,
-            json_mode=True,
+            [{"role": "system", "content": prompt}, {"role": "user", "content": user}],
+            model=config.LLM_MODEL, json_mode=True, max_tokens=max_tokens,
         )
     except requests.HTTPError:
         # Some providers reject response_format; retry without it. Budget errors
         # raise BudgetExhausted instead and are deliberately not retried — the
         # second call would fail the same way and only burn wall-clock.
         raw = _chat(
-            [{"role": "system", "content": ASSESS_PROMPT}, {"role": "user", "content": user}],
-            model=config.LLM_MODEL,
+            [{"role": "system", "content": prompt}, {"role": "user", "content": user}],
+            model=config.LLM_MODEL, max_tokens=max_tokens,
         )
-    data = _parse_json(raw)
-    if not data or not data.get("relevant"):
+    return _parse_json(raw)
+
+
+def _user_block(text: str, url: str, published: str) -> str:
+    return f'Text: """{text}"""\nPublication date: "{published}"\nURL: "{url}"'
+
+
+def screen_article(text: str, url: str, published: str = "") -> dict:
+    """Cheap first pass: is this relevant, and is it agentic?
+
+    Deliberately separate from extraction. Around 83% of screened articles are
+    rejected, and running them through the full schema — the 12 layers, the 70
+    government functions, and a dozen generated prose fields — meant paying for
+    output that was then discarded. This prompt is a fraction of the size and
+    returns a handful of tokens.
+
+    Returns {"relevant": bool, "agentic": bool}; unparseable output is treated as
+    not relevant.
+    """
+    data = _call_with_prompt(GATE_PROMPT, _user_block(text, url, published), max_tokens=200)
+    if not data:
+        return {"relevant": False, "agentic": False}
+    return {"relevant": bool(data.get("relevant")), "agentic": bool(data.get("agentic")),
+            "subject": data.get("subject", "")}
+
+
+def extract_record(text: str, url: str, published: str) -> dict | None:
+    """Second pass: the full structured record. Only worth running on survivors."""
+    data = _call_with_prompt(EXTRACT_PROMPT, _user_block(text, url, published))
+    if not data:
         return None
     return _clean_assessment(data)
+
+
+def assess_article(text: str, url: str, published: str) -> dict | None:
+    """Screen, then extract. None if the article is not relevant.
+
+    Kept as one entry point for the one-off scripts in scripts/; the pipeline
+    calls the two stages separately so it can apply AGENTIC_ONLY between them and
+    skip extraction entirely for a non-agentic article.
+    """
+    if not screen_article(text, url, published).get("relevant"):
+        return None
+    return extract_record(text, url, published)
 
 
 MERGE_PROMPT = """You are the deduplication editor of a daily news pipeline about agentic AI in government.
