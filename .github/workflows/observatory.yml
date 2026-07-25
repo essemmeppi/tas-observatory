@@ -24,7 +24,12 @@ jobs:
       - name: Install dependencies
         run: pip install -r observatory/requirements.txt
 
+      # continue-on-error so a degraded run still reaches the commit step below:
+      # the harvest it did manage is already written and worth keeping. The final
+      # step turns the job red afterwards.
       - name: Run observatory
+        id: observatory
+        continue-on-error: true
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
@@ -43,3 +48,15 @@ jobs:
             git commit -m "observatory: daily update $(date -u +%F)"
             git push
           fi
+
+      - name: Fail if the run was degraded
+        run: |
+          if [ -f .degraded ]; then
+            echo "::error::$(cat .degraded)"
+            exit 1
+          fi
+          if [ "${{ steps.observatory.outcome }}" = "failure" ]; then
+            echo "::error::observatory step failed"
+            exit 1
+          fi
+          echo "Clean run"

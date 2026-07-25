@@ -68,6 +68,24 @@ If relevant is false, the other fields may be empty."""
 VALID_STATUS = {"announced", "in-development", "pilot", "implemented", "scaled", "discontinued", "unclear"}
 
 
+class BudgetExhausted(RuntimeError):
+    """The API is refusing calls for billing reasons, not for this request.
+
+    Worth its own type because it is terminal for the whole run: on 2026-07-25 a
+    mid-run credit exhaustion produced 106 identical 402s, hid the dedupe pass,
+    and still exited green.
+    """
+
+
+def _is_budget_error(resp) -> bool:
+    if resp.status_code == 402:
+        return True
+    if resp.status_code in (401, 403, 429):
+        body = (resp.text or "").lower()
+        return any(w in body for w in ("insufficient", "quota", "credit", "billing", "payment"))
+    return False
+
+
 def _chat(messages: list, model: str, json_mode: bool = False, max_tokens: int = 1600) -> str:
     if not config.LLM_API_KEY:
         raise RuntimeError("LLM_API_KEY is not set")
@@ -80,6 +98,8 @@ def _chat(messages: list, model: str, json_mode: bool = False, max_tokens: int =
         json=body,
         timeout=120,
     )
+    if _is_budget_error(resp):
+        raise BudgetExhausted(f"{resp.status_code} from {config.LLM_BASE_URL}: {(resp.text or '')[:200]}")
     resp.raise_for_status()
     # Thinking models can return content=None when reasoning exhausts max_tokens.
     return resp.json()["choices"][0]["message"]["content"] or ""
@@ -120,7 +140,9 @@ def assess_article(text: str, url: str, published: str) -> dict | None:
             json_mode=True,
         )
     except requests.HTTPError:
-        # Some providers reject response_format; retry without it.
+        # Some providers reject response_format; retry without it. Budget errors
+        # raise BudgetExhausted instead and are deliberately not retried — the
+        # second call would fail the same way and only burn wall-clock.
         raw = _chat(
             [{"role": "system", "content": ASSESS_PROMPT}, {"role": "user", "content": user}],
             model=config.LLM_MODEL,
@@ -133,38 +155,123 @@ def assess_article(text: str, url: str, published: str) -> dict | None:
 
 MERGE_PROMPT = """You are the deduplication editor of a daily news pipeline about agentic AI in government.
 
-You get (A) today's candidate records and (B) the names of records already in the database \
-from the last two weeks. Different outlets report the same story with different names — find them.
+You get (A) today's candidate records and (B) records already in the database from the last \
+two weeks. Different outlets report the same story with different names — find them.
 
 Return ONLY a JSON object:
 {
-  "merge_groups": [[keep_idx, dup_idx, ...], ...],  // groups of today's indices describing the SAME initiative/story; first index = best/most complete record to keep
-  "already_known": [idx, ...]                        // today's indices that are re-tells of a record in list B
+  "merge_groups": [[keep_idx, dup_idx, ...], ...],   // groups of today's A-indices describing the SAME initiative/story; first index = best/most complete record
+  "already_known": [{"candidate": a_idx, "existing": b_idx}, ...]  // each of today's A-indices that re-tells a specific record in B, with THAT record's index
 }
-Same story = same initiative by the same government body (wording may differ). Two DIFFERENT \
-initiatives from the same country are NOT the same story. When unsure, do NOT merge.
+Same story = same initiative by the same government body (wording may differ, the name may \
+be phrased completely differently, one report may cover more detail than another). Two \
+DIFFERENT initiatives from the same country are NOT the same story. When unsure, do NOT merge.
 Empty arrays if nothing applies."""
 
 
-def dedupe_batch(candidates: list, recent_names: list) -> dict:
-    """One call over today's batch. Returns {"merge_groups": [...], "already_known": [...]}."""
-    lines = [
-        f'{i}: {r["name"]} | {", ".join(r.get("countries") or [])} | {r.get("organisation","")} | {r.get("description","")[:160]}'
-        for i, r in enumerate(candidates)
-    ]
-    user = "A) Today's candidates:\n" + "\n".join(lines) + \
-        "\n\nB) Recent database records:\n" + "\n".join(f"- {n}" for n in recent_names[:200])
-    raw = _chat(
-        [{"role": "system", "content": MERGE_PROMPT}, {"role": "user", "content": user}],
-        model=config.LLM_MODEL,
-        json_mode=True,
-        max_tokens=800,
+def _record_line(i: int, r: dict) -> str:
+    return (f'{i}: {r.get("name","")} | {", ".join(r.get("countries") or [])} '
+            f'| {r.get("organisation","")} | {(r.get("description") or "")[:160]}')
+
+
+def dedupe_batch(candidates: list, recent: list) -> dict:
+    """One call over today's batch, retried once.
+
+    `recent` carries country, organisation and a summary per existing record, not
+    just a name — matching "VA Agentforce Enterprise License Agreement" to
+    "VA Agentforce Expansion" needs more than the two strings.
+
+    Returns {"merge_groups": [[keep, dup, ...]], "already_known": [{candidate, existing}]}.
+    """
+    user = (
+        "A) Today's candidates:\n" + "\n".join(_record_line(i, r) for i, r in enumerate(candidates))
+        + "\n\nB) Recent database records:\n" + "\n".join(_record_line(i, r) for i, r in enumerate(recent))
     )
-    data = _parse_json(raw) or {}
+    messages = [{"role": "system", "content": MERGE_PROMPT}, {"role": "user", "content": user}]
+    data = None
+    for attempt in range(2):
+        try:
+            data = _parse_json(_chat(messages, model=config.LLM_MODEL, json_mode=True, max_tokens=1000))
+        except BudgetExhausted:
+            raise
+        except Exception as e:
+            print(f"  dedupe attempt {attempt + 1} failed ({e})")
+            continue
+        if data is not None:
+            break
+    if data is None:
+        raise RuntimeError("dedupe returned no parseable JSON after 2 attempts")
+
+    known = []
+    for hit in data.get("already_known") or []:
+        if isinstance(hit, dict) and isinstance(hit.get("candidate"), int) and isinstance(hit.get("existing"), int):
+            known.append({"candidate": hit["candidate"], "existing": hit["existing"]})
+        elif isinstance(hit, int):
+            # Tolerate the older bare-index shape: we know it is a re-tell but
+            # not of what, so it has no merge target.
+            known.append({"candidate": hit, "existing": None})
     return {
         "merge_groups": [g for g in (data.get("merge_groups") or []) if isinstance(g, list) and len(g) > 1],
-        "already_known": [i for i in (data.get("already_known") or []) if isinstance(i, int)],
+        "already_known": known,
     }
+
+
+ENRICH_PROMPT = """You are the editor of a database of agentic-AI-in-government initiatives.
+
+Several outlets reported the same initiative. You get the record we already hold (KEPT) and \
+the records extracted from the other reports (ADDITIONAL). Produce the best single record.
+
+Use the additional reports to add concrete detail the kept record is missing — named systems, \
+figures, deadlines, quoted capabilities, technologies — and to sharpen wording. Keep the kept \
+record's framing where it is already better. Do NOT invent anything absent from both.
+
+Return ONLY a JSON object with these fields:
+{
+  "description": "2-3 sentences: what it is, purpose, results if available",
+  "novelty": "1-2 sentences: what is new about it",
+  "stakeholders": "1 sentence: users, beneficiaries, parties involved",
+  "agentic_rationale": "1-2 sentences: the SPECIFIC autonomous behaviour reported — what it concretely decides, executes or coordinates without a human initiating each step, quoting the source's concrete capability. Empty if the initiative is not agentic.",
+  "tech_details": "1-2 sentences: models, platforms, architecture, integration — only what the sources state",
+  "status": "one of: announced, in-development, pilot, implemented, scaled, discontinued, unclear",
+  "autonomy_level": 0-5 or null
+}"""
+
+
+def merge_records(keeper: dict, dups: list) -> dict | None:
+    """Rewrite the kept record's prose using what the duplicate reports add.
+
+    None on failure, so the caller can fall back to a deterministic field fill.
+    """
+    def block(label: str, records: list) -> str:
+        return f"{label}:\n" + "\n\n".join(
+            json.dumps({k: r.get(k) for k in
+                        ("name", "organisation", "url", "description", "novelty", "stakeholders",
+                         "agentic_rationale", "tech_details", "status", "autonomy_level")},
+                       ensure_ascii=False, indent=1)
+            for r in records
+        )
+
+    try:
+        raw = _chat(
+            [{"role": "system", "content": ENRICH_PROMPT},
+             {"role": "user", "content": block("KEPT", [keeper]) + "\n\n" + block("ADDITIONAL", dups)}],
+            model=config.LLM_MODEL,
+            json_mode=True,
+        )
+    except BudgetExhausted:
+        raise
+    except Exception as e:
+        print(f"  merge enrichment failed ({e}), filling deterministically")
+        return None
+    data = _parse_json(raw)
+    if not data:
+        print("  merge enrichment unparseable, filling deterministically")
+        return None
+    level = data.get("autonomy_level")
+    data["autonomy_level"] = int(level) if isinstance(level, (int, float)) and 0 <= level <= 5 else None
+    if data.get("status") not in VALID_STATUS:
+        data.pop("status", None)
+    return data
 
 
 def write_digest_lede(items: list) -> str | None:

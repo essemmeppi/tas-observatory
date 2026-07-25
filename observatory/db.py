@@ -1,10 +1,10 @@
-"""The database is data/innovations.jsonl: one JSON record per line, append-only."""
+"""The database is data/innovations.jsonl: one JSON record per line."""
 import hashlib
 import json
 import re
 from datetime import date, timedelta
 
-from . import config
+from . import config, urls
 
 
 def record_id(url: str) -> str:
@@ -27,38 +27,84 @@ def _norm_name(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", (name or "").lower()).strip()
 
 
+def names_match(a: str, b: str) -> bool:
+    """Equal, or one name contains the other.
+
+    Equality alone was too strict: "Public Consultation on AI Transparency" and
+    "Public consultation on AI transparency and agentic AI regulation" are the
+    same story, and the second sailed straight past an equality test. The length
+    and token floors stop a generic fragment matching half the database.
+    """
+    x, y = _norm_name(a), _norm_name(b)
+    if not x or not y:
+        return False
+    if x == y:
+        return True
+    shorter, longer = sorted((x, y), key=len)
+    if len(shorter) < 18 or len(shorter.split()) < 3:
+        return False
+    return shorter in longer
+
+
 class Deduper:
-    """Skip items already in the DB: same URL ever, or same name recently
+    """Skip items already in the DB: same URL ever, or a matching name recently
     (the same story reported by several outlets under different URLs)."""
 
     def __init__(self, records: list):
-        self.urls = {r["url"] for r in records}
+        self.urls = set()
+        for r in records:
+            self.urls.add(urls.canonical_url(r["url"]))
+            self.urls.update(urls.canonical_url(u) for u in (r.get("sources") or []))
         cutoff = (date.today() - timedelta(days=config.DEDUP_WINDOW_DAYS)).isoformat()
-        self.recent_names = {
-            _norm_name(r["name"])
-            for r in records
-            if (r.get("date_added") or "") >= cutoff and r.get("name")
-        }
+        self.recent = [r for r in records if (r.get("date_added") or "") >= cutoff and r.get("name")]
+
+    def known_url(self, url: str) -> bool:
+        return urls.canonical_url(url) in self.urls
+
+    def name_match(self, name: str):
+        """The recent record this name re-tells, or None."""
+        if not name:
+            return None
+        for record in self.recent:
+            if names_match(name, record.get("name", "")):
+                return record
+        return None
 
     def is_new(self, url: str, name: str = "") -> bool:
-        if url in self.urls:
-            return False
-        if name and _norm_name(name) in self.recent_names:
-            return False
-        return True
+        return not self.known_url(url) and self.name_match(name) is None
 
-    def add(self, url: str, name: str = ""):
-        self.urls.add(url)
-        if name:
-            self.recent_names.add(_norm_name(name))
+    def add(self, url: str, name: str = "", record: dict | None = None):
+        """Remember a URL so it is never processed twice in one run.
+
+        Called for *every* item, including rejected ones — the same article
+        reaches us through several Google News editions, and without this one URL
+        could be extracted and assessed more than once (and, at temperature 0.2,
+        come back with contradictory verdicts).
+        """
+        self.urls.add(urls.canonical_url(url))
+        if record is not None:
+            self.recent.append(record)
 
 
-def recent_record_names(records: list, days: int = 14) -> list:
+def recent_records(records: list, days: int = config.DEDUP_LLM_WINDOW_DAYS) -> list:
+    """Records recent enough to compare a new candidate against.
+
+    Deliberately narrower than DEDUP_WINDOW_DAYS: this list goes into a prompt,
+    while the name-containment check above costs nothing and can look further back.
+    """
     cutoff = (date.today() - timedelta(days=days)).isoformat()
-    return [r["name"] for r in records if (r.get("date_added") or "") >= cutoff and r.get("name")]
+    return [r for r in records if (r.get("date_added") or "") >= cutoff and r.get("name")]
 
 
 def append_records(records: list, db_path=config.DB_PATH):
     with open(db_path, "a", encoding="utf-8") as fh:
+        for r in records:
+            fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+
+def write_records(records: list, db_path=config.DB_PATH):
+    """Rewrite the whole file. Needed when a run merges into records that are
+    already stored rather than only appending new ones."""
+    with open(db_path, "w", encoding="utf-8") as fh:
         for r in records:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")

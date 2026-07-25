@@ -35,8 +35,13 @@ AGENTIC_ONLY = os.getenv("AGENTIC_ONLY", "1") == "1"
 # Public frontend, linked from the Slack digest.
 SITE_URL = "https://essemmeppi.github.io/tas-observatory/site/"
 
-# How far back to look for near-duplicate names when deduping.
+# How far back to look for near-duplicate names when deduping. This check is a
+# free string comparison, so it can afford a wide window.
 DEDUP_WINDOW_DAYS = 60
+
+# How far back the LLM dedupe pass compares against. Narrower on purpose: these
+# records are rendered into a prompt (~18 records / ~1.2k tokens at 14 days).
+DEDUP_LLM_WINDOW_DAYS = int(os.getenv("DEDUP_LLM_WINDOW_DAYS", "14"))
 
 REQUEST_TIMEOUT = 30
 MAX_ARTICLE_CHARS = 12_000

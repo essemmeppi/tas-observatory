@@ -8,11 +8,14 @@ Daily observatory of **agentic AI entering government**, run by [The Agentic Sta
 
 One GitHub Action runs every morning ([.github/workflows/observatory.yml](.github/workflows/observatory.yml)):
 
-1. **Ingest** — multilingual Google News RSS search queries (EN/FR/ES/DE/IT/PT + IN/SG editions, no Google account needed; redirect links decoded to real article URLs) + gov-tech RSS feeds ([data/feeds.json](data/feeds.json)) + a daily X sweep via Grok's `x_search` tool.
-2. **Filter & extract** — each new article's text is extracted (trafilatura) and assessed in a single LLM call: is it a concrete AI-in-government development? Is it *agentic*? Which layer(s) of the [Agentic State framework](https://agenticstate.org/paper.html) does it map to? Structured fields are extracted (name, organisation, countries, description, novelty, stakeholders, year, tags, layers). Only agentic items are stored (`AGENTIC_ONLY=0` widens scope to all AI-in-gov).
-3. **Dedupe** — by URL (ever) and by initiative name (last 60 days, catches the same story from multiple outlets).
-4. **Store** — records are appended to [data/innovations.jsonl](data/innovations.jsonl) (one JSON object per line) and committed. Git history is the archive; no snapshot files.
-5. **Digest** — a short Slack message (LLM-written lede + one line per item, agentic items first) posted via incoming webhook.
+1. **Ingest** — multilingual Google News RSS search queries (EN/FR/ES/DE/IT/PT + IN/SG editions, no Google account needed) + gov-tech RSS feeds ([data/feeds.json](data/feeds.json)) + a daily X sweep via Grok's `x_search` tool.
+2. **Prioritise** — items are deduplicated on canonical URL and headline (one story reaches us through several Google News editions), then queued **best source first** using the authority tiers in [data/source_tiers.json](data/source_tiers.json). A run cut short by time or budget spends what it has on official and national sources rather than on markets filler. Google News redirect links are decoded lazily, only for items about to be assessed.
+3. **Filter & extract** — each surviving article's text is extracted (trafilatura) and assessed in a single LLM call: is it a concrete AI-in-government development? Is it *agentic*? Which layer(s) of the [Agentic State framework](https://agenticstate.org/paper.html) does it map to? Structured fields are extracted (name, organisation, countries, description, novelty, stakeholders, year, tags, layers). Only agentic items are stored (`AGENTIC_ONLY=0` widens scope to all AI-in-gov).
+4. **Dedupe & merge** — one LLM call compares the batch against itself and against the last 14 days of records. A duplicate is **merged, not dropped**: the better-sourced report improves the existing record's prose, its URL joins `sources`, and `news_date` keeps the earliest date so the card still shows when the story broke. A free name-containment check over 60 days is the fallback when that call fails.
+5. **Store** — [data/innovations.jsonl](data/innovations.jsonl) is rewritten (one JSON object per line) and committed. Git history is the archive; no snapshot files.
+6. **Digest** — a short Slack message (LLM-written lede + one line per item, agentic items first, plus any records improved by today's reporting) posted via incoming webhook.
+
+If a run loses its LLM budget or hits its time budget, it keeps and commits what it harvested, says so at the top of the Slack digest, writes a `.degraded` marker and **fails the job** — a partial harvest must never look like a clean one.
 
 There are no servers: GitHub Actions runs the pipeline, the repo is the database, GitHub Pages serves the frontend ([site/index.html](site/index.html), a single static page reading the JSONL).
 
@@ -37,25 +40,36 @@ Ingestion works out of the box via Google News queries in `data/feeds.json` (add
 pip install -r observatory/requirements.txt
 export LLM_API_KEY=...           # plus LLM_BASE_URL / LLM_MODEL if not OpenAI
 python -m observatory.run --dry-run  # full run without writing or posting
-python scripts/test_pipeline_local.py  # smoke test, no API keys needed
+python scripts/test_pipeline_local.py            # smoke test, no API keys needed
+python scripts/test_pipeline_local.py --offline   # same, without touching the network
 ```
+
+The smoke test mocks the LLM, so it verifies the merge and prioritisation machinery but not the model's duplicate-*detection* accuracy — that needs a real run with credits.
 
 ## Data
 
-`data/innovations.jsonl` — ~1,050 AI-in-government records since January 2025, one per line:
+`data/innovations.jsonl` — a curated database of AI-in-government records since January 2025, one per line:
 
 ```json
 {"id": "…", "name": "…", "organisation": "…", "countries": ["…"], "description": "…",
  "novelty": "…", "stakeholders": "…", "agentic_rationale": "why this is agentic",
  "tech_details": "…", "providers": ["Anthropic", "…"], "autonomy_level": 4,
  "status": "pilot", "news_date": "YYYY-MM-DD", "year": "2026",
- "url": "…", "sources": ["further urls for the same story"],
+ "url": "…", "sources": ["further urls for the same story, best-ranked first"],
  "source": "google_news:<gl> | rss:<domain> | x_grok | web_grok", "date_added": "YYYY-MM-DD",
+ "updated": "YYYY-MM-DD (only if later reporting was merged in)",
  "agentic": true, "tags": ["pilot", "…"], "layers": ["workflows", "…"], "functions": ["f46", "…"]}
 ```
 
 Controlled vocabularies live in [data/taxonomies.json](data/taxonomies.json): `layers` (the framework's 12 layers), `autonomy_level` (the vision paper's L0 manual → L5 fully autonomous ladder), `status` (anchored to EU JRC AI Watch lifecycle: announced / in-development / pilot / implemented / scaled / discontinued / unclear). `functions` uses the 70 government functions from the WEF Agentic State report ([data/functions.json](data/functions.json)).
 
-Same-story duplicates across outlets are merged by an LLM editorial pass at the end of each run (extra URLs land in `sources`); re-tells of records from the last 14 days are dropped.
+Same-story duplicates are merged rather than dropped, so later and better-sourced reporting improves the record instead of being discarded:
+
+- `id` and `date_added` never change, so `#r=<id>` links already shared keep resolving.
+- `news_date` is the **earliest** across all merged sources — the date the story broke.
+- `url` is the oldest source, unless that source is the weakest of the set, in which case the highest-ranked one takes the slot. The rest land in `sources`, ranked by [source tier](data/source_tiers.json) and capped at four — the aim is the few most authoritative citations, not every outlet that covered it.
+- Prose fields are rewritten from the combined reports when the LLM is available, and otherwise filled from the best-ranked report that has them.
+
+To merge two records by hand: `python scripts/merge_records.py --keep <id> --dup <id>`.
 
 Records with `"source": "google_alerts_legacy"` were seeded from the predecessor project ([GovServiceX](https://github.com/essemmeppi/GovServiceX)); keyword-flagged agentic ones have `"agentic": true`, the rest `null` (unclassified). To remove a bad entry, delete its line and commit.

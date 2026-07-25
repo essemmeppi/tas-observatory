@@ -67,7 +67,13 @@ def fetch_feed(feed_url: str, source_label: str, is_google_alert: bool) -> list:
 
 def fetch_google_news(query: dict, max_entries: int = 25) -> list:
     """Google News RSS search. Query: {"q": "...", "hl": "en-US", "gl": "US", "ceid": "US:en"}.
-    Links are Google redirects and get decoded to the real article URL."""
+
+    Links stay as Google redirects here: decoding one costs a request with a 25s
+    ceiling, and across 15 queries that was most of the run's wall-clock, spent
+    mostly on articles later discarded. The feed's <source url> already gives the
+    publisher, which is all the tier ordering and title dedupe need, so the
+    redirect is decoded lazily — see resolve_url.
+    """
     params = urllib.parse.urlencode({
         "q": query["q"],
         "hl": query.get("hl", "en-US"),
@@ -78,17 +84,28 @@ def fetch_google_news(query: dict, max_entries: int = 25) -> list:
     items = []
     for entry in parsed.entries[:max_entries]:
         link = entry.get("link", "")
-        if "news.google.com" in link:
-            link = _decode_gnews(link)
         if not link:
             continue
         items.append({
             "title": _strip_html(entry.get("title", "")),
             "url": link,
+            "publisher": (entry.get("source") or {}).get("href", ""),
             "published": entry.get("published", ""),
             "source": f"google_news:{query.get('gl', 'US')}",
         })
     return items
+
+
+def resolve_url(url: str) -> str | None:
+    """Turn a Google News redirect into the real article URL.
+
+    Called only once an item is about to be extracted and assessed: trafilatura
+    needs a fetchable page, and the URL we store has to point at the article.
+    None if the redirect cannot be decoded.
+    """
+    if "news.google.com" not in url:
+        return url
+    return _decode_gnews(url)
 
 
 def fetch_all_feeds(feeds_path=config.FEEDS_PATH) -> list:
