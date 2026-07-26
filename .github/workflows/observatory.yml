@@ -8,7 +8,12 @@ on:
     # intended 06:00 CET. Starting at 23:17 absorbs that delay in most cases.
     # Off both the hour and minute boundary, which are the congested slots.
     - cron: "17 23 * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      no_slack:
+        description: "Skip the Slack digest — for test runs, so the channel does not get a second digest"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -42,7 +47,7 @@ jobs:
           LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
           LLM_MODEL: ${{ vars.LLM_MODEL }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: python -m observatory.run
+        run: python -m observatory.run ${{ inputs.no_slack && '--no-slack' || '' }}
 
       - name: Commit new records
         run: |
