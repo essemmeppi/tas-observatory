@@ -25,9 +25,14 @@ SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL", "").strip()
 if SLACK_WEBHOOK_URL and not SLACK_WEBHOOK_URL.startswith("http"):
     SLACK_WEBHOOK_URL = "https://" + SLACK_WEBHOOK_URL
 
-# Safety valves for a single run.
-MAX_ITEMS_PER_RUN = int(os.getenv("MAX_ITEMS_PER_RUN", "150"))
-TIME_BUDGET_MIN = int(os.getenv("TIME_BUDGET_MIN", "30"))  # processing loop cutoff
+# Safety valves for a single run. Both are calibrated against what the pipeline
+# actually collects (~300 distinct candidates a day) and the workflow's 80-minute
+# hang backstop -- not against the old 25-minute ingest, which is why the previous
+# pair (150 / 30) silently discarded 232 of 301 candidates on 2026-07-26.
+MAX_ITEMS_PER_RUN = int(os.getenv("MAX_ITEMS_PER_RUN", "320"))
+# ~26s per article observed, so 60 min covers ~140. Not all ~300: reaching those
+# needs concurrent gate calls, which is a separate change.
+TIME_BUDGET_MIN = int(os.getenv("TIME_BUDGET_MIN", "60"))  # processing loop cutoff
 
 # Only store items classified as agentic AI (the observatory's focus).
 AGENTIC_ONLY = os.getenv("AGENTIC_ONLY", "1") == "1"

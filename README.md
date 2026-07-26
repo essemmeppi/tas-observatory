@@ -8,18 +8,20 @@ Daily observatory of **agentic AI entering government**, run by [The Agentic Sta
 
 One GitHub Action runs every morning ([.github/workflows/observatory.yml](.github/workflows/observatory.yml)):
 
-1. **Ingest** — multilingual Google News RSS search queries (EN/FR/ES/DE/IT/PT + IN/SG editions, no Google account needed) + gov-tech RSS feeds ([data/feeds.json](data/feeds.json)) + a daily X sweep via Grok's `x_search` tool.
-2. **Prioritise** — items are deduplicated on canonical URL and headline (one story reaches us through several Google News editions), then queued **best source first** using the authority tiers in [data/source_tiers.json](data/source_tiers.json). A run cut short by time or budget spends what it has on official and national sources rather than on markets filler. Google News redirect links are decoded lazily, only for items about to be assessed.
+1. **Ingest** — multilingual Google News RSS search queries (EN/FR/ES/DE/IT/PT + IN/SG editions, no Google account needed) + gov-tech and non-English digital-policy RSS feeds ([data/feeds.json](data/feeds.json)) + a daily X sweep via Grok's `x_search` tool.
+2. **Prioritise** — items are deduplicated on canonical URL and headline (one story reaches us through several Google News editions), then the queue is built **round-robin across sources**, with the authority tiers in [data/source_tiers.json](data/source_tiers.json) deciding order *within* each round. Every source gets a share of the front of the queue, so a run cut short by time trims each source's tail rather than dropping whole languages — ordering purely by tier had left the non-English feeds unassessed. Google News redirect links are decoded lazily, only for items about to be assessed.
 3. **Filter, then extract** — each surviving article's text is extracted (trafilatura) and put through two LLM calls:
    - a small **gate** (~220-token prompt): is this a concrete AI-in-government development, and is it *agentic*? Only agentic items pass (`AGENTIC_ONLY=0` widens scope to all AI-in-gov).
    - full **extraction**, only for what survives: name, organisation, countries, description, novelty, stakeholders, agentic rationale, tech details, providers, autonomy level, status, tags, the [Agentic State framework](https://agenticstate.org/paper.html) layers and the WEF government functions.
 
    The split matters because ~83% of screened articles are rejected. Carrying the 12 layers, the 70 government functions and a dozen generated prose fields on every call meant paying for output that was then discarded — it roughly halves the cost of a run.
-4. **Dedupe & merge** — one LLM call compares the batch against itself and against the last 14 days of records. A duplicate is **merged, not dropped**: the better-sourced report improves the existing record's prose, its URL joins `sources`, and `news_date` keeps the earliest date so the card still shows when the story broke. A free name-containment check over 60 days is the fallback when that call fails.
+4. **Dedupe & merge** — one LLM call at the end of the run compares the batch against itself and against the last 14 days of records. A duplicate is **merged, not dropped**: the better-sourced report improves the existing record's prose, its URL joins `sources`, and `news_date` keeps the earliest date so the card still shows when the story broke. A free name check over 60 days (equality, containment, or near-identical spelling within one country) is the fallback when that call fails.
 5. **Store** — [data/innovations.jsonl](data/innovations.jsonl) is rewritten (one JSON object per line) and committed. Git history is the archive; no snapshot files.
 6. **Digest** — a short Slack message (LLM-written lede + one line per item, agentic items first, plus any records improved by today's reporting) posted via incoming webhook.
 
-If a run loses its LLM budget or hits its time budget, it keeps and commits what it harvested, says so at the top of the Slack digest, writes a `.degraded` marker and **fails the job** — a partial harvest must never look like a clean one.
+If a run loses its LLM budget, hits its time budget, or fails to assess most of what it attempted, it keeps and commits what it harvested, says so at the top of the Slack digest, writes a `.degraded` marker and **fails the job** — a partial harvest must never look like a clean one.
+
+The digest arrives each morning on a best-effort schedule. GitHub's `schedule` trigger has no SLA and has been observed firing 2–4 hours late, so the cron is set the night before to absorb that; it is not a guaranteed delivery time.
 
 There are no servers: GitHub Actions runs the pipeline, the repo is the database, GitHub Pages serves the frontend ([site/index.html](site/index.html), a single static page reading the JSONL).
 

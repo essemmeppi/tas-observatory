@@ -62,6 +62,11 @@ def test_tiers():
         # interested, so it ranks with the trade press, not with governments.
         "https://cloud.google.com/blog/topics/public-sector/x": 3,
         "https://www.anthropic.com/news/x": 3,
+        "https://www.lemonde.fr/politique/x": 2,
+        "https://www.agendadigitale.eu/x": 3,
+        "https://netzpolitik.org/2026/x": 3,
+        "https://cnil.fr/fr/x": 1,
+        "https://www.agid.gov.it/rss.xml": 1,
         "https://some-unlisted-blog.example/x": urls.DEFAULT_TIER,
     }
     for url, want in expected.items():
@@ -176,14 +181,66 @@ def test_sources_cap():
           len(keeper["sources"]) == merge.MAX_SOURCES, str(len(keeper["sources"])))
 
 
-def test_attach_source():
-    keeper = _record("k", "https://www.meritalk.com/a", "Thing", "2026-07-01")
-    check("attach_source records a new link",
-          merge.attach_source(keeper, "https://www.gov.uk/news/a") and len(keeper["sources"]) == 1)
-    check("attach_source ignores a URL variant already on file",
-          not merge.attach_source(keeper, "https://gov.uk/news/a/"))
-    check("attach_source ignores the canonical url itself",
-          not merge.attach_source(keeper, "https://meritalk.com/a"))
+def test_fair_order():
+    """The regression this guards: a truncated queue containing no French item."""
+    items = (
+        [{"url": f"https://lemonde.fr/a{i}", "publisher": "https://lemonde.fr",
+          "source": "google_news:FR", "title": f"fr {i}"} for i in range(25)]
+        + [{"url": f"https://elpais.com/a{i}", "publisher": "https://elpais.com",
+            "source": "google_news:ES", "title": f"es {i}"} for i in range(25)]
+        + [{"url": f"https://fedscoop.com/a{i}", "publisher": "",
+            "source": "rss:fedscoop.com", "title": f"us {i}"} for i in range(10)]
+        + [{"url": f"https://www.gov.uk/a{i}", "publisher": "",
+            "source": "rss:gds.blog.gov.uk", "title": f"uk {i}"} for i in range(10)]
+    )
+    ordered = run._fair_order(items)
+    check("fair order keeps every item", len(ordered) == len(items))
+    first_round = {i["source"] for i in ordered[:4]}
+    check("every source appears in the first round", len(first_round) == 4, str(first_round))
+    # Truncation is the real test: the old tier sort put all 50 non-English items
+    # behind every English one, so a 20-item prefix contained none of them.
+    prefix = {i["source"] for i in ordered[:20]}
+    check("a truncated prefix still contains every source", len(prefix) == 4, str(prefix))
+    for src in ("google_news:FR", "google_news:ES"):
+        n = sum(1 for i in ordered[:20] if i["source"] == src)
+        check(f"{src} gets a fair share of a 20-item prefix ({n})", n >= 4, str(n))
+    # Within a round, the better tier still leads: gov.uk (1) before fedscoop (3).
+    tiers = [urls.tier_for(i) for i in ordered[:4]]
+    check("better tiers lead within a round", tiers == sorted(tiers), str(tiers))
+
+
+def test_extraction_retry():
+    good = '{"relevant": true, "agentic": true, "name": "X", "status": "pilot"}'
+    calls = []
+
+    def flaky(messages, model, json_mode=False, max_tokens=1600):
+        calls.append(1)
+        return "not json at all" if len(calls) == 1 else good
+
+    with patch.object(llm, "_chat", side_effect=flaky):
+        rec = llm.extract_record("text", "https://a.example/1", "")
+    check("extraction retries once and succeeds on the second attempt",
+          rec is not None and len(calls) == 2, f"{rec} after {len(calls)} calls")
+
+    calls.clear()
+    with patch.object(llm, "_chat", side_effect=lambda *a, **k: calls.append(1) or "garbage"):
+        rec = llm.extract_record("text", "https://a.example/1", "")
+    check("extraction gives up after two attempts",
+          rec is None and len(calls) == 2, f"{rec} after {len(calls)} calls")
+
+    calls.clear()
+
+    def broke(*a, **k):
+        calls.append(1)
+        raise llm.BudgetExhausted("402")
+
+    with patch.object(llm, "_chat", side_effect=broke):
+        try:
+            llm.extract_record("text", "https://a.example/1", "")
+        except llm.BudgetExhausted:
+            check("a budget error is not retried", len(calls) == 1, str(len(calls)))
+        else:
+            raise AssertionError("BudgetExhausted was swallowed")
 
 
 def test_resolve_duplicates():
@@ -321,6 +378,11 @@ def test_real_db():
 
     deduper = db.Deduper(records)
     check("dedup by URL works", not deduper.is_new(records[0]["url"]))
+    # The name half of the old check is gone: a record whose *name* matches but
+    # whose URL is new now reaches the end-of-run dedupe, which can merge and
+    # enrich, instead of being skipped early with only its link kept.
+    check("a new URL with a familiar name is no longer skipped early",
+          deduper.is_new("https://example.org/fresh-take-on-" + records[0]["id"]))
     check("a fresh URL is not deduped", deduper.is_new("https://example.org/brand-new"))
     check("a merged record's extra source is known too",
           not deduper.is_new("https://247wallst.com/investing/2026/07/24/"
@@ -360,11 +422,26 @@ def test_live_feeds():
     check("no repeated URL survives preparation", len(canon) == len(set(canon)))
     titles = [db._norm_name(i.get("title", "")) for i in fresh if i.get("title")]
     check("no repeated title survives preparation", len(titles) == len(set(titles)))
+
+    # The queue is round-robin across sources, not globally tier-sorted, so that a
+    # truncated run does not cut whole languages. Check what that should mean:
+    # every source represented up front, and tiers ordered *within* the first round.
+    n_sources = len({i["source"] for i in fresh})
+    first_round = fresh[:n_sources]
+    check(f"all {n_sources} sources appear in the first round",
+          len({i["source"] for i in first_round}) == n_sources)
     # tier_for, not tier: a Google News item's URL is a news.google.com redirect,
     # and the publisher from the feed is what it should be ranked on.
-    tiers = [urls.tier_for(i) for i in fresh]
-    check("best sources are queued first", tiers == sorted(tiers), f"{tiers[:12]}")
+    tiers = [urls.tier_for(i) for i in first_round]
+    check("better tiers lead within the first round", tiers == sorted(tiers), str(tiers))
     check("the queue is not all one tier", len(set(tiers)) > 1, str(set(tiers)))
+
+    # The regression that motivated fair ordering: non-English sources used to sit
+    # so far back that a truncated run never reached any of them.
+    NON_EN = (":FR", ":ES", ":DE", ":IT", ":BR", "agid", "cnil", "agendadigitale",
+              "forumpa", "netzpolitik", "egovernment")
+    non_en = sum(1 for i in fresh[:60] if any(m in i["source"] for m in NON_EN))
+    check(f"non-English sources reach the first 60 of the queue ({non_en})", non_en >= 10, str(non_en))
 
     with patch.object(run.llm, "screen_article", side_effect=fake_screen()), \
          patch.object(run.llm, "extract_record", side_effect=fake_assess):
@@ -397,7 +474,7 @@ def main():
 
     offline = [
         test_canonical_urls, test_tiers, test_name_matching, test_pick_canonical,
-        test_merge_semantics, test_sources_cap, test_attach_source,
+        test_merge_semantics, test_sources_cap, test_fair_order, test_extraction_retry,
         test_resolve_duplicates, test_resolve_falls_back_when_dedupe_dies,
         test_budget_exhaustion_propagates, test_degraded_marker, test_digest, test_real_db,
     ]

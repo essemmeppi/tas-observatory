@@ -3,6 +3,8 @@
 Usage: python -m observatory.run [--dry-run] [--no-slack] [--no-x] [--max-items N]
 """
 import argparse
+import collections
+import itertools
 import sys
 import time
 from datetime import date, timedelta
@@ -10,6 +12,14 @@ from datetime import date, timedelta
 from . import config, db, digest, extract, llm, merge, sources, urls
 
 DEGRADED_MARKER = config.ROOT / ".degraded"
+
+
+class ExtractionFailed(RuntimeError):
+    """The gate approved an article and extraction still could not parse it.
+
+    Distinct from a verdict: the article is known to be wanted, so this counts
+    towards the run's error tally rather than passing quietly as "not relevant".
+    """
 
 
 def gather_items(no_x: bool) -> list:
@@ -39,12 +49,27 @@ def gather_items(no_x: bool) -> list:
     return items
 
 
-def prepare_items(items: list, deduper: db.Deduper) -> list:
-    """Drop already-known and repeated items, then put the best outlets first.
+def _fair_order(items: list) -> list:
+    """Each source's best item, then each source's second, and so on.
 
-    Both matter to the budget. One article reaches us through several Google News
-    editions, and a run that gets cut short should have spent its calls on gov.uk
-    rather than on stock-ticker roundups.
+    Ordering by tier alone put whole languages at the back: non-English outlets
+    are mostly absent from the tier list, so they defaulted to the lowest tier and
+    the run's budget expired long before reaching them. The result was a database
+    that is 70% US/UK with one record from a non-English domain out of 127.
+
+    Round-robin across sources means a truncated run trims every source's tail
+    equally instead of cutting whole languages. Tier still decides order *within*
+    each round, so the best available source is always assessed first.
+    """
+    by_source = collections.defaultdict(list)
+    for item in items:
+        by_source[item["source"]].append(item)
+    return [i for rnd in itertools.zip_longest(*by_source.values())
+            for i in sorted((x for x in rnd if x), key=urls.tier_for)]
+
+
+def prepare_items(items: list, deduper: db.Deduper) -> list:
+    """Drop already-known and repeated items, then order the queue fairly.
 
     Everything here works on the feed metadata alone — no redirect decoding, no
     article fetch — so the expensive steps only ever run on items that survive.
@@ -66,31 +91,20 @@ def prepare_items(items: list, deduper: db.Deduper) -> list:
         if title_key:
             seen_titles.add(title_key)
         fresh.append(item)
-    fresh.sort(key=urls.tier_for)
-    return fresh
+    return _fair_order(fresh)
 
 
-def process_item(item: dict, deduper: db.Deduper, run_date: str, touched: list | None = None) -> dict | None:
+def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
     """Assess one article into a record, or None.
 
-    None covers three cases: the article is a re-tell we can dispose of without
-    an LLM call, it yielded no text, or the model judged it irrelevant.
+    None means the link would not resolve, yielded no text, or the model judged it
+    irrelevant or non-agentic. Duplicates are *not* handled here — they are folded
+    into the records they repeat by resolve_duplicates at the end of the run, which
+    can merge and enrich rather than merely discard.
     """
     url, title = item["url"], item.get("title", "")
     # Never spend a call twice on one URL, whatever the earlier verdict was.
     deduper.add(url)
-
-    known = deduper.name_match(title)
-    if known is not None:
-        # A cheap catch on the headline alone, before decoding or extraction. We
-        # cannot improve the prose without the article text, but the corroborating
-        # link is still worth keeping — resolved, so it is a usable citation.
-        resolved = sources.resolve_url(url) or url
-        if merge.attach_source(known, resolved):
-            print(f"  re-tell of '{known['name'][:50]}', kept as a source: {title[:50]}")
-            if touched is not None:
-                touched.append(known)
-        return None
 
     if not item.get("prefetched_text"):
         # Decode the Google News redirect only now, for an item we intend to
@@ -124,17 +138,20 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str, touched: list |
         print(f"  not relevant: {title[:70]}")
         return None
     if config.AGENTIC_ONLY and not screen.get("agentic"):
-        print(f"  not agentic: {title[:70]}")
+        print(f"  not agentic (gate): {title[:70]}")
         return None
 
     assessment = llm.extract_record(text, url, published)
     if not assessment:
-        print(f"  extraction failed: {title[:70]}")
-        return None
+        # Not a verdict — a defect. The gate already judged this relevant and
+        # agentic, so losing it costs us a story we know we wanted; on 2026-07-26
+        # that was a primary-source government roadmap. Log the URL so it can be
+        # recovered, and let the caller count it as an error.
+        raise ExtractionFailed(f"extraction failed after retries: {url}")
     if config.AGENTIC_ONLY and not assessment.get("agentic"):
-        # The gate said agentic and the detailed pass disagrees; trust the pass
-        # that actually read the schema.
-        print(f"  not agentic on extraction: {title[:70]}")
+        # One decision refined, not two: the full assessment has the layer and
+        # function taxonomies in front of it, so it overrules the cheap gate.
+        print(f"  not agentic (full assessment): {title[:70]}")
         return None
 
     record = {
@@ -281,7 +298,7 @@ def main():
     fresh = prepare_items(items, deduper)
     print(f"{len(items)} items fetched, {len(fresh)} new, processing up to {args.max_items}")
 
-    # Stop early rather than hit the workflow's hard 45-min kill, which would
+    # Stop early rather than hit the workflow's hard 80-min kill, which would
     # lose the whole harvest (the commit step never runs on a killed job).
     deadline = time.monotonic() + config.TIME_BUDGET_MIN * 60
     queue = fresh[: args.max_items]
@@ -292,7 +309,7 @@ def main():
             print(f"  {degraded}, stopping early")
             break
         try:
-            record = process_item(item, deduper, run_date, touched)
+            record = process_item(item, deduper, run_date)
         except llm.BudgetExhausted as e:
             # Every further call would fail identically. On 2026-07-25 carrying
             # on produced 106 useless 402s and left the dedupe pass unfunded.

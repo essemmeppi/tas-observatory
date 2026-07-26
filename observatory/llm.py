@@ -187,11 +187,26 @@ def screen_article(text: str, url: str, published: str = "") -> dict:
 
 
 def extract_record(text: str, url: str, published: str) -> dict | None:
-    """Second pass: the full structured record. Only worth running on survivors."""
-    data = _call_with_prompt(EXTRACT_PROMPT, _user_block(text, url, published))
-    if not data:
-        return None
-    return _clean_assessment(data)
+    """Second pass: the full structured record. Only worth running on survivors.
+
+    Retried once, matching dedupe_batch. Without the retry a single unparseable
+    response lost the article outright — on 2026-07-26 that cost a primary-source
+    government roadmap the gate had already judged relevant and agentic. A budget
+    error is not retried: the second call would fail identically.
+    """
+    user = _user_block(text, url, published)
+    for attempt in range(2):
+        try:
+            data = _call_with_prompt(EXTRACT_PROMPT, user)
+        except BudgetExhausted:
+            raise
+        except Exception as e:
+            print(f"  extraction attempt {attempt + 1} errored ({e})")
+            continue
+        if data:
+            return _clean_assessment(data)
+        print(f"  extraction attempt {attempt + 1} returned unparseable JSON")
+    return None
 
 
 def assess_article(text: str, url: str, published: str) -> dict | None:

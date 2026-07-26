@@ -135,21 +135,3 @@ def merge(keeper: dict, dups: list, run_date: str, enrich: bool = True) -> dict:
     return keeper
 
 
-def attach_source(keeper: dict, url: str) -> bool:
-    """Record a corroborating URL without an LLM call.
-
-    Used when the cheap name check catches a re-tell before the article is ever
-    assessed: we cannot improve the text without the extracted article, but the
-    link is still worth keeping, ranked and capped like any other source.
-    """
-    key = urls.canonical_url(url)
-    if not key or key in {urls.canonical_url(u) for u in _sources_of(keeper)}:
-        return False
-    pool = _pool([keeper]) + [{"url": url, "tier": urls.tier(url), "news_date": ""}]
-    canonical_key = urls.canonical_url(keeper.get("url", ""))
-    others = sorted(
-        (s for s in pool if urls.canonical_url(s["url"]) != canonical_key),
-        key=lambda s: (s["tier"], s["news_date"] or FAR_FUTURE),
-    )
-    keeper["sources"] = [s["url"] for s in others][:MAX_SOURCES]
-    return True

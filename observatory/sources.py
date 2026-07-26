@@ -46,11 +46,16 @@ def _strip_html(text: str) -> str:
     return re.sub(r"<[^>]+>", "", text or "").strip()
 
 
-def fetch_feed(feed_url: str, source_label: str, is_google_alert: bool) -> list:
-    """Fetch one feed and return items as {title, url, published, source}."""
+def fetch_feed(feed_url: str, source_label: str, is_google_alert: bool,
+               max_entries: int = 25) -> list:
+    """Fetch one feed and return items as {title, url, published, source}.
+
+    Capped like the Google News queries: some feeds return 40-50 entries, and one
+    prolific feed should not swell the candidate pool on its own.
+    """
     parsed = _parse_feed(feed_url)
     items = []
-    for entry in parsed.entries:
+    for entry in parsed.entries[:max_entries]:
         link = entry.get("link", "")
         if is_google_alert:
             link = _clean_google_url(link)

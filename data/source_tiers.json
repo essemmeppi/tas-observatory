@@ -37,7 +37,8 @@
       "who.int",
       "europarl.europa.eu",
       "digital-strategy.ec.europa.eu",
-      "gds.blog.gov.uk"
+      "gds.blog.gov.uk",
+      "cnil.fr"
     ],
     "2": [
       "reuters.com",
@@ -77,7 +78,18 @@
       "axios.com",
       "theatlantic.com",
       "wired.com",
-      "technologyreview.com"
+      "technologyreview.com",
+      "lemonde.fr",
+      "lesechos.fr",
+      "liberation.fr",
+      "lefigaro.fr",
+      "elpais.com",
+      "elmundo.es",
+      "faz.net",
+      "zeit.de",
+      "spiegel.de",
+      "ilsole24ore.com",
+      "estadao.com.br"
     ],
     "3": [
       "anthropic.com",
@@ -119,7 +131,18 @@
       "executivegov.com",
       "pymnts.com",
       "aim-media.com",
-      "ai4business.it"
+      "ai4business.it",
+      "agendadigitale.eu",
+      "forumpa.it",
+      "ilriformista.it",
+      "netzpolitik.org",
+      "egovernment.de",
+      "heise.de",
+      "weser-kurier.de",
+      "acteurspublics.fr",
+      "nextinpact.fr",
+      "computing.es",
+      "elconfidencial.com"
     ],
     "4": [
       "miragenews.com",

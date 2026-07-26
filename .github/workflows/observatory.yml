@@ -2,9 +2,12 @@ name: Daily observatory
 
 on:
   schedule:
-    # Odd minute on purpose: minute-0 crons on GitHub are congested and often
-    # delayed or skipped; off-peak times fire much more reliably.
-    - cron: "7 3 * * *"
+    # Fires the night before on purpose. GitHub's `schedule` is best-effort with
+    # no SLA, and observed delays have been 2h40m-4h36m (07-24 +4h36m, 07-25
+    # +2h40m, 07-26 +3h03m), so a 03:07 cron delivered the digest hours after the
+    # intended 06:00 CET. Starting at 23:17 absorbs that delay in most cases.
+    # Off both the hour and minute boundary, which are the congested slots.
+    - cron: "17 23 * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -13,7 +16,11 @@ permissions:
 jobs:
   observatory:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # A hang backstop, not a working constraint: it exists because the first
+    # production run hung indefinitely (8f2093a). Sits well above a normal run so
+    # the internal TIME_BUDGET_MIN is what actually bounds the work, and leaves a
+    # 20-minute margin so the commit step always runs.
+    timeout-minutes: 80
     steps:
       - uses: actions/checkout@v4
 

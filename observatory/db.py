@@ -69,33 +69,28 @@ def names_match(a: str, b: str, countries_a=None, countries_b=None) -> bool:
 
 
 class Deduper:
-    """Skip items already in the DB: same URL ever, or a matching name recently
-    (the same story reported by several outlets under different URLs)."""
+    """The set of article URLs already accounted for, canonicalised.
+
+    Only URLs. A headline-versus-initiative-name check used to live here too, but
+    it compared structurally different kinds of string, never fired in practice,
+    and when it did it discarded the article's detail instead of merging it. Same-
+    story duplicates are resolved after extraction by run.resolve_duplicates,
+    which can merge and enrich rather than merely skip.
+    """
 
     def __init__(self, records: list):
         self.urls = set()
         for r in records:
             self.urls.add(urls.canonical_url(r["url"]))
             self.urls.update(urls.canonical_url(u) for u in (r.get("sources") or []))
-        cutoff = (date.today() - timedelta(days=config.DEDUP_WINDOW_DAYS)).isoformat()
-        self.recent = [r for r in records if (r.get("date_added") or "") >= cutoff and r.get("name")]
 
     def known_url(self, url: str) -> bool:
         return urls.canonical_url(url) in self.urls
 
-    def name_match(self, name: str):
-        """The recent record this name re-tells, or None."""
-        if not name:
-            return None
-        for record in self.recent:
-            if names_match(name, record.get("name", "")):
-                return record
-        return None
+    def is_new(self, url: str) -> bool:
+        return not self.known_url(url)
 
-    def is_new(self, url: str, name: str = "") -> bool:
-        return not self.known_url(url) and self.name_match(name) is None
-
-    def add(self, url: str, name: str = "", record: dict | None = None):
+    def add(self, url: str):
         """Remember a URL so it is never processed twice in one run.
 
         Called for *every* item, including rejected ones — the same article
@@ -104,8 +99,6 @@ class Deduper:
         come back with contradictory verdicts).
         """
         self.urls.add(urls.canonical_url(url))
-        if record is not None:
-            self.recent.append(record)
 
 
 def recent_records(records: list, days: int = config.DEDUP_LLM_WINDOW_DAYS) -> list:

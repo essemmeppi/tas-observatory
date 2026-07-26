@@ -1,5 +1,5 @@
 {
-  "_comment": "Ingestion sources. google_news: Google News RSS search queries (no account needed, 'when:1d' = last 24h). rss: standard RSS/Atom feeds. google_alerts: optional Google Alerts RSS feed URLs.",
+  "_comment": "Ingestion sources. google_news: Google News RSS search queries (no account needed, 'when:1d' = last 24h). rss: standard RSS/Atom feeds — the second block is non-English, added because the multilingual Google News queries alone had produced almost no non-English records; official bodies and digital-policy publications are on-topic by construction rather than by luck. Spain and Brazil have no usable government RSS and stay on Google News only. google_alerts: optional Google Alerts RSS feed URLs.",
   "google_news": [
     {"q": "\"agentic AI\" (government OR \"public sector\") when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"},
     {"q": "\"AI agents\" (government OR \"public sector\" OR ministry) when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"},
@@ -23,6 +23,13 @@
     "https://statescoop.com/feed/",
     "https://gds.blog.gov.uk/feed/",
     "https://oecd-opsi.org/feed/",
-    "https://digital-strategy.ec.europa.eu/en/rss.xml"
+    "https://digital-strategy.ec.europa.eu/en/rss.xml",
+
+    "https://www.agid.gov.it/rss.xml",
+    "https://cnil.fr/fr/rss.xml",
+    "https://www.agendadigitale.eu/feed/",
+    "https://www.forumpa.it/feed/",
+    "https://netzpolitik.org/feed/",
+    "https://www.egovernment.de/rss.xml"
   ]
 }
