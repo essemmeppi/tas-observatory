@@ -186,13 +186,23 @@ def screen_article(text: str, url: str, published: str = "",
     both, which is what scripts/bench_gate.py uses to compare candidates.
 
     Returns {"relevant": bool, "agentic": bool, "subject": str}; unparseable
-    output is treated as not relevant.
+    output is retried once, then treated as not relevant. The retry matters
+    because a "not relevant" verdict is final: process_item records the URL as
+    seen before assessing it, so one garbled response loses the story for good.
+    HTTP errors are not swallowed here — they propagate and are counted by the
+    caller, which is already louder than a quiet false negative.
     """
-    data = _call_with_prompt(
-        GATE_PROMPT, _user_block(text, url, published), max_tokens=200,
-        model=model or config.GATE_MODEL,
-        reasoning=config.GATE_REASONING if reasoning is None else reasoning,
-    )
+    user = _user_block(text, url, published)
+    data = None
+    for attempt in range(2):
+        data = _call_with_prompt(
+            GATE_PROMPT, user, max_tokens=200,
+            model=model or config.GATE_MODEL,
+            reasoning=config.GATE_REASONING if reasoning is None else reasoning,
+        )
+        if data:
+            break
+        print(f"  gate attempt {attempt + 1} returned unparseable JSON")
     if not data:
         return {"relevant": False, "agentic": False}
     return {"relevant": bool(data.get("relevant")), "agentic": bool(data.get("agentic")),
