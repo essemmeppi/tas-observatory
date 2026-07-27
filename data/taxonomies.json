@@ -18,7 +18,15 @@
     "discontinued": "Stopped or withdrawn",
     "unclear": "Cannot be determined from the source"
   },
-  "layers": {
+  "types": {
+  "_source": "Observatory enum after a 2026-07 review of OECD/EC/World Bank schemes (none spans policy and deployments in one field). Each value anchors to an established vocabulary: deployment = EC Public Sector Tech Watch use-case scope (JRC137409); strategy incl. governance bodies = OECD.AI policy instruments 'National strategies, agendas and plans' / 'Creation or reform of governance structure or public body'; regulation = OECD.AI 'Emerging AI-related regulation' (laws, guidance, standards, sandboxes); procurement = GovLab AI Localism and Stanford AI Index procurement tracking",
+  "_rules": "Classify the FORM the news takes, not the domain it serves. One primary type, optional second when a record genuinely straddles (max 2, primary first). Nameable system at any stage, even future = deployment (status carries timing); the buying itself = procurement; rules and rule-making incl. consultations = regulation; plans, funding, training and new bodies = strategy; a body that enforces rules = strategy first, regulation second.",
+  "deployment": "A nameable AI system in government hands, at any lifecycle stage",
+  "strategy": "Stated intentions and capacity building: plans, funding programmes, training, governance bodies",
+  "regulation": "Rules and rule-making: laws, bills, executive orders, guidance, standards, consultations",
+  "procurement": "The buying itself: tenders, RFPs, sources-sought notices, contract awards"
+ },
+ "layers": {
     "_source": "The Agentic State framework, 12 layers",
     "service-design-ux": "Public Service Design and UX",
     "workflows": "Government Workflows",

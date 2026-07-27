@@ -179,6 +179,7 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
         "date_added": run_date,
         "agentic": bool(assessment.get("agentic")),
         "tags": assessment.get("tags") or [],
+        "types": assessment.get("types") or [],
         "layers": assessment.get("layers") or [],
         "functions": assessment.get("functions") or [],
     }

@@ -121,6 +121,7 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
     <input id="q" type="search" placeholder="Search initiatives, organisations, descriptions…">
     <select id="f-country"><option value="">All countries</option></select>
     <select id="f-layer"><option value="">All layers</option></select>
+    <select id="f-type"><option value="">All types</option></select>
   </div>
   <div class="count-line" id="countline"></div>
   <div id="feed"></div>
@@ -142,6 +143,9 @@ const LAYERS = {
   "people-culture":"People & culture"
 };
 const AUTONOMY = {0:"L0 manual",1:"L1 rule-based",2:"L2 process automation",3:"L3 agentic workflows",4:"L4 semi-autonomous",5:"L5 fully autonomous"};
+// Development type: what form the news takes, not what domain it serves.
+// Primary first; a record can carry one secondary type for findability.
+const TYPES = {deployment:"Deployment", strategy:"Strategy", regulation:"Regulation", procurement:"Procurement"};
 const PAGE = 50;
 // `status` and `functions` are still collected in every record — they are just
 // not rendered or filterable here (reader feedback: not important to the public).
@@ -171,7 +175,8 @@ function init(){
   const countries = [...new Set(all.flatMap(r => r.countries||[]))].sort();
   fill("f-country", countries.map(c => [c,c]));
   fill("f-layer", Object.entries(LAYERS));
-  ["q","f-country","f-layer"].forEach(id =>
+  fill("f-type", Object.entries(TYPES));
+  ["q","f-country","f-layer","f-type"].forEach(id =>
     $(id).addEventListener(id==="q"?"input":"change", apply));
   $("loadmore").addEventListener("click", () => render(false));
   $("overlay").addEventListener("click", closeCard);
@@ -294,9 +299,11 @@ function apply(){
   const q = $("q").value.trim().toLowerCase();
   const country = $("f-country").value;
   const layer = $("f-layer").value;
+  const type = $("f-type").value;
   filtered = all.filter(r =>
     (!country || (r.countries||[]).includes(country)) &&
     (!layer || (r.layers||[]).includes(layer)) &&
+    (!type || (r.types||[]).includes(type)) &&
     (!q || [r.name,r.organisation,r.description,r.novelty,(r.countries||[]).join(" ")]
       .join(" ").toLowerCase().includes(q))
   );
@@ -305,7 +312,7 @@ function apply(){
 }
 
 function clearFilters(){
-  ["q","f-country","f-layer"].forEach(id => $(id).value = "");
+  ["q","f-country","f-layer","f-type"].forEach(id => $(id).value = "");
   apply();
 }
 
@@ -334,7 +341,8 @@ function listItem(r){
     <div class="card-shape"></div>
     <div class="card-head"><h2><a href="#r=${r.id}">${esc(r.name)}</a></h2>${countryChips}</div>
     <p class="desc">${esc(r.description)}</p>
-    <div class="meta"><span class="mdate">${fmtDate(r.news_date||r.date_added||r.year)}</span></div>
+    <div class="meta"><span class="mdate">${fmtDate(r.news_date||r.date_added||r.year)}</span>${
+      (r.types||[]).slice(0,1).map(t => `<span class="chip layer click" data-s="f-type" data-v="${esc(t)}">${esc(TYPES[t]||t)}</span>`).join("")}</div>
   </article>`;
 }
 
@@ -393,6 +401,7 @@ function openCard(r){
     <h2>${esc(r.name)}</h2>
     <div class="p-org">${esc(r.organisation||"")}</div>
     <div class="p-row"><span class="p-label">Country:</span>${chipRow((r.countries||[]).map(c => [c, c]), "f-country")}</div>
+    <div class="p-row"><span class="p-label">Type:</span>${chipRow((r.types||[]).map(t => [t, TYPES[t]||t]), "f-type")}</div>
     <div class="p-row"><span class="p-label">Layer:</span>${chipRow((r.layers||[]).map(l => [l, LAYERS[l]||l]), "f-layer")}</div>
     <dl>${dl}</dl>
     <div class="p-row" style="margin-top:16px"><span class="p-label">Autonomy:</span>${autonomyChip}</div>

@@ -65,12 +65,12 @@ The smoke test mocks the LLM, so it verifies the merge and prioritisation machin
  "source_titles": {"<url>": "article headline, for the site's source rows"},
  "source": "google_news:<gl> | rss:<domain> | x_grok | web_grok", "date_added": "YYYY-MM-DD",
  "updated": "YYYY-MM-DD (only if later reporting was merged in)",
- "agentic": true, "tags": ["pilot", "…"], "layers": ["workflows", "…"], "functions": ["f46", "…"]}
+ "agentic": true, "tags": ["pilot", "…"], "types": ["deployment", "…"], "layers": ["workflows", "…"], "functions": ["f46", "…"]}
 ```
 
 `status` and `functions` are collected and kept but no longer rendered on the public site (reader feedback: not important to the public view).
 
-Controlled vocabularies live in [data/taxonomies.json](data/taxonomies.json): `layers` (the framework's 12 layers), `autonomy_level` (the vision paper's L0 manual → L5 fully autonomous ladder), `status` (anchored to EU JRC AI Watch lifecycle: announced / in-development / pilot / implemented / scaled / discontinued / unclear). `functions` uses the 70 government functions from the WEF Agentic State report ([data/functions.json](data/functions.json)).
+Controlled vocabularies live in [data/taxonomies.json](data/taxonomies.json): `layers` (the framework's 12 layers), `autonomy_level` (the vision paper's L0 manual → L5 fully autonomous ladder), `status` (anchored to EU JRC AI Watch lifecycle: announced / in-development / pilot / implemented / scaled / discontinued / unclear), and `types` (the form a development takes: deployment / strategy / regulation / procurement — primary first, max two; no OECD/EC/World Bank scheme spans both policy and deployments, so this is our enum with each value anchored to an established vocabulary, see the `_source` note). `functions` uses the 70 government functions from the WEF Agentic State report ([data/functions.json](data/functions.json)).
 
 Same-story duplicates are merged rather than dropped, so later and better-sourced reporting improves the record instead of being discarded:
 
