@@ -102,12 +102,17 @@ def _is_budget_error(resp) -> bool:
     return False
 
 
-def _chat(messages: list, model: str, json_mode: bool = False, max_tokens: int = 1600) -> str:
+def _chat(messages: list, model: str, json_mode: bool = False, max_tokens: int = 1600,
+          reasoning: bool | None = None) -> str:
     if not config.LLM_API_KEY:
         raise RuntimeError("LLM_API_KEY is not set")
     body = {"model": model, "messages": messages, "temperature": 0.2, "max_tokens": max_tokens}
     if json_mode:
         body["response_format"] = {"type": "json_object"}
+    if reasoning is False:
+        # OpenRouter's unified switch. A reasoning model spends most of its latency
+        # on hidden thinking tokens, which is wasted on a two-field classification.
+        body["reasoning"] = {"enabled": False}
     resp = requests.post(
         f"{config.LLM_BASE_URL}/chat/completions",
         headers={"Authorization": f"Bearer {config.LLM_API_KEY}"},
@@ -146,20 +151,18 @@ def _clean_assessment(data: dict) -> dict:
     return data
 
 
-def _call_with_prompt(prompt: str, user: str, max_tokens: int = 1600) -> dict | None:
+def _call_with_prompt(prompt: str, user: str, max_tokens: int = 1600,
+                      model: str | None = None, reasoning: bool | None = None) -> dict | None:
+    messages = [{"role": "system", "content": prompt}, {"role": "user", "content": user}]
+    model = model or config.LLM_MODEL
     try:
-        raw = _chat(
-            [{"role": "system", "content": prompt}, {"role": "user", "content": user}],
-            model=config.LLM_MODEL, json_mode=True, max_tokens=max_tokens,
-        )
+        raw = _chat(messages, model=model, json_mode=True, max_tokens=max_tokens,
+                    reasoning=reasoning)
     except requests.HTTPError:
         # Some providers reject response_format; retry without it. Budget errors
         # raise BudgetExhausted instead and are deliberately not retried — the
         # second call would fail the same way and only burn wall-clock.
-        raw = _chat(
-            [{"role": "system", "content": prompt}, {"role": "user", "content": user}],
-            model=config.LLM_MODEL, max_tokens=max_tokens,
-        )
+        raw = _chat(messages, model=model, max_tokens=max_tokens, reasoning=reasoning)
     return _parse_json(raw)
 
 
@@ -167,7 +170,8 @@ def _user_block(text: str, url: str, published: str) -> str:
     return f'Text: """{text}"""\nPublication date: "{published}"\nURL: "{url}"'
 
 
-def screen_article(text: str, url: str, published: str = "") -> dict:
+def screen_article(text: str, url: str, published: str = "",
+                   model: str | None = None, reasoning: bool | None = None) -> dict:
     """Cheap first pass: is this relevant, and is it agentic?
 
     Deliberately separate from extraction. Around 83% of screened articles are
@@ -176,10 +180,19 @@ def screen_article(text: str, url: str, published: str = "") -> dict:
     output that was then discarded. This prompt is a fraction of the size and
     returns a handful of tokens.
 
-    Returns {"relevant": bool, "agentic": bool}; unparseable output is treated as
-    not relevant.
+    Runs on GATE_MODEL with reasoning off by default: this is the call the run's
+    wall-clock is made of (~25s of a ~28s article on 2026-07-27), and a two-field
+    classification has nothing to think about. `model` and `reasoning` override
+    both, which is what scripts/bench_gate.py uses to compare candidates.
+
+    Returns {"relevant": bool, "agentic": bool, "subject": str}; unparseable
+    output is treated as not relevant.
     """
-    data = _call_with_prompt(GATE_PROMPT, _user_block(text, url, published), max_tokens=200)
+    data = _call_with_prompt(
+        GATE_PROMPT, _user_block(text, url, published), max_tokens=200,
+        model=model or config.GATE_MODEL,
+        reasoning=config.GATE_REASONING if reasoning is None else reasoning,
+    )
     if not data:
         return {"relevant": False, "agentic": False}
     return {"relevant": bool(data.get("relevant")), "agentic": bool(data.get("agentic")),

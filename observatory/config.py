@@ -15,6 +15,16 @@ LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://api.openai.com/v1").rstrip("/"
 LLM_MODEL = os.getenv("LLM_MODEL", "gpt-4o-mini")
 DIGEST_MODEL = os.getenv("DIGEST_MODEL", LLM_MODEL)
 
+# The relevance gate gets its own model. It is ~96% of all LLM calls, and measured
+# on the 2026-07-27 run a single gate call took ~25s against ~2.5s for all the
+# decoding and fetching put together -- the model was ~88% of the run's wall-clock.
+# kimi-k2.5 lists `reasoning` among its supported parameters, so a two-field yes/no
+# judgement was paying for hidden thinking tokens. Extraction keeps LLM_MODEL: it
+# runs a handful of times a night and its output is what readers actually see.
+# Both default to current behaviour; set them as repo variables to switch.
+GATE_MODEL = os.getenv("GATE_MODEL", LLM_MODEL)
+GATE_REASONING = os.getenv("GATE_REASONING", "0") == "1"
+
 # Daily X sweep: a Grok model called through OpenRouter with its web/x_search
 # plugin, using the same LLM_API_KEY. Runs only when LLM_BASE_URL is OpenRouter.
 # Set XSWEEP_MODEL="" to disable.

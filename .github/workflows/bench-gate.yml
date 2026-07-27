@@ -1,0 +1,47 @@
+name: Bench gate models
+
+# The relevance gate is ~96% of the pipeline's LLM calls and ~88% of its
+# wall-clock, so which model runs it matters more than any other setting. This
+# measures candidates against real articles where the API key already lives.
+# Writes nothing, commits nothing, posts nothing — it only prints a table.
+
+on:
+  workflow_dispatch:
+    inputs:
+      models:
+        description: "Comma-separated candidate labels (blank = all)"
+        required: false
+        default: ""
+      sample:
+        description: "Known-good records to test recall against"
+        required: false
+        default: "20"
+      live:
+        description: "Live queue items to test agreement against"
+        required: false
+        default: "30"
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r observatory/requirements.txt
+
+      - name: Bench
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+        run: |
+          python scripts/bench_gate.py \
+            --sample "${{ inputs.sample }}" \
+            --live "${{ inputs.live }}" \
+            --models "${{ inputs.models }}"

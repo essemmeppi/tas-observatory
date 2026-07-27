@@ -209,11 +209,67 @@ def test_fair_order():
     check("better tiers lead within a round", tiers == sorted(tiers), str(tiers))
 
 
+def test_gate_model_split():
+    """The gate runs on its own model with reasoning off; extraction must not."""
+    seen = []
+
+    def spy(messages, model, json_mode=False, max_tokens=1600, reasoning=None):
+        seen.append({"model": model, "reasoning": reasoning, "max_tokens": max_tokens})
+        return '{"relevant": true, "agentic": true, "subject": "x", "name": "X"}'
+
+    with patch.object(llm, "_chat", side_effect=spy), \
+         patch.object(llm.config, "GATE_MODEL", "fast/model"), \
+         patch.object(llm.config, "LLM_MODEL", "slow/model"), \
+         patch.object(llm.config, "GATE_REASONING", False):
+        llm.screen_article("text", "https://a.example/1")
+        llm.extract_record("text", "https://a.example/1", "")
+
+    gate, extract_call = seen[0], seen[1]
+    check("the gate uses GATE_MODEL", gate["model"] == "fast/model", gate["model"])
+    check("extraction still uses LLM_MODEL",
+          extract_call["model"] == "slow/model", extract_call["model"])
+    # A reasoning model spends its latency on hidden thinking tokens, which is the
+    # whole cost of the gate; extraction is where thinking is actually worth paying for.
+    check("the gate disables reasoning", gate["reasoning"] is False, str(gate["reasoning"]))
+    check("extraction leaves reasoning alone",
+          extract_call["reasoning"] is None, str(extract_call["reasoning"]))
+    check("the gate stays on a small token budget", gate["max_tokens"] == 200,
+          str(gate["max_tokens"]))
+
+    seen.clear()
+    with patch.object(llm, "_chat", side_effect=spy), \
+         patch.object(llm.config, "GATE_REASONING", True):
+        llm.screen_article("text", "https://a.example/1")
+    check("GATE_REASONING=1 re-enables reasoning", seen[0]["reasoning"] is True)
+
+
+def test_reasoning_body():
+    """`reasoning: {enabled: false}` must actually reach the request body."""
+    bodies = []
+    class FakeResp:
+        status_code = 200
+        text = ""
+        def raise_for_status(self): pass
+        def json(self): return {"choices": [{"message": {"content": "{}"}}]}
+
+    def fake_post(url, headers=None, json=None, timeout=None):
+        bodies.append(json)
+        return FakeResp()
+
+    with patch.object(llm.requests, "post", side_effect=fake_post), \
+         patch.object(llm.config, "LLM_API_KEY", "x"):
+        llm._chat([{"role": "user", "content": "hi"}], model="m", reasoning=False)
+        llm._chat([{"role": "user", "content": "hi"}], model="m", reasoning=None)
+    check("reasoning=False sends the disable flag",
+          bodies[0].get("reasoning") == {"enabled": False}, str(bodies[0].get("reasoning")))
+    check("reasoning=None sends no reasoning field", "reasoning" not in bodies[1])
+
+
 def test_extraction_retry():
     good = '{"relevant": true, "agentic": true, "name": "X", "status": "pilot"}'
     calls = []
 
-    def flaky(messages, model, json_mode=False, max_tokens=1600):
+    def flaky(messages, model, json_mode=False, max_tokens=1600, reasoning=None):
         calls.append(1)
         return "not json at all" if len(calls) == 1 else good
 
@@ -474,7 +530,8 @@ def main():
 
     offline = [
         test_canonical_urls, test_tiers, test_name_matching, test_pick_canonical,
-        test_merge_semantics, test_sources_cap, test_fair_order, test_extraction_retry,
+        test_merge_semantics, test_sources_cap, test_fair_order, test_gate_model_split, test_reasoning_body,
+        test_extraction_retry,
         test_resolve_duplicates, test_resolve_falls_back_when_dedupe_dies,
         test_budget_exhaustion_propagates, test_degraded_marker, test_digest, test_real_db,
     ]
