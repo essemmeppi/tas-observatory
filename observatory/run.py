@@ -366,14 +366,24 @@ def main():
     # and an exception here would skip the commit step and lose the harvest.
     try:
         if new_records or unique_touched:
+            # One lede, two renderings: the Slack message and the site's digest
+            # archive carry the same text, so it is only generated (and only
+            # has to be got right) once.
+            lede = llm.write_digest_lede(new_records) if (config.LLM_API_KEY and new_records) else None
             text = digest.build_digest(
                 new_records, run_date,
                 enriched=unique_touched,
                 degraded=degraded,
                 unassessed=unassessed,
                 dedupe_ran=dedupe_ran,
+                scanned=len(fresh), assessed=processed,
+                lede=lede,
             )
             print("\n" + text)
+            digest.write_archive(digest.archive_row(
+                new_records, run_date, unique_touched, lede,
+                scanned=len(fresh), assessed=processed))
+            print(f"Wrote digest archive entry for {run_date}")
             if not args.no_slack and digest.post_to_slack(text):
                 print("Posted digest to Slack")
     except Exception as e:

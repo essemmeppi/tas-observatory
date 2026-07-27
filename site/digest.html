@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAS Observatory — Daily Digest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,200..700;1,200..700&family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#8b7ae8; --accent-soft:#e9e6ff; --accent-tint:#faf9ff;
+  --ink:#111; --ink-2:#333; --ink-3:#777; --line:#eee; --bg:#fff; --card:#fff;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --ink:#f2f0fa; --ink-2:#cfcbe0; --ink-3:#8f8aa5; --line:#2a2733; --bg:#141218; --card:#1b1922; --accent-soft:#2e2947; --accent-tint:#1b1922; }
+}
+*{box-sizing:border-box; margin:0}
+body{font-family:"Inter",Helvetica,sans-serif; font-weight:300; color:var(--ink); background:var(--bg); line-height:1.55; font-size:15px}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+header{border-bottom:1px solid var(--line); padding:28px 0 22px; margin-bottom:0}
+.head-row{display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap}
+.kicker{font-size:12px; color:var(--ink-3); font-weight:400; margin-bottom:6px}
+h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:34px; line-height:1.15}
+h1 a{color:var(--ink)}
+h1 a:hover{color:var(--accent); text-decoration:none}
+.sub{color:var(--ink-3); margin-top:6px; max-width:640px}
+.backlink{font-size:13px; white-space:nowrap}
+
+.split{display:grid; grid-template-columns:210px 1fr; min-height:70vh}
+.datelist{border-right:1px solid var(--line); padding:18px 0}
+.d-item{display:block; width:100%; text-align:left; font:inherit; background:none; border:none; border-radius:8px;
+  padding:10px 14px; margin:2px 8px 2px 0; cursor:pointer; color:var(--ink-2)}
+.d-item .d-date{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; color:var(--ink)}
+.d-item .d-hint{font-size:11.5px; color:var(--ink-3); margin-top:1px}
+.d-item:hover{background:var(--accent-tint)}
+.d-item.active{background:var(--accent-soft)}
+.d-item.active .d-date{color:var(--ink); font-weight:500}
+
+.note{padding:26px 0 60px 34px; max-width:720px}
+.note h2{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:26px; line-height:1.2}
+.note .n-kicker{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); margin-bottom:4px}
+.note .stats{color:var(--ink-3); font-size:13px; margin-top:10px}
+.note .lede{color:var(--ink-2); margin:14px 0 4px; font-size:15.5px}
+.note h3{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); margin:26px 0 4px}
+.entry{padding:12px 0; border-bottom:1px solid var(--line)}
+.entry:last-child{border-bottom:none}
+.entry .e-name{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:400; font-size:17px}
+.entry .e-name a{color:var(--ink)}
+.entry .e-name a:hover{color:var(--accent); text-decoration:none}
+.entry .e-country{font-size:11px; color:var(--ink-2); background:var(--accent-soft); border-radius:20px; padding:1px 8px; margin-left:6px; vertical-align:2px}
+.entry .e-desc{color:var(--ink-2); font-size:14px; margin-top:3px}
+.entry .e-src{font-size:12px; margin-top:4px}
+.err{padding:40px 0 40px 34px; color:var(--ink-3)}
+@media(max-width:760px){
+  .split{grid-template-columns:1fr}
+  .datelist{display:flex; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line); padding:10px 0}
+  .d-item{flex-shrink:0; margin:0 4px 0 0}
+  .d-item .d-hint{display:none}
+  .note{padding-left:0}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="head-row">
+    <div>
+      <div class="kicker">Daily digest</div>
+      <h1><a href="./">The Agentic State Observatory</a></h1>
+      <p class="sub">What happened, day by day — the same brief the observatory publishes each morning.</p>
+    </div>
+    <a class="backlink" href="./">← Back to the observatory</a>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="split">
+    <nav class="datelist" id="datelist" aria-label="Digest dates"></nav>
+    <main class="note" id="note"></main>
+  </div>
+</div>
+
+<script>
+const SITE = "./";
+const $ = id => document.getElementById(id);
+const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtDate = d => d.split("-").reverse().join("-");
+let days = [], current = "";
+
+async function load(){
+  try{
+    const resp = await fetch("../data/digests.jsonl");
+    if(!resp.ok) throw new Error(resp.status);
+    const text = await resp.text();
+    days = text.split("\n").filter(Boolean).map(l => JSON.parse(l))
+      .sort((a,b) => b.date.localeCompare(a.date));
+    if(!days.length) throw new Error("empty");
+  }catch(e){
+    $("note").outerHTML = '<div class="err">Could not load the digest archive. Serve the repo root: <code>python3 -m http.server</code>, then open <code>localhost:8000/site/digest.html</code>.</div>';
+    return;
+  }
+  $("datelist").innerHTML = days.map(d =>
+    `<button class="d-item" data-d="${d.date}">
+       <div class="d-date">${fmtDate(d.date)}</div>
+       <div class="d-hint">${d.new.length} new${d.updated.length ? `, ${d.updated.length} updated` : ""}</div>
+     </button>`).join("");
+  $("datelist").querySelectorAll(".d-item").forEach(el =>
+    el.addEventListener("click", () => { location.hash = "d=" + el.dataset.d; }));
+  window.addEventListener("hashchange", openFromHash);
+  openFromHash();
+}
+
+function itemLink(it){
+  if(it.id) return `${SITE}#r=${esc(it.id)}`;
+  return esc(it.url || "#");
+}
+
+function show(date){
+  const day = days.find(d => d.date === date) || days[0];
+  current = day.date;
+  $("datelist").querySelectorAll(".d-item").forEach(el =>
+    el.classList.toggle("active", el.dataset.d === current));
+  const entries = day.new.map(it => `
+    <div class="entry">
+      <div class="e-name"><a href="${itemLink(it)}">${esc(it.name)}</a>${
+        (it.countries||[]).map(c => `<span class="e-country">${esc(c)}</span>`).join("")}</div>
+      <div class="e-desc">${esc(it.description||"")}</div>
+      ${it.url ? `<div class="e-src"><a href="${esc(it.url)}" target="_blank" rel="noopener">source ↗</a></div>` : ""}
+    </div>`).join("");
+  const updated = (day.updated||[]).map(it => `
+    <div class="entry">
+      <div class="e-name"><a href="${itemLink(it)}">${esc(it.name)}</a>${
+        (it.countries||[]).map(c => `<span class="e-country">${esc(c)}</span>`).join("")}</div>
+      <div class="e-desc">${esc(it.note||"updated from new reporting")}</div>
+    </div>`).join("");
+  const stats = day.scanned
+    ? `Scanned ${day.scanned} new articles${day.assessed ? `, assessed ${day.assessed}` : ""}: ` +
+      `${day.new.length || "no"} new innovation${day.new.length !== 1 ? "s" : ""}` +
+      ((day.updated||[]).length ? `; ${day.updated.length} existing record${day.updated.length !== 1 ? "s" : ""} updated from new reporting` : "") + "."
+    : "";
+  $("note").innerHTML = `
+    <div class="n-kicker">TAS Observatory</div>
+    <h2>${fmtDate(day.date)}</h2>
+    ${stats ? `<div class="stats">${stats}</div>` : ""}
+    ${day.lede ? `<p class="lede">${esc(day.lede)}</p>` : ""}
+    <h3>New (${day.new.length})</h3>${entries || '<div class="err">Nothing new this day.</div>'}
+    ${updated ? `<h3>Updated from new reporting (${day.updated.length})</h3>${updated}` : ""}`;
+}
+
+function openFromHash(){
+  const m = location.hash.match(/^#d=(\d{4}-\d{2}-\d{2})/);
+  show(m ? m[1] : days[0].date);
+}
+
+load();
+</script>
+</body>
+</html>
