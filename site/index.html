@@ -396,9 +396,11 @@ function openCard(r){
       ${t ? `<span class="srchead">${esc(t)} ↗</span>` : ""}</a>`;
   }).join("");
   const date = esc(fmtDate(r.news_date||r.date_added||r.year));
-  // The autonomy ladder describes a running system, so the row only makes
-  // sense on deployments (incl. secondary: a procured platform still has one).
-  const autonomyRow = (r.types||[]).includes("deployment")
+  // The autonomy ladder describes a system, so the row makes sense where there
+  // is one: deployments, and procurements (what is bought sits on the ladder).
+  // Strategies and regulations get no row — "not determined" there would read
+  // as a data gap rather than the category error it is.
+  const autonomyRow = ["deployment","procurement"].some(t => (r.types||[]).includes(t))
     ? `<div class="p-row"><span class="p-label">Autonomy:</span>${
         Number.isInteger(r.autonomy_level)
           ? `<span class="chip layer">${AUTONOMY[r.autonomy_level]}</span>`
