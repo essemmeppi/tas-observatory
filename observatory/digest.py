@@ -35,18 +35,18 @@ def _warning(degraded: str | None, unassessed: int, dedupe_ran: bool) -> str:
 
 
 def _stats_sentence(scanned: int, assessed: int, n_new: int, n_updated: int) -> str:
-    """"We analysed X and found Y" — the day's work in one sentence."""
+    """"We scanned X and found Y" — the day's work in one line.
+
+    `assessed` stays in the archive rows as ops data but is not rendered:
+    readers care what was found, not how far the queue got.
+    """
     if not scanned:
         return ""
-    head = f"Scanned {scanned} new articles"
-    if assessed:
-        head += f", assessed {assessed}"
-    found = (f"{n_new} new innovation{'s' if n_new != 1 else ''}"
-             if n_new else "no new innovations")
+    found = (f"{n_new} new initiative{'s' if n_new != 1 else ''}"
+             if n_new else "no new initiatives")
     if n_updated:
-        found += (f"; {n_updated} existing record{'s' if n_updated != 1 else ''} "
-                  "updated from new reporting")
-    return f"{head}: {found}."
+        found += f"; {n_updated} existing record{'s' if n_updated != 1 else ''} updated"
+    return f"Scanned {scanned} new sources: {found}."
 
 
 def _snapshot(r: dict) -> dict:

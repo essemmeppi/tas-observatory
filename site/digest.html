@@ -135,9 +135,9 @@ function show(date){
       <div class="e-desc">${esc(it.note||"updated from new reporting")}</div>
     </div>`).join("");
   const stats = day.scanned
-    ? `Scanned ${day.scanned} new articles${day.assessed ? `, assessed ${day.assessed}` : ""}: ` +
-      `${day.new.length || "no"} new innovation${day.new.length !== 1 ? "s" : ""}` +
-      ((day.updated||[]).length ? `; ${day.updated.length} existing record${day.updated.length !== 1 ? "s" : ""} updated from new reporting` : "") + "."
+    ? `Scanned ${day.scanned} new sources: ` +
+      `${day.new.length || "no"} new initiative${day.new.length !== 1 ? "s" : ""}` +
+      ((day.updated||[]).length ? `; ${day.updated.length} existing record${day.updated.length !== 1 ? "s" : ""} updated` : "") + "."
     : "";
   $("note").innerHTML = `
     <div class="n-kicker">TAS Observatory</div>
