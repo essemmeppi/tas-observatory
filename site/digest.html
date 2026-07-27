@@ -26,7 +26,9 @@ h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; f
 h1 a{color:var(--ink)}
 h1 a:hover{color:var(--accent); text-decoration:none}
 .sub{color:var(--ink-3); margin-top:6px; max-width:640px}
-.backlink{font-size:13px; white-space:nowrap}
+.btn{display:inline-block; background:var(--accent); color:#fff; border-radius:8px; padding:8px 14px; font-size:13px; font-weight:450; white-space:nowrap}
+.btn:hover{text-decoration:none; background:color-mix(in srgb, var(--accent) 82%, #000)}
+.backdays{display:none; font:inherit; font-size:13px; color:var(--accent); background:none; border:none; padding:0; margin-bottom:14px; cursor:pointer}
 
 .split{display:grid; grid-template-columns:210px 1fr; min-height:70vh}
 .datelist{border-right:1px solid var(--line); padding:18px 0}
@@ -53,12 +55,16 @@ h1 a:hover{color:var(--accent); text-decoration:none}
 .entry .e-desc{color:var(--ink-2); font-size:14px; margin-top:3px}
 .entry .e-src{font-size:12px; margin-top:4px}
 .err{padding:40px 0 40px 34px; color:var(--ink-3)}
+/* Mobile is a drill-in, like Notes on a phone: the list of days first, tap one
+   to read it, "All days" to come back. Desktop keeps both panes side by side. */
 @media(max-width:760px){
-  .split{grid-template-columns:1fr}
-  .datelist{display:flex; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line); padding:10px 0}
-  .d-item{flex-shrink:0; margin:0 4px 0 0}
-  .d-item .d-hint{display:none}
-  .note{padding-left:0}
+  .split{grid-template-columns:1fr; min-height:auto}
+  .datelist{border-right:none; padding:12px 0}
+  .d-item{margin:2px 0}
+  .note{padding:18px 0 60px}
+  .split.note-open .datelist{display:none}
+  .split:not(.note-open) .note{display:none}
+  .backdays{display:inline-block}
 }
 </style>
 </head>
@@ -70,12 +76,12 @@ h1 a:hover{color:var(--accent); text-decoration:none}
       <h1><a href="./">The Agentic State Observatory</a></h1>
       <p class="sub">What happened, day by day — the same brief the observatory publishes each morning.</p>
     </div>
-    <a class="backlink" href="./">← Back to the observatory</a>
+    <a class="btn" href="./">Back to the observatory</a>
   </div>
 </div></header>
 
 <div class="wrap">
-  <div class="split">
+  <div class="split" id="split">
     <nav class="datelist" id="datelist" aria-label="Digest dates"></nav>
     <main class="note" id="note"></main>
   </div>
@@ -139,7 +145,9 @@ function show(date){
       `${day.new.length || "no"} new initiative${day.new.length !== 1 ? "s" : ""}` +
       ((day.updated||[]).length ? `; ${day.updated.length} existing record${day.updated.length !== 1 ? "s" : ""} updated` : "") + "."
     : "";
+  $("split").classList.add("note-open");
   $("note").innerHTML = `
+    <button class="backdays" onclick="goList()">← All days</button>
     <div class="n-kicker">TAS Observatory</div>
     <h2>${fmtDate(day.date)}</h2>
     ${stats ? `<div class="stats">${stats}</div>` : ""}
@@ -148,9 +156,22 @@ function show(date){
     ${updated ? `<h3>Updated from new reporting (${day.updated.length})</h3>${updated}` : ""}`;
 }
 
+function goList(){
+  history.pushState("", document.title, location.pathname + location.search);
+  openFromHash();
+}
+
 function openFromHash(){
   const m = location.hash.match(/^#d=(\d{4}-\d{2}-\d{2})/);
-  show(m ? m[1] : days[0].date);
+  if(m){ show(m[1]); return; }
+  // No day chosen: phones start at the list (drill in to read); desktop has
+  // both panes, so it opens the latest day.
+  if(window.matchMedia("(max-width:760px)").matches){
+    $("split").classList.remove("note-open");
+    $("datelist").querySelectorAll(".d-item").forEach(el => el.classList.remove("active"));
+  } else {
+    show(days[0].date);
+  }
 }
 
 load();

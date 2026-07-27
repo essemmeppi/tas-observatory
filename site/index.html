@@ -72,6 +72,8 @@ h1:hover{color:var(--accent)}
 .chip.click:hover{border-color:var(--accent); color:var(--accent)}
 .desc{color:var(--ink-2); max-width:760px}
 .loadmore{display:block; margin:26px auto 60px; font:inherit; font-size:13px; font-weight:450; color:var(--accent); background:var(--accent-tint); border:1px solid var(--accent-soft); border-radius:8px; padding:10px 26px; cursor:pointer}
+.btn{display:inline-block; background:var(--accent); color:#fff; border-radius:8px; padding:8px 14px; font-size:13px; font-weight:450; white-space:nowrap}
+.btn:hover{text-decoration:none; background:color-mix(in srgb, var(--accent) 82%, #000)}
 footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px solid var(--line)}
 .err{padding:40px 0; color:var(--ink-3)}
 
@@ -111,7 +113,7 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
       <h1 onclick="goHome()" title="Reset all filters">The Agentic State Observatory</h1>
       <p class="sub">A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework. Curated by agents for humans.</p>
     </div>
-    <a href="digest.html" style="font-size:13px; white-space:nowrap">Daily digest →</a>
+    <a class="btn" href="digest.html">Read the daily digest</a>
   </div>
 </div></header>
 
