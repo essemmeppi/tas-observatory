@@ -21,7 +21,7 @@ def _sources_of(record: dict) -> list:
 
 
 def _pool(group: list) -> list:
-    """Distinct sources across a merge group, as {url, tier, news_date}."""
+    """Distinct sources across a merge group, as {url, tier, news_date, title}."""
     seen, pool = set(), []
     for record in group:
         for url in _sources_of(record):
@@ -33,6 +33,7 @@ def _pool(group: list) -> list:
                 "url": url,
                 "tier": urls.tier(url),
                 "news_date": record.get("news_date") or "",
+                "title": (record.get("source_titles") or {}).get(url, ""),
             })
     return pool
 
@@ -131,6 +132,11 @@ def merge(keeper: dict, dups: list, run_date: str, enrich: bool = True) -> dict:
         key=lambda s: (s["tier"], s["news_date"] or FAR_FUTURE),
     )
     keeper["sources"] = [s["url"] for s in others][:MAX_SOURCES]
+    # Re-key the headlines to exactly the URLs the record now cites: merged-away
+    # duplicates bring their headlines in, and dropped sources take theirs out.
+    titles = {s["url"]: s["title"] for s in pool if s.get("title")}
+    kept = [keeper.get("url", ""), *keeper["sources"]]
+    keeper["source_titles"] = {u: titles[u] for u in kept if u in titles}
     keeper["updated"] = run_date
     return keeper
 

@@ -172,6 +172,9 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
         "year": str(assessment.get("year", "")),
         "url": url,
         "sources": [],
+        # Headline keyed by URL, so the frontend can caption each source link.
+        # The record's own fields describe the initiative, not the article.
+        "source_titles": {url: extract.clean_headline(title)} if title else {},
         "source": item["source"],
         "date_added": run_date,
         "agentic": bool(assessment.get("agentic")),

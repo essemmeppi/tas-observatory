@@ -93,9 +93,14 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
 #peek .p-date{margin-left:auto; align-self:center; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11.5px; color:var(--ink-3)}
 #peek dt{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); margin-top:16px}
 #peek dd{color:var(--ink-2); font-size:14px; margin-top:3px}
-#peek .srcs{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; padding-top:16px; border-top:1px solid var(--line)}
-#peek .srcbtn{font-size:12px; font-weight:450; color:var(--accent); background:var(--accent-tint); border:1px solid var(--accent-soft); border-radius:8px; padding:7px 14px}
-#peek .srcbtn:hover{text-decoration:none; border-color:var(--accent)}
+#peek .srcs{margin-top:22px; padding-top:16px; border-top:1px solid var(--line)}
+#peek .srcs-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:2px}
+#peek .srcrow{display:block; padding:9px 0; border-bottom:1px solid var(--line)}
+#peek .srcrow:last-child{border-bottom:none}
+#peek .srcrow:hover{text-decoration:none}
+#peek .srcout{display:block; font-size:10.5px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
+#peek .srchead{color:var(--ink-2); font-size:13.5px; line-height:1.4}
+#peek .srcrow:hover .srchead, #peek .srcrow:hover .srcout{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -116,7 +121,6 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
     <input id="q" type="search" placeholder="Search initiatives, organisations, descriptions…">
     <select id="f-country"><option value="">All countries</option></select>
     <select id="f-layer"><option value="">All layers</option></select>
-    <select id="f-status"><option value="">All statuses</option></select>
   </div>
   <div class="count-line" id="countline"></div>
   <div id="feed"></div>
@@ -139,7 +143,9 @@ const LAYERS = {
 };
 const AUTONOMY = {0:"L0 manual",1:"L1 rule-based",2:"L2 process automation",3:"L3 agentic workflows",4:"L4 semi-autonomous",5:"L5 fully autonomous"};
 const PAGE = 50;
-let all = [], filtered = [], shown = 0, FUNCS = {}, byId = {};
+// `status` and `functions` are still collected in every record — they are just
+// not rendered or filterable here (reader feedback: not important to the public).
+let all = [], filtered = [], shown = 0, byId = {};
 
 const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmtDate = d => /^\d{4}-\d{2}-\d{2}/.test(d||"") ? d.slice(0,10).split("-").reverse().join("-") : (d||"");
@@ -147,14 +153,8 @@ const $ = id => document.getElementById(id);
 
 async function load(){
   try{
-    const [resp, fresp] = await Promise.all([
-      fetch("../data/innovations.jsonl"),
-      fetch("../data/functions.json").catch(() => null)
-    ]);
+    const resp = await fetch("../data/innovations.jsonl");
     if(!resp.ok) throw new Error(resp.status);
-    if(fresp && fresp.ok){
-      (await fresp.json()).functions.forEach(f => FUNCS[f.function_id] = f.function_title);
-    }
     const text = await resp.text();
     all = text.split("\n").filter(Boolean).map(l => JSON.parse(l))
       .filter(r => !r.hidden)
@@ -169,11 +169,9 @@ async function load(){
 
 function init(){
   const countries = [...new Set(all.flatMap(r => r.countries||[]))].sort();
-  const statuses = [...new Set(all.map(r => r.status).filter(s => s && s !== "unclear"))].sort();
   fill("f-country", countries.map(c => [c,c]));
   fill("f-layer", Object.entries(LAYERS));
-  fill("f-status", statuses.map(s => [s,s]));
-  ["q","f-country","f-layer","f-status"].forEach(id =>
+  ["q","f-country","f-layer"].forEach(id =>
     $(id).addEventListener(id==="q"?"input":"change", apply));
   $("loadmore").addEventListener("click", () => render(false));
   $("overlay").addEventListener("click", closeCard);
@@ -296,11 +294,9 @@ function apply(){
   const q = $("q").value.trim().toLowerCase();
   const country = $("f-country").value;
   const layer = $("f-layer").value;
-  const status = $("f-status").value;
   filtered = all.filter(r =>
     (!country || (r.countries||[]).includes(country)) &&
     (!layer || (r.layers||[]).includes(layer)) &&
-    (!status || r.status === status) &&
     (!q || [r.name,r.organisation,r.description,r.novelty,(r.countries||[]).join(" ")]
       .join(" ").toLowerCase().includes(q))
   );
@@ -309,7 +305,7 @@ function apply(){
 }
 
 function clearFilters(){
-  ["q","f-country","f-layer","f-status"].forEach(id => $(id).value = "");
+  ["q","f-country","f-layer"].forEach(id => $(id).value = "");
   apply();
 }
 
@@ -377,17 +373,18 @@ function openCard(r){
     r.description ? `<dt>Summary</dt><dd>${esc(r.description)}</dd>` : "",
     why ? `<dt>Why it matters</dt><dd>${esc(why)}</dd>` : "",
     r.tech_details ? `<dt>What technology</dt><dd>${esc(r.tech_details)}</dd>` : "",
-    (r.functions||[]).length ?
-      `<dt>Government functions <a href="https://agenticforgov.com/" target="_blank" rel="noopener">(WEF, 2026)</a></dt>
-       <dd>${esc(r.functions.map(f => FUNCS[f]||f).join(" · "))}</dd>` : "",
     r.stakeholders ? `<dt>Stakeholders</dt><dd>${esc(r.stakeholders)}</dd>` : ""
   ].join("");
-  const srcs = [r.url, ...(r.sources||[])].filter(Boolean).map(u =>
-    `<a class="srcbtn" href="${esc(u)}" target="_blank" rel="noopener">Source</a>`).join("");
+  // Outlet from the hostname, headline from source_titles where the pipeline
+  // (or the backfill) captured one; older records fall back to the outlet alone.
+  const outletOf = u => { try{ return new URL(u).hostname.replace(/^www\./,""); }catch{ return u.slice(0,40); } };
+  const srcs = [r.url, ...(r.sources||[])].filter(Boolean).map(u => {
+    const t = (r.source_titles||{})[u] || "";
+    return `<a class="srcrow" href="${esc(u)}" target="_blank" rel="noopener">
+      <span class="srcout">${esc(outletOf(u))}${t ? "" : " ↗"}</span>
+      ${t ? `<span class="srchead">${esc(t)} ↗</span>` : ""}</a>`;
+  }).join("");
   const date = esc(fmtDate(r.news_date||r.date_added||r.year));
-  const statusChip = (r.status && r.status !== "unclear")
-    ? chipRow([[r.status, r.status]], "f-status")
-    : '<span class="chip layer">not determined</span>';
   const autonomyChip = Number.isInteger(r.autonomy_level)
     ? `<span class="chip layer">${AUTONOMY[r.autonomy_level]}</span>`
     : '<span class="chip layer">not determined</span>';
@@ -398,9 +395,8 @@ function openCard(r){
     <div class="p-row"><span class="p-label">Country:</span>${chipRow((r.countries||[]).map(c => [c, c]), "f-country")}</div>
     <div class="p-row"><span class="p-label">Layer:</span>${chipRow((r.layers||[]).map(l => [l, LAYERS[l]||l]), "f-layer")}</div>
     <dl>${dl}</dl>
-    <div class="p-row" style="margin-top:16px"><span class="p-label">Status:</span>${statusChip}</div>
-    <div class="p-row"><span class="p-label">Autonomy:</span>${autonomyChip}</div>
-    <div class="srcs">${srcs}${date ? `<span class="p-date">${date}</span>` : ""}</div>`;
+    <div class="p-row" style="margin-top:16px"><span class="p-label">Autonomy:</span>${autonomyChip}</div>
+    <div class="srcs"><div class="srcs-head"><span class="p-label">Sources</span>${date ? `<span class="p-date">${date}</span>` : ""}</div>${srcs}</div>`;
   $("peek").querySelectorAll(".chip.click").forEach(ch =>
     ch.addEventListener("click", () => { closeCard(); setFilter(ch.dataset.s, ch.dataset.v); }));
   $("peek").classList.add("open"); $("overlay").classList.add("open");

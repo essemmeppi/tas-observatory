@@ -62,10 +62,13 @@ The smoke test mocks the LLM, so it verifies the merge and prioritisation machin
  "tech_details": "…", "providers": ["Anthropic", "…"], "autonomy_level": 4,
  "status": "pilot", "news_date": "YYYY-MM-DD", "year": "2026",
  "url": "…", "sources": ["further urls for the same story, best-ranked first"],
+ "source_titles": {"<url>": "article headline, for the site's source rows"},
  "source": "google_news:<gl> | rss:<domain> | x_grok | web_grok", "date_added": "YYYY-MM-DD",
  "updated": "YYYY-MM-DD (only if later reporting was merged in)",
  "agentic": true, "tags": ["pilot", "…"], "layers": ["workflows", "…"], "functions": ["f46", "…"]}
 ```
+
+`status` and `functions` are collected and kept but no longer rendered on the public site (reader feedback: not important to the public view).
 
 Controlled vocabularies live in [data/taxonomies.json](data/taxonomies.json): `layers` (the framework's 12 layers), `autonomy_level` (the vision paper's L0 manual → L5 fully autonomous ladder), `status` (anchored to EU JRC AI Watch lifecycle: announced / in-development / pilot / implemented / scaled / discontinued / unclear). `functions` uses the 70 government functions from the WEF Agentic State report ([data/functions.json](data/functions.json)).
 
