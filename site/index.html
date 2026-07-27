@@ -399,7 +399,7 @@ function openCard(r){
   // The autonomy ladder describes a running system, so the row only makes
   // sense on deployments (incl. secondary: a procured platform still has one).
   const autonomyRow = (r.types||[]).includes("deployment")
-    ? `<div class="p-row" style="margin-top:16px"><span class="p-label">Autonomy:</span>${
+    ? `<div class="p-row"><span class="p-label">Autonomy:</span>${
         Number.isInteger(r.autonomy_level)
           ? `<span class="chip layer">${AUTONOMY[r.autonomy_level]}</span>`
           : '<span class="chip layer">not determined</span>'}</div>`
@@ -409,10 +409,10 @@ function openCard(r){
     <h2>${esc(r.name)}</h2>
     <div class="p-org">${esc(r.organisation||"")}</div>
     <div class="p-row"><span class="p-label">Country:</span>${chipRow((r.countries||[]).map(c => [c, c]), "f-country")}</div>
-    <div class="p-row"><span class="p-label">Type:</span>${chipRow((r.types||[]).map(t => [t, TYPES[t]||t]), "f-type")}</div>
     <div class="p-row"><span class="p-label">Layer:</span>${chipRow((r.layers||[]).map(l => [l, LAYERS[l]||l]), "f-layer")}</div>
-    <dl>${dl}</dl>
+    <div class="p-row"><span class="p-label">Type:</span>${chipRow((r.types||[]).map(t => [t, TYPES[t]||t]), "f-type")}</div>
     ${autonomyRow}
+    <dl>${dl}</dl>
     <div class="srcs"><div class="srcs-head"><span class="p-label">Sources</span>${date ? `<span class="p-date">${date}</span>` : ""}</div>${srcs}</div>`;
   $("peek").querySelectorAll(".chip.click").forEach(ch =>
     ch.addEventListener("click", () => { closeCard(); setFilter(ch.dataset.s, ch.dataset.v); }));
