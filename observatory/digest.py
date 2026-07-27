@@ -34,19 +34,26 @@ def _warning(degraded: str | None, unassessed: int, dedupe_ran: bool) -> str:
     return ":warning: *Incomplete run* — " + "; ".join(bits) + "."
 
 
-def _stats_sentence(scanned: int, assessed: int, n_new: int, n_updated: int) -> str:
+def _stats_sentence(scanned: int, assessed: int, n_new: int, n_updated: int,
+                    show_assessed: bool = False) -> str:
     """"We scanned X and found Y" — the day's work in one line.
 
-    `assessed` stays in the archive rows as ops data but is not rendered:
-    readers care what was found, not how far the queue got.
+    The public page never renders `assessed`: readers care what was found, not
+    how far the queue got. Slack shows it whenever it fell short of `scanned`,
+    because that is the team's only always-on signal that coverage was partial —
+    the :warning: block counts articles the queue never reached, but says
+    nothing about articles the MAX_ITEMS cap silently kept out of the queue.
     """
     if not scanned:
         return ""
+    head = f"Scanned {scanned} new sources"
+    if show_assessed and assessed and assessed < scanned:
+        head += f", assessed {assessed}"
     found = (f"{n_new} new initiative{'s' if n_new != 1 else ''}"
              if n_new else "no new initiatives")
     if n_updated:
         found += f"; {n_updated} existing record{'s' if n_updated != 1 else ''} updated"
-    return f"Scanned {scanned} new sources: {found}."
+    return f"{head}: {found}."
 
 
 def _snapshot(r: dict) -> dict:
@@ -99,7 +106,7 @@ def build_digest(items: list, run_date: str, enriched: list | None = None,
     warning = _warning(degraded, unassessed, dedupe_ran)
     if warning:
         lines += ["", warning]
-    stats = _stats_sentence(scanned, assessed, len(items), len(enriched))
+    stats = _stats_sentence(scanned, assessed, len(items), len(enriched), show_assessed=True)
     if stats:
         lines += ["", stats]
     if lede:
