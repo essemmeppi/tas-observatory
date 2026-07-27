@@ -1,7 +1,18 @@
-"""Daily Slack digest: a short lede plus one line per new item."""
+"""Daily digest, rendered twice from one structured object.
+
+The Slack message and the site's digest archive (data/digests.jsonl, read by
+site/digest.html) carry the same content — stats sentence, lede, items — so
+the text only has to be got right once. The one deliberate difference: the
+:warning: incomplete-run block is Slack-only. It is an ops note for the team;
+on a public page it reads as noise.
+"""
+import json
+
 import requests
 
 from . import config, llm
+
+ARCHIVE_PATH = config.ROOT / "data" / "digests.jsonl"
 
 
 def _warning(degraded: str | None, unassessed: int, dedupe_ran: bool) -> str:
@@ -23,18 +34,74 @@ def _warning(degraded: str | None, unassessed: int, dedupe_ran: bool) -> str:
     return ":warning: *Incomplete run* — " + "; ".join(bits) + "."
 
 
+def _stats_sentence(scanned: int, assessed: int, n_new: int, n_updated: int) -> str:
+    """"We analysed X and found Y" — the day's work in one sentence."""
+    if not scanned:
+        return ""
+    head = f"Scanned {scanned} new articles"
+    if assessed:
+        head += f", assessed {assessed}"
+    found = (f"{n_new} new innovation{'s' if n_new != 1 else ''}"
+             if n_new else "no new innovations")
+    if n_updated:
+        found += (f"; {n_updated} existing record{'s' if n_updated != 1 else ''} "
+                  "updated from new reporting")
+    return f"{head}: {found}."
+
+
+def _snapshot(r: dict) -> dict:
+    """What the archive keeps per item: enough to render the day's note forever,
+    even if the record is later merged away or renamed."""
+    return {"id": r["id"], "name": r["name"], "countries": r.get("countries") or [],
+            "description": r.get("description", ""), "url": r.get("url", "")}
+
+
+def archive_row(items: list, run_date: str, enriched: list, lede: str | None,
+                scanned: int = 0, assessed: int = 0) -> dict:
+    return {
+        "date": run_date,
+        "scanned": scanned,
+        "assessed": assessed,
+        "lede": lede or "",
+        "new": [_snapshot(r) for r in items],
+        "updated": [
+            {"id": r["id"], "name": r["name"], "countries": r.get("countries") or [],
+             "note": f"now citing {1 + len(r.get('sources') or [])} sources"}
+            for r in enriched
+        ],
+    }
+
+
+def write_archive(row: dict) -> None:
+    """Append the day's digest, replacing any earlier entry for the same date
+    so a manual re-run does not duplicate the day."""
+    rows = []
+    if ARCHIVE_PATH.exists():
+        rows = [json.loads(l) for l in ARCHIVE_PATH.read_text(encoding="utf-8").splitlines() if l.strip()]
+    rows = [r for r in rows if r.get("date") != row["date"]] + [row]
+    rows.sort(key=lambda r: r["date"])
+    with open(ARCHIVE_PATH, "w", encoding="utf-8") as fh:
+        for r in rows:
+            fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+
 def build_digest(items: list, run_date: str, enriched: list | None = None,
                  degraded: str | None = None, unassessed: int = 0,
-                 dedupe_ran: bool = True) -> str:
+                 dedupe_ran: bool = True, scanned: int = 0, assessed: int = 0,
+                 lede: str | None = None) -> str:
     agentic = [r for r in items if r.get("agentic")]
     other = [r for r in items if not r.get("agentic")]
     enriched = enriched or []
 
-    lede = llm.write_digest_lede(items) if (config.LLM_API_KEY and items) else None
+    if lede is None:
+        lede = llm.write_digest_lede(items) if (config.LLM_API_KEY and items) else None
     lines = [f"*TAS Observatory — {run_date}*"]
     warning = _warning(degraded, unassessed, dedupe_ran)
     if warning:
         lines += ["", warning]
+    stats = _stats_sentence(scanned, assessed, len(items), len(enriched))
+    if stats:
+        lines += ["", stats]
     if lede:
         lines += ["", lede]
 

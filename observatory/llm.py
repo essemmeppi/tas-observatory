@@ -391,9 +391,13 @@ def write_digest_lede(items: list) -> str | None:
         f"- {r['name']} ({', '.join(r['countries']) or 'n/a'}): {r['description']}" for r in items
     )
     prompt = (
-        "You write a daily Slack digest for The Agentic State team about AI and agentic AI "
-        "in government. Given today's new items, write 2-3 plain sentences summarising the "
-        "most significant developments. No greetings, no markdown headers, no bullet points."
+        "You write the daily brief of the TAS Observatory, a public record of agentic AI in "
+        "government read by policymakers, civil servants and researchers. Given today's new "
+        "records, write 2-4 plain sentences on the most significant developments, the most "
+        "consequential first. Editorial and factual: name the countries and institutions, state "
+        "what actually happened, and let the facts carry the weight — no hype adjectives "
+        "('groundbreaking', 'revolutionary'), no opinions, no greetings, no markdown, no bullets. "
+        "The same text appears on the public site and in the team's Slack."
     )
     try:
         return _chat(

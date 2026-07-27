@@ -105,9 +105,14 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
 </head>
 <body>
 <header><div class="wrap">
-  <div class="kicker" id="lastupdate">Last update: —</div>
-  <h1 onclick="goHome()" title="Reset all filters">The Agentic State Observatory</h1>
-  <p class="sub">A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework. Curated by agents for humans.</p>
+  <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap">
+    <div>
+      <div class="kicker" id="lastupdate">Last update: —</div>
+      <h1 onclick="goHome()" title="Reset all filters">The Agentic State Observatory</h1>
+      <p class="sub">A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework. Curated by agents for humans.</p>
+    </div>
+    <a href="digest.html" style="font-size:13px; white-space:nowrap">Daily digest →</a>
+  </div>
 </div></header>
 
 <div class="wrap">
