@@ -160,9 +160,13 @@ async function load(){
     const resp = await fetch("../data/innovations.jsonl");
     if(!resp.ok) throw new Error(resp.status);
     const text = await resp.text();
+    // Sort by the date each card displays — when the story broke, not when the
+    // pipeline happened to ingest it. Ingestion date breaks ties.
+    const sortDate = r => (r.news_date || r.date_added || "");
     all = text.split("\n").filter(Boolean).map(l => JSON.parse(l))
       .filter(r => !r.hidden)
-      .sort((a,b) => (b.date_added||"").localeCompare(a.date_added||""));
+      .sort((a,b) => sortDate(b).localeCompare(sortDate(a)) ||
+                     (b.date_added||"").localeCompare(a.date_added||""));
     all.forEach(r => byId[r.id] = r);
     init();
   }catch(e){
@@ -341,8 +345,7 @@ function listItem(r){
     <div class="card-shape"></div>
     <div class="card-head"><h2><a href="#r=${r.id}">${esc(r.name)}</a></h2>${countryChips}</div>
     <p class="desc">${esc(r.description)}</p>
-    <div class="meta"><span class="mdate">${fmtDate(r.news_date||r.date_added||r.year)}</span>${
-      (r.types||[]).slice(0,1).map(t => `<span class="chip layer click" data-s="f-type" data-v="${esc(t)}">${esc(TYPES[t]||t)}</span>`).join("")}</div>
+    <div class="meta"><span class="mdate">${fmtDate(r.news_date||r.date_added||r.year)}</span></div>
   </article>`;
 }
 
