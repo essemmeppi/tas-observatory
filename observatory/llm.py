@@ -60,9 +60,25 @@ Respond with ONLY a JSON object:
   "news_date": "YYYY-MM-DD",      // publication date of the source
   "year": "YYYY",                 // year of implementation, else publication year
   "tags": [...],                  // subset of: "agentic-ai", "genai", "chatbot", "policy", "regulation", "procurement", "pilot", "deployment", "strategy", "infrastructure"
+  "types": [...],                 // 1-2 of: "deployment", "strategy", "regulation", "procurement" — primary first; see the type rules below
   "layers": [...],                // Agentic State framework layer slugs, usually 1-2, see below
   "functions": [...]              // 0-3 government function ids (f1-f70) this touches, from the list below; [] if none clearly applies
 }
+
+Development type rules for "types" — classify the FORM the news takes, never the domain it \
+serves (AI used to speed up procurement is a "deployment"; a law about deployments is \
+"regulation"). One primary type; add a second only when the record genuinely straddles two:
+- "deployment": a nameable AI system in government hands at any stage — pilots, platforms, \
+tools, including ones only announced or in development. A specific planned pilot is a \
+deployment (its "status" carries the timing); a vague intention to run pilots is "strategy".
+- "procurement": the news is the buying itself — a tender, RFP, sources-sought notice, \
+framework agreement or contract award. Once the bought system is in use, later reporting \
+about it is "deployment".
+- "regulation": rules and rule-making — laws, bills, executive orders, binding or soft \
+guidance, standards, certifications, and public consultations that feed rule-making.
+- "strategy": stated intentions and capacity building — strategies, plans, funding \
+programmes, training, partnerships, and the creation of offices, task forces or governance \
+bodies. A body created to oversee or enforce rules is "strategy" first, "regulation" second.
 
 Agentic State framework layers (use these exact slugs in "layers"):
 - "service-design-ux": public service design & UX — proactive, personalised citizen-facing services
@@ -82,6 +98,7 @@ Government functions (use ids in "functions"):
 """ + FUNCTIONS_PROMPT_LIST
 
 VALID_STATUS = {"announced", "in-development", "pilot", "implemented", "scaled", "discontinued", "unclear"}
+VALID_TYPES = {"deployment", "strategy", "regulation", "procurement"}
 
 
 class BudgetExhausted(RuntimeError):
@@ -147,6 +164,9 @@ def _clean_assessment(data: dict) -> dict:
     if data.get("status") not in VALID_STATUS:
         data["status"] = "unclear"
     data["functions"] = [f for f in (data.get("functions") or []) if f in FUNCTION_IDS][:3]
+    # Dedupe preserving order: the first value is the primary type.
+    data["types"] = list(dict.fromkeys(
+        t for t in (data.get("types") or []) if t in VALID_TYPES))[:2]
     data["providers"] = [str(p) for p in (data.get("providers") or [])][:5]
     return data
 

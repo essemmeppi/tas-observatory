@@ -11,7 +11,7 @@ from . import llm, urls
 MAX_SOURCES = 4
 
 TEXT_FIELDS = ("description", "novelty", "stakeholders", "agentic_rationale", "tech_details")
-LIST_FIELDS = ("countries", "country_codes", "providers", "layers", "functions", "tags")
+LIST_FIELDS = ("countries", "country_codes", "providers", "layers", "functions", "tags", "types")
 FAR_FUTURE = "9999-12-31"
 
 
@@ -118,6 +118,10 @@ def merge(keeper: dict, dups: list, run_date: str, enrich: bool = True) -> dict:
                     merged.append(value)
         if field == "functions":
             merged = merged[:3]
+        if field == "types":
+            # Keeper's primary stays primary; a re-tell can add at most one
+            # secondary (e.g. a contract award folded into a deployment).
+            merged = merged[:2]
         keeper[field] = merged
 
     if any(r.get("agentic") for r in group):
