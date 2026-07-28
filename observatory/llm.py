@@ -1,5 +1,6 @@
 """LLM calls via any OpenAI-compatible chat completions endpoint."""
 import json
+import os
 import re
 
 import requests
@@ -17,15 +18,28 @@ GATE_PROMPT = """You screen news for an observatory of AGENTIC AI IN GOVERNMENT 
 
 You get the text of one article. Decide two things, and nothing else.
 
-RELEVANT: does it report a concrete development involving AI, AI agents, or automation in \
-GOVERNMENT or the PUBLIC SECTOR — a deployment, pilot, procurement, policy, strategy, \
-regulation or official announcement by a public body (any country, any level of government)?
+RELEVANT asks one question: is a NAMED PUBLIC BODY actually doing something with an AI system \
+— deploying, piloting, buying, mandating, regulating, or committing to build one? There must be \
+an identifiable government actor AND an identifiable system or rule. Any country, any level of \
+government, any stage including announced and in-development.
 
-NOT relevant: private-sector-only news, academic papers without government adoption, \
-opinion pieces with no concrete development, vendor marketing with no named public buyer.
+NOT relevant, however much AI the article discusses:
+- research networks, consortia, universities or conferences CONVENING, coordinating, \
+coalition-building or publishing findings — a meeting about AI is not a government using AI
+- science and research FUNDING policy: grant reform, lab budgets, research strategy, \
+"autonomous experiments" or automated laboratories. That is science policy, not government \
+operations
+- articles about what AI can do in general, market trends, or the state of the field
+- vendor or product announcements with no named public buyer
+- personnel appointments, staff changes, event notices, award and conference listings
+- opinion columns and explainers with no concrete development
+- private-sector-only deployments
 
-AGENTIC: does it involve AI agents / agentic AI / autonomous task execution, as opposed to \
-any AI, an analytics tool or a plain chatbot?
+AGENTIC asks whether the SOURCE describes a system that decides or acts on its own — chooses \
+among steps, executes a task, or coordinates a process without a human initiating each step. \
+Judge the system the article reports, not the technology in the abstract. A field described as \
+"autonomous", a roadmap that aspires to autonomy, or a plain chatbot, assistant, analytics or \
+document-classification tool is NOT agentic.
 
 Respond with ONLY a JSON object:
 {
@@ -100,6 +114,46 @@ Government functions (use ids in "functions"):
 VALID_STATUS = {"announced", "in-development", "pilot", "implemented", "scaled", "discontinued", "unclear"}
 VALID_TYPES = {"deployment", "strategy", "regulation", "procurement"}
 
+# Extraction asks for ~16 fields including four prose paragraphs, and the `types`
+# rules pushed the prompt to ~5k chars. On 2026-07-28 that combination produced 20
+# unparseable responses and lost 10 articles the gate had already approved, one
+# error naming the cut-off exactly: "line 187 column 1 (char 1023)". 1023 chars is
+# far short of what 1600 tokens allows, so the budget was going to a reasoning
+# model's hidden thinking and leaving too little for the JSON. Reasoning stays on
+# here deliberately — extraction makes the judgement calls readers see — so the
+# ceiling has to be large enough for both it and the schema.
+EXTRACT_MAX_TOKENS = int(os.getenv("EXTRACT_MAX_TOKENS", "3000"))
+
+# Country names arrive as free text and are the one list field that was never
+# checked, so "United States of America" landed beside 77 "United States" and
+# forked the site's country filter and choropleth. Normalise the variants we can
+# predict; anything unrecognised passes through so a genuinely new country is
+# never silently dropped.
+COUNTRY_ALIASES = {
+    "united states of america": "United States",
+    "usa": "United States", "u s a": "United States", "us": "United States",
+    "u s": "United States", "america": "United States",
+    "united kingdom of great britain and northern ireland": "United Kingdom",
+    "uk": "United Kingdom", "u k": "United Kingdom", "great britain": "United Kingdom",
+    "britain": "United Kingdom", "england": "United Kingdom",
+    "uae": "United Arab Emirates", "u a e": "United Arab Emirates",
+    "republic of korea": "South Korea", "korea, republic of": "South Korea",
+    "korea": "South Korea", "south korea (republic of korea)": "South Korea",
+    "people's republic of china": "China", "prc": "China", "mainland china": "China",
+    "russian federation": "Russia", "czechia": "Czech Republic",
+    "netherlands (the)": "Netherlands", "the netherlands": "Netherlands",
+    "european union (eu)": "European Union", "eu": "European Union",
+    "hong kong sar": "Hong Kong", "hong kong, china": "Hong Kong",
+    "viet nam": "Vietnam", "türkiye": "Turkey", "turkiye": "Turkey",
+    "saudi arabia (kingdom of)": "Saudi Arabia", "ksa": "Saudi Arabia",
+}
+
+
+def canonical_country(name: str) -> str:
+    key = re.sub(r"[^a-z0-9' ]+", " ", (name or "").lower()).strip()
+    key = re.sub(r"\s+", " ", key)
+    return COUNTRY_ALIASES.get(key, (name or "").strip())
+
 
 class BudgetExhausted(RuntimeError):
     """The API is refusing calls for billing reasons, not for this request.
@@ -168,6 +222,11 @@ def _clean_assessment(data: dict) -> dict:
     data["types"] = list(dict.fromkeys(
         t for t in (data.get("types") or []) if t in VALID_TYPES))[:2]
     data["providers"] = [str(p) for p in (data.get("providers") or [])][:5]
+    # Country names are free text from the model, and were the one list field
+    # never checked here; fold the predictable variants onto a single spelling so
+    # the site's filter and choropleth do not fork.
+    data["countries"] = list(dict.fromkeys(
+        canonical_country(c) for c in (data.get("countries") or []) if str(c).strip()))
     return data
 
 
@@ -240,7 +299,7 @@ def extract_record(text: str, url: str, published: str) -> dict | None:
     user = _user_block(text, url, published)
     for attempt in range(2):
         try:
-            data = _call_with_prompt(EXTRACT_PROMPT, user)
+            data = _call_with_prompt(EXTRACT_PROMPT, user, max_tokens=EXTRACT_MAX_TOKENS)
         except BudgetExhausted:
             raise
         except Exception as e:

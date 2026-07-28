@@ -8,6 +8,7 @@ Two halves:
 Run: python scripts/test_pipeline_local.py [--offline]
 """
 import argparse
+import collections
 import itertools
 import sys
 from datetime import date
@@ -105,6 +106,34 @@ def test_name_matching():
     check("similarity does NOT catch a full rename",
           not db.names_match("Framework for America's AI Future",
                              "Federal AI Oversight Legislative Package (AI AGENT Act)", us, us))
+
+    # The real pair that sat in the database as a duplicate on 2026-07-28. The old
+    # 18-char/3-token floors meant containment was never even tested, because
+    # "genesis mission" is 15 chars and 2 tokens.
+    check("containment catches a two-word initiative name",
+          db.names_match("Science: A New Golden Age / Genesis Mission", "Genesis Mission"))
+    check("the short-fragment decoy is still rejected",
+          not db.names_match("AI Strategy", "AI Strategy for the Public Sector of Ruritania"))
+    # 10 chars would start matching this; 12 is the floor precisely because of it.
+    check("a bare product name does not swallow longer records",
+          not db.names_match("Agentic AI", "Agentic AI for Public Service Delivery"))
+
+
+def test_country_normalisation():
+    for raw, want in [("United States of America", "United States"), ("USA", "United States"),
+                      ("U.S.A.", "United States"), ("UK", "United Kingdom"),
+                      ("Britain", "United Kingdom"), ("UAE", "United Arab Emirates"),
+                      ("Republic of Korea", "South Korea"), ("Türkiye", "Turkey"),
+                      ("United States", "United States")]:
+        got = llm.canonical_country(raw)
+        check(f"country: {raw!r} -> {want!r}", got == want, f"got {got!r}")
+    # An unrecognised country must pass through untouched, never be dropped.
+    check("an unknown country survives normalisation",
+          llm.canonical_country("Genovia") == "Genovia")
+    cleaned = llm._clean_assessment(
+        {"countries": ["United States of America", "USA", "France"], "status": "pilot"})
+    check("_clean_assessment folds and dedupes countries",
+          cleaned["countries"] == ["United States", "France"], str(cleaned["countries"]))
 
 
 def _record(rid, url, name, news_date, **extra):
@@ -265,6 +294,26 @@ def test_reasoning_body():
     check("reasoning=None sends no reasoning field", "reasoning" not in bodies[1])
 
 
+def test_extraction_call_shape():
+    """Extraction lost 10 gate-approved articles on 2026-07-28 to truncated JSON,
+    one error naming the cut-off exactly: "line 187 column 1 (char 1023)". That is
+    far short of what 1600 tokens allows, so a reasoning model's hidden thinking was
+    eating the budget. Reasoning stays on here by choice, so the ceiling carries the
+    fix and has to be big enough for thinking plus a ~16-field schema."""
+    seen = {}
+
+    def capture(messages, model, json_mode=False, max_tokens=1600, reasoning=None):
+        seen.update(max_tokens=max_tokens, reasoning=reasoning)
+        return '{"relevant": true, "agentic": true, "name": "X", "status": "pilot"}'
+
+    with patch.object(llm, "_chat", side_effect=capture):
+        llm.extract_record("text", "https://a.example/1", "")
+    check(f"extraction raises the token ceiling (got {seen.get('max_tokens')})",
+          seen.get("max_tokens") == llm.EXTRACT_MAX_TOKENS and llm.EXTRACT_MAX_TOKENS >= 3000)
+    check("extraction still leaves reasoning to the model",
+          seen.get("reasoning") is None, str(seen.get("reasoning")))
+
+
 def test_extraction_retry():
     good = '{"relevant": true, "agentic": true, "name": "X", "status": "pilot"}'
     calls = []
@@ -399,6 +448,16 @@ def test_real_db():
     check(f"DB loads ({len(records)} records)", len(records) > 100, str(len(records)))
     ids = [r["id"] for r in records]
     check("record ids are unique", len(ids) == len(set(ids)))
+
+    # One record saying "United States of America" beside 77 saying "United States"
+    # forked the site's country dropdown and its choropleth. Two spellings that
+    # normalise to the same country mean the vocabulary has drifted again.
+    by_canon = collections.defaultdict(set)
+    for r in records:
+        for c in r.get("countries") or []:
+            by_canon[llm.canonical_country(c)].add(c)
+    forks = {k: sorted(v) for k, v in by_canon.items() if len(v) > 1}
+    check(f"one spelling per country ({len(by_canon)} countries)", not forks, str(forks))
     # Two records citing one article means a duplicate slipped through. A
     # trailing-slash variant of the same executivegov URL did exactly that in
     # August 2025, before URLs were compared canonically.

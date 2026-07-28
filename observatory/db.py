@@ -56,7 +56,13 @@ def names_match(a: str, b: str, countries_a=None, countries_b=None) -> bool:
     if x == y:
         return True
     shorter, longer = sorted((x, y), key=len)
-    if len(shorter) < 18 or len(shorter.split()) < 3:
+    # 18 chars / 3 tokens was too strict and hid every two-word initiative name:
+    # "genesis mission" (15 chars, 2 tokens) IS a substring of "science a new
+    # golden age genesis mission", but containment was never tested and the pair
+    # sat in the database as a duplicate. Validated across every same-country pair
+    # under 60 days apart: 12/2 catches it with no false positives, while 10/2
+    # starts matching a record literally named "Agentic AI".
+    if len(shorter) < 12 or len(shorter.split()) < 2:
         return False
     if shorter in longer:
         return True
