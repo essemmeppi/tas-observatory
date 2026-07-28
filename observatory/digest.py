@@ -81,10 +81,27 @@ def archive_row(items: list, run_date: str, enriched: list, lede: str | None,
 
 def write_archive(row: dict) -> None:
     """Append the day's digest, replacing any earlier entry for the same date
-    so a manual re-run does not duplicate the day."""
+    so a manual re-run does not duplicate the day.
+
+    Replacing is right for a re-run of the same harvest — merging would carry
+    forward records a failed run listed and then lost, and double-count `scanned`.
+    It is wrong for two genuinely different harvests on one date, which is what a
+    manual test run alongside the scheduled one produces: on 2026-07-28 that
+    dropped 7 of the day's 16 records from the note while leaving them in the
+    database. That case is rare and operator-driven, so the fix is to make the
+    loss visible rather than to guess at merging; scripts/rebuild_digest_day.py
+    repairs a day from the database afterwards.
+    """
     rows = []
     if ARCHIVE_PATH.exists():
         rows = [json.loads(l) for l in ARCHIVE_PATH.read_text(encoding="utf-8").splitlines() if l.strip()]
+    prior = next((r for r in rows if r.get("date") == row["date"]), None)
+    if prior:
+        lost = {x["id"] for x in prior.get("new") or []} - {x["id"] for x in row.get("new") or []}
+        if lost:
+            print(f"  warning: replacing the {row['date']} digest entry drops "
+                  f"{len(lost)} record(s) it listed; rebuild with "
+                  f"scripts/rebuild_digest_day.py --date {row['date']}")
     rows = [r for r in rows if r.get("date") != row["date"]] + [row]
     rows.sort(key=lambda r: r["date"])
     with open(ARCHIVE_PATH, "w", encoding="utf-8") as fh:
