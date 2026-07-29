@@ -206,10 +206,13 @@ function fill(id, pairs){
 
 function stats(){
   const week = new Date(Date.now()-7*864e5).toISOString().slice(0,10);
+  // Counted by news_date (when the story broke), not date_added: a backfill of
+  // historical initiatives lands with today's date_added, and 34 old records
+  // once read as a record-breaking week.
   const tiles = [
     [all.length.toLocaleString(), "agentic AI initiatives"],
     [new Set(all.flatMap(r => r.countries||[])).size, "countries"],
-    [all.filter(r => (r.date_added||"") >= week).length, "added in the last 7 days"]
+    [all.filter(r => (r.news_date || r.date_added || "") >= week).length, "reported in the last 7 days"]
   ];
   $("stats").innerHTML =
     tiles.map(([n,l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");

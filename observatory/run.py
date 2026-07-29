@@ -5,6 +5,7 @@ Usage: python -m observatory.run [--dry-run] [--no-slack] [--no-x] [--max-items 
 import argparse
 import collections
 import itertools
+import re
 import sys
 import time
 from datetime import date, timedelta
@@ -94,6 +95,19 @@ def prepare_items(items: list, deduper: db.Deduper) -> list:
     return _fair_order(fresh)
 
 
+def _news_date(assessment: dict, run_date: str) -> str:
+    """The publication date to store: extracted, else the run date.
+
+    news_date is what the site sorts and counts by, so it must never be empty —
+    an empty value made records sort by ingestion date and look brand new
+    (2026-07-29, 25 records). When the source itself does not state a date, the
+    run date is the honest stand-in: the live pipeline's sources only carry
+    day-old material, so publication and ingestion are the same day.
+    """
+    extracted = str(assessment.get("news_date") or "")
+    return extracted if re.match(r"^\d{4}", extracted) else run_date
+
+
 def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
     """Assess one article into a record, or None.
 
@@ -168,7 +182,7 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
         "providers": assessment.get("providers") or [],
         "autonomy_level": assessment.get("autonomy_level"),
         "status": assessment.get("status", "unclear"),
-        "news_date": assessment.get("news_date", ""),
+        "news_date": _news_date(assessment, run_date),
         "year": str(assessment.get("year", "")),
         "url": url,
         "sources": [],
