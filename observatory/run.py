@@ -201,6 +201,32 @@ def _name_target(candidate: dict, pool: list):
     )
 
 
+def _shares_country(a: dict, b: dict) -> bool:
+    """Whether two records can be the same initiative on country alone.
+
+    A veto on the LLM's merge verdicts, not a matcher. Merging is destructive in
+    ways a reader sees: merge() unions `countries` and pick_canonical can hand the
+    canonical link to the duplicate, so one bad verdict on 2026-07-29 pointed
+    Singapore's HealthHub AI at a UAE marketing blog and gave a Pennsylvania
+    training pilot a UAE country chip. Two initiatives in different countries are
+    not one initiative, whatever the model says.
+
+    Compared on country_codes, not names: the ISO codes are a controlled
+    vocabulary while the names are free text, and "United States" versus "United
+    States of America" is enough to make one country look like two — which is
+    exactly how a first version of this veto blocked the true Kyle311 / Agent Kyle
+    merge. Names are only the fallback when a record predates the codes.
+
+    Unknown countries on either side abstain rather than block — the same
+    convention db.names_match uses for its similarity branch.
+    """
+    for field in ("country_codes", "countries"):
+        ca, cb = set(a.get(field) or []), set(b.get(field) or [])
+        if ca and cb:
+            return bool(ca & cb)
+    return True
+
+
 def _fallback_resolve(candidates: list, existing: list, run_date: str, enrich: bool = True) -> tuple:
     """Name-match-only resolution, for when the LLM verdict is unavailable.
 
@@ -220,14 +246,19 @@ def _fallback_resolve(candidates: list, existing: list, run_date: str, enrich: b
     return survivors, touched, False
 
 
-def resolve_duplicates(candidates: list, existing: list, run_date: str) -> tuple:
+def resolve_duplicates(candidates: list, existing: list, run_date: str,
+                       window_days: int | None = None) -> tuple:
     """Fold re-tells into the records they repeat.
 
     Returns (records_to_insert, existing_records_touched, dedupe_ran). Within-batch
     groups resolve first: otherwise A can merge into B while B independently
     merges into a stored record, orphaning A's sources.
+
+    window_days widens the comparison window beyond the nightly default — a
+    historical import can duplicate records from any era, not just this fortnight.
     """
-    recent = db.recent_records(existing)
+    recent = db.recent_records(existing) if window_days is None \
+        else db.recent_records(existing, days=window_days)
     try:
         verdict = llm.dedupe_batch(candidates, recent)
     except llm.BudgetExhausted:
@@ -242,7 +273,11 @@ def resolve_duplicates(candidates: list, existing: list, run_date: str) -> tuple
                 if isinstance(i, int) and 0 <= i < len(candidates) and i not in dropped]
         if len(idxs) < 2:
             continue
-        keeper, dups = candidates[idxs[0]], [candidates[i] for i in idxs[1:]]
+        keeper = candidates[idxs[0]]
+        idxs = [idxs[0]] + [i for i in idxs[1:] if _shares_country(candidates[i], keeper)]
+        if len(idxs) < 2:
+            continue
+        dups = [candidates[i] for i in idxs[1:]]
         merge.merge(keeper, dups, run_date)
         dropped.update(idxs[1:])
         print(f"  same-day merge: {keeper['name'][:55]} "
@@ -262,6 +297,10 @@ def resolve_duplicates(candidates: list, existing: list, run_date: str) -> tuple
             target = _name_target(candidates[i], existing)
         if target is None:
             print(f"  unattributed re-tell, keeping: {candidates[i]['name'][:55]}")
+            continue
+        if not _shares_country(candidates[i], target):
+            print(f"  cross-country verdict rejected, keeping: {candidates[i]['name'][:45]} "
+                  f"!= '{target['name'][:45]}'")
             continue
         merge.merge(target, [candidates[i]], run_date)
         dropped.add(i)

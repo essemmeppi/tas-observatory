@@ -3,3 +3,4 @@ keys.json
 .env
 .degraded
 bench_gate_results.json
+data/imports/*.state.jsonl

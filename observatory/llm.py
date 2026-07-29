@@ -197,15 +197,31 @@ def _chat(messages: list, model: str, json_mode: bool = False, max_tokens: int =
     return resp.json()["choices"][0]["message"]["content"] or ""
 
 
+def _as_object(data):
+    """The object a caller asked for, or None.
+
+    A model that is told to return one JSON object sometimes wraps it in an array
+    anyway. Unwrapping a single-element list is free; anything else is not the
+    shape the callers expect, and letting it through cost an article on the
+    2026-07-29 legacy import — _clean_assessment met a list and raised
+    AttributeError, which reads as a defect rather than as unparseable output.
+    """
+    if isinstance(data, dict):
+        return data
+    if isinstance(data, list) and len(data) == 1 and isinstance(data[0], dict):
+        return data[0]
+    return None
+
+
 def _parse_json(text: str) -> dict | None:
     text = re.sub(r"^```(?:json)?|```$", "", text.strip(), flags=re.MULTILINE).strip()
     try:
-        return json.loads(text)
+        return _as_object(json.loads(text))
     except json.JSONDecodeError:
         match = re.search(r"\{.*\}", text, re.DOTALL)
         if match:
             try:
-                return json.loads(match.group(0))
+                return _as_object(json.loads(match.group(0)))
             except json.JSONDecodeError:
                 return None
     return None
