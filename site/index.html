@@ -27,6 +27,9 @@ header{border-bottom:1px solid var(--line); padding:28px 0 22px; margin-bottom:2
 h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:34px; line-height:1.15; cursor:pointer; display:inline-block}
 h1:hover{color:var(--accent)}
 .sub{color:var(--ink-3); margin-top:6px; max-width:640px}
+.beta{font-size:13px; color:var(--ink-3); margin-top:10px; max-width:640px}
+.beta a{color:var(--accent); text-decoration:none}
+.beta a:hover{text-decoration:underline}
 .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-bottom:28px}
 .stat{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--card)}
 .stat .n{font-family:"Newsreader",Georgia,serif; font-style:italic; font-size:30px; font-weight:350; line-height:1.1}
@@ -112,6 +115,7 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
       <div class="kicker" id="lastupdate">Last update: —</div>
       <h1 onclick="goHome()" title="Reset all filters">The Agentic State Observatory</h1>
       <p class="sub">A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework. Curated by agents for humans.</p>
+      <p class="beta">Psst, the Observatory is in beta: we're testing it internally and with a few friends. Please <a href="mailto:hello@agenticstate.org">share</a> your feedback.</p>
     </div>
     <a class="btn" href="digest.html">Read the daily digest</a>
   </div>
