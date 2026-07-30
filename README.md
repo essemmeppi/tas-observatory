@@ -82,3 +82,12 @@ Same-story duplicates are merged rather than dropped, so later and better-source
 To merge two records by hand: `python scripts/merge_records.py --keep <id> --dup <id>`.
 
 Records with `"source": "google_alerts_legacy"` were seeded from the predecessor project ([GovServiceX](https://github.com/essemmeppi/GovServiceX)); keyword-flagged agentic ones have `"agentic": true`, the rest `null` (unclassified). To remove a bad entry, delete its line and commit.
+
+## License
+
+Copyright © 2026 The Agentic State.
+
+- **Code** (the pipeline, scripts, workflow, and site) is licensed under the [GNU AGPL-3.0](LICENSE). You may reuse and adapt it, but copyright and license notices must be preserved, and any modified version — including one offered as a hosted service — must publish its source under the same license.
+- **Dataset** ([`data/`](data/)) is licensed under [CC BY-SA 4.0](LICENSE-DATA). This applies to the compilation, curation, and original descriptions, to the extent we hold rights in them; the underlying news articles remain © their respective publishers, and facts as such are not subject to copyright. Reuse requires attribution and share-alike.
+
+Suggested attribution: *TAS Observatory by [The Agentic State](https://agenticstate.org), licensed CC BY-SA 4.0.*
