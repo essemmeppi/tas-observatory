@@ -1,4 +1,453 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=site/">
-<title>TAS Observatory</title></head>
-<body><a href="site/">TAS Observatory →</a></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAS Observatory — Agentic AI in Government</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,200..700;1,200..700&family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<style>
+:root{
+  --accent:#8b7ae8; --accent-soft:#e9e6ff; --accent-tint:#faf9ff;
+  --ink:#111; --ink-2:#333; --ink-3:#777; --line:#eee; --bg:#fff; --card:#fff;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --ink:#f2f0fa; --ink-2:#cfcbe0; --ink-3:#8f8aa5; --line:#2a2733; --bg:#141218; --card:#1b1922; --accent-soft:#2e2947; --accent-tint:#1b1922; }
+}
+*{box-sizing:border-box; margin:0}
+body{font-family:"Inter",Helvetica,sans-serif; font-weight:300; color:var(--ink); background:var(--bg); line-height:1.55; font-size:15px}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+header{border-bottom:1px solid var(--line); padding:28px 0 22px; margin-bottom:28px}
+.kicker{font-size:12px; color:var(--ink-3); font-weight:400; margin-bottom:6px}
+.kicker .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11.5px; color:var(--ink-2)}
+h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:34px; line-height:1.15; cursor:pointer; display:inline-block}
+h1:hover{color:var(--accent)}
+.sub{color:var(--ink-3); margin-top:6px; max-width:640px}
+.beta{font-size:13px; color:var(--ink-3); margin-top:10px; max-width:640px}
+.beta a{color:var(--accent); text-decoration:none}
+.beta a:hover{text-decoration:underline}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-bottom:28px}
+.stat{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--card)}
+.stat .n{font-family:"Newsreader",Georgia,serif; font-style:italic; font-size:30px; font-weight:350; line-height:1.1}
+.stat .l{font-size:12px; color:var(--ink-3); margin-top:2px}
+.charts{display:grid; grid-template-columns:2fr 1fr; gap:14px; margin-bottom:28px}
+@media(max-width:760px){.charts{grid-template-columns:1fr}}
+#chart-map svg{width:100%; height:auto; display:block}
+#chart-map path{transition:opacity .15s}
+#chart-map path.land:hover{opacity:.75; cursor:pointer}
+#chart-map path.land.active{stroke:var(--ink); stroke-width:1}
+.chart{border:1px solid var(--line); border-radius:10px; padding:16px; background:var(--card)}
+.chart h3{font-size:13px; font-weight:500; margin-bottom:12px}
+.bar-row{display:flex; align-items:center; gap:10px; margin-bottom:7px; font-size:12px; cursor:pointer; border-radius:4px}
+.bar-row:hover .bar-label{color:var(--accent)}
+.bar-row:hover .bar-fill{background:color-mix(in srgb, var(--accent) 75%, var(--accent-soft))}
+.bar-row.active .bar-label{color:var(--accent); font-weight:500}
+.bar-row.active .bar-fill{background:var(--accent)}
+.bar-label{width:150px; text-align:right; color:var(--ink-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0}
+.bar-track{flex:1; height:14px; display:flex; align-items:center}
+.bar-fill{height:14px; background:var(--accent-soft); border-radius:3px; min-width:2px; transition:background .15s}
+.bar-n{color:var(--ink-3); width:34px; flex-shrink:0}
+.controls{display:flex; flex-wrap:wrap; gap:10px; padding:14px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:8px; position:sticky; top:0; background:var(--bg); z-index:5}
+.controls input,.controls select{font:inherit; font-size:13px; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px 10px}
+.controls input{flex:1; min-width:180px}
+.count-line{font-size:12px; color:var(--ink-3); padding:10px 0 18px}
+.count-line .clear{color:var(--accent); cursor:pointer; margin-left:8px}
+.card{border-bottom:1px solid var(--line); padding:18px 0; cursor:pointer; position:relative}
+.card-shape{position:absolute; right:8px; top:50%; transform:translateY(-50%); width:150px; height:86%;
+  opacity:0; transition:opacity .45s ease; pointer-events:none}
+.card-shape svg{width:100%; height:100%}
+.card-shape path{fill:color-mix(in srgb, var(--accent) 14%, var(--bg)); stroke:color-mix(in srgb, var(--accent) 38%, var(--bg)); stroke-width:.8}
+.card:hover .card-shape{opacity:1}
+@media(max-width:900px){.card-shape{display:none}}
+.card:hover h2 a{color:var(--accent)}
+.card h2{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:20px; line-height:1.25}
+.card h2 a{color:var(--ink)}
+.card-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:8px 0 0; font-size:12px; color:var(--ink-3)}
+.mdate{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11.5px; color:var(--ink-3)}
+.chip{background:var(--accent-soft); color:var(--ink-2); border-radius:20px; padding:2px 9px; font-size:11px}
+.chip.layer{background:transparent; border:1px solid var(--line)}
+.chip.click{cursor:pointer}
+.chip.click:hover{border-color:var(--accent); color:var(--accent)}
+.desc{color:var(--ink-2); max-width:760px}
+.loadmore{display:block; margin:26px auto 60px; font:inherit; font-size:13px; font-weight:450; color:var(--accent); background:var(--accent-tint); border:1px solid var(--accent-soft); border-radius:8px; padding:10px 26px; cursor:pointer}
+.btn{display:inline-block; background:var(--accent); color:#fff; border-radius:8px; padding:8px 14px; font-size:13px; font-weight:450; white-space:nowrap}
+.btn:hover{text-decoration:none; background:color-mix(in srgb, var(--accent) 82%, #000)}
+footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px solid var(--line)}
+.err{padding:40px 0; color:var(--ink-3)}
+
+/* Side peek */
+#overlay{position:fixed; inset:0; background:rgba(15,12,25,.35); z-index:20; opacity:0; pointer-events:none; transition:opacity .4s ease}
+#overlay.open{opacity:1; pointer-events:auto}
+#peek{position:fixed; top:0; right:0; bottom:0; width:min(520px,100%); background:var(--bg); border-left:1px solid var(--line);
+  z-index:21; overflow-y:auto; padding:28px 30px 40px; box-shadow:-12px 0 40px rgba(15,12,25,.12);
+  transform:translateX(105%); visibility:hidden;
+  transition:transform .45s cubic-bezier(.32,.72,.28,1), visibility 0s .45s}
+#peek.open{transform:none; visibility:visible; transition:transform .45s cubic-bezier(.32,.72,.28,1), visibility 0s 0s}
+@media(max-width:760px){#peek{width:100%; border-left:none}}
+#peek .close{position:sticky; top:0; float:right; font-size:22px; line-height:1; color:var(--ink-3); cursor:pointer; background:var(--bg); border:none; padding:2px 6px}
+#peek .close:hover{color:var(--ink)}
+#peek h2{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:26px; line-height:1.2; margin:8px 0 4px; max-width:90%}
+#peek .p-org{color:var(--ink-3); font-size:13px; margin-bottom:10px}
+#peek .p-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:8px 0}
+#peek .p-label{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3)}
+#peek .p-date{margin-left:auto; align-self:center; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11.5px; color:var(--ink-3)}
+#peek dt{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); margin-top:16px}
+#peek dd{color:var(--ink-2); font-size:14px; margin-top:3px}
+#peek .srcs{margin-top:22px; padding-top:16px; border-top:1px solid var(--line)}
+#peek .srcs-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:2px}
+#peek .srcrow{display:block; padding:9px 0; border-bottom:1px solid var(--line)}
+#peek .srcrow:last-child{border-bottom:none}
+#peek .srcrow:hover{text-decoration:none}
+#peek .srcout{display:block; font-size:10.5px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
+#peek .srchead{color:var(--ink-2); font-size:13.5px; line-height:1.4}
+#peek .srcrow:hover .srchead, #peek .srcrow:hover .srcout{color:var(--accent)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap">
+    <div>
+      <div class="kicker" id="lastupdate">Last update: —</div>
+      <h1 onclick="goHome()" title="Reset all filters">The Agentic State Observatory</h1>
+      <p class="sub">A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework. Curated by agents for humans.</p>
+      <p class="beta">A beta project by <a href="https://agenticstate.org">The Agentic State</a> — share <a href="mailto:hello@agenticstate.org">your feedback</a>!</p>
+    </div>
+    <a class="btn" href="digest.html">Read the daily digest</a>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="stats" id="stats"></div>
+  <div class="charts">
+    <div class="chart map"><h3>Where</h3><div id="chart-map"></div></div>
+    <div class="chart"><h3>By framework layer</h3><div id="chart-layers"></div></div>
+  </div>
+
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search initiatives, organisations, descriptions…">
+    <select id="f-country"><option value="">All countries</option></select>
+    <select id="f-layer"><option value="">All layers</option></select>
+    <select id="f-type"><option value="">All types</option></select>
+  </div>
+  <div class="count-line" id="countline"></div>
+  <div id="feed"></div>
+  <button class="loadmore" id="loadmore" hidden>Load more</button>
+
+  <footer>TAS Observatory · updated daily by an automated pipeline · entries are AI-assessed and may contain errors · <a href="https://agenticstate.org">agenticstate.org</a></footer>
+</div>
+
+<div id="overlay"></div>
+<aside id="peek" role="dialog" aria-modal="true"></aside>
+
+<script>
+const LAYERS = {
+  "service-design-ux":"Service design & UX","workflows":"Government workflows",
+  "policy-rulemaking":"Policy & rule-making","compliance-supervision":"Compliance & supervision",
+  "crisis-response":"Crisis response","procurement":"Public procurement",
+  "agent-governance":"Agent governance","data-privacy":"Data & privacy",
+  "tech-stack":"Tech stack","cybersecurity":"Cyber security","public-finance":"Public finance",
+  "people-culture":"People & culture"
+};
+const AUTONOMY = {0:"L0 manual",1:"L1 rule-based",2:"L2 process automation",3:"L3 agentic workflows",4:"L4 semi-autonomous",5:"L5 fully autonomous"};
+// Development type: what form the news takes, not what domain it serves.
+// Primary first; a record can carry one secondary type for findability.
+const TYPES = {deployment:"Deployment", strategy:"Strategy", regulation:"Regulation", procurement:"Procurement"};
+const PAGE = 50;
+// `status` and `functions` are still collected in every record — they are just
+// not rendered or filterable here (reader feedback: not important to the public).
+let all = [], filtered = [], shown = 0, byId = {};
+
+const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtDate = d => /^\d{4}-\d{2}-\d{2}/.test(d||"") ? d.slice(0,10).split("-").reverse().join("-") : (d||"");
+const $ = id => document.getElementById(id);
+
+async function load(){
+  try{
+    const resp = await fetch("data/innovations.jsonl");
+    if(!resp.ok) throw new Error(resp.status);
+    const text = await resp.text();
+    // Sort by the date each card displays — when the story broke, not when the
+    // pipeline happened to ingest it. Ingestion date breaks ties.
+    const sortDate = r => (r.news_date || r.date_added || "");
+    all = text.split("\n").filter(Boolean).map(l => JSON.parse(l))
+      .filter(r => !r.hidden)
+      .sort((a,b) => sortDate(b).localeCompare(sortDate(a)) ||
+                     (b.date_added||"").localeCompare(a.date_added||""));
+    all.forEach(r => byId[r.id] = r);
+    init();
+  }catch(e){
+    $("feed").innerHTML =
+      '<div class="err">Could not load the database. If you opened this file directly, serve the repo instead: <code>python3 -m http.server</code> from the repo root, then open <code>localhost:8000</code>.</div>';
+  }
+}
+
+function init(){
+  const countries = [...new Set(all.flatMap(r => r.countries||[]))].sort();
+  fill("f-country", countries.map(c => [c,c]));
+  fill("f-layer", Object.entries(LAYERS));
+  fill("f-type", Object.entries(TYPES));
+  ["q","f-country","f-layer","f-type"].forEach(id =>
+    $(id).addEventListener(id==="q"?"input":"change", apply));
+  $("loadmore").addEventListener("click", () => render(false));
+  $("overlay").addEventListener("click", closeCard);
+  document.addEventListener("keydown", e => { if(e.key === "Escape") closeCard(); });
+  window.addEventListener("hashchange", openFromHash);
+  const latest = all.reduce((m, r) => (r.date_added||"") > m ? r.date_added : m, "");
+  if(latest) $("lastupdate").innerHTML =
+    'Last update: <span class="mono">' + latest.split("-").reverse().join("-") + "</span>";
+  stats(); apply(); openFromHash();
+}
+
+function fill(id, pairs){
+  const el = $(id);
+  pairs.forEach(([v,t]) => { const o=document.createElement("option"); o.value=v; o.textContent=t; el.appendChild(o); });
+}
+
+function stats(){
+  const week = new Date(Date.now()-7*864e5).toISOString().slice(0,10);
+  // Counted by news_date (when the story broke), not date_added: a backfill of
+  // historical initiatives lands with today's date_added, and 34 old records
+  // once read as a record-breaking week.
+  const tiles = [
+    [all.length.toLocaleString(), "agentic AI initiatives"],
+    [new Set(all.flatMap(r => r.countries||[])).size, "countries"],
+    [all.filter(r => (r.news_date || r.date_added || "") >= week).length, "reported in the last 7 days"]
+  ];
+  $("stats").innerHTML =
+    tiles.map(([n,l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+}
+
+function setFilter(selectId, value){
+  const el = $(selectId);
+  el.value = (el.value === value) ? "" : value;  // click again to clear
+  apply();
+  $("countline").scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function barChart(el, counts, labelFn, max, selectId){
+  const top = [...counts.entries()].sort((a,b) => b[1]-a[1]).slice(0, max);
+  const peak = top[0]?.[1] || 1;
+  const current = $(selectId).value;
+  el.innerHTML = top.map(([k,n]) =>
+    `<div class="bar-row${k===current?" active":""}" data-v="${esc(k)}" title="Filter by ${esc(labelFn(k))}">
+     <div class="bar-label">${esc(labelFn(k))}</div>
+     <div class="bar-track"><div class="bar-fill" style="width:${Math.max(2, n/peak*100)}%"></div></div>
+     <div class="bar-n">${n}</div></div>`).join("") || '<div class="err">No data yet.</div>';
+  el.querySelectorAll(".bar-row").forEach(row =>
+    row.addEventListener("click", () => setFilter(selectId, row.dataset.v)));
+}
+
+// Our country names -> world-atlas feature names, where they differ.
+const MAP_ALIASES = {
+  "United States":"United States of America","UK":"United Kingdom","USA":"United States of America",
+  "UAE":"United Arab Emirates","Czech Republic":"Czechia","Russia":"Russia",
+  "South Korea":"South Korea","North Korea":"North Korea","Vietnam":"Vietnam",
+  "Ivory Coast":"Côte d'Ivoire","DR Congo":"Dem. Rep. Congo","Bosnia and Herzegovina":"Bosnia and Herz.",
+  "Great Britain":"United Kingdom","Scotland":"United Kingdom","England":"United Kingdom","Wales":"United Kingdom","Northern Ireland":"United Kingdom",
+  "Dominican Republic":"Dominican Rep.","Hong Kong":"Hong Kong","Taiwan":"Taiwan"
+};
+let mapFeatures = null, featureByName = new Map(), shapeCache = new Map();
+
+async function drawMap(){
+  const el = $("chart-map");
+  if(!window.d3 || !window.topojson){ el.innerHTML = '<div class="err">Map unavailable offline.</div>'; return; }
+  try{
+    if(!mapFeatures){
+      const world = await (await fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")).json();
+      mapFeatures = topojson.feature(world, world.objects.countries).features;
+      mapFeatures.forEach(f => featureByName.set(f.properties.name, f));
+    }
+  }catch(e){ el.innerHTML = '<div class="err">Map could not load.</div>'; return; }
+
+  const counts = new Map();
+  all.forEach(r => (r.countries||[]).forEach(c => counts.set(c,(counts.get(c)||0)+1)));
+  // Aggregate by map feature: several of our names can share one polygon
+  // (e.g. Scotland + United Kingdom). Filter clicks use the most frequent name.
+  const byFeature = new Map();
+  counts.forEach((n, name) => {
+    const key = MAP_ALIASES[name] || name;
+    const cur = byFeature.get(key);
+    if(cur){ cur.n += n; if(n > cur.topN){ cur.name = name; cur.topN = n; } }
+    else byFeature.set(key, {name, n, topN: n});
+  });
+  const peak = Math.max(1, ...[...byFeature.values()].map(v => v.n));
+  const current = $("f-country").value;
+
+  const W = 640, H = 340;
+  const proj = d3.geoNaturalEarth1();
+  const path = d3.geoPath(proj.fitSize([W, H], {type:"FeatureCollection", features: mapFeatures.filter(f => f.properties.name !== "Antarctica")}));
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Initiatives by country"></svg>`;
+  const svg = d3.select(el).select("svg");
+  svg.selectAll("path").data(mapFeatures.filter(f => f.properties.name !== "Antarctica")).join("path")
+    .attr("d", path)
+    .attr("class", d => {
+      const hit = byFeature.get(d.properties.name);
+      return "land" + (hit && hit.name === current ? " active" : "");
+    })
+    .style("fill", d => {
+      const hit = byFeature.get(d.properties.name);
+      if(!hit) return "color-mix(in srgb, var(--ink-3) 12%, var(--bg))";
+      const pct = 18 + 82 * Math.sqrt(hit.n / peak);
+      return `color-mix(in srgb, var(--accent) ${pct.toFixed(0)}%, var(--bg))`;
+    })
+    .style("stroke", "var(--bg)").style("stroke-width", .4)
+    .on("click", (e, d) => {
+      const hit = byFeature.get(d.properties.name);
+      if(hit) setFilter("f-country", hit.name);
+    })
+    .append("title").text(d => {
+      const hit = byFeature.get(d.properties.name);
+      return hit ? `${hit.name}: ${hit.n} initiative${hit.n>1?"s":""}` : d.properties.name;
+    });
+}
+
+function charts(){
+  const lc = new Map();
+  all.forEach(r => (r.layers||[]).forEach(l => lc.set(l,(lc.get(l)||0)+1)));
+  barChart($("chart-layers"), lc, k => LAYERS[k]||k, 12, "f-layer");
+  drawMap();
+}
+
+function apply(){
+  const q = $("q").value.trim().toLowerCase();
+  const country = $("f-country").value;
+  const layer = $("f-layer").value;
+  const type = $("f-type").value;
+  filtered = all.filter(r =>
+    (!country || (r.countries||[]).includes(country)) &&
+    (!layer || (r.layers||[]).includes(layer)) &&
+    (!type || (r.types||[]).includes(type)) &&
+    (!q || [r.name,r.organisation,r.description,r.novelty,(r.countries||[]).join(" ")]
+      .join(" ").toLowerCase().includes(q))
+  );
+  charts();
+  render(true);
+}
+
+function clearFilters(){
+  ["q","f-country","f-layer","f-type"].forEach(id => $(id).value = "");
+  apply();
+}
+
+function goHome(){
+  closeCard();
+  clearFilters();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function countryShapeSvg(country){
+  if(shapeCache.has(country)) return shapeCache.get(country);
+  let svg = "";
+  const f = featureByName.get(MAP_ALIASES[country] || country);
+  if(f && window.d3){
+    const proj = d3.geoNaturalEarth1().fitSize([150, 86], f);
+    svg = `<svg viewBox="0 0 150 86" aria-hidden="true"><path d="${d3.geoPath(proj)(f)}"></path></svg>`;
+  }
+  shapeCache.set(country, svg);
+  return svg;
+}
+
+function listItem(r){
+  const countryChips = (r.countries||[]).map(c =>
+    `<span class="chip layer click" data-s="f-country" data-v="${esc(c)}">${esc(c)}</span>`).join("");
+  return `<article class="card" data-id="${r.id}" data-country="${esc((r.countries||[])[0]||"")}">
+    <div class="card-shape"></div>
+    <div class="card-head"><h2><a href="#r=${r.id}">${esc(r.name)}</a></h2>${countryChips}</div>
+    <p class="desc">${esc(r.description)}</p>
+    <div class="meta"><span class="mdate">${fmtDate(r.news_date||r.date_added||r.year)}</span></div>
+  </article>`;
+}
+
+function render(reset){
+  const feed = $("feed");
+  if(reset){ feed.innerHTML=""; shown = 0; }
+  const next = filtered.slice(shown, shown+PAGE);
+  feed.insertAdjacentHTML("beforeend", next.map(listItem).join(""));
+  feed.querySelectorAll(".card:not([data-bound])").forEach(el => {
+    el.dataset.bound = "1";
+    el.addEventListener("click", e => { e.preventDefault(); location.hash = "r=" + el.dataset.id; });
+    el.querySelectorAll(".chip.click").forEach(ch =>
+      ch.addEventListener("click", e => { e.stopPropagation(); e.preventDefault(); setFilter(ch.dataset.s, ch.dataset.v); }));
+    el.addEventListener("mouseenter", () => {
+      const holder = el.querySelector(".card-shape");
+      if(holder && !holder.innerHTML && el.dataset.country)
+        holder.innerHTML = countryShapeSvg(el.dataset.country);
+    });
+  });
+  shown += next.length;
+  $("loadmore").hidden = shown >= filtered.length;
+  const filtersOn = filtered.length !== all.length;
+  $("countline").innerHTML =
+    `${filtered.length.toLocaleString()} entries` +
+    (filtersOn ? ` (of ${all.length.toLocaleString()})<span class="clear" onclick="clearFilters()">clear filters ×</span>` : "");
+}
+
+function chipRow(items, selectId){
+  return items.map(([v, label]) =>
+    `<span class="chip layer click" data-s="${selectId}" data-v="${esc(v)}">${esc(label)}</span>`).join("");
+}
+
+function openCard(r){
+  const why = [r.novelty, r.agentic_rationale].filter(Boolean).join(" ");
+  const dl = [
+    r.description ? `<dt>Summary</dt><dd>${esc(r.description)}</dd>` : "",
+    why ? `<dt>Why it matters</dt><dd>${esc(why)}</dd>` : "",
+    r.tech_details ? `<dt>What technology</dt><dd>${esc(r.tech_details)}</dd>` : "",
+    r.stakeholders ? `<dt>Stakeholders</dt><dd>${esc(r.stakeholders)}</dd>` : ""
+  ].join("");
+  // Outlet from the hostname, headline from source_titles where the pipeline
+  // (or the backfill) captured one; older records fall back to the outlet alone.
+  const outletOf = u => { try{ return new URL(u).hostname.replace(/^www\./,""); }catch{ return u.slice(0,40); } };
+  const srcs = [r.url, ...(r.sources||[])].filter(Boolean).map(u => {
+    const t = (r.source_titles||{})[u] || "";
+    return `<a class="srcrow" href="${esc(u)}" target="_blank" rel="noopener">
+      <span class="srcout">${esc(outletOf(u))}${t ? "" : " ↗"}</span>
+      ${t ? `<span class="srchead">${esc(t)} ↗</span>` : ""}</a>`;
+  }).join("");
+  const date = esc(fmtDate(r.news_date||r.date_added||r.year));
+  // The autonomy ladder describes a system, so the row makes sense where there
+  // is one: deployments, and procurements (what is bought sits on the ladder).
+  // Strategies and regulations get no row — "not determined" there would read
+  // as a data gap rather than the category error it is.
+  const autonomyRow = ["deployment","procurement"].some(t => (r.types||[]).includes(t))
+    ? `<div class="p-row"><span class="p-label">Autonomy:</span>${
+        Number.isInteger(r.autonomy_level)
+          ? `<span class="chip layer">${AUTONOMY[r.autonomy_level]}</span>`
+          : '<span class="chip layer">not determined</span>'}</div>`
+    : "";
+  $("peek").innerHTML = `
+    <button class="close" onclick="closeCard()" aria-label="Close">×</button>
+    <h2>${esc(r.name)}</h2>
+    <div class="p-org">${esc(r.organisation||"")}</div>
+    <div class="p-row"><span class="p-label">Country:</span>${chipRow((r.countries||[]).map(c => [c, c]), "f-country")}</div>
+    <div class="p-row"><span class="p-label">Layer:</span>${chipRow((r.layers||[]).map(l => [l, LAYERS[l]||l]), "f-layer")}</div>
+    <div class="p-row"><span class="p-label">Type:</span>${chipRow((r.types||[]).map(t => [t, TYPES[t]||t]), "f-type")}</div>
+    ${autonomyRow}
+    <dl>${dl}</dl>
+    <div class="srcs"><div class="srcs-head"><span class="p-label">Sources</span>${date ? `<span class="p-date">${date}</span>` : ""}</div>${srcs}</div>`;
+  $("peek").querySelectorAll(".chip.click").forEach(ch =>
+    ch.addEventListener("click", () => { closeCard(); setFilter(ch.dataset.s, ch.dataset.v); }));
+  $("peek").classList.add("open"); $("overlay").classList.add("open");
+  $("peek").scrollTop = 0;
+}
+
+function closeCard(){
+  $("peek").classList.remove("open"); $("overlay").classList.remove("open");
+  if(location.hash.startsWith("#r=")) history.pushState("", document.title, location.pathname + location.search);
+}
+
+function openFromHash(){
+  const m = location.hash.match(/^#r=([0-9a-f]+)/);
+  if(m && byId[m[1]]) openCard(byId[m[1]]);
+  else closeCard();
+}
+
+load();
+</script>
+</body>
+</html>

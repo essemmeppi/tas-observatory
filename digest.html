@@ -27,7 +27,6 @@ h1 a{color:var(--ink)}
 h1 a:hover{color:var(--accent); text-decoration:none}
 .sub{color:var(--ink-3); margin-top:6px; max-width:640px}
 .beta{font-size:13px; color:var(--ink-3); margin-top:10px; max-width:640px}
-.beta strong{font-weight:400}
 .beta a{color:var(--accent); text-decoration:none}
 .beta a:hover{text-decoration:underline}
 .btn{display:inline-block; background:var(--accent); color:#fff; border-radius:8px; padding:8px 14px; font-size:13px; font-weight:450; white-space:nowrap}
@@ -79,8 +78,8 @@ h1 a:hover{color:var(--accent); text-decoration:none}
     <div>
       <div class="kicker">Daily digest</div>
       <h1><a href="./">The Agentic State Observatory</a></h1>
-      <p class="sub">What happened, day by day — the same brief the observatory publishes each morning.</p>
-      <p class="beta"><strong>Psst, the Observatory is in beta:</strong> we're testing it internally and with friends. Please, <a href="mailto:hello@agenticstate.org">share</a> your feedback!</p>
+      <p class="sub">What happened, around the world about the Agentic State, day by day.</p>
+      <p class="beta">A beta project by <a href="https://agenticstate.org">The Agentic State</a> — share <a href="mailto:hello@agenticstate.org">your feedback</a>!</p>
     </div>
     <a class="btn" href="./">Back to the observatory</a>
   </div>
@@ -102,14 +101,14 @@ let days = [], current = "";
 
 async function load(){
   try{
-    const resp = await fetch("../data/digests.jsonl");
+    const resp = await fetch("data/digests.jsonl");
     if(!resp.ok) throw new Error(resp.status);
     const text = await resp.text();
     days = text.split("\n").filter(Boolean).map(l => JSON.parse(l))
       .sort((a,b) => b.date.localeCompare(a.date));
     if(!days.length) throw new Error("empty");
   }catch(e){
-    $("note").outerHTML = '<div class="err">Could not load the digest archive. Serve the repo root: <code>python3 -m http.server</code>, then open <code>localhost:8000/site/digest.html</code>.</div>';
+    $("note").outerHTML = '<div class="err">Could not load the digest archive. Serve the repo root: <code>python3 -m http.server</code>, then open <code>localhost:8000/digest.html</code>.</div>';
     return;
   }
   $("datelist").innerHTML = days.map(d =>
