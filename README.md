@@ -2,7 +2,7 @@
 
 Daily observatory of **agentic AI entering government**, run by [The Agentic State](https://agenticstate.org).
 
-**Browse it:** [essemmeppi.github.io/tas-observatory](https://essemmeppi.github.io/tas-observatory/site/) — filterable feed, framework-layer and country breakdowns, updated daily.
+**Browse it:** [observatory.agenticstate.org](https://observatory.agenticstate.org) — filterable feed, framework-layer and country breakdowns, updated daily.
 
 ## How it works
 
@@ -23,7 +23,7 @@ If a run loses its LLM budget, hits its time budget, or fails to assess most of 
 
 The digest arrives each morning on a best-effort schedule. GitHub's `schedule` trigger has no SLA and has been observed firing 2–4 hours late, so the cron is set the night before to absorb that; it is not a guaranteed delivery time.
 
-There are no servers: GitHub Actions runs the pipeline, the repo is the database, GitHub Pages serves the frontend ([site/index.html](site/index.html), a single static page reading the JSONL).
+There are no servers: GitHub Actions runs the pipeline, the repo is the database, GitHub Pages serves the frontend ([index.html](index.html), a single static page reading the JSONL).
 
 ## Setup
 
