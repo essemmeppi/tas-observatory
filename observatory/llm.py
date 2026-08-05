@@ -377,7 +377,13 @@ def dedupe_batch(candidates: list, recent: list) -> dict:
     data = None
     for attempt in range(2):
         try:
-            data = _parse_json(_chat(messages, model=config.LLM_MODEL, json_mode=True, max_tokens=1000))
+            # Dedupe is a semantic judgement, but its whole output is two small
+            # index arrays. On 2026-08-05 the main model's hidden thinking spent
+            # the entire 1000-token ceiling, content came back empty, both
+            # attempts failed and the run fell back to name matching — so
+            # reasoning is off here and the ceiling doubled as margin.
+            data = _parse_json(_chat(messages, model=config.LLM_MODEL, json_mode=True,
+                                     max_tokens=2000, reasoning=False))
         except BudgetExhausted:
             raise
         except Exception as e:
