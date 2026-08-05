@@ -314,6 +314,27 @@ def test_extraction_call_shape():
           seen.get("reasoning") is None, str(seen.get("reasoning")))
 
 
+def test_dedupe_call_shape():
+    """Dedupe hit the same failure as extraction did on 2026-07-28: on 2026-08-05
+    the main model's hidden thinking exhausted the 1000-token ceiling, content came
+    back empty twice, and the run fell back to name matching. Dedupe's visible
+    output is two small index arrays, so this call runs with reasoning off and a
+    doubled ceiling."""
+    seen = {}
+
+    def capture(messages, model, json_mode=False, max_tokens=1600, reasoning=None):
+        seen.update(max_tokens=max_tokens, reasoning=reasoning)
+        return '{"merge_groups": [], "already_known": []}'
+
+    with patch.object(llm, "_chat", side_effect=capture):
+        llm.dedupe_batch([{"name": "A", "countries": ["Utopia"]}],
+                         [{"name": "B", "countries": ["Erewhon"]}])
+    check(f"dedupe raises the token ceiling to 2000 (got {seen.get('max_tokens')})",
+          seen.get("max_tokens") == 2000)
+    check("dedupe turns reasoning off",
+          seen.get("reasoning") is False, str(seen.get("reasoning")))
+
+
 def test_extraction_retry():
     good = '{"relevant": true, "agentic": true, "name": "X", "status": "pilot"}'
     calls = []
@@ -590,6 +611,7 @@ def main():
     offline = [
         test_canonical_urls, test_tiers, test_name_matching, test_pick_canonical,
         test_merge_semantics, test_sources_cap, test_fair_order, test_gate_model_split, test_reasoning_body,
+        test_extraction_call_shape, test_dedupe_call_shape,
         test_extraction_retry,
         test_resolve_duplicates, test_resolve_falls_back_when_dedupe_dies,
         test_budget_exhaustion_propagates, test_degraded_marker, test_digest, test_real_db,
