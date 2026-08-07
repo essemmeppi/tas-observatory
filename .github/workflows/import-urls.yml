@@ -1,0 +1,80 @@
+name: Import URLs
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "URL list under data/imports/ (one URL per line, # comments allowed)"
+        default: "data/imports/2026-08-07-apolitical-navigator.txt"
+      max:
+        description: "Process at most N URLs this run (empty = no cap)"
+        default: ""
+      dry_run:
+        description: "Assess but don't write the DB (state is still saved)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    # import_urls.py checkpoints every verdict to <list>.state.jsonl, so a run
+    # that hits this ceiling loses nothing the commit step below can't keep:
+    # re-dispatching resumes where it stopped. 355 sits under GitHub's 6-hour
+    # job maximum with margin for the commit step.
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r observatory/requirements.txt
+
+      # continue-on-error so a run stopped by the LLM budget still reaches the
+      # commit step: every verdict so far is checkpointed and worth keeping.
+      # The final step turns the job red afterwards.
+      - name: Import URLs
+        id: import
+        continue-on-error: true
+        timeout-minutes: 340
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          GATE_MODEL: ${{ vars.GATE_MODEL }}
+          GATE_REASONING: ${{ vars.GATE_REASONING }}
+          FILE: ${{ inputs.file }}
+          MAX: ${{ inputs.max }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          args=(--file "$FILE")
+          [ -n "$MAX" ] && args+=(--max "$MAX")
+          [ "$DRY_RUN" = "true" ] && args+=(--dry-run)
+          python scripts/import_urls.py "${args[@]}"
+
+      - name: Commit records and import state
+        env:
+          FILE: ${{ inputs.file }}
+        run: |
+          git config user.name "tas-observatory"
+          git config user.email "actions@github.com"
+          git add data/innovations.jsonl "${FILE%.*}.state.jsonl"
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit"
+          else
+            git commit -m "observatory: manual import $(date -u +%F) ($(basename "$FILE"))"
+            git push
+          fi
+
+      - name: Fail if the import stopped early
+        run: |
+          if [ "${{ steps.import.outcome }}" = "failure" ]; then
+            echo "::error::import stopped early (LLM budget or error); state is committed, re-dispatch to resume"
+            exit 1
+          fi
+          echo "Clean run"
