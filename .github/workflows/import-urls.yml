@@ -63,7 +63,9 @@ jobs:
         run: |
           git config user.name "tas-observatory"
           git config user.email "actions@github.com"
-          git add data/innovations.jsonl "${FILE%.*}.state.jsonl"
+          # -f: data/imports/*.state.jsonl is gitignored for local runs, but a
+          # fresh runner needs the committed state to resume and skip verdicts.
+          git add -f data/innovations.jsonl "${FILE%.*}.state.jsonl"
           if git diff --cached --quiet; then
             echo "Nothing new to commit"
           else
