@@ -170,9 +170,15 @@ def main():
 
     state = load_state(state_path)
     processed = {urls.canonical_url(e["url"]) for e in state}
-    # Accepted in an earlier (interrupted or dry) run but never committed.
+    # Accepted in an earlier (interrupted or dry) run but never committed. A
+    # missing id alone is not enough: a record dedupe merged *away* also has no
+    # id in the DB, but its URL lives on as a source of the record it merged
+    # into — resurrecting it would duplicate what the merge already kept
+    # (2026-08-08: a second Diia.AI record). known_url covers sources, so it
+    # separates the two cases.
     carried = [e["record"] for e in state
-               if e["outcome"] == "added" and e["record"]["id"] not in db_ids]
+               if e["outcome"] == "added" and e["record"]["id"] not in db_ids
+               and not deduper.known_url(e["record"]["url"])]
     for r in carried:
         # Records checkpointed before the country vocabulary was pinned
         # (llm.canonical_country) may carry variants like "United States of
