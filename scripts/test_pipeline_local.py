@@ -464,6 +464,11 @@ def test_digest():
     check("the warning counts unassessed articles", "106 articles never assessed" in degraded)
     check("the warning flags the skipped duplicate check", "duplicate check did not run" in degraded)
 
+    quiet = digest.build_digest([], RUN_DATE, scanned=400, assessed=320)
+    check("a quiet day still reports the scan", "no new initiatives" in quiet)
+    check("a quiet day lists nothing", "New today" not in quiet and "Updated from" not in quiet)
+    check("a quiet day carries no warning", "Incomplete run" not in quiet)
+
 
 def test_real_db():
     records = db.load_records()
