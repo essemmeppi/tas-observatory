@@ -62,14 +62,16 @@ def names_match(a: str, b: str, countries_a=None, countries_b=None) -> bool:
     # sat in the database as a duplicate. Validated across every same-country pair
     # under 60 days apart: 12/2 catches it with no false positives, while 10/2
     # starts matching a record literally named "Agentic AI".
-    if len(shorter) < 12 or len(shorter.split()) < 2:
-        return False
-    if shorter in longer:
+    if len(shorter) >= 12 and len(shorter.split()) >= 2 and shorter in longer:
         return True
     # Spelling and inflection variants only. SequenceMatcher penalises length
     # mismatch steeply, so a long headline cannot reach this bar against a short
-    # initiative name.
-    if countries_a and countries_b:
+    # initiative name. Unlike containment, this branch is safe for single-token
+    # names — "Gennai"/"GENAI" sat in the database as a duplicate because the
+    # 12/2 guard blocked every one-word name before similarity was ever tried.
+    # Validated across every same-country pair in the database: at >= 5 chars
+    # the relaxed gate fires on exactly that pair and nothing else.
+    if len(shorter) >= 5 and countries_a and countries_b:
         return difflib.SequenceMatcher(None, x, y).ratio() >= NAME_SIMILARITY
     return False
 

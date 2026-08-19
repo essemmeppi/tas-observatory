@@ -8,7 +8,8 @@ import itertools
 import re
 import sys
 import time
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 from . import config, db, digest, extract, llm, merge, sources, urls
 
@@ -241,6 +242,32 @@ def _shares_country(a: dict, b: dict) -> bool:
     return True
 
 
+def _name_sweep(candidates: list, existing: list, run_date: str, enrich: bool = True) -> tuple:
+    """Fold every candidate whose name matches a stored record — or an earlier
+    survivor of the same batch — and return (survivors, existing_touched).
+
+    The batch check matters as much as the stored one: on 2026-08-08 the budget
+    died before dedupe and three same-night tellings of the Ho Chi Minh City tax
+    call center, two of them under an identical name, were all inserted because
+    candidates were only ever compared against the stored records.
+    """
+    survivors, touched = [], []
+    for candidate in candidates:
+        target = _name_target(candidate, existing)
+        into_batch = target is None
+        if into_batch:
+            target = _name_target(candidate, survivors)
+        if target is None:
+            survivors.append(candidate)
+            continue
+        merge.merge(target, [candidate], run_date, enrich=enrich)
+        if not into_batch:
+            touched.append(target)
+        print(f"  name-match merge into {'batch record ' if into_batch else ''}"
+              f"'{target['name'][:50]}': {candidate['name'][:50]}")
+    return survivors, touched
+
+
 def _fallback_resolve(candidates: list, existing: list, run_date: str, enrich: bool = True) -> tuple:
     """Name-match-only resolution, for when the LLM verdict is unavailable.
 
@@ -248,15 +275,7 @@ def _fallback_resolve(candidates: list, existing: list, run_date: str, enrich: b
     caught the hrreporter re-tell but not the Globe and Mail one — so any run
     that lands here is reported as degraded.
     """
-    survivors, touched = [], []
-    for candidate in candidates:
-        target = _name_target(candidate, existing)
-        if target is None:
-            survivors.append(candidate)
-            continue
-        merge.merge(target, [candidate], run_date, enrich=enrich)
-        touched.append(target)
-        print(f"  name-match merge into '{target['name'][:50]}': {candidate['name'][:50]}")
+    survivors, touched = _name_sweep(candidates, existing, run_date, enrich=enrich)
     return survivors, touched, False
 
 
@@ -322,7 +341,15 @@ def resolve_duplicates(candidates: list, existing: list, run_date: str,
         print(f"  merged into '{target['name'][:50]}': {candidates[i]['name'][:50]}")
 
     survivors = [r for i, r in enumerate(candidates) if i not in dropped]
-    print(f"  dedupe: {len(candidates)} candidates, {len(dropped)} merged away, {len(survivors)} new")
+    # The LLM only ever sees the recent window, so a re-tell of an older record
+    # sails through it: Diella and Gennai were both re-added months after their
+    # originals. names_match against the WHOLE database is free and, at the 0.90
+    # bar, has no false positive across every pair in it — run it on whatever
+    # the verdict let through.
+    survivors, name_touched = _name_sweep(survivors, existing, run_date)
+    touched += name_touched
+    print(f"  dedupe: {len(candidates)} candidates, "
+          f"{len(candidates) - len(survivors)} merged away, {len(survivors)} new")
     return survivors, touched, True
 
 
@@ -344,7 +371,13 @@ def main():
     parser.add_argument("--max-items", type=int, default=config.MAX_ITEMS_PER_RUN)
     args = parser.parse_args()
 
-    run_date = date.today().isoformat()
+    # The date on the digest is the morning it reaches Slack, which is CET: the
+    # cron fires 23:17 UTC, so the runner's UTC calendar still shows the evening
+    # before — and whether GitHub's scheduling delay happened to cross midnight
+    # decided the label. Consecutive nights got stamped 08-10 and 08-12, and no
+    # digest is dated 08-11 at all. Any start past 23:00 UTC is already the
+    # delivery morning in Rome, so the Rome date is stable against the jitter.
+    run_date = datetime.now(ZoneInfo("Europe/Rome")).date().isoformat()
     existing = db.load_records()
     deduper = db.Deduper(existing)
     print(f"DB has {len(existing)} records")
@@ -389,6 +422,13 @@ def main():
     # should not be able to pass for a clean run either.
     if not degraded and errors >= max(3, processed // 2):
         degraded = f"{errors} of {processed} articles failed to assess"
+    # One Google News query failing is noise; the whole source contributing
+    # nothing means the harvest ran on a fraction of its inputs and a quiet
+    # night can't be told apart from a blocked one. On 2026-08-17 all queries
+    # 503'd (Google throttling the runner IP), the run found nothing, and the
+    # silence looked green everywhere.
+    if not degraded and not any(i.get("source", "").startswith("google_news") for i in items):
+        degraded = "google news contributed no items (every query failed or came back empty)"
     dedupe_ran = True
     if new_records:
         try:
@@ -419,9 +459,8 @@ def main():
     # and an exception here would skip the commit step and lose the harvest.
     try:
         if new_records or unique_touched:
-            # One lede, two renderings: the Slack message and the site's digest
-            # archive carry the same text, so it is only generated (and only
-            # has to be got right) once.
+            # The lede paragraph is site-only: on the digest page it introduces
+            # the day, in Slack it just repeated the bullet points.
             lede = llm.write_digest_lede(new_records) if (config.LLM_API_KEY and new_records) else None
             text = digest.build_digest(
                 new_records, run_date,
@@ -430,7 +469,6 @@ def main():
                 unassessed=unassessed,
                 dedupe_ran=dedupe_ran,
                 scanned=len(fresh), assessed=processed,
-                lede=lede,
             )
             print("\n" + text)
             digest.write_archive(digest.archive_row(

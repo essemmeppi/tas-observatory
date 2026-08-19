@@ -59,7 +59,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No new records today"
           else
-            git commit -m "observatory: daily update $(date -u +%F)"
+            git commit -m "observatory: daily update $(TZ=Europe/Rome date +%F)"
             git push
           fi
 
