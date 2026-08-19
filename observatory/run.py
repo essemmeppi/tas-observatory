@@ -477,6 +477,20 @@ def main():
             print(f"Wrote digest archive entry for {run_date}")
             if not args.no_slack and digest.post_to_slack(text):
                 print("Posted digest to Slack")
+        elif not degraded and fresh:
+            # A clean night with nothing over the bar is reported, not skipped:
+            # "scanned N, no new initiatives" says the observatory ran and the
+            # bar held, so silence in the channel only ever means breakage.
+            # Degraded quiet nights stay out of public view — the red run
+            # already tells the team, and "we scanned a fraction of the usual
+            # sources" is an ops note, not a day's finding.
+            text = digest.build_digest([], run_date, scanned=len(fresh), assessed=processed)
+            print("\n" + text)
+            digest.write_archive(digest.archive_row([], run_date, [], None,
+                                                    scanned=len(fresh), assessed=processed))
+            print(f"Wrote quiet-day digest archive entry for {run_date}")
+            if not args.no_slack and digest.post_to_slack(text):
+                print("Posted quiet-day digest to Slack")
     except Exception as e:
         print(f"  warning: digest/slack failed ({e})")
 
