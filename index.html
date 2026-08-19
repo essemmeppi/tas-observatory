@@ -186,6 +186,21 @@ async function load(){
   }
 }
 
+// Same date semantics as the digest: the last update is the latest delivery
+// morning in the digest archive (Europe/Rome), which moves on quiet days too.
+// Records' date_added is only the fallback if the archive cannot be read.
+async function lastUpdate(){
+  let latest = "";
+  try{
+    const text = await (await fetch("data/digests.jsonl")).text();
+    latest = text.split("\n").filter(Boolean)
+      .reduce((m, l) => { const d = JSON.parse(l).date || ""; return d > m ? d : m; }, "");
+  }catch(e){}
+  if(!latest) latest = all.reduce((m, r) => (r.date_added||"") > m ? r.date_added : m, "");
+  if(latest) $("lastupdate").innerHTML =
+    'Last update: <span class="mono">' + latest.split("-").reverse().join("-") + "</span>";
+}
+
 function init(){
   const countries = [...new Set(all.flatMap(r => r.countries||[]))].sort();
   fill("f-country", countries.map(c => [c,c]));
@@ -197,9 +212,7 @@ function init(){
   $("overlay").addEventListener("click", closeCard);
   document.addEventListener("keydown", e => { if(e.key === "Escape") closeCard(); });
   window.addEventListener("hashchange", openFromHash);
-  const latest = all.reduce((m, r) => (r.date_added||"") > m ? r.date_added : m, "");
-  if(latest) $("lastupdate").innerHTML =
-    'Last update: <span class="mono">' + latest.split("-").reverse().join("-") + "</span>";
+  lastUpdate();
   stats(); apply(); openFromHash();
 }
 
