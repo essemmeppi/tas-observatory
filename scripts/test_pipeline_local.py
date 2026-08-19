@@ -11,7 +11,7 @@ import argparse
 import collections
 import itertools
 import sys
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from unittest.mock import patch
 
@@ -370,8 +370,11 @@ def test_extraction_retry():
 
 
 def test_resolve_duplicates():
+    # date_added must be relative: recent_records cuts off at today-minus-window,
+    # so a hardcoded date silently ages out of the window and the verdict's
+    # `existing` index stops resolving (this test broke that way on 2026-08-08).
     existing = [_record("old1", "https://www.meritalk.com/va", "VA Agentforce Expansion",
-                        "2026-07-24", date_added="2026-07-24")]
+                        "2026-07-24", date_added=(date.today() - timedelta(days=1)).isoformat())]
     candidates = [
         _record("new1", "https://247wallst.com/va", "VA Agentforce Enterprise License Agreement",
                 "2026-07-25", date_added=RUN_DATE, status="implemented"),
@@ -451,12 +454,10 @@ def test_digest():
                      description="It does things.", sources=["https://www.bbc.co.uk/a"])]
     enriched = [_record("e1", "https://www.meritalk.com/b", "An Older Thing", "2026-07-20",
                         sources=["https://247wallst.com/b"])]
-    with patch.object(digest.llm, "write_digest_lede", return_value="Test lede."):
-        with patch.object(digest.config, "LLM_API_KEY", "x"):
-            clean = digest.build_digest(items, RUN_DATE, enriched=enriched)
-            degraded = digest.build_digest(items, RUN_DATE, degraded="LLM budget exhausted",
-                                           unassessed=106, dedupe_ran=False)
-    check("digest renders the lede and items", "Test lede." in clean and "A Thing" in clean)
+    clean = digest.build_digest(items, RUN_DATE, enriched=enriched)
+    degraded = digest.build_digest(items, RUN_DATE, degraded="LLM budget exhausted",
+                                   unassessed=106, dedupe_ran=False)
+    check("digest renders the items", "A Thing" in clean)
     check("digest lists records improved by new reporting", "Updated from new reporting" in clean)
     check("a clean digest carries no warning", "Incomplete run" not in clean)
     check("a degraded digest warns up front", "Incomplete run" in degraded)

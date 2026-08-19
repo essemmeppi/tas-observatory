@@ -1,16 +1,17 @@
 """Daily digest, rendered twice from one structured object.
 
 The Slack message and the site's digest archive (data/digests.jsonl, read by
-site/digest.html) carry the same content — stats sentence, lede, items — so
-the text only has to be got right once. The one deliberate difference: the
-:warning: incomplete-run block is Slack-only. It is an ops note for the team;
-on a public page it reads as noise.
+digest.html) carry the same content — stats sentence, items — so the text
+only has to be got right once. Two deliberate differences: the :warning:
+incomplete-run block is Slack-only (an ops note for the team; on a public
+page it reads as noise), and the lede paragraph is site-only (in Slack it
+just restated the bullet points).
 """
 import json
 
 import requests
 
-from . import config, llm
+from . import config
 
 ARCHIVE_PATH = config.ROOT / "data" / "digests.jsonl"
 
@@ -111,14 +112,11 @@ def write_archive(row: dict) -> None:
 
 def build_digest(items: list, run_date: str, enriched: list | None = None,
                  degraded: str | None = None, unassessed: int = 0,
-                 dedupe_ran: bool = True, scanned: int = 0, assessed: int = 0,
-                 lede: str | None = None) -> str:
+                 dedupe_ran: bool = True, scanned: int = 0, assessed: int = 0) -> str:
     agentic = [r for r in items if r.get("agentic")]
     other = [r for r in items if not r.get("agentic")]
     enriched = enriched or []
 
-    if lede is None:
-        lede = llm.write_digest_lede(items) if (config.LLM_API_KEY and items) else None
     lines = [f"*TAS Observatory — {run_date}*"]
     warning = _warning(degraded, unassessed, dedupe_ran)
     if warning:
@@ -126,8 +124,6 @@ def build_digest(items: list, run_date: str, enriched: list | None = None,
     stats = _stats_sentence(scanned, assessed, len(items), len(enriched), show_assessed=True)
     if stats:
         lines += ["", stats]
-    if lede:
-        lines += ["", lede]
 
     def fmt(r):
         countries = ", ".join(r.get("countries") or []) or "—"
