@@ -51,11 +51,16 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: python -m observatory.run ${{ inputs.no_slack && '--no-slack' || '' }}
 
+      # Runs even when the observatory step degraded (continue-on-error above):
+      # whatever the harvest wrote is what llms.txt should mirror.
+      - name: Regenerate llms.txt
+        run: python scripts/generate_llms_txt.py
+
       - name: Commit new records
         run: |
           git config user.name "tas-observatory"
           git config user.email "actions@github.com"
-          git add data/innovations.jsonl data/digests.jsonl
+          git add data/innovations.jsonl data/digests.jsonl llms.txt
           if git diff --cached --quiet; then
             echo "No new records today"
           else
