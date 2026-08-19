@@ -6,9 +6,6 @@ This file is the full public dataset, regenerated on every daily run,
 newest first (249 records as of 2026-08-18).
 
 - Site: https://observatory.agenticstate.org
-- Daily digest: https://observatory.agenticstate.org/digest
-- Structured data (JSONL): https://observatory.agenticstate.org/data/innovations.jsonl
-  and https://observatory.agenticstate.org/data/digests.jsonl
 - The framework: https://agenticstate.org/paper
 - Data license: CC BY-SA 4.0 — attribute "The Agentic State Observatory"
 - Feedback: hello@agenticstate.org
