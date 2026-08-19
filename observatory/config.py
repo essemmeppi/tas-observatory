@@ -48,7 +48,7 @@ TIME_BUDGET_MIN = int(os.getenv("TIME_BUDGET_MIN", "60"))  # processing loop cut
 AGENTIC_ONLY = os.getenv("AGENTIC_ONLY", "1") == "1"
 
 # Public frontend, linked from the Slack digest.
-SITE_URL = "https://essemmeppi.github.io/tas-observatory/site/"
+SITE_URL = "https://observatory.agenticstate.org/"
 
 # How far back to look for near-duplicate names when deduping. This check is a
 # free string comparison, so it can afford a wide window.
