@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (249 records as of 2026-08-18).
+newest first (258 records as of 2026-08-20).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,87 @@ newest first (249 records as of 2026-08-18).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### ANSSI Autonomous Cybersecurity Agents (France, 2026-08-20)
+Organisation: National Cybersecurity Agency (ANSSI)
+Layer: Cyber security
+Type: Deployment
+Summary: ANSSI is deploying autonomous AI agents inside French government networks to perform real-time threat detection and behavior monitoring. The initiative aims to counter credential-based attacks on public-sector systems by replacing traditional static defenses with continuous AI-driven auditing. It represents a concrete pivot to agentic AI in French public sector cybersecurity operations.
+Why it matters: The initiative marks a shift from traditional cybersecurity defenses to autonomous, continuous AI-driven auditing within government networks. It represents one of the first concrete deployments of agentic AI for real-time internal threat detection in the French public sector. The system deploys autonomous AI agents inside government networks that conduct real-time threat detection, behavior monitoring and continuous AI-driven auditing without a human initiating each step. The source describes the move as a pivot to agentic AI that goes beyond traditional defenses to continuous AI-driven auditing.
+What technology: The source does not disclose specific models, platforms or architecture, stating only that autonomous AI agents operate inside government networks.
+Sources:
+- France's ANSSI Turns to Autonomous AI Agents for Government Network Threat Hunting — https://x.com/MDKASHIF_9/status/2089737604635959541
+
+### Agentic AI Embedded in Business Connectivity (United Arab Emirates, 2026-08-19)
+Organisation: e& UAE
+Layer: Tech stack, Government workflows
+Type: Deployment
+Summary: e& UAE has embedded Agentic AI into its core mobile and fixed business connectivity plans, including Business Pro fixed internet and enterprise connectivity propositions. The offering combines intelligent task automation with Sovereign AI Compute, providing UAE-based GPU capacity and secure national network connectivity to support business and government operations.
+Why it matters: It is the first telecom provider in the region to integrate Agentic AI directly into standard business connectivity plans, bundling autonomous AI capabilities with mobile, internet, and sovereign GPU resources rather than requiring separate procurement and assembly. The system can 'understand objectives, organise information and carry out connected sequences of tasks under defined controls' to 'automate routine processes, manage workflows, respond to requests and access relevant information' without a human initiating each individual step.
+What technology: Integrated with Business Pro fixed internet, Digital Internet, and Digital Premium Internet services; complemented by Sovereign AI Compute providing UAE-based GPU capacity alongside secure, high-performance connectivity.
+Sources:
+- e& is embedding Agentic AI into its core business connectivity — https://www.webwire.com/ViewPressRel.asp?aId=359078
+
+### AI for All Initiative (SKT Public Service Agent) (South Korea, 2026-08-19)
+Organisation: Ministry of Science and ICT
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: SK Telecom is participating in the South Korean government's 'AI for All' initiative to democratize access to artificial intelligence. The company plans to deploy an AI agent that autonomously finds and applies for public services, issues certificates, and handles bookings, applications and payments across health care, transportation, finance and education sectors. The system will be distributed via SKT's 22.5 million mobile subscriber lines and retail channels, leveraging the company's sovereign A.X K2 large language model.
+Why it matters: The initiative uniquely combines sovereign AI infrastructure (the 688-billion-parameter A.X K2 model) with mass-market telecommunications distribution to deliver autonomous agent capabilities directly to citizens, aiming to prevent AI usage gaps from becoming social inequalities. The system is explicitly designed as an 'AI agent that can carry out tasks such as finding and applying for public services, issuing certificates and handling bookings, applications and payments across areas including health care, transportation, finance and education' without requiring human initiation of each individual step.
+What technology: Built on SKT's 'full-stack' AI capabilities including the A.X K2 large language model (688 billion parameters) developed under the government's sovereign foundation model project, delivered through mobile subscriber lines and retail channels.
+Sources:
+- SKT joins government's 'AI for All' initiative to expand public access — https://www.koreatimes.co.kr/amp/business/companies/20260819/skt-joins-governments-ai-for-all-initiative-to-expand-public-access
+
+### Dubai-India Agentic AI Cooperation Agreement (United Arab Emirates, India, 2026-08-19)
+Organisation: Dubai Chambers
+Layer: Government workflows, Service design & UX, Public finance
+Type: Strategy, Deployment
+Summary: Dubai Chambers and India's Nasscom have signed a preliminary agreement to accelerate private-sector adoption of agentic AI, support Indian AI companies entering the UAE market, and facilitate expertise exchange between the two markets. The partnership includes specialised training for business councils, incubators for agentic AI companies, and dedicated transition funds, while advancing Dubai's goal to deliver 50% of government services via AI agents within two years.
+Why it matters: This establishes a cross-border public-private partnership specifically focused on agentic AI, combining Dubai's market demand with India's technical expertise. It supports Dubai's goal to become the world's leading hub for developing and deploying advanced AI solutions and sets an ambitious target to transform 50% of government services using AI agents within two years. The systems can "understand a goal, decide what steps to take and carry them out with limited human supervision", and can plan, decide, coordinate and execute multi-step workflows with limited human input. This includes handling customer requests, processing documents, managing procurement, conducting compliance checks, and supporting government decision-making with real-time service improvements, without requiring human initiation of each step.
+What technology: Not specified in the sources; references general agentic AI capabilities for multi-step workflow automation.
+Sources:
+- Dubai accelerates India deal to adopt agentic AI in private sector — https://www.thenationalnews.com/business/2026/08/19/dubai-accelerates-india-deal-to-adopt-agentic-ai-in-private-sector/
+- Dubai-India Agentic AI Agreement: Boosting Private Sector Adoption - News and Statistics — https://www.indexbox.io/blog/dubai-and-india-sign-preliminary-agreement-to-boost-agentic-ai-cooperation/
+
+### Avengers AI visual-recognition engine / DELTA battlefield management system (Ukraine, 2026-08-19)
+Organisation: Ukraine Ministry of Defence, Main Directorate of Information Technology
+Layer: Crisis response, Agent governance
+Type: Deployment, Strategy
+Summary: Ukraine operates the DELTA cloud-based battlefield management system, which contains Avengers—an AI visual-recognition engine that scans battlefield video streams in real time to map the front and automatically flag targets. The system identifies Russian army equipment in 2.2 seconds and drastically reduces strike execution time. Separately, Ukraine has deployed fully autonomous 'Terminator' quadcopter drones with pre-programmed AI and no human oversight, resulting in the first known battlefield deaths from closed sensor-to-shooter autonomous weapons.
+Why it matters: This represents one of the first confirmed battlefield uses of fully autonomous lethal weapons with no human-in-the-loop, alongside a real-time AI target recognition system integrated into cloud-based command infrastructure. The 'last-mile' autonomous navigation achieving 80% hit rates represents a significant tactical innovation in counter-jamming warfare. The 'Terminator' drones were 'AI-controlled and programmed pre-launch with no human oversight' with a 'closed sensor-to-shooter loop' where 'everything it sees will be killed.' Avengers autonomously 'scans streams of battlefield video in real time to map the front and flag targets automatically.' The Molniya strike drone variant may leave 'the drone's built-in software to fly itself, identify the target, and execute the final strike—completely on its own.'
+What technology: DELTA cloud-based battlefield management system; Avengers AI visual-recognition engine using machine vision; autonomous 'last-mile' navigation for drones at ~15 meter range; AI-controlled quadcopter drones with pre-programmed targeting; unmanned platforms with fiber-optic and radio-link resilience.
+Sources:
+- Should Ukraine Have to Justify Its Use of Battlefield AI? — https://united24media.com/war-in-ukraine/should-ukraine-have-to-justify-its-use-of-battlefield-ai-21775
+
+### MixMode AI Cyber Defense Platform (United States, 2026-08-19)
+Organisation: U.S. Department of War and U.S. Intelligence Community
+Layer: Cyber security, Tech stack
+Type: Deployment
+Summary: MixMode is an AI-powered cybersecurity platform that autonomously monitors network traffic, cloud environments, and user activity to defend against AI-driven attacks and insider threats. Using self-learning 'Third Wave AI' based on dynamical systems research, it builds continuously updated models of expected behavior to detect novel threats without relying on predefined rules or signatures. The platform has received a Department of War Certificate to Field and Authority to Operate from the U.S. Intelligence Community, clearing it for deployment in high-security government operational environments.
+Why it matters: The platform employs proprietary self-supervised AI rooted in decades of applied mathematics and dynamical systems research (including DARPA-sponsored work) to predict expected behavior and identify anomalous activity, enabling detection of zero-day threats and frontier AI-generated attacks that evade traditional signature-based detection. The platform 'autonomously observes an organization's network traffic, cloud, and user activity in real time' and uses 'self-learning AI' to 'builds a continuously updated model of what expected behavior looks like in each environment, then flags activity that doesn't fit' without human initiation or rule-based programming, independently identifying novel threats and insider misuse.
+What technology: Third Wave AI based on applied mathematics and dynamical systems research (including DARPA and Department of War sponsored projects), self-supervised learning architecture, real-time monitoring across cloud, hybrid and on-premises environments.
+Sources:
+- MixMode Cleared to Broadly Deploy Its AI Cyber Platform in U.S. Defense and Intelligence Community Environments — https://www.prnewswire.com/news-releases/mixmode-cleared-to-broadly-deploy-its-ai-cyber-platform-in-us-defense-and-intelligence-community-environments-302854681.html
+
+### ChampionAI at Sauder Woodworking (United States, 2026-08-19)
+Organisation: Sauder Woodworking (private sector, not government)
+Layer: Government workflows
+Type: Deployment
+Summary: Sauder Woodworking deployed Redzone's ChampionAI, an agentic AI layer within the Connected Workforce Solution, across its manufacturing plants. The system provides real-time production insights through AI agents that factory leaders can query during shifts, reducing changeover times by 93% and raising productivity by 40%.
+Why it matters: The system enables supervisors to ask an AI agent in natural language about live operational issues and receive contextual recommendations during shifts, rather than reviewing 24-hour-delayed ERP reports. Purpose-built agents such as 'Line Lead Champion' and 'CI Champion' analyze factory data to deliver contextual recommendations, while 'agentic workflows handle routine tasks so workers can focus on process improvement'. Leaders can ask the AI agent directly throughout the shift: 'In real time, I can ask the AI agent what's going on, or what my biggest issues are... If I can't see it myself, I can ask the agent to report it back to me.'
+What technology: ChampionAI sits above four Connected Workforce modules (Productivity, Compliance, Reliability, Learning); it learns from real frontline activity and operational best practices to surface what needs attention. Integration with ERP environment for operational data access.
+Sources:
+- Sauder Woodworking Cuts Changeover Time by 93% with Redzone’s Agentic AI — https://erp.today/redzone-agentic-ai-sauder-woodworking/
+
+### EU Customs Data Hub (European Union, 2026-08-19)
+Organisation: European Commission
+Layer: Government workflows, Compliance & supervision
+Type: Deployment, Strategy
+Summary: The European Commission’s proposed reforms introduce a new EU Customs Authority overseeing a centralized EU Customs Data Hub that will replace existing member-state IT infrastructure. Through machine learning and artificial intelligence, the hub will provide a real-time 360-degree overview of supply chains via a single online portal, and the most trusted 'Trust & Check' traders will be able to release goods without active customs intervention.
+Why it matters: It is described as the most ambitious customs transformation globally, consolidating fragmented national systems into one AI-driven hub with automated clearance for trusted traders, real-time cross-border data sharing, and abolition of the EUR 150 duty exemption. The hub will allow the most trusted 'Trust & Check' traders to release goods without active customs intervention, and the article frames such systems as agentic AI that autonomously orchestrates workflows and makes significant decisions without step-by-step human triggering.
+What technology: The system is built on machine learning and artificial intelligence combined with human intervention, accessible through a single online portal; it opens for e-commerce consignments in 2028 and becomes mandatory from 2038.
+Sources:
+- In-Depth | Global Customs at a Crossroads: How Agentic AI Is Overhauling Declarations Across North America, Europe and Asia — https://breakbulk.news/in-depth-global-customs-at-a-crossroads-how-agentic-ai-is-overhauling-declarations-across-north-america-europe-and-asia/
 
 ### 101 AI Call Triage System (United Kingdom, 2026-08-18)
 Organisation: Home Office and National Police Chiefs' Council
@@ -151,6 +232,16 @@ What technology: Not specified in source.
 Sources:
 - Government Achieves 92% of Public Sector Modernization Targets Through Mid-2026 — https://www.jordannews.jo/Section-109/News/Government-Achieves-92-of-Public-Sector-Modernization-Targets-Through-Mid-2026-54284
 
+### FAS Pricing 2.0 (United States, 2026-08-14)
+Organisation: General Services Administration (GSA) - Federal Acquisition Service
+Layer: Public procurement, Government workflows
+Type: Deployment
+Summary: FAS Pricing 2.0 is an upgraded pricing algorithm deployed by GSA's Federal Acquisition Service to standardize product pricing data across the Multiple Award Schedule (MAS) program. It aims to identify similar items and validate accurate pricing despite varying product representations, replacing manual point-in-time analysis with automated standardization capabilities. The system is projected to deliver approximately $643 million in annual midpoint savings.
+Why it matters: The algorithm uses a "broader, more complex methodology that incorporates a wider scope of government contract pricing" to automatically identify similar items and validate pricing across millions of product variants that would be impossible for humans to manually review. The system autonomously identifies similar items and validates accurate pricing across "extraordinarily large number" of possible product variants, performing price analysis that "is not feasible for any person to manually review" — replacing human contracting officers' manual analysis with automated matching and validation.
+What technology: Upgraded pricing algorithm using standardized data matching; integrates with Transactional Data Reporting (TDR) system, GSA Advantage! catalog, Price Point Plus Portal, and Compliance & Pricing Reporting Portal.
+Sources:
+- GSA acquisition product pricing data flawed, may cause agencies to overpay, watchdog says — https://fedscoop.com/gsa-acquisition-pricing-data-flawed-may-cause-agencies-to-overpay-watchdog-says/
+
 ### AI-Powered Crime Analysis and Emergency Dispatch (Brazil, 2026-08-14)
 Organisation: Government of São Paulo (State)
 Layer: Government workflows, Crisis response
@@ -290,13 +381,14 @@ Sources:
 
 ### US-AXBOT (South Korea, 2026-08-12)
 Organisation: Daegu Gyeongbuk Institute of Science and Technology (DGIST)
-Layer: Tech stack, Service design & UX
+Layer: Tech stack, Service design & UX, Agent governance
 Type: Deployment
 Summary: South Korea has launched a 10.3 billion won ($7.4 million) project to develop US-AXBOT, an autonomous robotic ultrasound system for early breast cancer detection. Led by DGIST under the Ministry of Science and ICT's 'Real-World Active Agentic AI Technology Development' initiative, the system uses eight coordinated AI agents to perform 3D breast ultrasounds without human direction, aiming to reach Technology Readiness Level 7 by 2028 and standardize diagnostic quality independent of operator skill.
 Why it matters: Unlike conventional robotic ultrasounds that follow pre-programmed paths, this system employs eight AI agents that autonomously perceive, judge, act and learn in real-time to adapt to individual patient body types, using a closed-loop architecture where image assessments directly control robot movements. Eight AI agents coordinate the entire examination process without human direction, with a closed-loop architecture where 'the AI's image assessments feed directly into the robot's movements' to autonomously adapt scanning to real-time conditions and individual patient body types rather than following fixed paths.
 What technology: Three-dimensional automated breast ultrasound robot featuring a closed-loop architecture where perception and control are integrated; includes precise control of interaction forces between robot and human body combined with real-time hazard detection and autonomous avoidance for safety.
 Sources:
 - S. Korea develops AI ultrasound robot for early breast cancer detection - The Herald Business — https://mbiz.heraldcorp.com/article/10838579
+- DGIST selected for KRW 10.3 billion project to develop an AI-powered autonomous breast ultrasound robot - Asia Research News | — https://www.asiaresearchnews.com/content/dgist-selected-krw-103-billion-project-develop-ai-powered-autonomous-breast-ultrasound-robot
 
 ### ARPA-H Cardiovascular Agentic AI (United States, 2026-08-12)
 Organisation: Advanced Research Projects Agency for Health (ARPA-H)
