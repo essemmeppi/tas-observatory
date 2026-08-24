@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (280 records as of 2026-08-22).
+newest first (284 records as of 2026-08-23).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,46 @@ newest first (280 records as of 2026-08-22).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### MedZen Health (Cameroon, 2026-08-23)
+Organisation: MylesTech Solutions (deployed in Cameroon public health facilities)
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: MedZen Health is an agentic AI-powered healthcare platform designed for low-connectivity rural environments in Cameroon. It enables patients to access care via SMS, USSD, and voice on basic feature phones without internet, orchestrating symptom gathering, appointment scheduling, triage, and follow-up care across fragmented healthcare facilities.
+Why it matters: The platform employs an offline-first architecture synchronizing with cloud when connectivity resumes, and utilizes 15 specialized AI agents coordinated by a central orchestrator to manage patient journeys end-to-end specifically designed for feature phones and limited infrastructure. A central orchestrator coordinates 15 specialized agents powered by Amazon Bedrock AgentCore, assigning tasks based on patient needs: one agent gathers symptoms and structures data, others schedule appointments and document consultations, and a follow-up agent autonomously contacts patients within 48 hours, records responses, and alerts providers if concerns are identified.
+What technology: Built on AWS using Amazon Bedrock AgentCore for the multi-agent architecture, Amazon Nova Sonic for voice interaction, Amazon Polly for speech, and Amazon Comprehend Medical for clinical data extraction. The system runs offline-first with cloud synchronization and supports SMS, USSD, and call center interfaces.
+Sources:
+- Agentic AI Where Connectivity Is Scarce: MedZen Health in Cameroon — https://aws.amazon.com/blogs/publicsector/agentic-ai-where-connectivity-is-scarce-medzen-health-in-cameroon/
+
+### Kottbusser Tor AI Behavior Analysis Surveillance (Germany, 2026-08-23)
+Organisation: Berlin Police (Berliner Polizei)
+Layer: Compliance & supervision, Data & privacy, Agent governance
+Type: Deployment
+Summary: Permanent video surveillance system being installed at Kottbusser Tor in Berlin that algorithmically analyzes live video streams to detect specific movement patterns. The AI converts images of people into abstract vector bundles (stick figures) to categorize behavior and trigger alerts, while storing standard video footage for up to one month for potential police review and facial extraction.
+Why it matters: First permanent AI-driven video surveillance of public space in Berlin using real-time algorithmic behavior analysis that transforms human figures into vector representations for autonomous categorization and alerting, marking a shift toward predictive policing in public areas. The system autonomously analyzes live video streams to recognize specific movement patterns and categorize behavior by converting human images into moving vector bundles ('bewegten Vektorenbündel'), triggering alarms without human initiation for each analysis: 'Der Livestream der Kameras wird algorithmisch analysiert, um bestimmte Bewegungsmuster zu erkennen' and 'Anhand dieser bewegten Vektorenbündel kategorisiert die KI das Verhalten'.
+What technology: Video camera network with real-time algorithmic analysis using computer vision to detect movement patterns, converting visual data into abstract vector representations of humans for behavioral categorization and automated alert generation.
+Sources:
+- Verhaltensscanner in Berlin: Harte Kritik an der KI-Überwachung — https://netzpolitik.org/2026/verhaltensscanner-in-berlin-harte-kritik-an-der-ki-ueberwachung/
+
+### Shinhan Securities AI Agent Platform (South Korea, 2026-08-23)
+Organisation: Shinhan Securities
+Layer: Government workflows, Service design & UX
+Type: Deployment
+Summary: Shinhan Securities built an AI agent platform in collaboration with Google Cloud, linking it to key internal business data and systems while complying with financial security regulations. The platform enables autonomous interaction with enterprise systems for securities operations.
+Why it matters: One of the first financial securities firms in South Korea to deploy a dedicated AI agent platform integrated with core internal business systems under regulatory compliance constraints. The platform is described as an 'AI agent platform linked to key internal business data and systems', indicating autonomous access to and operation on enterprise data and workflows without human initiation of each step.
+What technology: Built on Google Cloud infrastructure with integration to internal business systems and compliance with financial security regulations.
+Sources:
+- AI app companies build in-house models as push grows; what next for Dokpamo overhaul? — https://www.digitaltoday.co.kr/en/view/95471/ai-hot-issue-in-house-model-ai-app-companies-spread-what-next-for-dokpamo-overhaul
+
+### AI x Cybersecurity Challenge (Hong Kong, 2026-08-23)
+Organisation: Hong Kong Computer Emergency Response Team Coordination Centre (HKCERT)
+Layer: Cyber security, People & culture
+Type: Deployment
+Summary: An AI-Driven Dual (AID) cybersecurity competition where teams deploy autonomous AI agents to compete in simulated attack-and-defence scenarios. The platform enables AI systems to autonomously perform vulnerability discovery, exploitation and defence operations, with the goal of developing regional cybersecurity talent and demonstrating 'AI versus AI' defensive strategies.
+Why it matters: Unlike traditional Capture The Flag competitions, this format uses autonomous AI agents that independently execute the competition, performing real-time information gathering, vulnerability discovery and flag submission without manual intervention for each step. The AI agents autonomously execute the competition with specific automated capabilities including 'information gathering, vulnerability discovery and flag submission', and enable 'autonomous defence by AI agents' in a simulated environment without requiring human initiation for each individual action.
+What technology: Teams leverage AI-powered automated systems to analyse competition environments containing real-world and simulated zero-day vulnerabilities; the platform supports autonomous penetration testing and defence operations.
+Sources:
+- 40 Teams Gather in Hong Kong to Compete in the "AI x Cybersecurity Challenge" — https://www.malaymail.com/amp/news/money/mediaoutreach/2026/08/23/40-teams-gather-in-hong-kong-to-compete-in-the-ai-x-cybersecurity-challenge/482554
 
 ### MOPH Health Tech for All Initiative (Thailand, 2026-08-22)
 Organisation: Ministry of Public Health (MOPH)
@@ -236,13 +276,14 @@ Sources:
 
 ### AI for All Initiative (SKT Public Service Agent) (South Korea, 2026-08-19)
 Organisation: Ministry of Science and ICT
-Layer: Service design & UX, Government workflows
+Layer: Service design & UX, Government workflows, Tech stack
 Type: Deployment
 Summary: SK Telecom is participating in the South Korean government's 'AI for All' initiative to democratize access to artificial intelligence. The company plans to deploy an AI agent that autonomously finds and applies for public services, issues certificates, and handles bookings, applications and payments across health care, transportation, finance and education sectors. The system will be distributed via SKT's 22.5 million mobile subscriber lines and retail channels, leveraging the company's sovereign A.X K2 large language model.
 Why it matters: The initiative uniquely combines sovereign AI infrastructure (the 688-billion-parameter A.X K2 model) with mass-market telecommunications distribution to deliver autonomous agent capabilities directly to citizens, aiming to prevent AI usage gaps from becoming social inequalities. The system is explicitly designed as an 'AI agent that can carry out tasks such as finding and applying for public services, issuing certificates and handling bookings, applications and payments across areas including health care, transportation, finance and education' without requiring human initiation of each individual step.
 What technology: Built on SKT's 'full-stack' AI capabilities including the A.X K2 large language model (688 billion parameters) developed under the government's sovereign foundation model project, delivered through mobile subscriber lines and retail channels.
 Sources:
 - SKT joins government's 'AI for All' initiative to expand public access — https://www.koreatimes.co.kr/amp/business/companies/20260819/skt-joins-governments-ai-for-all-initiative-to-expand-public-access
+- South Korea's Big 3 Telcos Vie for 'AI for All' — Domestic NPUs and AI Agents Expand the Battlefield — https://finance.biggo.com/news/19949a6e-5d91-47fb-8075-3a20a2db719b
 
 ### Dubai-India Agentic AI Cooperation Agreement (United Arab Emirates, India, 2026-08-19)
 Organisation: Dubai Chambers
@@ -519,14 +560,15 @@ Sources:
 
 ### LocaAI Municipal AI Platform (Vietnam, 2026-08-13)
 Organisation: Kien An District Administration
-Layer: Government workflows, Service design & UX
-Type: Deployment
+Layer: Government workflows, Service design & UX, Compliance & supervision, Tech stack
+Type: Deployment, Regulation
 Summary: A unified AI platform (LocaAI) deployed in Kien An district that generates multiple specialized virtual assistants tailored to distinct roles—leadership, administrative and judicial staff, citizens, and entrepreneurs. The system integrates fragmented municipal data sources to provide real-time governance capabilities, automatically processing citizen feedback on environment, security, and infrastructure while assisting officials with search, analysis, monitoring, and decision support.
 Why it matters: The initiative shifts from purchasing separate AI applications to building an integrated 'AI architecture' where a single platform creates role-specific assistants, implementing a bidirectional model that serves both internal officials and external stakeholders. It employs a needs-first methodology where AIuni Academy analyzes workflows and trains staff before technology deployment, ensuring AI addresses specific management problems rather than imposing generic solutions. The system autonomously executes categorization of incoming citizen reports regarding issues like garbage or infrastructure without human initiation of each step, following the workflow: citizens report → AI categorizes → data is processed → AI analyzes trends → administration acts. It independently analyzes trends from aggregated citizen feedback and operational data to recommend specific government actions for improving services.
 What technology: Centralized platform architecture structured as: Data → Knowledge → Processes → AI → Assistant → User. It integrates hierarchical local data, organizational documents, regulations, and business processes to generate position-specific assistants while avoiding the creation of new data silos.
 Sources:
 - Kommunalverwaltung im Zeitalter der KI: Eine Plattform – viele Assistenten — https://www.vietnam.vn/de/chinh-quyen-co-so-trong-ky-nguyen-ai-mot-nen-tang-nhieu-tro-ly
 - Amministrazione locale nell'era dell'IA: una piattaforma, molti assistenti — https://www.vietnam.vn/it/chinh-quyen-co-so-trong-ky-nguyen-ai-mot-nen-tang-nhieu-tro-ly
+- Principali direttive e azioni del Governo e del Primo Ministro durante la settimana dal 15 al 22 agosto 2026. — https://www.vietnam.vn/it/chi-dao-dieu-hanh-cua-chinh-phu-thu-tuong-chinh-phu-noi-bat-tuan-15-22-8-2026
 
 ### Thai Government AI Adoption Strategy (Thailand, 2026-08-13)
 Organisation: Thai Government / Office of the Deputy Prime Minister
