@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (284 records as of 2026-08-23).
+newest first (290 records as of 2026-08-24).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,68 @@ newest first (284 records as of 2026-08-23).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### UK-Ukraine Defence AI Partnership (United Kingdom, Ukraine, 2026-08-24)
+Organisation: UK Government and Ukrainian Government
+Layer: Crisis response, Government workflows, Compliance & supervision
+Type: Deployment, Strategy
+Summary: A bilateral agreement granting UK researchers access to Ukraine's Avengers AI Labs platform (the 'Rächer' dataset), which contains 5 million annotated battlefield images from the DELTA battlefield management system. The platform powers automated target detection that analyzes over 100,000 drone video streams monthly to identify approximately 70% of enemy targets in real time, with capabilities tested in the UK to protect critical infrastructure including military facilities, airports, rail networks, power plants and prisons.
+Why it matters: The partnership leverages Ukraine's 'unparalleled operational experience'—specifically real-time battlefield data processing 100,000+ monthly video streams—with the UK's AI ecosystem, creating a feedback loop where combat-derived AI trains autonomous systems for both frontline targeting and domestic critical infrastructure protection. The system autonomously analyzes over 100,000 monthly drone video streams to detect and identify approximately 70% of enemy targets in real time, and executes autonomous drone control, target selection for attacks, and coordination of large-scale defensive operations—including protecting bases against hostile actors—without requiring human initiation for each individual analysis or coordination step.
+What technology: Utilises the Avengers AI Labs platform fed by the DELTA battlefield management system with 5 million annotated images; automated target detection processing 100,000+ video streams monthly; joint pilot projects on AI-assisted fiber optic sensors and low-energy AI chips for autonomous drones and military systems.
+Sources:
+- Künstliche Intelligenz: Ukraine und Großbritannien wollen KI für Militär gemeinsam nutzen — https://www.zeit.de/politik/ausland/2026-08/militaerische-ki-ukraine-grossbritannien-drohnen-daten
+- Invasion de l'Ukraine - L'Ukraine et le Royaume-Uni signent un accord sur l'IA pour la défense — https://www.lalibre.be/dernieres-depeches/2026/08/24/invasion-de-lukraine-lukraine-et-le-royaume-uni-signent-un-accord-sur-lia-pour-la-defense-P2L7WJJOFFFX5BULD4WWOAN6MA/
+- IA et technologies de combat : le Royaume-Uni et l'Ukraine renforcent leur partenariat de défense — https://www.lexpress.fr/monde/europe/ia-et-technologies-de-combat-le-royaume-uni-et-lukraine-renforcent-leur-partenariat-de-defense-MEROZXXZ6ZD6JN3IONYGYJWBRI/
+
+### SpaceXAI Vera CPU Deployment for Agentic AI (United States, 2026-08-24)
+Organisation: SpaceXAI
+Layer: Tech stack, Government workflows
+Type: Deployment
+Summary: SpaceXAI will deploy NVIDIA Vera CPUs to accelerate its next-generation agentic AI applications and the infrastructure behind Grok. The deployment includes extending optimized NVIDIA Vera Rubin NVL72 rack-scale systems into orbit via the first-generation Starmind satellite, creating AI factories in space.
+Why it matters: First deployment of NVIDIA Vera CPUs specifically architected for AI agent workloads, and the first extension of NVIDIA Vera Rubin NVL72 infrastructure to orbital computing, designed to operate under the power, thermal and bandwidth constraints of space. The system accelerates AI agents that autonomously "orchestrate tools, execute code, process data and run simulations between model calls", enabling agents to "take action" and "act in real time — executing code, processing data and coordinating complex tasks" without human initiation of each individual step.
+What technology: NVIDIA Vera CPUs with 88 Olympus cores, Spatial Multithreading technology and 1.2TB/s LPDDR5X memory bandwidth; integrated into Vera Rubin NVL72 rack-scale systems featuring NVLink, Spectrum-X Ethernet networking and BlueField data processing units; adapted for orbital deployment in the Starmind satellite.
+Sources:
+- SpaceXAI Adopts NVIDIA Vera CPU to Accelerate Agentic AI at Massive Scale — https://www.hpcwire.com/bigdatawire/this-just-in/spacexai-adopts-nvidia-vera-cpu-to-accelerate-agentic-ai-at-massive-scale/
+
+### Lector (Germany, 2026-08-24)
+Organisation: Neckar-Odenwald-Kreis
+Layer: Government workflows
+Type: Deployment
+Summary: A platform that automates the processing of incoming municipal mail (both physical letters and digital emails) by autonomously sorting, classifying, and filing documents into existing electronic file systems (E-Akte). In a pilot with the Neckar-Odenwald-Kreis, it was deployed to handle GDPR Article 15 data subject access requests, reducing processing time from several work days to a few minutes.
+Why it matters: Unlike OCR or chatbots, the system combines modern language models with digital tools to autonomously execute actions—such as sorting documents, filing them in specific E-Akte locations, and compiling information for responses—without requiring a human to initiate each individual step. The system "kann auf dieser Grundlage eigenständig Aufgaben im digitalen Raum ausführen – ein Dokument einordnen, an der passenden Stelle in der E-Akte ablegen oder Informationen zusammentragen". Specifically for GDPR requests, it autonomously gathers all stored data and redacts documents to protect third-party rights before human review.
+What technology: Combines modern language models with digital tools; designed to integrate flexibly with various E-Akte systems used in German municipalities; processing thousands of documents daily requires significant GPU compute resources.
+Sources:
+- Mit Agenten Zeit sparen — https://www.kommune21.de/k21-meldungen/mit-agenten-zeit-sparen/
+
+### AWS Agentic Data Operations Platform (ADOP) and Bedrock AgentCore Gateway (United States, 2026-08-24)
+Organisation: Amazon Web Services (AWS)
+Layer: Government workflows, Agent governance, Tech stack
+Type: Deployment
+Summary: AWS Glue 6.0 reduces processing costs by 30% and adds full Apache Iceberg v3 support with new data types. The Agentic Data Operations Platform (ADOP) uses AI agents to automate the construction of Bronze-Silver-Gold data pipelines while maintaining deterministic, reviewable artifacts for production. Amazon Bedrock AgentCore Gateway centralizes identity, authorization, and audit logging for agent tool access.
+Why it matters: ADOP restricts agent autonomy to the development phase, using CI/CD to promote only deterministic, human-reviewed artifacts to production rather than allowing agents to operate directly in live pipelines. The architecture also introduces query-aware compression to reduce RAG inference costs by filtering irrelevant context before it reaches the main model. ADOP employs agents to autonomously generate PySpark code, SQL queries, Airflow DAGs, and IAM/Cedar policies for data pipeline construction. In the Panasonic Avionics implementation, diagnostic agents autonomously execute parallel correlations, system checks, and log analysis to identify root causes of aircraft In-Flight Entertainment and Connectivity (IFEC) system malfunctions.
+What technology: Built on Amazon Bedrock and AWS Glue 6.0 with Spark 4.1, Python 3.12, Scala 2.13, and Apache Iceberg 1.11.0. AgentCore Gateway integrates JWT authentication, MCP clients, and AWS Agent Registry for tool cataloging. Query-aware compression uses smaller models (e.g., Claude Haiku) to pre-filter retrieved chunks before passing context to larger models (e.g., Claude Sonnet).
+Sources:
+- AWS abbassa i costi dei dati e porta l’AI agentica dentro i processi enterprise — https://www.matricedigitale.it/2026/08/24/aws-glue-6-agentic-ai-bedrock-rag/
+
+### Program 720 (Israel, 2026-08-24)
+Organisation: Israel Ministry of Education
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Program 720 incorporates AI into Israel's education system to deliver scalable, adaptive personalized learning for every student while maintaining national curricula standards. The initiative operates within a National AI Regulatory Sandbox that allows rapid innovation while enforcing strict security, privacy, and accessibility requirements. Following a pilot with 28 schools during the 2025 school year, the program will expand to 180 schools across diverse sectors including Arab, Bedouin, Haredi, Religious Zionist, and general education institutions.
+Why it matters: The program utilizes a unique regulatory sandbox approach enabling agile iteration while maintaining safety, contrasting with heavier regulatory frameworks in countries like Germany. It combines central AI for long-term student planning with agentic AI for day-to-day operations, moving beyond isolated AI functions to comprehensive learning experience optimization that adapts content, pace, and direction in real time. The AI agents autonomously execute day-to-day operational tasks including "monitoring progress, taking attendance, and updating all of the students' goals," while the system independently adjusts "content, pace, and direction in real time" without requiring human initiation of each step.
+What technology: Cloud-based web applications developed by Microsoft, Google, and Amazon with offline capability allowing limited local work during connectivity disruptions. The platform supports Hebrew and Arabic, complies with high information security and privacy standards, and integrates both central AI for long-term planning and agentic AI for immediate task execution.
+Sources:
+- How does Israel's AI education revolution actually work — https://www.jpost.com/business-and-innovation/tech-and-start-ups/article-906445
+
+### Autonomous Driving AI Demonstration and Commercialization Roadmap (South Korea, 2026-08-24)
+Organisation: Ministry of Land, Infrastructure and Transport
+Layer: Government workflows, Policy & rule-making
+Type: Strategy, Deployment
+Summary: The South Korean government approved a roadmap to significantly expand autonomous driving AI pilot operations beyond the existing Gwangju site to multiple cities, aiming to improve domestic technology performance and accumulate large volumes of driving data. The initiative seeks to close the technology gap with leading nations and establishes a comprehensive ecosystem involving profit-sharing models between transportation industry stakeholders, labor unions, and platform operators, alongside cross-ministry coordination for regulatory reform and safe commercialization.
+Why it matters: The roadmap introduces a pan-government cooperation framework through the National AI Strategy Committee and establishes a profit-sharing model involving transportation industry players, labor unions, autonomous driving companies and platform operators to support ecosystem growth and early commercialization. The system deploys autonomous driving AI that independently controls vehicles and executes real-time navigation decisions without human initiation of each driving maneuver or intervention. The roadmap specifically targets expanding 'autonomous driving AI' pilot operations where the AI concretely decides and executes vehicle operation, traffic navigation, and coordination with field-response systems for accident management.
+What technology: Domestically developed autonomous driving AI systems with field-response systems for safety monitoring and swift accident response, designed to accumulate large-scale driving datasets across multiple pilot cities.
+Sources:
+- South Korea to sharply expand cities for autonomous driving AI pilots — https://mbiz.heraldcorp.com/article/10849582
 
 ### MedZen Health (Cameroon, 2026-08-23)
 Organisation: MylesTech Solutions (deployed in Cameroon public health facilities)
@@ -266,13 +328,15 @@ Sources:
 
 ### Agentic AI Embedded in Business Connectivity (United Arab Emirates, 2026-08-19)
 Organisation: e& UAE
-Layer: Tech stack, Government workflows
-Type: Deployment
-Summary: e& UAE has embedded Agentic AI into its core mobile and fixed business connectivity plans, including Business Pro fixed internet and enterprise connectivity propositions. The offering combines intelligent task automation with Sovereign AI Compute, providing UAE-based GPU capacity and secure national network connectivity to support business and government operations.
-Why it matters: It is the first telecom provider in the region to integrate Agentic AI directly into standard business connectivity plans, bundling autonomous AI capabilities with mobile, internet, and sovereign GPU resources rather than requiring separate procurement and assembly. The system can 'understand objectives, organise information and carry out connected sequences of tasks under defined controls' to 'automate routine processes, manage workflows, respond to requests and access relevant information' without a human initiating each individual step.
-What technology: Integrated with Business Pro fixed internet, Digital Internet, and Digital Premium Internet services; complemented by Sovereign AI Compute providing UAE-based GPU capacity alongside secure, high-performance connectivity.
+Layer: Tech stack, Government workflows, Public procurement, Service design & UX
+Type: Deployment, Strategy
+Summary: e& UAE has embedded Agentic AI into its core mobile and fixed business connectivity plans as part of the UAE’s National Agentic AI Project, targeting deployment across 50% of federal services within two years. The offering combines intelligent task automation with Sovereign AI Compute—providing UAE-based GPU capacity and secure national network connectivity—to support business operations and over 50 government entities currently conducting implementation workshops to automate procurement, tax auditing, and public service delivery.
+Why it matters: It is the first telecom provider in the region to integrate Agentic AI directly into standard business connectivity plans, bundling autonomous AI capabilities with sovereign GPU resources as part of a coordinated national-scale deployment across more than 50 government entities with an ambitious two-year timeline to automate half of all federal services. The system can “understand objectives, organise information and carry out connected sequences of tasks under defined controls” to “automate routine processes, manage workflows, respond to requests and access relevant information,” specifically deploying AI agents for procurement, tax auditing, and public service delivery where they autonomously execute these multi-step functions without a human initiating each individual step.
+What technology: Integrated with Business Pro fixed internet, Digital Internet, and Digital Premium Internet services; complemented by Sovereign AI Compute providing UAE-based GPU capacity alongside secure, high-performance national network connectivity.
 Sources:
 - e& is embedding Agentic AI into its core business connectivity — https://www.webwire.com/ViewPressRel.asp?aId=359078
+- UAE National Agentic AI Project Advances with Implementation Workshops — https://aiagentstore.ai/ai-agent-news/this-week
+- e& UAE Embeds Agentic AI into Connectivity Plans with Sovereign AI Compute — https://www.thefastmode.com/technology-solutions/50315-e-uae-embeds-agentic-ai-into-connectivity-plans-with-sovereign-ai-compute
 
 ### AI for All Initiative (SKT Public Service Agent) (South Korea, 2026-08-19)
 Organisation: Ministry of Science and ICT
@@ -770,7 +834,7 @@ What technology: The assistant integrates with the university's core systems (CR
 Sources:
 - Más allá de las aulas: la Universidad Europea convierte la tecnología en el eje de su transformación — https://www.cio.com/article/4207175/mas-alla-de-las-aulas-la-universidad-europea-convierte-la-tecnologia-en-el-eje-de-su-transformacion.html
 
-### Avengers Labs (Ukraine, 2026-08-10)
+### Avengers Labs (Ukraine, United Kingdom, 2026-08-10)
 Organisation: Ukraine Ministry of Defense / Center for Innovation and Development of Defense Technologies
 Layer: Government workflows, Crisis response, Tech stack
 Type: Deployment
@@ -781,6 +845,7 @@ Sources:
 - Ukraine's new AI platform trains weapons on five million frames of drone footage. Partner countries can use it too — https://euromaidanpress.com/2026/08/11/ukraines-new-ai-platform-trains-weapons-on-five-million-frames-of-drone-footage-partner-countries-can-use-it-too/
 - Defense companies will be able to train their own AI models on the battlefield, according to the Ministry of Defense — https://shelter.in.ua/en/viyna/oboronni-kompaniyi-zmozut-trenuvaty-vlasni-shi-modeli-na-poli-boiu-minoborony
 - Ukraine says more than 70 AI-enabled systems are striking battlefield targets as it seeks computer vision across all frontline drones — https://defence-industry.eu/ukraine-says-more-than-70-ai-enabled-systems-are-striking-battlefield-targets-as-it-seeks-computer-vision-across-all-frontline-drones/
+- Reino Unido y Ucrania firmaron un acuerdo para compartir datos de inteligencia artificial del campo de batalla — https://www.infobae.com/america/mundo/2026/08/24/reino-unido-y-ucrania-firmaron-un-acuerdo-para-compartir-datos-de-inteligencia-artificial-del-campo-de-batalla/
 
 ### Agentic Flooding Response / AI-Driven State Reform (United Kingdom, 2026-08-10)
 Organisation: UK Government (Whitehall/Cabinet)
