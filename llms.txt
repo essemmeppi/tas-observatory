@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (298 records as of 2026-08-25).
+newest first (300 records as of 2026-08-27).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,26 @@ newest first (298 records as of 2026-08-25).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Project Griffin (United States, 2026-08-27)
+Organisation: US Army
+Layer: Cyber security, Government workflows
+Type: Procurement, Deployment
+Summary: Project Griffin is a US Army pilot program to build an ecosystem of AI agents that ingest feeds from network sensors and automatically execute defensive actions against cyber threats. The initiative aims to enhance protection of cyber infrastructure while controlling costs and minimizing new vulnerabilities.
+Why it matters: It establishes an ecosystem of AI agents capable of autonomous cyber defense by ingesting sensor feeds and executing countermeasures without human initiation of each step. This marks a move toward agentic automation in military cybersecurity operations. The AI agents ingest feeds from network sensors and automatically execute defensive actions against cyber threats, deciding and carrying out defensive responses without a human initiating each step.
+What technology: The system is envisioned as an ecosystem of AI agents integrated with network sensors for automated cyber defense; specific models, platforms, or architecture details are not stated.
+Sources:
+- US Army Issues Solicitation for Project Griffin AI Agents Pilot in Cyber Defense — https://x.com/DefenseScoop/status/2092718755188994170
+
+### Russian AI autonomous attack drone (Russia, Ukraine, 2026-08-26)
+Organisation: Russian military
+Layer: Tech stack
+Type: Deployment
+Summary: On 6 July 2026, a Russian drone equipped with an Nvidia Jetson Orin minicomputer and computer vision algorithms autonomously struck a gas station in Zaporizhzhia, Ukraine, killing three civilians. The system excluded human operators from the decision loop: onboard AI piloted the aircraft, recognized the target category, and decided to attack without a communication link or operator approval. Russia is reportedly experimenting with such fully autonomous attack systems on Molniya and V2U drones to maintain strike capability amid electronic warfare jamming.
+Why it matters: Experts are calling this the first documented case of a fully AI-guided autonomous drone where a human was completely excluded from the kill chain, shifting from human-supervised targeting to machine-led lethal decision-making. Unlike earlier autonomous weapons or AI-assisted “last mile” guidance, the onboard processor independently selected and engaged the specific target after being programmed only with a general objective area. The onboard AI “ha pilotato la macchina, ha individuato il target e ha preso la decisione di colpire, senza un operatore umano” (piloted the machine, identified the target and decided to strike without a human operator), with no video link or possibility for an operator to approve attacks. After being programmed to reach a general area, the drone’s computer vision system autonomously recognized object categories and proceeded to engagement “senza una conferma umana nella fase finale” (without human confirmation in the final phase).
+What technology: The system used a commercial Nvidia Jetson Orin minicomputer onboard for robotics and machine vision, running computer vision algorithms trained to recognize categories of objects and infrastructure. It lacked communication antennas for operator control, enabling autonomous terminal guidance and target tracking even when radio links are jammed or lost.
+Sources:
+- L’AI ora uccide da sola: ecco la nuova fase della guerra autonoma — https://www.agendadigitale.eu/sicurezza/quando-lai-uccide-perche-il-caso-del-drone-autonomo-russo-pesa-su-diritto-e-strategia/
 
 ### Deutschland-App (Digital Citizen Account) (Germany, 2026-08-25)
 Organisation: German Federal Government (BMDS - Federal Ministry for Digital Affairs)
