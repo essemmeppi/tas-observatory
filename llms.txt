@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (300 records as of 2026-08-27).
+newest first (306 records as of 2026-08-28).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,59 @@ newest first (300 records as of 2026-08-27).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Public AI Agent and Chatbot Services (South Korea, 2026-08-28)
+Organisation: Ministry of Science and ICT (South Korea)
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: South Korea selected three consortiums led by SK Telecom, Kakao, and KT to build national AI services including general-purpose chatbots and public AI agents that autonomously help citizens find and apply for government benefits. The government will supply 512 Nvidia B200 GPUs and operational funding from 2027, with a nationwide launch planned by year-end following beta testing.
+Why it matters: The project deploys 'action-based' AI agents that can plan, execute, and confirm multi-step tasks such as benefit applications and phone calls from a single user request, specifically designed for accessibility via phone calls and text messages to serve elderly and less tech-savvy populations without requiring smartphone apps. SK Telecom's service can 'plan, carry out and confirm tasks from a single request' and includes 'an agent function that searches for contact information for stores or government offices without official APIs and places calls on the user's behalf'; KT's consortium enables users to 'search, compare and act on information, including public and specialized services, within a single conversation' to complete government transactions.
+What technology: Services will run on 512 Nvidia B200 GPUs provided by the government, accessible via phone calls, SMS, mobile apps, web, and IPTV channels; SKT focuses on action-based task completion, Kakao integrates with its messenger app and an AI agent marketplace, and KT embeds AI into the Daum portal and partner e-commerce platforms.
+Sources:
+- Korea picks SKT, Kakao, KT for nationwide AI service project — https://www.ajupress.com/view/20260828104218642
+- SKT to bet on agentic AI with 'All People's AI', taking over daily tasks — https://www.digitaltoday.co.kr/en/view/97665/skt-to-launch-all-peoples-ai-agentic-ai-beta-in-october
+
+### 1823 Platform AI Enhancement (Hong Kong, 2026-08-27)
+Organisation: Digital Policy Office (Hong Kong)
+Layer: Service design & UX, Government workflows, Tech stack
+Type: Deployment, Strategy
+Summary: The Digital Policy Office is expanding AI use on Hong Kong's 1823 complaint platform to transcribe resident calls, summarise emails, log information, and triage complex cases for routing to appropriate departments. The initiative aims to reduce waiting times and resolve past issues with cases being assigned to wrong authorities through better triage and targeted questioning.
+Why it matters: The system provides real-time guidance to phone operators to ask targeted questions for better case classification, and autonomously triages complex cases for experienced staff to route to relevant departments. The AI autonomously triages complex and urgent cases to determine appropriate departmental routing, and guides phone operators to ask targeted questions to gather better clues for case classification without human initiation of each specific decision.
+What technology: AI systems for speech-to-text transcription, email summarisation, information logging, and case triage classification.
+Sources:
+- Hong Kong to expand AI use on 1823 platform to vet inquiries by end of year — https://amp.scmp.com/news/hong-kong/society/article/3365438/hong-kong-expand-ai-use-1823-platform-vet-public-inquiries-end-year
+- AI use on 1823 platform will cut frustration but data safeguards needed: experts — https://amp.scmp.com/news/hong-kong/society/article/3365513/ai-use-1823-platform-will-cut-frustration-data-safeguards-needed-experts
+- Hong Kong Expands AI Use Across 1823 and Government Services — https://opengovasia.com/hong-kong-expands-ai-use-across-1823-and-government-services/
+
+### Socure Fravity Agentic AI for Fraud Investigations (United States, 2026-08-27)
+Organisation: United States General Services Administration (Login.gov)
+Layer: Compliance & supervision, Government workflows, Service design & UX
+Type: Deployment, Procurement
+Summary: Socure acquired Fravity to integrate agentic AI into its RiskOS platform for automating fraud and compliance investigations following risk alerts. The system supports the $163 million Login.gov identity-proofing contract by autonomously conducting KYC investigations, sanctions screening, adverse-media research, and transaction monitoring alert assessments to prepare case-ready outputs for analysts.
+Why it matters: Moves beyond risk detection to autonomously execute post-alert investigative workflows, using specialized AI agents to gather evidence from multiple systems, analyze transactions and entities, and assemble investigator-ready case files rather than merely providing risk scores. Fravity deploys specialized AI agents that autonomously collect evidence from multiple systems, review transactions, conduct sanctions and adverse-media research, reconcile information, and assemble case-ready findings for human review without requiring human initiation of each step. The Agentic Copilot executes workflows and produces explainable outputs, allowing analysts to focus on judgment and exceptions.
+What technology: Integrates with Socure's RiskOS platform; Fravity's Agentic Studio orchestrates more than 70 pre-built agents or custom agents built around internal policies and risk models; combines with previously acquired Berbix document verification and Effectiv fraud decisioning capabilities.
+Sources:
+- Socure acquires Fravity, raises $156M to bring agentic AI to fraud investigations — https://www.biometricupdate.com/202608/socure-acquires-fravity-raises-156m-to-bring-agentic-ai-to-fraud-investigations
+
+### GenA.I. Sandbox++ (Hong Kong, 2026-08-27)
+Organisation: Hong Kong Monetary Authority, Securities and Futures Commission, Insurance Authority and Mandatory Provident Fund Schemes Authority
+Layer: Compliance & supervision, Agent governance, Government workflows
+Type: Deployment
+Summary: Hong Kong’s financial regulators have launched the first cohort of the Generative Artificial Intelligence Sandbox++, selecting 36 use cases from nearly 100 proposals to test agentic AI applications across banking, securities, insurance and pensions. The initiative provides a controlled environment for financial institutions to trial advanced AI systems that independently manage operational workflows—including customer onboarding, payment processing and claims handling—while maintaining direct supervisory engagement and governance oversight.
+Why it matters: The programme represents Hong Kong’s first regulatory sandbox specifically focused on agentic AI systems that operate with greater autonomy than conventional generative AI tools, testing “AI vs AI” monitoring concepts where AI supervises other AI applications. The sandbox focuses on systems designed to “perform tasks with greater autonomy than conventional generative AI tools” and to “independently manage more complex workflows” such as customer onboarding, payment processing and insurance claims handling, moving beyond content generation to autonomous task execution under oversight.
+What technology: Testing conducted through the Artificial Intelligence Supercomputing Centre managed by Cyberport, with technical testing scheduled to begin later in 2026; proposals assessed on innovation, technical complexity and potential industry value.
+Sources:
+- Hong Kong Regulators Launch First GenA.I. Sandbox++ Cohort — https://opengovasia.com/hong-kong-regulators-launch-first-gena-i-sandbox-cohort/
+
+### AWS-NVIDIA Secure Government AI Factories (United States, 2026-08-27)
+Organisation: United States Government (federal and national security agencies)
+Layer: Tech stack, Government workflows
+Type: Deployment
+Summary: AWS and NVIDIA are building secure AI factories for the U.S. government featuring 100,000 GPU infrastructure designed for federal and national-security workloads classified at Impact Level 6 and above. The partnership includes Vera CPUs optimized for agentic AI workloads alongside Blackwell Ultra, Rubin and Rubin Ultra GPU systems planned for deployment through 2028.
+Why it matters: The collaboration moves beyond GPU provision to a full-stack alliance integrating Vera CPUs specifically designed to orchestrate tools and execute code for multi-step agentic workflows, combined with unprecedented secure government-specific infrastructure scale. Vera CPUs are designed to 'orchestrate tools, process data, execute code, and support agentic applications between GPU-intensive model operations' for 'multi-step agent workflows', enabling autonomous task coordination without requiring human initiation of each step.
+What technology: NVIDIA Vera CPUs, Blackwell Ultra/Rubin/Rubin Ultra GPUs, NVHBM high-bandwidth memory delivering 30% more bandwidth and 15% lower power, NVLink Fusion, integration with Amazon Bedrock and SageMaker for Nemotron models, cuDF with Amazon EMR, and cuVS with Amazon OpenSearch.
+Sources:
+- AWS and NVIDIA Deepen Alliance to Build the Full AI Infrastructure Stack — https://www.varindia.com/news/aws-nvidia-deepen-alliance-to-build-the-full-ai-infrastructure-stack
 
 ### Project Griffin (United States, 2026-08-27)
 Organisation: US Army
@@ -91,6 +144,16 @@ Why it matters: The system moves beyond post-crime investigation to autonomous p
 What technology: AI applications integrated with mobile carrier systems to analyze phone number usage patterns and enforce service blocks; specific models or platforms not detailed.
 Sources:
 - Südkorea verzeichnet dank präventiver Maßnahmen einen deutlichen Rückgang von Telefonbetrugsfällen. — https://www.vietnam.vn/de/han-quoc-giam-manh-so-vu-lua-dao-qua-dien-thoai-nho-cac-bien-phap-phong-ngua
+
+### Enhanced Border Security Partnership (EBSP) (Germany, France, United States, 2026-08-24)
+Organisation: European Commission
+Layer: Compliance & supervision, Data & privacy
+Type: Regulation
+Summary: The EBSP is a proposed transatlantic framework agreement that would require EU member states to open their police databases to US authorities for electronic travel authorization (ESTA) checks and border screening. The leaked draft permits automated data exchange and explicitly allows AI-based automated analysis and automated decision-making with significantly adverse consequences for individuals, utilizing systems already deployed by US police and border agencies.
+Why it matters: The agreement mandates that nearly all EU states provide US authorities with automated access to national police databases for visa-waiver eligibility, enabling AI-driven 'screening' and automated adverse decisions without requiring human initiation for each case, effectively conditioning visa-free travel on bulk data sharing. The agreement explicitly permits 'decisions with significantly adverse consequences' (Entscheidungen mit erheblich nachteiligen Folgen) for affected individuals to be made automatically without human intervention for each specific case, provided this is legal in the participating countries. The system autonomously queries European databases using fingerprints and returns hit notifications including biometric and criminal data.
+What technology: AI-based systems for automated analysis and screening (specifically referencing technology from Palantir and other firms used by US authorities), automated cross-border database querying using fingerprint biometrics (excluding facial images for initial queries), and real-time data exchange protocols between EU national police systems and US agencies.
+Sources:
+- Erzwungene "Grenzpartnerschaft": Abkommen zum US-Datenzugriff auf der Zielgeraden — https://netzpolitik.org/2026/erzwungene-grenzpartnerschaft-abkommen-zum-us-datenzugriff-auf-der-zielgeraden/
 
 ### Guide on the Use of Agentic Artificial Intelligence (Canada, 2026-08-24)
 Organisation: Government of Canada
@@ -229,13 +292,14 @@ Sources:
 
 ### OpenAI-US DoD Military AI Contract (United States, 2026-08-22)
 Organisation: United States Department of Defense (Pentagon)
-Layer: Agent governance, Compliance & supervision, Crisis response
-Type: Procurement
+Layer: Agent governance, Compliance & supervision, Crisis response, Government workflows
+Type: Procurement, Deployment
 Summary: OpenAI signed a $200 million USD contract with the US Department of Defense to provide AI systems for military operations and surveillance. The contract was awarded after competitor Anthropic refused on ethical grounds regarding specific autonomous capabilities.
 Why it matters: Marks OpenAI's pivot toward direct military contracting despite previous usage restrictions, highlighting ethical divisions in the AI industry as Anthropic explicitly rejected the same contract citing unacceptable risks. The contract covers capabilities for 'création d'armes autonomes capables de tuer sans intervention humaine' (creation of autonomous weapons capable of killing without human intervention) and 'surveillance à grande échelle de la population' (large-scale population surveillance), representing autonomous decision-making in lethal targeting and monitoring contexts.
 What technology: OpenAI AI systems to be deployed for Pentagon military operations and surveillance; specific models or technical architectures not detailed beyond general system references.
 Sources:
 - Pourquoi des utilisateurs boycottent ChatGPT - Radio-Canada — https://ici.radio-canada.ca/en-bref/90-15555/chatgpt-openai-guerre-surveillance-armes
+- Agentic AI in the US vs. China: How Do They Compare? — https://nationalinterest.org/blog/techland/agentic-ai-in-the-us-vs-china-how-do-they-compare
 
 ### Bihar Atmanirbhar AI Infrastructure (B-ONT) (India, 2026-08-22)
 Organisation: Department of Information Technology, Government of Bihar
@@ -516,13 +580,14 @@ Sources:
 
 ### AIR program (United States, 2026-08-18)
 Organisation: Department of Defense
-Layer: Government workflows
-Type: Deployment
+Layer: Government workflows, Crisis response
+Type: Deployment, Procurement
 Summary: The AIR program involves the creation of advanced modeling and simulation environments to train AI pilots or robotic wingmen to perform complex maneuvers and make autonomous decisions in high-stakes military environments. It represents the Defense Department's initiative to integrate agentic AI into military operations, reflecting recognition that advanced militaries are exploring defense applications where AI agents initiate operations at speeds beyond human capabilities.
 Why it matters: It enables the deployment of AI agents capable of autonomous decision-making and operation initiation in high-stakes combat environments, specifically training robotic wingmen to perform complex aerial maneuvers without direct human control for each action. The system trains "AI pilots or robotic wingmen to perform complex maneuvers and make autonomous decisions in high-stakes environments" and involves "AI agents performing autonomous decision-making and initiating operations at speeds beyond human capabilities."
 What technology: Utilizes advanced modeling and simulation environments specifically designed to train autonomous AI pilots through complex scenario modeling.
 Sources:
 - AI-Orchestrated Cyberattacks Force Policy Response, CRS Says — https://legis1.com/news/ai-cyberattacks-1-ai-orchestrated-force-policy
+- Dataminr Launches First Alert Advanced and Secures $318M Pentagon Contract — https://www.hpcwire.com/bigdatawire/this-just-in/dataminr-launches-first-alert-advanced-and-secures-318m-pentagon-contract/
 
 ### AI-powered Justice ecosystem (Vietnam, 2026-08-18)
 Organisation: Vietnam Ministry of Justice
