@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (306 records as of 2026-08-28).
+newest first (315 records as of 2026-08-29).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,66 @@ newest first (306 records as of 2026-08-28).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Agentic AI Addendum to the AI Technical Standard (Australia, 2026-08-29)
+Organisation: Australian Digital Transformation Agency (DTA)
+Layer: Agent governance, Policy & rule-making
+Type: Regulation
+Summary: The DTA issued an addendum to the Australian Government AI technical standard that guides agencies on designing, deploying and overseeing autonomous AI systems. It mandates human accountability and safeguards for agentic AI used across Australian Government bodies.
+Why it matters: This is the first DTA technical guidance explicitly focused on agentic AI, extending the existing AI technical standard to cover autonomous systems with specific accountability and safeguard requirements. The source describes the addendum as governing 'autonomous AI systems' and 'Agentic AI' that agencies must design, deploy and oversee, indicating these systems operate with agency and require human accountability and safeguards for their autonomous actions.
+What technology: The guidance is issued as an addendum to the existing Australian Government AI technical standard; no specific models, platforms or integration architectures are named.
+Sources:
+- Trustworthy AI agents: New technical guidance — https://www.dta.gov.au/articles/trustworthy-ai-agents-new-technical-guidance
+
+### Trusted Agentic AI for Access Management Catalyst (Germany, United Kingdom, 2026-08-28)
+Organisation: Deutsche Telekom and Vodafone (with TM Forum, Tallence)
+Layer: Agent governance, Tech stack
+Type: Deployment
+Summary: A TM Forum Catalyst proof-of-concept demonstrating how agentic AI can continuously interpret contractual obligations and automatically translate them into enforceable network access policies. The project reduces a multi-week engineering coordination process to a single day by processing dense documentation and ensuring practice meets evolving policy.
+Why it matters: Rival European telcos Deutsche Telekom and Vodafone collaborated on a shared identity-based governance framework for agentic AI, treating digital identity as the operational control plane rather than an afterthought. The solution employs four zero-trust safeguards including deliberate adversarial testing before any AI-generated policy goes live. The AI agent 'continuously interpret[s] contractual obligations and automatically translate[s] them into enforceable network access policies' and completes 'a process that would typically take an engineer multiple weeks of cross-domain, multi-vendor coordination... within a single day.' The system autonomously processes documents, interprets complex texts across multiple LLMs, and generates access policies subject to governance safeguards rather than human initiation of each step.
+What technology: Multiple base LLMs including models from Anthropic and Mistral process documents and build understanding of how distinct AI models interpret complex texts. Digital identity management (DIM) layer built by Tallence. Anchored in TM Forum standards: ODA, Digital Identity API (TMF720), and Digital Identity Management (TMFC020).
+Sources:
+- NIST, European telcos converge on identity as foundation for agentic AI — https://www.biometricupdate.com/202608/nist-european-telcos-converge-on-identity-as-foundation-for-agentic-ai
+
+### OpenAI x MHESI AI Accelerator (Thailand, 2026-08-28)
+Organisation: Ministry of Higher Education, Science, Research and Innovation (MHESI)
+Layer: Service design & UX, Government workflows
+Type: Strategy, Deployment
+Summary: OpenAI and Thailand’s MHESI have launched an eight-week accelerator to help ten Thai startups in health, wellness, and education turn prototypes into deployment-ready products. The program provides technical mentorship, $2,000 in OpenAI API credits per team, and connections to research and funding networks, culminating in a Demo Day in November 2026 where startups demonstrate working products and pilot plans.
+Why it matters: This marks OpenAI’s first public-private partnership with the Thai government focused on supporting local startups, creating a structured pathway from prototype to pilot deployment specifically for high-stakes sectors like healthcare and education. Startup CARIVA is developing a multilingual voice agent for hospital phone lines that can autonomously handle routine patient requests such as appointment scheduling and recognize when a caller may be describing a medical emergency without requiring human initiation of each interaction.
+What technology: Startups receive OpenAI API credits and access to frontier models including real-time speech models; CARIVA specifically employs a real-time speech model with evaluation methods and steering strategies for autonomous call handling.
+Sources:
+- Supporting Thailand’s next generation of AI startups — https://openai.com/index/supporting-next-generation-ai-startups-thailand/
+
+### National AI Roadmap and Ethics Guidelines (Indonesia, 2026-08-28)
+Organisation: Communications and Digital Ministry
+Layer: Agent governance, Policy & rule-making
+Type: Regulation, Strategy
+Summary: Indonesia is preparing a National Artificial Intelligence Road Map and AI ethics guidelines to be elevated into a presidential regulation, responding to the risks of agentic AI entering financial services. Deputy Minister Nezar Patria called for urgent governance rules on authority limits, human oversight, accountability and AI-to-AI interactions before highly autonomous systems become widespread.
+Why it matters: It is an early government effort to craft binding, presidential-level regulation explicitly targeting agentic AI that can autonomously execute financial transactions and communicate with other AI systems, moving beyond traditional AI-assistant models. The source describes "agentic AI capable of making decisions and executing transactions independently," noting that "those transactions can occur between agentic AIs, with AI systems communicating to make decisions" without a human initiating each step.
+What technology: No specific models or platforms are named; the focus is on AI systems capable of autonomous decision-making, transaction execution and inter-AI communication in finance.
+Sources:
+- Safeguards needed as agentic AI enters finance: deputy minister — https://en.antaranews.com/news/428864/safeguards-needed-as-agentic-ai-enters-finance-deputy-minister
+
+### Gnani Artha (India, 2026-08-28)
+Organisation: Government of India (India AI Mission)
+Layer: Tech stack, Service design & UX
+Type: Deployment
+Summary: Vice President CP Radhakrishnan launched Gnani Artha, India's sovereign AI stack for enterprises and public institutions under the India AI Mission. The stack includes Gnani Evon v3.3, a 30-billion-parameter open-weights model trained in 11 Indian languages, and Gnani Plexus, an agentic AI platform, offering cost-effective Indic language processing with 40% lower token consumption than competitors.
+Why it matters: It represents a strategic move toward technological self-reliance with a fully sovereign AI stack, featuring a large open-weights model natively trained on 11 Indic languages that delivers multilingual capabilities at 40% lower computational cost than international alternatives. The source identifies Gnani Plexus as an 'agentic AI platform' intended to power 'vertical-specific AI engines' for sectoral applications, though it does not specify concrete autonomous decision-making or task execution capabilities beyond this classification.
+What technology: 30-billion-parameter open-weights foundation model (Gnani Evon v3.3) natively trained across 11 Indian languages; Gnani Plexus AI platform architecture; token-efficient inference consuming 40% fewer tokens for Indic language tasks.
+Sources:
+- Vice President Radhakrishnan Unveils Gnani Artha, Sovereign AI Stack For Indian Enterprises — https://www.rediff.com/business/report/vp-radhakrishnan-ai-to-create-jobs-enhance-ease-of-work-1/20260828.htm
+
+### Lao PDR-FPT Akabot AI Agent Technology Cooperation (Laos, Vietnam, 2026-08-28)
+Organisation: Lao PDR Ministry of Finance / Deputy Prime Minister's Office
+Layer: Government workflows, Tech stack
+Type: Strategy, Procurement
+Summary: A senior Lao PDR government delegation led by Deputy Prime Minister Santi Phomvihane visited FPT's Da Nang R&D Center where FPT IS showcased the Akabot AI Agent for automated multi-dimensional accounts-payable reconciliation and the iSoma document digitization platform. The visit explored bilateral technology cooperation frameworks for sovereign digital transformation across the Mekong region.
+Why it matters: Ministerial-level validation of Vietnamese agentic AI by a neighboring Mekong government, establishing FPT IS as a reference architecture for regional public-sector digital modernization and potential technology transfer beyond Vietnam's domestic market. The Akabot AI Agent performs "automated multi-dimensional accounts-payable reconciliation," executing "multi-step workflows without human intervention" to autonomously process and reconcile financial payments across multiple dimensions.
+What technology: Made by FPT ecosystem including Akabot AI Agent and iSoma document digitization platform, showcased at FPT's High-Tech and Semiconductor Chip R&D Center in Da Nang Software Park No. 2.
+Sources:
+- FPT IS Puts Its AI Platform on the Mekong Map — https://futurumgroup.com/insights/fpt-is-puts-its-ai-platform-on-the-mekong-map/
 
 ### Public AI Agent and Chatbot Services (South Korea, 2026-08-28)
 Organisation: Ministry of Science and ICT (South Korea)
@@ -22,6 +82,27 @@ What technology: Services will run on 512 Nvidia B200 GPUs provided by the gover
 Sources:
 - Korea picks SKT, Kakao, KT for nationwide AI service project — https://www.ajupress.com/view/20260828104218642
 - SKT to bet on agentic AI with 'All People's AI', taking over daily tasks — https://www.digitaltoday.co.kr/en/view/97665/skt-to-launch-all-peoples-ai-agentic-ai-beta-in-october
+
+### Real-time EBT fraud blocking pilot (United States, 2026-08-27)
+Organisation: Four US state governments (participating via Aspen Institute initiative)
+Layer: Compliance & supervision, Service design & UX
+Type: Deployment
+Summary: Pilot program deploying algorithmic fraud detection on Electronic Benefit Transfer (EBT) cards for SNAP benefits. The system automatically flags suspicious transactions and temporarily blocks them in real-time to prevent theft via skimming and scams, shifting security responsibility from individual recipients to state administering agencies.
+Why it matters: First application of bank-grade real-time fraud blocking to public benefits cards, addressing an estimated $607 million annual theft problem affecting 18% of EBT cardholders who primarily rely on insecure magnetic-stripe technology rather than chip-enabled cards. The system autonomously analyzes transaction patterns and temporarily blocks purchases flagged as potentially fraudulent without requiring human review or initiation for each individual transaction, operating as 24/7 automated monitoring with state-configurable algorithm sensitivity.
+What technology: Real-time algorithmic transaction monitoring integrated with EBT card processing infrastructure; compatible with both chip-enabled and magnetic-stripe cards; customizable fraud detection parameters and sensitivity settings determined by individual states.
+Sources:
+- Aspen Institute pilots real-time EBT fraud blocking with states — https://statescoop.com/aspen-institute-pilots-real-time-ebt-fraud-blocking-with-states/
+
+### Thüringer Polizeigesetz KI-Befugnisse (Germany, 2026-08-27)
+Organisation: Thüringer Landtag
+Layer: Compliance & supervision, Agent governance
+Type: Regulation
+Summary: Draft amendments to the Thuringian Police Act would authorize AI-based surveillance and analysis tools including Palantir-style data analytics, automated video behavior recognition, biometric identification systems, and drone surveillance of assemblies. The draft is currently under expert review in the state parliament.
+Why it matters: The law would enable preventive, automated surveillance of public assemblies using behavioral analysis and drones, and authorize algorithmic risk assessments for policing—representing a significant expansion of automated decision-support in German state policing. The systems would autonomously generate "automatisierte Warnmeldungen" (automated warning messages) and perform "algorithmische Risikobewertungen" (algorithmic risk assessments) based on video-based "automatisierte Verhaltensanalyse" (automated behavior analysis) and biometric identification without human initiation of each specific analysis or alert.
+What technology: Palantir-style data analysis platforms linking multiple databases, automated video surveillance with behavior pattern recognition, biometric identification search engines, and drone-based assembly monitoring.
+Sources:
+- KI-Befugnisse in Thüringen: Polizeigewerkschaft kritisiert Polizeigesetz — https://netzpolitik.org/2026/ki-befugnisse-in-thueringen-polizeigewerkschaft-kritisiert-polizeigesetz/
+- Polizeigesetz Niedersachsen: „Das vergiftet alles“ — https://netzpolitik.org/2026/polizeigesetz-niedersachsen-das-vergiftet-alles/
 
 ### 1823 Platform AI Enhancement (Hong Kong, 2026-08-27)
 Organisation: Digital Policy Office (Hong Kong)
@@ -144,6 +225,16 @@ Why it matters: The system moves beyond post-crime investigation to autonomous p
 What technology: AI applications integrated with mobile carrier systems to analyze phone number usage patterns and enforce service blocks; specific models or platforms not detailed.
 Sources:
 - Südkorea verzeichnet dank präventiver Maßnahmen einen deutlichen Rückgang von Telefonbetrugsfällen. — https://www.vietnam.vn/de/han-quoc-giam-manh-so-vu-lua-dao-qua-dien-thoai-nho-cac-bien-phap-phong-ngua
+
+### GDPR fine on Uber automated driver deactivation decisions (Netherlands, France, 2026-08-24)
+Organisation: Dutch Data Protection Authority (Autorité néerlandaise de protection des données) and CNIL
+Layer: Compliance & supervision, Agent governance
+Type: Regulation
+Summary: In August 2026, the Dutch Data Protection Authority, acting as lead authority under GDPR cooperation procedures with CNIL, imposed a €824.99 million fine on Uber B.V. and Uber Technologies Inc. for implementing automated individual decisions that deactivated driver accounts. The sanction addresses systems that temporarily or permanently blocked drivers based on fraud suspicion or low customer ratings without human intervention, significantly affecting drivers' ability to work and earn income.
+Why it matters: This represents one of the largest GDPR fines specifically targeting fully automated decision-making under Article 22, establishing that algorithmic account deactivation with 'absence totale d'intervention humaine' (total absence of human intervention) constitutes an automated decision producing significant legal effects on data subjects. The Uber platform autonomously decides to temporarily or permanently deactivate driver accounts when algorithms detect suspected fraud or aggregate low customer ratings, operating with 'absence totale d'intervention humaine dans le processus de décision' (total absence of human intervention in the decision process), thereby executing binding sanctions that immediately terminate drivers' access to work and income.
+What technology: Automated decision-making system employing fraud detection algorithms and customer rating aggregation mechanisms to trigger account suspension workflows; specific machine learning models or technical architecture not detailed in the enforcement notice.
+Sources:
+- Décisions automatisées : sanction de près de 825 millions d’euros à l’encontre d’UBER — https://cnil.fr/fr/decisions-automatisees-sanction-de-pres-de-825-millions-deuros-lencontre-duber
 
 ### Enhanced Border Security Partnership (EBSP) (Germany, France, United States, 2026-08-24)
 Organisation: European Commission
@@ -499,12 +590,13 @@ Sources:
 ### AI for All Initiative (SKT Public Service Agent) (South Korea, 2026-08-19)
 Organisation: Ministry of Science and ICT
 Layer: Service design & UX, Government workflows, Tech stack
-Type: Deployment
-Summary: SK Telecom is participating in the South Korean government's 'AI for All' initiative to democratize access to artificial intelligence. The company plans to deploy an AI agent that autonomously finds and applies for public services, issues certificates, and handles bookings, applications and payments across health care, transportation, finance and education sectors. The system will be distributed via SKT's 22.5 million mobile subscriber lines and retail channels, leveraging the company's sovereign A.X K2 large language model.
-Why it matters: The initiative uniquely combines sovereign AI infrastructure (the 688-billion-parameter A.X K2 model) with mass-market telecommunications distribution to deliver autonomous agent capabilities directly to citizens, aiming to prevent AI usage gaps from becoming social inequalities. The system is explicitly designed as an 'AI agent that can carry out tasks such as finding and applying for public services, issuing certificates and handling bookings, applications and payments across areas including health care, transportation, finance and education' without requiring human initiation of each individual step.
-What technology: Built on SKT's 'full-stack' AI capabilities including the A.X K2 large language model (688 billion parameters) developed under the government's sovereign foundation model project, delivered through mobile subscriber lines and retail channels.
+Type: Deployment, Strategy
+Summary: South Korea's 'AI for All' initiative provides free public access to sovereign AI agents through three competing consortia led by SK Telecom, Kakao and KT, autonomously handling requests for 83 types of official certificates, bookings and payments across health, transportation, finance and education. The government is providing 512 Nvidia B200 GPUs for development with beta rollouts planned for late 2026, while SK Telecom leverages its 688-billion-parameter A.X K2 model and 22.5 million subscriber lines to deliver these capabilities via apps, phone calls and SMS, targeting older and less digitally literate citizens to prevent AI usage gaps.
+Why it matters: The initiative represents one of the first population-scale government deployments of sovereign AI as a public utility, employing competing private-sector consortia required to use majority domestic models while receiving state compute resources. It uniquely combines sovereign foundation model infrastructure with mass-market telecommunications distribution to deliver autonomous agent capabilities directly to citizens, specifically targeting social equality by preventing AI usage gaps among vulnerable populations. The AI agents autonomously initiate calls, reservations and administrative actions to help users complete procedures including requesting 83 types of official certificates through integration with Government24 and PASS systems, executing bookings, applications and payments across multiple sectors without requiring human initiation of each step, though requiring user confirmation before final execution.
+What technology: The services utilize sovereign foundation models including SKT's 688-billion-parameter A.X K2, with mandates requiring at least 50% domestic foundation models and 30% from third-party domestic developers, delivered via apps, phone calls and SMS. These are integrated with Government24 and PASS systems and developed using 512 Nvidia B200 GPUs provided by the government.
 Sources:
 - SKT joins government's 'AI for All' initiative to expand public access — https://www.koreatimes.co.kr/amp/business/companies/20260819/skt-joins-governments-ai-for-all-initiative-to-expand-public-access
+- South Korea picks SK Telecom, Kakao and KT for free national AI service — https://technode.global/2026/08/28/south-korea-picks-skt-kakao-kt-national-ai-service/
 - South Korea's Big 3 Telcos Vie for 'AI for All' — Domestic NPUs and AI Agents Expand the Battlefield — https://finance.biggo.com/news/19949a6e-5d91-47fb-8075-3a20a2db719b
 
 ### Dubai-India Agentic AI Cooperation Agreement (United Arab Emirates, India, 2026-08-19)
@@ -560,13 +652,14 @@ Sources:
 
 ### SSA Enterprise AI Strategy RFI (United States, 2026-08-18)
 Organisation: Social Security Administration
-Layer: Agent governance, Tech stack, People & culture
-Type: Strategy
-Summary: The Social Security Administration is soliciting public feedback via a Request for Information to develop an enterprise AI strategy that incorporates agentic capabilities. The RFI seeks input on five areas: AI opportunity pipeline and prioritization, talent acquisition and retention, enterprise architecture and infrastructure, workforce training and change management, and governance models that balance deployment speed with accountability. The agency currently has one agentic use case in pre-deployment focused on developer efficiency.
-Why it matters: This represents a federal agency explicitly soliciting public input on architectural approaches and governance frameworks specifically for scaling agentic AI, rather than procuring specific tools. It marks SSA's formal acknowledgment of agentic capabilities as distinct from general AI in its strategic planning. The SSA's AI inventory identifies one agentic use case in pre-deployment: a tool aimed at increasing "developer efficiency through faster coding, time savings and cost reduction." The RFI explicitly seeks direction on leveraging "agentic capabilities" across the agency's work, indicating intent to expand systems that operate with greater autonomy than traditional automation.
-What technology: The RFI requests "high-level ideas" for enterprise architecture to support AI at scale, specifically mentioning data readiness, platform layers, and governance and oversight layers, while explicitly asking respondents to focus on "architectural approaches and models" rather than vendors or products.
+Layer: Agent governance, Tech stack, People & culture, Government workflows
+Type: Strategy, Procurement
+Summary: The Social Security Administration is soliciting public feedback via a Request for Information to inform an existing 13-page enterprise AI strategy that incorporates agentic capabilities. The RFI seeks input on five areas: AI opportunity pipeline and prioritization, talent acquisition and retention, enterprise architecture and infrastructure, workforce training and change management, and governance models that balance deployment speed with accountability. The agency aims to harden controls and an operating model before agentic tools spread beyond a single non-high-impact use case in pre-deployment focused on developer efficiency.
+Why it matters: This represents a federal agency explicitly soliciting public input on architectural approaches and governance frameworks specifically for scaling agentic AI, rather than procuring specific tools. It marks SSA's formal acknowledgment of agentic capabilities as distinct from general AI, treating them as a governance and architecture requirement that requires hardened controls and human-in-the-loop mechanisms before broader deployment. The SSA's AI inventory identifies one non-high-impact agentic use case in pre-deployment: a tool aimed at increasing developer efficiency through faster coding, time savings and cost reduction. The RFI explicitly seeks direction on leveraging 'agentic capabilities' across broader agency workflows, asking respondents to address approval paths for such tools and mandating governance, logs, and human-in-the-loop controls before production.
+What technology: The RFI references an existing 13-page enterprise AI strategy and requests 'high-level ideas' for enterprise architecture to support AI at scale, specifically mentioning data readiness, platform layers, and governance and oversight layers. It explicitly asks respondents to focus on architectural approaches and models rather than vendors or products.
 Sources:
 - SSA seeks direction for new enterprise AI strategy — https://fedscoop.com/social-security-administration-rfi-agentic-ai/
+- AI projects now start with hiring and fiber, not models — https://www.marketscale.com/industries/software-and-technology/ai-projects-now-start-with-hiring-and-fiber-not-models
 
 ### 101 AI Call Triage System (United Kingdom, 2026-08-18)
 Organisation: Home Office and National Police Chiefs' Council
