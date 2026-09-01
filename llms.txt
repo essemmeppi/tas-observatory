@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (327 records as of 2026-08-30).
+newest first (336 records as of 2026-08-31).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,97 @@ newest first (327 records as of 2026-08-30).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Sovereign AI R&D Procurement Scheme (United Kingdom, 2026-08-31)
+Organisation: UK Government (Sovereign AI)
+Layer: Public procurement, Government workflows
+Type: Procurement
+Summary: The Sovereign AI R&D Procurement Scheme is a £100 million fund launching competitions to back British AI startups in developing demonstrator-stage solutions for public sector challenges, from NHS productivity and national security to cyber resilience and compute efficiency. Successful firms receive upfront payments, retain intellectual property, and work with government departments to test technologies in real-world operational environments. The first four competitions are intended to test the delivery model, with further challenges expected as the programme expands.
+Why it matters: It is the first government scheme designed to act like a venture capital fund with state backing, specifically removing barriers for smaller startups by offering upfront payments and letting them keep IP. By focusing on demonstrator-stage technologies, it aims to help British innovators cross the valley of death from prototype to proven public-sector customer. The NHS productivity competition seeks AI systems that will 'automate workflows, coordinate care and support decision-making across health services', while the defence competition will develop solutions that 'securely connect data and frontier AI capabilities across defence systems'. The cyber competition explicitly addresses risks from 'increasingly capable AI agents' that require security and resilience testing before economy-wide adoption.
+What technology: The scheme focuses on demonstrator-stage technologies ready for real-world operational testing, with one competition led by ARIA’s Scaling Inference Lab and others involving secure integration of frontier AI across health, defence and cyber domains.
+Sources:
+- £100 million competition to back British AI companies to fix public services — https://www.gov.uk/government/news/100-million-competition-to-back-british-ai-companies-to-fix-public-services
+
+### QommonsAI (Japan, 2026-08-31)
+Organisation: Japanese municipalities
+Layer: Government workflows, Tech stack
+Type: Deployment
+Summary: QommonsAI is a generative AI platform built by Polimill with OpenAI technology for Japan’s public sector, currently used by about 1,050 municipalities and 550,000 public employees to streamline workflows such as assembly responses, public services, social welfare, and legal search. It unifies fragmented municipal data—including assembly minutes and administrative records—into a searchable, cross-organizational knowledge base to support daily work and policy drafting. Polimill is evolving the platform toward Qommons ONE, a public operating system centered on a super agent that orchestrates multiple specialized AI systems and third-party applications.
+Why it matters: It establishes a common national AI infrastructure that standardizes and makes searchable fragmented municipal data across Japan, avoiding service gaps between municipalities. The planned Qommons ONE introduces a super-agent architecture that autonomously coordinates specialized AI and private-sector apps to generate end-to-end deliverables from a simple user goal. The planned Qommons ONE will feature a "super agent that brings together multiple specialized AI systems and private-sector apps," enabling users to "state a goal, and the system will call the necessary AI or apps to produce practical deliverables, from research to presentations" without manual step-by-step human initiation.
+What technology: The platform is built on OpenAI GPT models and Codex, with a unified architecture that ingests and standardizes municipal data (e.g., assembly minutes, welfare records, laws), adds AI-generated metadata, and exposes it through a common search interface with administrative audit controls.
+Sources:
+- Polimill builds Japan's next-generation public AI infrastructure — https://openai.com/index/polimill
+
+### Mari and Marco (Maricopa County) / DC Compass (Washington, D.C.) (United States, 2026-08-31)
+Organisation: Maricopa County Office of Enterprise Technology & Innovation; Washington D.C. Office of the Chief Technology Officer
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Two GIS-integrated AI agent systems: Mari (public-facing) and Marco (employee-facing) in Maricopa County, Arizona, and DC Compass in Washington, D.C. Both systems combine conversational AI with geographic information systems to answer location-based government queries. Mari/Marco launched June 2026 with ~706 monthly users; DC Compass launched March 2024 as pilot, moved to full production March 2026. Systems handle 'nearest neighbor' searches, property queries, and spatial data retrieval.
+Why it matters: Integration of conversational AI with GIS enables location-aware query resolution without users needing technical GIS skills or knowing which dataset contains the answer. The systems chain contextual information across a session, carrying forward location data to subsequent questions. Mari and Marco function as 'orchestration agents' at the top of a stack with multiple sub-agents and tools, automatically routing queries to appropriate specialized agents (RAG search for text, Esri tools for spatial data). The system 'takes their address, turns it into a point on the map and then looks at a dataset of points of whatever it was they were looking for, and calculates the distance from your location to each point' and 'carries it forward through the session' without requiring users to re-enter context. DC Compass similarly acts as an AI 'front door' that surfaces results across mapping and non-spatial datasets automatically.
+What technology: Built on IBM Watson conversational models with Retrieval-Augmented Generation (RAG) search agents; Esri GIS stack for spatial processing; integration with over 700 public datasets in D.C.; address-to-point geocoding; distance calculation algorithms.
+Sources:
+- Cities are giving their AI chatbots a new dimension: geography — https://statescoop.com/cities-ai-chatbots-dimension-geography/
+
+### EI-Seekr Agentic AI Partnership for National Security (United States, 2026-08-31)
+Organisation: National Geospatial-Intelligence Agency
+Layer: Government workflows
+Type: Deployment
+Summary: Enabled Intelligence has partnered with Seekr to integrate Seekr’s agentic AI platform with EI’s high-precision data labeling capabilities for U.S. national security programs, including NGA-run initiatives. Seekr will serve as a subcontractor to design and deploy purpose-built AI agents that automate data labeling and quality-assurance workflows while preserving EI’s 95 percent accuracy standards. The combined offering aims to deliver accurate, explainable, mission-ready geospatial intelligence outputs while reducing data and compute costs.
+Why it matters: The partnership formalizes a July enterprise relationship into an August national security subcontract, explicitly pairing expert-in-the-loop geospatial AI with agentic automation for defense and intelligence data preparation. It targets the mission-critical requirement of maintaining 95 percent accuracy in labeled datasets while driving down cost and turnaround time through autonomous annotation and model-building agents. Seekr will design and deploy purpose-built AI agents to accelerate data labeling and quality-assurance workflows, enabling “high levels of automation across annotation and model building” and producing “AI that can explain, audit, and defend every decision” without a human initiating each step.
+What technology: The solution combines Seekr’s SeekrFlow agentic AI platform with Enabled Intelligence’s precision data labeling and annotation capabilities in an expert-in-the-loop geospatial AI architecture. It is integrated into EI’s existing national security portfolio, including programs supporting the NGA and the broader intelligence community.
+Sources:
+- Enabled Intelligence, Seekr Partner to Expand AI Data Labeling for NGA, Defense Programs — https://www.executivebiz.com/articles/enabled-intelligence-seekr-ai-data-labeling-nga-dow
+
+### AI Secretariat and Automated Domestic Violence Drone Response (Brazil, 2026-08-31)
+Organisation: Federal Government of Brazil (proposed)
+Layer: Crisis response, Government workflows
+Type: Strategy
+Summary: Presidential candidate Augusto Cury proposed creating an executive secretariat for robotics and AI to address demographic challenges, alongside an automated emergency system where women facing violence could press an alert button to automatically notify police and dispatch a drone to the aggressor's location.
+Why it matters: Proposes autonomous physical intervention by drones in domestic violence cases triggered by victim-activated alerts, representing a shift from the candidate's previous warnings about digital technology risks toward fully automated government crisis response. The system would autonomously coordinate emergency response by generating police alerts and dispatching drones to specific locations when activated: "toca o dedo no botão de alerta e gera um referenciado na delegacia mais próxima... você vai com um drone... até a casa do predador".
+What technology: Emergency alert button infrastructure integrated with police dispatch systems and drone fleets for autonomous physical deployment to GPS coordinates.
+Sources:
+- “Intoxicação digital”: livro de Augusto Cury contrasta com plano de governo — https://www.metropoles.com/entretenimento/intoxicacao-digital-livro-de-augusto-cury-contrasta-com-plano-de-governo
+
+### Defence Ministry AI Orchestrator (Japan, 2026-08-31)
+Organisation: Japan Ministry of Defence
+Layer: Government workflows, Tech stack
+Type: Deployment, Strategy
+Summary: Japan's Defence Ministry plans to introduce an integrated AI platform and a next-generation 'AI orchestrator' for military command and control to improve the speed and accuracy of decision-making, including battlefield assessment and target selection. The initiative is part of a preliminary 8.9 trillion yen budget request for the fiscal year beginning April 2027, which also covers attack drones, long-range missiles and a new Defence Ministry cloud. The spending plan reflects a broader strategy to reshape Japan's military capabilities amid regional security concerns.
+Why it matters: The ministry is explicitly developing an 'AI orchestrator' that integrates multiple AI systems while ensuring their 'autonomous selection and operation' for command-and-control decisions, marking a shift toward autonomous military decision-support. It also represents a strategic evolution from Japan's traditionally defensive posture toward AI-enabled counterstrike and deterrence capabilities. The planned 'AI orchestrator' is designed to ensure 'autonomous selection and operation' across multiple integrated AI systems, and the command-and-control platform will independently carry out 'assessing battlefields and choosing targets' without a human initiating each step.
+What technology: The platform will combine existing foreign AI technologies, including those from the US, with domestically developed AI, and will run alongside a new secure 'Defence Ministry cloud' for highly sensitive data transmission and stable emergency communications.
+Sources:
+- Japan to beef up its defence with drones, AI and missiles, defence budget plans show, Asia News — https://www.asiaone.com/asia/japan-beef-its-defence-drones-ai-and-missiles-defence-budget-plans-show
+- Japan seeks record defence budget to expand drones, AI and long-range weapons — https://www.nationalheraldindia.com/amp/story/international/japan-seeks-record-defence-budget-to-expand-drones-ai-and-long-range-weapons
+
+### Gemello Digitale di Bologna (Italy, 2026-08-31)
+Organisation: Comune di Bologna
+Layer: Government workflows, Policy & rule-making
+Type: Deployment
+Summary: Bologna is developing an advanced urban digital twin, launched in 2023 with €7 million in PON Metro funds, to support municipal decision-making through analysis and scenario simulation across mobility, energy, and climate. Coordinated by Fondazione Bruno Kessler with the University of Bologna, Cineca, and Fondazione Innovazione Urbana, the platform is designed to test policy impacts before real-world implementation. The article notes that AI agents applied to such twins could autonomously manage operational mobility decisions, but only if the model integrates continuous operational data from private operators.
+Why it matters: Unlike static geospatial digital twins that only map physical infrastructure, Bologna’s twin is explicitly designed as a virtual laboratory for evidence-based urban decisions. The prospective use of autonomous AI agents for real-time fleet and demand management signals a shift from passive mapping toward dynamic, self-governing mobility governance. The article describes AI mobility agents as “sistemi capaci di prendere decisioni operative in autonomia, dal riposizionamento delle flotte alla risposta ai picchi di domanda” — systems that can autonomously decide on fleet repositioning and respond to demand peaks. These agents would act upon the digital twin to optimize urban mobility flows without a human initiating each operational step.
+What technology: The digital twin platform is being built by a consortium led by Fondazione Bruno Kessler; it is intended to integrate real-time operational data, though the article notes that current Italian twins lack feeds from private mobility operators and that open standards such as GBFS and MDS exist to enable such data sharing.
+Sources:
+- Digital twin urbani, perché senza dati la mobilità resta invisibile — https://www.agendadigitale.eu/smart-city/digital-twin-urbani-perche-senza-dati-la-mobilita-resta-invisibile/
+
+### D360 AI Public Sector Partnership (United States, 2026-08-31)
+Organisation: U.S. Federal, State and Local Government agencies (via Carahsoft and Piazza Consulting Group)
+Layer: Government workflows, Service design & UX
+Type: Deployment, Procurement
+Summary: Piazza Consulting Group and Carahsoft partnered to make the D360 AI enterprise suite available to U.S. public sector agencies through government procurement contracts such as NASA SEWP V, TIPS, and OMNIA Partners. The platform automates repetitive, information-intensive work via document intelligence, voice AI, retrieval-augmented generation, and agentic automation, with deployment options including cloud, on-premise, and air-gapped environments.
+Why it matters: The partnership streamlines public sector access to production-ready AI by leveraging established government procurement vehicles rather than custom development. D360 AI combines multiple capabilities—document intelligence, voice AI, RAG, agentic automation, and governance guardrails—on a single configurable platform with flexible deployment down to fully isolated environments. The D360 Agent component is described as "Agentic AI that coordinates multi-step tasks, integrates with enterprise applications and combines automation with human review and approval," enabling autonomous coordination of tasks across systems with built-in human oversight.
+What technology: D360 AI is built on PCG's proprietary intelligence and orchestration layer, unifying D360 Vision, D360 Voice, D360 RAG, D360 Agent, and D360 Guard on a common foundation. It supports deployment in commercial and government cloud, private infrastructure, on-premise, and fully isolated air-gapped environments.
+Sources:
+- Piazza Consulting Group and Carahsoft Partner to Deliver Secure Enterprise AI Solutions to the Public Sector — https://www.manilatimes.net/2026/08/31/tmt-newswire/globenewswire/piazza-consulting-group-and-carahsoft-partner-to-deliver-secure-enterprise-ai-solutions-to-the-public-sector/2415178/amp
+
+### Política de Inteligência Artificial de Defesa (PIAD) (Brazil, 2026-08-31)
+Organisation: Ministério da Defesa do Brasil
+Layer: Government workflows, Agent governance
+Type: Strategy, Deployment
+Summary: The Brazilian Ministry of Defense enacted the Defense Artificial Intelligence Policy (PIAD) via Portaria GM-MD nº 4.360 to promote the development, deployment, and responsible use of AI across the Armed Forces. It aims to build sovereign technological capabilities, reduce dependency on foreign suppliers, and integrate AI into strategic, operational, and tactical military planning, including command and control, cybersecurity, and logistics. Funding is expected to draw from the National Fund for Scientific and Technological Development (FNDCT), which has up to R$ 500 million earmarked for defense technology autonomy projects.
+Why it matters: It is Brazil’s first national policy explicitly framing military AI as systems capable of executing tasks in an “autonomous or assisted” manner within the Armed Forces’ Command and Control Cycle, while mandating technological sovereignty and a convergent, joint approach across the Navy, Army, and Air Force. The policy defines Defense AI as technologies “capaz de executar, de maneira ‘autônoma ou assistida’, tarefas que convencionalmente exigem inteligência humana” and explicitly inserts AI into the military Command and Control Cycle (Observation, Orientation, Decision, Action) to accelerate decision-making and action against adversaries.
+What technology: The policy covers software, hardware, and systems for pattern recognition, predictive analysis, and process improvement across strategic, operational, and tactical levels. Concrete initiatives mentioned include UFMG’s GeoiDE geoinformation extraction project, the Army’s Integrated AI and Data Platform, and the Navy’s Advanced Operational Research and AI Laboratory, though specific models and infrastructure locations remain undefined.
+Sources:
+- Defesa cria IA militar e busca recursos em fundo bilionário da Ciência — https://capitaldigital.com.br/defesa-cria-ia-militar-e-busca-recursos-em-fundo-bilionario-da-ciencia/
 
 ### 42Maru Saudi Government AI Market Entry (LLM42/RAG42) (Saudi Arabia, South Korea, 2026-08-30)
 Organisation: Korea SMEs and Startups Agency (KOSMES)
