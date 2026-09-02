@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (336 records as of 2026-08-31).
+newest first (339 records as of 2026-09-02).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,37 @@ newest first (336 records as of 2026-08-31).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### UNDP-Dfinity Agentic AI Pilot (Global, 2026-09-02)
+Organisation: United Nations Development Programme (UNDP)
+Layer: Tech stack, Service design & UX
+Type: Deployment
+Summary: UNDP partnered with Dfinity to pilot decentralized AI, sovereign cloud infrastructure, and agentic AI tools across governments and civil society organizations in approximately 5 countries over one year. The initiative aims to enable public services with greater data control and reduced reliance on foreign cloud providers.
+Why it matters: Combines decentralized sovereign cloud infrastructure with agentic AI specifically for public sector use in development contexts, emphasizing data sovereignty and reducing dependency on foreign cloud providers. The partnership will pilot 'agentic AI tools' across governments and civil society, though the specific autonomous decision-making, execution, or coordination capabilities are not detailed in the announcement.
+What technology: Decentralized AI and sovereign cloud infrastructure (likely leveraging Dfinity's Internet Computer protocol) deployed across approximately 5 countries for a one-year pilot period.
+Sources:
+- UNDP partners with Dfinity to pilot decentralized AI and sovereign cloud for governments — https://twitter.com/CoinDesk/status/2094834084203614607
+
+### Unified Agent Protocol for UPI (India, 2026-09-01)
+Organisation: National Payments Corporation of India (NPCI)
+Layer: Service design & UX, Tech stack, Government workflows
+Type: Deployment
+Summary: India is developing the Unified Agent Protocol to enable AI agents to conduct routine transactions on the government-backed Unified Payments Interface (UPI). The framework leverages existing UPI features such as UPI Circle for delegated payment authority and Reserve Pay for blocking funds, initially targeting low-value, frequent purchases with plans for more complex use cases.
+Why it matters: It would create one of the first national infrastructures for agentic transactions globally, distinguishing India from private-sector-led initiatives by payments companies and tech giants. AI agents would 'assume the heavy lifting for routine transactions' by receiving delegated payment authority through UPI Circle to conduct 'low-value, frequent purchases' independently, with funds blocked via Reserve Pay for multiple debits within set caps.
+What technology: Built atop India's existing UPI real-time payments infrastructure, incorporating the UPI Circle delegated-authority feature and the Reserve Pay fund-blocking capability for controlled agentic debits.
+Sources:
+- India’s UPI Could Add Agentic Payments for Everyday Transactions — https://www.paymentsjournal.com/indias-upi-could-add-agentic-payments-for-everyday-transactions/amp/
+- India’s UPI ‘exploring use of agentic AI’ to automate regular payments — https://www.fstech.co.uk/fst/Indias_UPI_Exploring_Use_Of_Agentic_AI_To_Automate_Regular_Payments.php
+
+### Governo Zero Clique (Brazil, 2026-09-01)
+Organisation: Multiple Brazilian municipalities
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Governo Zero Clique is an AI-powered digital system created by Gove and deployed across Brazilian municipalities via WhatsApp and the internet to automate citizen services, reduce bureaucracy, and increase tax revenue. It handles tasks such as appointment scheduling, document issuance, debt negotiation, and answering common questions without requiring in-person visits. Reported results include a 135% increase in overdue tax collection in Areal (RJ), R$20 million in credit recovery in Divinópolis (MG), and 95% of invoice requests resolved automatically in Jacareí (SP).
+Why it matters: The initiative introduces a 'Zero Click' concept where citizens simply send a request via mobile phone and the municipality automatically resolves the entire process end-to-end, eliminating the need for citizens to understand internal bureaucratic procedures or visit public offices. It shifts service delivery from digital attendance to autonomous resolution of complex tasks like debt negotiation and official document issuance. The virtual assistant 'resolves problems by itself' (resolve problemas sozinho), autonomously scheduling appointments, issuing tax invoices, negotiating debts, and answering common questions via WhatsApp or the internet without requiring citizens to visit a public building. In Rio Verde (GO) and Jacareí (SP), 95% of service requests and invoice demands are resolved by robots without any human attendant intervention.
+What technology: The system uses artificial intelligence integrated with WhatsApp and web-based channels to deliver automated public services; specific underlying models or technical architecture are not detailed in the source.
+Sources:
+- Prefeituras aumentam arrecadação em até 135% com atendimento digital e inteligência artificial — https://www.bra1.com.br/geral/id-687216/prefeituras_aumentam_arrecadacao_em_ate_135__com_atendimento_digital_e_inteligencia_artificial
 
 ### Sovereign AI R&D Procurement Scheme (United Kingdom, 2026-08-31)
 Organisation: UK Government (Sovereign AI)
@@ -805,14 +836,15 @@ Sources:
 Organisation: Ministry of Science and ICT
 Layer: Service design & UX, Government workflows, Tech stack
 Type: Deployment, Strategy
-Summary: South Korea's 'AI for All' initiative provides free public access to sovereign AI agents through three competing consortia led by SK Telecom, Kakao and KT, autonomously handling requests for 83 types of official certificates, bookings and payments across health, transportation, finance and education. The government is providing 512 Nvidia B200 GPUs for development with beta rollouts planned for late 2026, while SK Telecom leverages its 688-billion-parameter A.X K2 model and 22.5 million subscriber lines to deliver these capabilities via apps, phone calls and SMS, targeting older and less digitally literate citizens to prevent AI usage gaps.
-Why it matters: The initiative represents one of the first population-scale government deployments of sovereign AI as a public utility, employing competing private-sector consortia required to use majority domestic models while receiving state compute resources. It uniquely combines sovereign foundation model infrastructure with mass-market telecommunications distribution to deliver autonomous agent capabilities directly to citizens, specifically targeting social equality by preventing AI usage gaps among vulnerable populations. The AI agents autonomously initiate calls, reservations and administrative actions to help users complete procedures including requesting 83 types of official certificates through integration with Government24 and PASS systems, executing bookings, applications and payments across multiple sectors without requiring human initiation of each step, though requiring user confirmation before final execution.
-What technology: The services utilize sovereign foundation models including SKT's 688-billion-parameter A.X K2, with mandates requiring at least 50% domestic foundation models and 30% from third-party domestic developers, delivered via apps, phone calls and SMS. These are integrated with Government24 and PASS systems and developed using 512 Nvidia B200 GPUs provided by the government.
+Summary: South Korea's 'AI for All' initiative will provide every citizen with free, unlimited access to sovereign AI agents through three competing consortia led by SK Telecom, Kakao and KT, autonomously handling requests for 83 types of official certificates, bookings and payments across health, transportation, finance and education. A test phase begins in September 2026 with national deployment planned by year-end, powered by 512 Nvidia B200 GPUs supplied by the state; SK Telecom leverages its 688-billion-parameter A.X K2 model and 22.5 million subscriber lines to deliver these capabilities via apps, phone calls and SMS, targeting older and less digitally literate citizens to prevent AI usage gaps.
+Why it matters: The initiative treats sovereign AI as a public utility and common good akin to education or health, representing a global first at national scale by deploying competing private-sector consortia required to use majority domestic models while receiving state compute resources to reduce dependence on American and Chinese solutions. It uniquely combines sovereign foundation model infrastructure with mass-market telecommunications distribution to deliver autonomous agent capabilities directly to citizens, specifically targeting social equality by preventing AI usage gaps among vulnerable populations. The AI agents go far beyond a generalist chatbot, autonomously initiating calls, reservations and administrative actions to help users complete procedures such as requesting 83 types of official certificates through Government24 and PASS systems, executing bookings, applications and payments across multiple sectors without requiring human initiation of each step, though requiring user confirmation before final execution. Concrete capabilities include booking medical appointments, obtaining tax advice, searching for housing, calculating taxes and verifying eligibility for government aid.
+What technology: The services utilize sovereign foundation models including SKT's 688-billion-parameter A.X K2, with mandates requiring at least 50% domestic foundation models and 30% from third-party domestic developers, delivered via apps, phone calls, SMS and existing platforms such as KakaoTalk. These are integrated with Government24 and PASS systems and developed using 512 Nvidia B200 GPUs provided by the government.
 Sources:
 - SKT joins government's 'AI for All' initiative to expand public access — https://www.koreatimes.co.kr/amp/business/companies/20260819/skt-joins-governments-ai-for-all-initiative-to-expand-public-access
 - South Korea picks SK Telecom, Kakao and KT for free national AI service — https://technode.global/2026/08/28/south-korea-picks-skt-kakao-kt-national-ai-service/
 - Coreia do Sul cria serviço público de inteligência artificial com acesso gratuito e ilimitado — https://brasiliainfoco.com/coreia-do-sul-cria-servico-publico-de-inteligencia-artificial-com-acesso-gratuito-e-ilimitado/
-- South Korea's Big 3 Telcos Vie for 'AI for All' — Domestic NPUs and AI Agents Expand the Battlefield — https://finance.biggo.com/news/19949a6e-5d91-47fb-8075-3a20a2db719b
+- La Corée du Sud lance l'IA gratuite et illimitée pour tous ses citoyens, une première mondiale — https://www.generation-nt.com/actualites/coree-sud-ia-gratuite-citoyens-service-public-ai-for-all-2080440/amp
+- South Korea trade ministry seeks record $9.7 billion budget — https://www.upi.com/Top_News/World-News/2026/09/01/trade-budget-2027-critical-minerals/5381788310102/
 
 ### Dubai-India Agentic AI Cooperation Agreement (United Arab Emirates, India, 2026-08-19)
 Organisation: Dubai Chambers
