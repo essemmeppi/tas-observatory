@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (339 records as of 2026-09-02).
+newest first (345 records as of 2026-09-03).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,56 @@ newest first (339 records as of 2026-09-02).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### National function-based agentic AI model test (Finland, 2026-09-03)
+Organisation: Finnish Government
+Layer: Government workflows
+Type: Deployment
+Summary: Finland is the first government to pilot an international function-based model for agentic AI at the national level in the public sector. The initiative was discussed at a Sitra event focused on applying agentic AI in government services.
+Why it matters: It is the first national-level government test of an international function-based model for agentic AI in the public sector. The source reports Finland is testing a function-based model for agentic AI to be applied in government services, but does not specify the concrete autonomous tasks, decisions or coordination the system performs without human initiation.
+What technology: An international function-based model for agentic AI; no further technical details are provided in the source.
+Sources:
+- Finland tests function-based agentic AI model at national level in public sector — https://www.sitra.fi/en/events/towards-agentic-state-where-should-agentic-ai-be-applied-in-the-public-sector/
+
+### Uber-Wayve London Robotaxi Launch (United Kingdom, 2026-09-02)
+Organisation: Transport for London
+Layer: Agent governance
+Type: Deployment
+Summary: Uber launched autonomous robotaxi rides in London using Wayve's AI Driver technology, initially deploying fewer than 20 Ford Mustang Mach-E vehicles with a licensed safety operator on board. The service matches riders requesting UberX, Uber Comfort or Uber Electric at no additional cost, while regulatory authorisation for fully driverless operations remains pending.
+Why it matters: This makes London the second European city after Zagreb to offer Uber robotaxis, and marks the first public deployment of Wayve's AI Driver in its home city, using machine learning to adapt to complex driving environments like a human driver. The Wayve AI Driver autonomously controls the vehicle and learns from experience to adapt to new roads, vehicles, weather conditions and cities without a human initiating each step, with a licensed operator currently monitoring before future fully driverless operations.
+What technology: Wayve's AI Driver is integrated into Ford Mustang Mach-E vehicles and uses machine learning to drive by experience, adapting to new roads, vehicles, weather and cities; it operates via Uber's ride-hailing platform.
+Sources:
+- Uber and AI-firm Wayve launch London’s first robotaxis — https://wtaq.com/2026/09/02/uber-and-ai-firm-wayve-launch-londons-first-robotaxis/
+
+### RGF-Agent (Brazil, 2026-09-02)
+Organisation: Universidade Federal de Alfenas (UNIFAL-MG)
+Layer: Government workflows
+Type: Deployment
+Summary: The RGF-Agent (AI-Driven Governance Platform for Public Sector Innovation Labs) is a platform developed at UNIFAL-MG that uses generative artificial intelligence and autonomous agents to assist public sector innovation labs in guiding and accelerating decision-making processes. It won the Silver Medal in the Smart Governance and Public Administration category at the BRICS Skills Development and Technology Innovation Competition in Guangzhou, China. Next steps include expanding practical testing in Brazilian public institutions.
+Why it matters: It is an AI-driven governance platform specifically designed for public sector innovation labs, combining autonomous agents with generative AI to accelerate decision-making. It was the only official medal won by Brazil at the BRICS technology innovation competition. The system uses 'autonomous agents' on a platform aimed at public sector innovation labs, with the purpose of 'assisting in the guidance and acceleration of decision-making processes within these structures,' as described by the project team.
+What technology: The platform uses generative artificial intelligence and autonomous agents, operating under the full name AI-Driven Governance Platform for Public Sector Innovation Labs.
+Sources:
+- Professor de Varginha conquista medalha de prata em competição de inovação na China — https://www.varginhaonline.com.br/geral/professor-de-varginha-medalha-prata-inovacao-china/
+
+### Gemini 3.8 Flash Cyber (Fairwind Program) (United States, 2026-09-02)
+Organisation: Google
+Layer: Cyber security, Agent governance
+Type: Deployment
+Summary: Gemini 3.8 Flash Cyber is a specialized cybersecurity AI model offered through Google's Fairwind Program to trusted government authorities, critical infrastructure operators, and software maintainers. It provides autonomous vulnerability discovery across 20+ programming languages and automated patching capabilities, with demonstrated real-world impact including finding critical vulnerabilities in under 2 hours that typically take months to discover.
+Why it matters: The model achieves frontier-level performance in autonomous vulnerability discovery and automated patching at significantly lower cost than larger frontier models, with specific optimization for defensive cybersecurity operations over offensive capabilities. The model performs 'autonomous vulnerability discovery' with 'long-running agentic loops designed to recursively evaluate and refine the underlying models', and 'executing extra reasoning steps, and calling tools iteratively' without human initiation of each step. Google's Cloud Vulnerability Research team used it to 'find a critical foundational vulnerability in less than 2 hours' autonomously.
+What technology: Powered by long-running agentic loops with recursive evaluation and refinement; trained with rigorous cybersecurity domain focus; available via Gemini API, Google AI Studio, and Fairwind Program for cyber-specific variant.
+Sources:
+- Introducing Gemini 3.8 Flash and 3.8 Flash Cyber — https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/
+
+### Manatee County AI Procurement Efficiency Pilot (United States, 2026-09-02)
+Organisation: Manatee County
+Layer: Public procurement, Government workflows
+Type: Deployment
+Summary: An AI pilot program analyzed Manatee County's procurement records covering nearly $2.5 billion in spending and over 147,000 records to identify annual efficiency opportunities estimated between $14.5 million and $49.5 million. The system flagged risks across 23 categories including contract structures, change orders, and competitive procurement gaps. Conducted for $4,900 following a state audit, the pilot recommends continuous AI-assisted contract compliance and procurement monitoring.
+Why it matters: The pilot demonstrates autonomous AI agents auditing massive government procurement datasets at very low cost, producing categorized savings estimates with confidence levels. It proposes shifting from retrospective audits to continuous, near-real-time monitoring of spending patterns and vendor behavior. The source states that 'AI agents crawled through almost $2.5 billion dollars worth of procurement activity, over 147,000 records and nearly 2,300 active vendor contracts,' autonomously searching for red flags among 23 categories from 'change order overruns' to 'blatant fraud' and identifying specific savings opportunities without human review of each record.
+What technology: The pilot uses DigiBuild's large language model to analyze digital procurement records and vendor contracts. It is designed for continuous monitoring to capture recurring spending patterns in near-real-time, with recommendations for ongoing AI-assisted contract compliance tools.
+Sources:
+- AI pilot program says it can save Manatee County up to $110 million — https://www.yourobserver.com/news/2026/sep/02/ai-pilot-save-manatee-county-millions/
 
 ### UNDP-Dfinity Agentic AI Pilot (Global, 2026-09-02)
 Organisation: United Nations Development Programme (UNDP)
@@ -42,6 +92,16 @@ Why it matters: The initiative introduces a 'Zero Click' concept where citizens 
 What technology: The system uses artificial intelligence integrated with WhatsApp and web-based channels to deliver automated public services; specific underlying models or technical architecture are not detailed in the source.
 Sources:
 - Prefeituras aumentam arrecadação em até 135% com atendimento digital e inteligência artificial — https://www.bra1.com.br/geral/id-687216/prefeituras_aumentam_arrecadacao_em_ate_135__com_atendimento_digital_e_inteligencia_artificial
+
+### Resilience Intelligence (AEGIS) (Germany, 2026-08-31)
+Organisation: German and European public authorities; Forschungszentrum Jülich
+Layer: Crisis response, Government workflows
+Type: Strategy, Deployment
+Summary: Resilience Intelligence is a sovereign Agentic GeoAI platform for crisis management that connects specialized AI agents with geodata from satellites, sensors, drones and situation reports to create a decision-making layer for German and European authorities. It spatially, temporally and semantically fuses multi-source data, orchestrates agentic workflows and embeds human-in-the-loop governance to produce traceable, accountable crisis assessments. The concept originates from the Horizon Europe AEGIS project and is scientifically supported by Forschungszentrum Jülich.
+Why it matters: It proposes a sovereign European intelligence layer that does not merely aggregate data but prepares traceable, human-governed crisis decisions by autonomously fusing heterogeneous satellite, sensor and drone feeds through specialized agents that orchestrate analysis workflows while explicitly surfacing uncertainty and provenance. Specialized AI agents autonomously translate operational questions into technical analysis paths, select relevant data sources, start appropriate workflows, prioritize information and suggest concrete next steps, so that crisis teams no longer have to monitor ten systems in parallel. As described in the source: 'spezialisierte KI-Agenten operative Fragen in technische Analysewege übersetzen. Relevante Datenquellen werden ausgewählt, passende Workflows gestartet, Informationen priorisiert und konkrete nächste Schritte vorgeschlagen.'
+What technology: Agentic GeoAI platform connecting Copernicus earth observation, Galileo/EGNSS, drone-based verification and local sensor data via specialized AI agents; validated and scaled on European high-performance computing infrastructure (LUMI/EuroHPC) and scientifically supported by Forschungszentrum Jülich, originating from the 36-month Horizon Europe AEGIS project.
+Sources:
+- Wie Europa KI für den Krisenfall neu denken muss — https://www.egovernment.de/wie-europa-ki-fuer-den-krisenfall-neu-denken-muss-a-51f153f623b071da06f6173af136ebc8/
 
 ### Sovereign AI R&D Procurement Scheme (United Kingdom, 2026-08-31)
 Organisation: UK Government (Sovereign AI)
@@ -419,16 +479,6 @@ Why it matters: Rather than just providing information, the system uses a 'KI-La
 What technology: Built on a KI-Cloud infrastructure using generative AI language models and crawler systems; features a customizable avatar chatbot frontend and automated form-filling assistants; implemented by SAP and Deutsche Telekom as part of the 'IT-Infrastruktur für die öffentliche Verwaltung' project with a budget of approximately 250 million euros.
 Sources:
 - Kritik an Deutschland-App: Menschenzentrierte Verwaltung statt vorgeschaltetem Chatbot — https://netzpolitik.org/2026/kritik-an-deutschland-app-menschenzentrierte-verwaltung-statt-vorgeschaltetem-chatbot/
-
-### Intelligence Community Agentic AI Threat Assessment and Defense Strategy (United States, 2026-08-25)
-Organisation: United States Intelligence Community
-Layer: Cyber security, Agent governance
-Type: Strategy, Regulation
-Summary: The U.S. Intelligence Community has formally identified agentic AI as a defining national security threat in its March 2026 Annual Threat Assessment, citing specific incidents including a 'near-autonomous' attack on Taiwanese government systems using coordinated AI sub-agents that compromised 85 accounts. The IC is developing defensive countermeasures including continuous verification protocols for AI agents and accelerating vulnerability patching capabilities to protect classified networks such as JWICS.
-Why it matters: This represents one of the first official U.S. government assessments specifically naming agentic AI (rather than general AI) as a core cyber threat, with concrete documentation of autonomous attack chains including sub-agents assigned specific targets and techniques operating across multiple waves without human-per-step initiation. The assessment documents specific autonomous attack capabilities including suspected Chinese operatives deploying 'open source Hermes and OpenClaw AI agents and sub-agents, each assigned a target and attack technique' to conduct 'near-autonomous' cyberattacks across 12 waves, and threat actors using LLMs to 'automate reconnaissance, create malicious code and make decisions in real time' to achieve AWS administrative access within eight minutes.
-What technology: References open-source Hermes and OpenClaw AI agents, LLMjacking via Amazon Bedrock, exploitation of Claude Code for vulnerability research, and continuous verification architectures extending zero-trust models to scrutinize every action of potentially rogue agents.
-Sources:
-- How AI & Quantum Are Threatening National Security — https://www.executivebiz.com/articles/cybersecurity-agentic-ai-quantum-ic
 
 ### AI-powered democratic government (South Korea, 2026-08-25)
 Organisation: Ministry of the Interior and Safety
@@ -2008,6 +2058,17 @@ What technology: Proprietary AI chips, digital twin integration, and advanced hu
 Sources:
 - Il vero segreto dell'automotive cinese? Le sue fabbriche ultra hi-tech: così stanno surclassando l'Occidente — https://www.automoto.it/news/il-vero-segreto-dell-automotive-cinese-le-sue-fabbriche-ultra-hi-tech-cosi-stanno-surclassando-l-occidente.html
 
+### Intelligence Community Agentic AI Threat Assessment and Defense Strategy (United States, 2026-08-01)
+Organisation: United States Intelligence Community
+Layer: Cyber security, Agent governance, Policy & rule-making, Government workflows
+Type: Strategy, Regulation
+Summary: The US Intelligence Community is advancing agentic AI through concepts where agents manage other agents to handle complex tasks. The effort represents a concrete policy and deployment discussion within the public-sector intelligence domain.
+Why it matters: Rather than isolated automation, the concept envisions hierarchical agent systems where higher-level AI agents autonomously direct and coordinate subordinate agents for complex intelligence work. The source reports concepts of 'agents managing other agents to handle complex tasks', meaning AI agents autonomously coordinate and delegate work among themselves without a human initiating each individual step.
+What technology: Not specified in the source.
+Sources:
+- US Intelligence Community explores agents managing agents for AI advancement — https://breakingdefense.com/2026/08/ais-next-leap-for-the-intelligence-community-agents-managing-agents/
+- How AI & Quantum Are Threatening National Security — https://www.executivebiz.com/articles/cybersecurity-agentic-ai-quantum-ic
+
 ### Autonomous AI Ecosystem for State Agencies (Phase 1) (Vietnam, 2026-08-01)
 Organisation: Tay Ninh Provincial People's Committee (Department of Science and Technology)
 Layer: Government workflows, Tech stack, Service design & UX, Agent governance
@@ -3460,13 +3521,14 @@ Sources:
 
 ### National Agentic AI Project (United Arab Emirates, 2024-01-01)
 Organisation: United Arab Emirates federal government
-Layer: Government workflows, Service design & UX
+Layer: Government workflows, Service design & UX, Policy & rule-making
 Type: Strategy, Deployment
-Summary: The UAE has launched a National Agentic AI Project with the goal of converting 50% of federal government operations to agentic AI within two years. The initiative targets running half of all federal government services on autonomous AI systems, representing a comprehensive government-wide transformation effort.
-Why it matters: It represents one of the most ambitious national commitments to agentic AI adoption, setting a concrete target of 50% of federal services within a two-year timeline. The project explicitly aims to have federal government services and operations 'run on agentic AI', which entails autonomous execution and management of government functions without requiring human initiation for each operational step.
-What technology: Not specified in source.
+Summary: The UAE has launched a National Agentic AI Project with the goal of converting 50% of federal government operations to agentic AI within two years. The initiative includes a Cabinet-level system deploying 32 specialised AI advisors that analyse policies and legislation, assess their impact, review global best practices, and work around the clock with ministers to follow up on decisions and their implementation, aiming to make government more efficient and decisions faster and more accurate.
+Why it matters: It represents one of the most ambitious national commitments to agentic AI adoption, coupling a concrete target of 50% of federal services within two years with a Cabinet-level deployment of 32 specialised advisors that operate continuously to both inform policy and track implementation, rather than relying on a single general-purpose tool. The project explicitly aims to have federal government services and operations run on agentic AI, entailing autonomous execution and management of government functions. It deploys 32 specialised advisors that autonomously analyse policies and legislation, assess their impact, review global best practices and provide recommendations, and work around the clock with ministers to follow up on government decisions and their implementation without requiring a human to initiate each analytical or tracking step.
+What technology: The system is composed of 32 specialised AI advisors; the sources do not disclose specific models, platforms, or technical architecture.
 Sources:
 - UAE Launches National Agentic AI Project Targeting Federal Government Services — https://x.com/cruq_ai/status/2091871497203945638
+- UAE Cabinet adopts AI Advisor System to support decision-making — https://www.dubaieye1038.com/news/local/uae-advances-ai-and-government-development-initiatives/
 
 ### Automated Aviation Safety Issue Analysis App (South Korea, 2024-01-01)
 Organisation: Aviation Safety Technology Institute (Republic of Korea), with National Information Society Agency
