@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (345 records as of 2026-09-03).
+newest first (354 records as of 2026-09-04).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,88 @@ newest first (345 records as of 2026-09-03).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### GovCore MCP (Global, 2026-09-04)
+Organisation: GovCore
+Layer: Compliance & supervision, Government workflows
+Type: Deployment
+Summary: GovCore MCP is a platform that brings agentic AI capabilities to government and public sector regulatory operations. It features autonomous AI agents targeting regulatory workflows and has reached general availability as a concrete product for public sector use cases.
+Why it matters: It represents a concrete product deployment of autonomous AI agents specifically built for public sector regulatory workflows, moving from concept to general availability. The platform deploys "autonomous AI agents" that target government and public sector "regulatory workflows", executing regulatory operations without a human initiating each step.
+What technology: Not specified beyond the GovCore MCP platform.
+Sources:
+- GovCore Announces General Availability of GovCore MCP for Regulatory Operations — https://aithority.com/it-and-devops/cloud/govcore-announces-general-availability-of-govcore-mcp-bringing-agentic-ai-to-regulatory-operations/
+
+### GovGPT (Austria, 2026-09-03)
+Organisation: Austrian Federal Government (Finanzamt)
+Layer: Government workflows, Agent governance
+Type: Deployment
+Summary: The Austrian government plans to deploy GovGPT, a large language model, to automatically generate official administrative decisions (Bescheide), such as rejection notices for family benefit applications. Human oversight is intended to be limited to spot checks only.
+Why it matters: Using generative AI to autonomously draft binding administrative decisions with minimal human review, replacing traditional human caseworker composition of official rulings. The system autonomously generates official administrative decisions (Bescheide), such as rejection notices for family benefit applications, with human oversight explicitly limited to spot checks ('Menschliche Aufsicht ist nur in Stichproben vorgesehen').
+What technology: Large language model named GovGPT; specific model architecture or training data not detailed.
+Sources:
+- Halluzinationen im Amt: Massive Kritik an Plänen für KI in Behörden — https://www.derstandard.at/story/3000000338087/halluzinationen-im-amt-massive-kritik-an-plaenen-fuer-ki-in-behoerden
+
+### SALGA municipal agentic AI deployment (South Africa, 2026-09-03)
+Organisation: South African Local Government Association (SALGA)
+Layer: Government workflows, Service design & UX
+Type: Deployment
+Summary: SALGA has deployed autonomous AI agents in production to approve indigent residents for free basic municipal services and to monitor municipal water infrastructure using IoT sensors, with AI orchestrating maintenance decisions. The association is also building a local-government large language model with a translation agent and lobbying to expand digital infrastructure funding for municipalities.
+Why it matters: The initiative applies agentic AI to autonomous eligibility verification for social welfare and predictive public infrastructure maintenance, and explores a sovereign split architecture where smaller local models process sensitive municipal data while larger cloud models handle orchestration. It also treats AI agents as persistent non-human identities for access and compliance enforcement. SALGA has applied agentic AI to the autonomous approval of indigents for free basic services, converting ineligible residents back onto municipal billing rolls, and uses AI to orchestrate IoT sensor data into water infrastructure maintenance decisions without a human initiating each step.
+What technology: The system uses internet-of-things sensors for water infrastructure monitoring with an AI orchestration layer, and a split architecture in which roughly 80% of pipelines run on smaller local models against sensitive data while larger cloud models are invoked only for orchestration. SALGA is also building a local government large language model with an attached translation agent.
+Sources:
+- Nedbank cuts fraud capture to two minutes as agentic AI moves into production — https://www.cnbcafrica.com/hubs/ai-summit-2026/sessions/autonomous-ai-agents
+
+### Zendure Agentic HEMS (Germany, 2026-09-03)
+Organisation: Zendure
+Layer: Government workflows
+Type: Deployment
+Summary: Zendure presented the 'Agentic HEMS' at IFA 2026 in Berlin, a home energy management system that uses forecast models and AI agents to autonomously control heat pumps and household loads. The system is integrated with over 870 energy providers and 5,000 heat pump models.
+Why it matters: It applies agentic AI to residential energy management, enabling autonomous optimization of heating and electrical consumption through predictive models rather than simple rule-based automation. The system employs 'KI-Agenten' to independently control heat pumps and household loads using forecast models, executing energy management decisions without requiring the user to manually initiate each step. The source states it uses 'Prognosemodelle und KI-Agenten, um Wärmepumpen und Haushaltlasten effizient zu steuern'.
+What technology: Built on forecast models and AI agents; integrates with over 870 energy providers and 5,000 heat pump models; aligns with the IFA trend toward local AI processing.
+Sources:
+- IFA 2026: Tragbare KI-Assistenten ab 120 Euro für Aufgabenverwaltung — https://borncity.com/news/ifa-2026-tragbare-ki-assistenten-ab-120-euro-fuer-aufgabenverwaltung/
+
+### Cabinet AI Advisors (United Arab Emirates, 2026-09-03)
+Organisation: UAE Cabinet
+Layer: Policy & rule-making, Government workflows
+Type: Deployment, Strategy
+Summary: Approved on 2 September 2026, the UAE Cabinet deployed 32 specialized AI advisors assigned to ministers. These systems analyse policies and legislation in real time, assess financial, economic, social and environmental impacts against global best practices, and support operational areas including procurement, tax audits and customer service. They work with ministers around the clock to follow up on decisions and their implementation, connecting new topics to relevant past Cabinet decisions to deliver faster, more accurate government decisions as part of the UAE’s strategic transformation programme.
+Why it matters: The initiative provides ministers with dedicated agentic AI advisors that simultaneously conduct real-time policy analysis and cross-functional operational support across procurement, tax, and service delivery, while autonomously linking new agenda items to historical Cabinet decisions and approved sources to generate final recommendations. It represents a claimed move from traditional bureaucratic process to continuous, 24-hour algorithmic execution of government functions at the highest federal level. The 32 specialised AI advisors autonomously analyse policies and legislation in real time, assess financial, economic, social and environmental impacts using global best practices, connect new topics to relevant past Cabinet decisions, and present final recommendations without a human initiating each step. Supported by explicit "agentic AI technologies", the systems also work with ministers 24 hours a day to follow up on decisions and their implementation across procurement, tax audits and customer service.
+What technology: The sources do not specify models, platforms or architecture, but note the system rests on core principles safeguarding confidentiality and meeting UAE cybersecurity standards, and explicitly distinguish it from a separate sovereign-agent track involving Microsoft and Inception42.
+Sources:
+- UAE launches Cabinet AI Advisor with 32 specialised assistants — https://tbreak.com/uae-cabinet-ai-advisor/
+- UAE Launches 32 Cabinet AI Advisors for Ministers — https://x.com/WeightsAndVotes/status/2095566874910028175
+
+### Fairwind Program (Gemini 3.8 Flash Cyber) (United States, 2026-09-03)
+Organisation: Google
+Layer: Cyber security, Agent governance
+Type: Deployment
+Summary: Google launched Gemini 3.8 Flash Cyber, an AI model for autonomous vulnerability discovery and automated patching, exclusively through the Fairwind Program, which restricts access to vetted government agencies, critical infrastructure operators, and cybersecurity partners via phishing-resistant multifactor authentication and strict access controls. Paired with the CodeMender system in a secure, gated environment, it can autonomously find, verify and fix software vulnerabilities. Early evaluations by the Chrome Security team found it produced correct patches at 2.6 times the rate of comparable commercial models, and Google’s Cloud Vulnerability Research team used it to identify a critical foundational vulnerability in under two hours.
+Why it matters: It formalizes access to a dual-use cybersecurity AI behind an institutional accountability framework with explicit eligibility tiers, published operational standards, and a disclosed partner ecosystem—requiring phishing-resistant multifactor authentication and limiting use to internal cybersecurity and incident-response teams rather than standard commercial API access. By packaging the specialized model with the automated CodeMender remediation tool, it signals hyperscalers moving from raw infrastructure to finished, government-ready security capabilities while achieving practical parity with leading frontier models on automated patching at significantly lower cost. Flash Cyber is purpose-built to autonomously find, verify and fix software vulnerabilities, and is paired with the CodeMender system to deliver automated patching inside a secure environment without a human initiating each step. Google’s Cloud Vulnerability Research team leveraged it to identify a critical foundational vulnerability in under two hours—work that typically requires months—and the Chrome Security team found it produced correct patches at 2.6 times the rate of comparable commercial models.
+What technology: Gemini 3.8 Flash Cyber is the second-generation cybersecurity Flash model, offered exclusively through the Google Cloud–based Fairwind Program with strict access controls, usage tracking, and a more permissive safety profile than the general-purpose Flash model to handle advanced offensive-technique knowledge defenders need; it is integrated with Google’s CodeMender system for automated remediation.
+Sources:
+- Google Launches Gemini 3.8 Flash Cyber: AI Patches 2.6x Faster, Restricted to Vetted Defenders — https://www.techtimes.com/articles/326403/20260903/google-launches-gemini-38-flash-cyber-ai-patches-26x-faster-restricted-vetted-defenders.htm
+- Palantir Stock Drops 7% After Google Unveils a Government-Only Cyber AI — https://startupfortune.com/palantir-stock-drops-7-after-google-unveils-a-government-only-cyber-ai/
+
+### A2RL (Abu Dhabi Autonomous Racing League) (United Arab Emirates, 2026-09-03)
+Organisation: ASPIRE (Advanced Technology Research Council of Abu Dhabi)
+Layer: Tech stack
+Type: Deployment
+Summary: Government-funded autonomous racing league organizing competitions between AI-driven race cars without human pilots, serving as a high-pressure testbed for advanced autonomous driving technologies. The initiative brings together international engineering teams to develop AI systems that control vehicles using real-time sensor data from cameras, radar and lidar, with the European debut held at Imola.
+Why it matters: First autonomous racing competition of its kind in Europe, demonstrating AI driving capabilities that have closed the performance gap with human drivers from three minutes down to nearly identical lap times on complex Formula 1 circuits. The AI systems autonomously control the vehicles during races, making real-time decisions on "sorpassi, accelerazioni, frenate" (overtaking, acceleration, braking) without human drivers, processing data from 7 cameras, 2 GPS, 4 radar and 3 lidar to navigate the track and compete against other autonomous vehicles.
+What technology: Custom AI software developed by competing teams running on Honda DFA 450-horsepower engines; vehicles equipped with 7 cameras, 2 GPS units, 4 radar sensors and 3 lidar sensors for environmental perception and autonomous navigation.
+Sources:
+- A 250 all’ora senza pilota, Imola scopre la monoposto guidata dall’algoritmo — https://www.panorama.it/attualita/sport/a-250-allora-senza-pilota-imola-scopre-la-monoposto-guidata-dallalgoritmo
+
+### AI-Powered Public Building Design and Engineering Platforms (Hong Kong, 2026-09-03)
+Organisation: Architectural Services Department (ArchSD)
+Layer: Government workflows
+Type: Deployment
+Summary: The Architectural Services Department (ArchSD) of the Hong Kong SAR Government has commissioned Arup to develop two AI-enabled platforms that extend an existing AI-powered architectural design system into structural and foundation engineering for public buildings. The platforms use multi-agent collaboration and agentic AI workflow orchestration to automate and optimise design workflows for long-span structures and piled foundations, aiming to improve efficiency, consistency and quality while reducing repetitive manual effort.
+Why it matters: The initiative embeds agentic AI and multi-agent collaboration directly within demanding engineering workflows rather than applying AI as a standalone tool, integrating architectural optioneering, regulatory compliance checking, performance evaluation and energy prediction within a unified multi-agent environment. The platforms 'bring agentic AI to some of the most demanding aspects of building design, automating and optimising key engineering workflows' through 'multi-agent collaboration' and 'agentic AI workflow orchestration', and autonomously carry out 'architectural optioneering, regulatory compliance checking, performance evaluation and energy prediction within a multi-agent environment'.
+What technology: The platforms combine multi-agent environments, agentic AI workflow orchestration, chatbot interfaces, robotic process automation and data analytics, drawing on Hong Kong open data to support architectural optioneering, regulatory compliance checking, performance evaluation and energy prediction.
+Sources:
+- Bringing AI into the heart of public building design with ArchSD in Hong Kong — https://www.webwire.com/ViewPressRel.asp?aId=359962
 
 ### National function-based agentic AI model test (Finland, 2026-09-03)
 Organisation: Finnish Government
@@ -24,12 +106,13 @@ Sources:
 
 ### Uber-Wayve London Robotaxi Launch (United Kingdom, 2026-09-02)
 Organisation: Transport for London
-Layer: Agent governance
+Layer: Agent governance, Service design & UX
 Type: Deployment
-Summary: Uber launched autonomous robotaxi rides in London using Wayve's AI Driver technology, initially deploying fewer than 20 Ford Mustang Mach-E vehicles with a licensed safety operator on board. The service matches riders requesting UberX, Uber Comfort or Uber Electric at no additional cost, while regulatory authorisation for fully driverless operations remains pending.
-Why it matters: This makes London the second European city after Zagreb to offer Uber robotaxis, and marks the first public deployment of Wayve's AI Driver in its home city, using machine learning to adapt to complex driving environments like a human driver. The Wayve AI Driver autonomously controls the vehicle and learns from experience to adapt to new roads, vehicles, weather conditions and cities without a human initiating each step, with a licensed operator currently monitoring before future fully driverless operations.
-What technology: Wayve's AI Driver is integrated into Ford Mustang Mach-E vehicles and uses machine learning to drive by experience, adapting to new roads, vehicles, weather and cities; it operates via Uber's ride-hailing platform.
+Summary: Uber launched autonomous robotaxi rides in London using Wayve's AI Driver technology, initially deploying fewer than 20 Ford Mustang Mach-E vehicles with a licensed safety operator on board. The service matches riders requesting UberX, Uber Comfort or Uber Electric at no additional cost, while a phased rollout is intended to build public and regulatory trust ahead of fully driverless operations that remain pending further authorisation.
+Why it matters: This makes London the second European city after Zagreb to offer Uber robotaxis, and marks the first commercial deployment of Wayve's AI Driver in its home city, ahead of planned entries by Waymo and Baidu. The system uses machine learning to adapt to complex driving environments like a human driver. The Wayve AI Driver autonomously controls the vehicle and independently executes real-time driving maneuvers, learning from experience to adapt to new roads, vehicles, weather conditions and cities without a human initiating each steering or navigation decision. A licensed safety operator sits behind the wheel to monitor operations before future fully driverless approval.
+What technology: Wayve's end-to-end AI Driver is integrated into Ford Mustang Mach-E vehicles and uses machine learning to drive by experience, generalising to new roads, vehicles, weather and cities; it operates via Uber's ride-hailing platform.
 Sources:
+- Autonomes Fahren: Uber und Wayve starten Robotaxi-Dienst in London — https://www.zeit.de/mobilitaet/2026-09/robotaxis-london-uber-wayve-autonomes-fahren-gxe
 - Uber and AI-firm Wayve launch London’s first robotaxis — https://wtaq.com/2026/09/02/uber-and-ai-firm-wayve-launch-londons-first-robotaxis/
 
 ### RGF-Agent (Brazil, 2026-09-02)
@@ -74,14 +157,15 @@ Sources:
 
 ### Unified Agent Protocol for UPI (India, 2026-09-01)
 Organisation: National Payments Corporation of India (NPCI)
-Layer: Service design & UX, Tech stack, Government workflows
-Type: Deployment
+Layer: Service design & UX, Tech stack, Government workflows, Agent governance
+Type: Deployment, Regulation
 Summary: India is developing the Unified Agent Protocol to enable AI agents to conduct routine transactions on the government-backed Unified Payments Interface (UPI). The framework leverages existing UPI features such as UPI Circle for delegated payment authority and Reserve Pay for blocking funds, initially targeting low-value, frequent purchases with plans for more complex use cases.
 Why it matters: It would create one of the first national infrastructures for agentic transactions globally, distinguishing India from private-sector-led initiatives by payments companies and tech giants. AI agents would 'assume the heavy lifting for routine transactions' by receiving delegated payment authority through UPI Circle to conduct 'low-value, frequent purchases' independently, with funds blocked via Reserve Pay for multiple debits within set caps.
 What technology: Built atop India's existing UPI real-time payments infrastructure, incorporating the UPI Circle delegated-authority feature and the Reserve Pay fund-blocking capability for controlled agentic debits.
 Sources:
 - India’s UPI Could Add Agentic Payments for Everyday Transactions — https://www.paymentsjournal.com/indias-upi-could-add-agentic-payments-for-everyday-transactions/amp/
 - India’s UPI ‘exploring use of agentic AI’ to automate regular payments — https://www.fstech.co.uk/fst/Indias_UPI_Exploring_Use_Of_Agentic_AI_To_Automate_Regular_Payments.php
+- Who pays when AI gets it wrong? The governance challenge of agentic payments on UPI — https://government.economictimes.indiatimes.com/amp/news/digital-india/who-pays-when-ai-gets-it-wrong-the-governance-challenge-of-agentic-payments-on-upi/133723153
 
 ### Governo Zero Clique (Brazil, 2026-09-01)
 Organisation: Multiple Brazilian municipalities
@@ -127,11 +211,12 @@ Sources:
 Organisation: Maricopa County Office of Enterprise Technology & Innovation; Washington D.C. Office of the Chief Technology Officer
 Layer: Service design & UX, Government workflows
 Type: Deployment
-Summary: Two GIS-integrated AI agent systems: Mari (public-facing) and Marco (employee-facing) in Maricopa County, Arizona, and DC Compass in Washington, D.C. Both systems combine conversational AI with geographic information systems to answer location-based government queries. Mari/Marco launched June 2026 with ~706 monthly users; DC Compass launched March 2024 as pilot, moved to full production March 2026. Systems handle 'nearest neighbor' searches, property queries, and spatial data retrieval.
-Why it matters: Integration of conversational AI with GIS enables location-aware query resolution without users needing technical GIS skills or knowing which dataset contains the answer. The systems chain contextual information across a session, carrying forward location data to subsequent questions. Mari and Marco function as 'orchestration agents' at the top of a stack with multiple sub-agents and tools, automatically routing queries to appropriate specialized agents (RAG search for text, Esri tools for spatial data). The system 'takes their address, turns it into a point on the map and then looks at a dataset of points of whatever it was they were looking for, and calculates the distance from your location to each point' and 'carries it forward through the session' without requiring users to re-enter context. DC Compass similarly acts as an AI 'front door' that surfaces results across mapping and non-spatial datasets automatically.
-What technology: Built on IBM Watson conversational models with Retrieval-Augmented Generation (RAG) search agents; Esri GIS stack for spatial processing; integration with over 700 public datasets in D.C.; address-to-point geocoding; distance calculation algorithms.
+Summary: Mari (public-facing) and Marco (employee-facing) in Maricopa County, Arizona, and DC Compass in Washington, D.C. are GIS-integrated AI agent systems that combine conversational AI with geographic information systems to answer location-based government queries. Mari additionally helps residents navigate federated municipal websites, automatically determining whether the county or a city holds relevant information and routing queries accordingly. Mari/Marco launched June 2026 with ~706 monthly users; DC Compass launched March 2024 as a pilot and moved to full production March 2026.
+Why it matters: Integration of conversational AI with GIS enables location-aware query resolution without users needing technical GIS skills or knowing which dataset contains the answer, while chaining contextual information across sessions. Mari specifically operates across a federated government environment, automatically determining which department or level of government—city versus county—holds the relevant information. Mari and Marco function as 'orchestration agents' atop a stack of sub-agents and tools, automatically routing queries to specialized agents for RAG text search or Esri spatial processing, taking an address, turning it into a map point, calculating distances to relevant locations, and carrying that context forward through the session. Mari autonomously determines which department or government entity holds relevant information without requiring users to know the organizational structure in advance, and can 'pull data from anywhere' across the federated environment to answer queries, including routing to cities when they rather than the county are responsible.
+What technology: Built on IBM Watson conversational models with Retrieval-Augmented Generation (RAG) search agents and an Esri GIS stack for spatial processing, including address-to-point geocoding and distance calculation algorithms. The systems integrate with over 700 public datasets in D.C. and pull data from distributed departmental sources across multiple county government websites.
 Sources:
 - Cities are giving their AI chatbots a new dimension: geography — https://statescoop.com/cities-ai-chatbots-dimension-geography/
+- Local government is fragmented. Here’s how AI is helping residents navigate it. — https://www.smartcitiesdive.com/news/local-government-is-fragmented-heres-how-ai-is-helping-residents-navigate/829540/
 
 ### EI-Seekr Agentic AI Partnership for National Security (United States, 2026-08-31)
 Organisation: National Geospatial-Intelligence Agency
@@ -459,6 +544,16 @@ Why it matters: It establishes an ecosystem of AI agents capable of autonomous c
 What technology: The system is envisioned as an ecosystem of AI agents integrated with network sensors for automated cyber defense; specific models, platforms, or architecture details are not stated.
 Sources:
 - US Army Issues Solicitation for Project Griffin AI Agents Pilot in Cyber Defense — https://x.com/DefenseScoop/status/2092718755188994170
+
+### Australian Social Media Age Verification (Australia, 2026-08-26)
+Organisation: Australian Government
+Layer: Compliance & supervision, Service design & UX
+Type: Deployment
+Summary: Implementation of automated biometric age verification to enforce Australia's statutory ban on social media access for users under 16 years old. The system uses facial recognition and document verification provided by Persona to authenticate user age across participating platforms, operational since autumn 2025.
+Why it matters: Large-scale deployment of outsourced automated biometric identity verification to enforce regulatory age restrictions, where commercial AI systems autonomously determine access eligibility based on sensitive biometric data processing. The system autonomously extracts facial geometry from government-issued ID documents and real-time selfies, compares biometric features to verify identity and age, and renders automated decisions on access eligibility without human review of individual cases.
+What technology: Facial recognition software that extracts facial features and compares geometric data between ID photos and live selfies; automated document validation for age determination.
+Sources:
+- LinkedIn, Etsy, Roblox: Wer dein Gesicht scannt, wenn du dich online verifizierst — https://netzpolitik.org/2026/linkedin-etsy-roblox-wer-dein-gesicht-scannt-wenn-du-dich-online-verifizierst/
 
 ### Russian AI autonomous attack drone (Russia, Ukraine, 2026-08-26)
 Organisation: Russian military
@@ -1808,10 +1903,11 @@ Sources:
 Organisation: Bundesministerium für Digitales und Staatsmodernisierung (BMDS) and DigitalService
 Layer: Government workflows, Service design & UX, Agent governance
 Type: Deployment
-Summary: Federal pilot program enabling municipalities to test agentic AI systems with startups. The first phase (March–May 2026) ran 20 projects across 19 municipalities, achieving over 90% time reduction for GDPR request processing and up to 28 work hours saved per case. A second application round is open until August 2026 for new municipal use cases.
-Why it matters: First systematic federal initiative in Germany to pilot agentic AI across local governments with measurable efficiency gains, accompanied by a planned dynamic procurement system and a data protection compliance assistant to lower adoption barriers. The systems autonomously plan and execute tasks including pre-checking applications ("Vorprüfung von Anträgen"), modeling administrative processes ("Modellierung von Verwaltungsprozessen"), and creating meeting minutes ("Erstellung von Sitzungsprotokollen"), operating as "KI-Systeme, die Aufgaben eigenständig planen und ausführen können" without human initiation of each step.
-What technology: Municipal-startup collaborations testing various agentic applications; development of a dynamic procurement system and a data protection review assistant ("Datenschutz-Prüfassistent") to facilitate compliance checking and broader reuse.
+Summary: Federal pilot program that matches German municipalities with startups to test agentic AI in local administration. The first edition selected 20 pilots across 19 municipalities from nearly 400 startups and 200 municipalities, testing cases such as automated document verification for social housing, debt-recovery process mining, naturalization process intelligence, and GDPR request processing, with reported results including over 90% time reduction for GDPR requests and up to 28 work hours saved per case. A July 2026 final report confirmed tangible workload relief, and a second application round is open until August 2026 for new municipal use cases.
+Why it matters: First systematic federal initiative in Germany to pilot agentic AI across local governments with measurable efficiency gains, using a bottom-up, competitive call-for-proposals model where municipalities bring problems and startups bring solutions, matched by an expert committee for strategic coherence and scalability. It is accompanied by a planned dynamic procurement system and a data protection compliance assistant to lower adoption barriers and create a structured pathway from isolated pilot to scalable pattern. The systems autonomously plan and execute tasks including pre-checking applications ("Vorprüfung von Anträgen"), modeling administrative processes ("Modellierung von Verwaltungsprozessen"), creating meeting minutes ("Erstellung von Sitzungsprotokollen"), and pre-validating social-housing requests with automated document verification, operating as "KI-Systeme, die Aufgaben eigenständig planen und ausführen können" and carrying out process automation without human initiation of each step or workflow interruption.
+What technology: Municipal-startup collaborations testing process mining for debt recovery, automated document verification integrated into social-housing application flows, process intelligence for naturalization cases, and GDPR request processing; development of a dynamic procurement system and a data protection review assistant ("Datenschutz-Prüfassistent") to facilitate compliance checking and broader reuse.
 Sources:
+- AI nella PA italiana, due modelli per passare dai pilota alla scala — https://www.agendadigitale.eu/cittadinanza-digitale/ai-nella-pa-italiana-due-modelli-per-passare-dai-pilota-alla-scala/
 - Start der zweiten Bewerbungsrunde — https://www.kommune21.de/k21-meldungen/start-der-zweiten-bewerbungsrunde/
 
 ### Law 3.066/2025 on Digital Crimes Against Children (Brazil, 2026-08-06)
