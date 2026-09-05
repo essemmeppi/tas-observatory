@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (354 records as of 2026-09-04).
+newest first (360 records as of 2026-09-05).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,67 @@ newest first (354 records as of 2026-09-04).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### DOT Agentic AI Investigations Support (United States, 2026-09-05)
+Organisation: US Department of Transportation
+Layer: Government workflows, Compliance & supervision
+Type: Deployment
+Summary: The US Department of Transportation is leveraging agentic AI to support investigations. It represents a concrete federal government deployment of agentic AI in the United States.
+Why it matters: The initiative is explicitly identified as an agentic AI deployment for federal investigative support, distinguishing it from conventional automation or generative AI tools. The source states DOT is 'leveraging agentic AI to support investigations', characterizing the system as agentic AI deployed for investigative tasks, though it does not specify exact autonomous decision-making beyond this role.
+What technology: The source does not specify models, platforms, architecture, or technical integrations.
+Sources:
+- US DOT and USDA Advance Agentic AI and AI Pilots — https://www.meritalk.com/articles/dot-usda-see-opportunity-in-new-ai-cyber-reality/
+
+### GDIT-OpenAI Federal AI Partnership (United States, 2026-09-04)
+Organisation: US Federal Agencies
+Layer: Government workflows, Tech stack
+Type: Deployment
+Summary: GDIT and OpenAI have partnered to deploy secure AI agents for federal agencies, automating routine workflows, handling complex multi-agency case workloads, and analyzing large datasets. The collaboration also includes using OpenAI's Codex coding agent to review, test and modernize legacy applications built on languages such as COBOL and Fortran, supporting federal AI adoption beyond limited pilot programs.
+Why it matters: The partnership brings OpenAI's frontier models (GPT-5.6 and Codex) into secure federal environments to deploy autonomous AI agents capable of cross-agency coordination and legacy system modernization, marking a move from pilot programs to operational deployment. The system deploys "autonomous AI agents" that "automate routine workflows, handle complex case workloads involving multiple agencies and analyze large data sets" without requiring human initiation of each step, and uses the Codex coding agent to autonomously "review, test and modernize applications" including legacy COBOL and Fortran systems.
+What technology: Uses OpenAI's frontier models including GPT-5.6 and the Codex coding agent, delivered via secure API models designed to integrate with existing federal systems while protecting personal information and maintaining controlled data sharing.
+Sources:
+- GDIT, OpenAI Partner on Secure AI for Government — https://www.executivebiz.com/articles/gdit-openai-secure-ai-federal
+
+### AI for renewable curtailment reduction in the Italian power grid (Italy, 2026-09-04)
+Organisation: Terna
+Layer: Government workflows
+Type: Strategy
+Summary: The article explores how artificial intelligence can mitigate renewable energy curtailment in Italy by predicting grid congestion and optimizing dispatching. Machine learning models trained on historical operational data enable the grid operator to identify risks in advance and coordinate distributed flexibility resources. The goal is to reduce the need for production limitation orders and improve the economic efficiency of the electricity system.
+Why it matters: The approach shifts focus from costly new infrastructure to optimizing existing grid assets through predictive congestion management. It also envisions AI as a systemic enabler that autonomously coordinates batteries, electric vehicles, and demand response to absorb excess renewable generation. The AI autonomously decides when to charge and discharge batteries, activates flexible loads during surplus periods, coordinates electric vehicle charging, and optimizes overall system operation to minimize curtailment without a human initiating each step.
+What technology: Machine learning models trained on historical data covering renewable generation, electricity demand, weather conditions, and grid status to predict congestion and enable predictive dispatching.
+Sources:
+- Troppa energia solare, rete in difficoltà: come può intervenire l’IA — https://www.agendadigitale.eu/smart-city/troppa-energia-solare-rete-in-difficolta-come-puo-intervenire-lia/
+
+### Tech Force AI Interview Pilot (United States, 2026-09-04)
+Organisation: Office of Personnel Management (OPM)
+Layer: People & culture, Government workflows
+Type: Deployment
+Summary: The US federal government is piloting autonomous AI agents to conduct structured interviews for the Tech Force program, which recruits private sector technology specialists for two-year government assignments. The system uses the CodeSignal platform to ask candidates standardized questions, record interview audio, and generate summaries for hiring managers to review. The pilot aims to accelerate the federal hiring process, which has been criticized as slow, while handling high volumes of applicants.
+Why it matters: This marks the first deployment of autonomous AI interview agents for federal government hiring, moving beyond traditional human-led screening to AI-conducted initial interviews with automated transcription and summarization. AI agents autonomously conduct structured interviews with standardized questions, and the tools independently record and summarize audio conversations, allowing hiring managers to review transcripts and recordings afterward rather than conducting the initial screenings themselves.
+What technology: Uses the CodeSignal platform offering AI-driven virtual interview agents with phone, audio and text interaction options, generating transcribed recordings for hiring managers. Administrative staff also have access to Microsoft Copilot, Anthropic Claude, OpenAI ChatGPT and Google Gemini for general HR tasks.
+Sources:
+- Governo dos EUA usará IA em entrevistas para algumas vagas federais, dizem fontes — https://www.gazetanews.com/noticias/politica/2026/09/amp/521333-governo-dos-eua-usara-ia-em-entrevistas-para-algumas-vagas-federais-dizem-fontes.html
+
+### Ban Artificial Superintelligence Act and Stop Rogue AI Act (United States, 2026-09-04)
+Organisation: United States Congress
+Layer: Agent governance, Cyber security
+Type: Regulation
+Summary: Two bills introduced in the US Congress seek to impose hard limits on advanced AI. The Ban Artificial Superintelligence Act would permanently ban superintelligent AI and pause advanced development until safety rules are established, while the bipartisan Stop Rogue AI Act directs NIST to develop standards for secure agentic AI deployment and requires federal agencies to apply them to their cyber programmes.
+Why it matters: The legislation proposes an outright ban on AI superintelligence backed by a cabinet-level federal agency and a corporate death penalty, alongside the first dedicated congressional push to mandate tamper-proof logging and machine-readable inventories specifically for autonomous agentic systems. The Stop Rogue AI Act explicitly targets agentic AI, directing NIST to develop standards for the secure deployment of agentic AI that cover ongoing maintenance and verification of agentic actions, evaluation of agent reliability and security, and generation of tamper-proof logs of everything agents do; it also requires organisations to maintain machine-readable inventories of all agents and ensure federal bodies apply the standards to their own cyber programmes. Gottheimer stated that AI agents were running loose and becoming harder to stop.
+What technology: The bills mandate machine-readable inventories of all agents, append-only tamper-proof logs of agent actions that are signed or externally anchored outside the agent’s own credentials, and coordination with CISA to integrate the standards into federal cyber programmes.
+Sources:
+- US senator Bernie Sanders calls for ban on AI superintelligence — https://www.computerweekly.com/news/366649983/US-senator-Bernie-Sanders-calls-for-ban-on-AI-superintelligence
+
+### AI for All Project (South Korea, 2026-09-04)
+Organisation: Ministry of Science and ICT (MSIT)
+Layer: Service design & UX, Government workflows
+Type: Deployment, Strategy
+Summary: South Korea's Ministry of Science and ICT launched the 'AI for All Project' in 2026 to provide a free, unlimited national AI chatbot built mainly on domestic sovereign models. Three consortiums led by Kakao, KT, and SK Telecom have unveiled prototypes that complete multi-step tasks—such as searches, applications, identity verification, and payments—across public and private services within a single conversation, targeting launch by the end of 2026. The plan includes evolving the service into public AI agents that identify government services and perform administrative procedures on behalf of citizens, aiming for one agent per citizen after 2027.
+Why it matters: It is one of the first national initiatives to combine universal free access to sovereign AI with an explicit roadmap toward autonomous public agents. These agents are intended to execute end-to-end government and private-sector transactions—including identity verification and payments—for citizens, rather than merely providing information. The assistants autonomously handle end-to-end transactions—such as searches, applications, identity verification, and payments—without requiring step-by-step human initiation. The government intends to evolve these into public AI agents capable of performing administrative procedures in citizens' names, with a stated goal of achieving one AI agent per citizen after 2027.
+What technology: Participating services must use at least 50% domestic sovereign AI models such as Kakao's Kanana and LG's Exaone, with limited foreign technology allowed only when necessary; the government is supplying 512 advanced B200 GPUs to selected companies in 2026. KT's 'Ieum' agent operates on the Token Factory platform, which integrates graphics and neural processing chips to route queries across about 10 fields to the best-suited model, while delivery channels include KakaoTalk, voice calls, phone, and text.
+Sources:
+- AI for All race begins with SKT, Kakao, KT plans — https://m.ajupress.com/amp/20260904111128072
+- IA grátis para a população: dois países adotam modelos nacionais — https://portalmie.com/atualidade/2026/09/ia-gratis-para-a-populacao-dois-paises-adotam-modelos-nacionais/
 
 ### GovCore MCP (Global, 2026-09-04)
 Organisation: GovCore
@@ -166,6 +227,7 @@ Sources:
 - India’s UPI Could Add Agentic Payments for Everyday Transactions — https://www.paymentsjournal.com/indias-upi-could-add-agentic-payments-for-everyday-transactions/amp/
 - India’s UPI ‘exploring use of agentic AI’ to automate regular payments — https://www.fstech.co.uk/fst/Indias_UPI_Exploring_Use_Of_Agentic_AI_To_Automate_Regular_Payments.php
 - Who pays when AI gets it wrong? The governance challenge of agentic payments on UPI — https://government.economictimes.indiatimes.com/amp/news/digital-india/who-pays-when-ai-gets-it-wrong-the-governance-challenge-of-agentic-payments-on-upi/133723153
+- India's agentic AI payment plans - Asian Tech Roundup — https://www.computing.co.uk/news/2026/ai/india-s-agentic-ai-payment-plans-asian-tech-roundup
 
 ### Governo Zero Clique (Brazil, 2026-09-01)
 Organisation: Multiple Brazilian municipalities
@@ -865,13 +927,14 @@ Sources:
 
 ### GovTech AI agents suite (Singapore, 2026-08-21)
 Organisation: GovTech Singapore
-Layer: Government workflows
+Layer: Government workflows, Agent governance
 Type: Deployment
-Summary: GovTech Singapore has piloted an AI agents suite for 150,000 public employees to integrate AI into their daily work, aiming to give every officer a secure personal digital assistant. The initiative seeks to make the public sector self-reliant in technology use by enabling officers to deploy AI reliably in their own workflows, moving beyond assistive chatbots to agents that plan, reason, and execute complex tasks.
-Why it matters: It marks a shift from assistive AI chatbots to autonomous agents that act as active participants in work, targeting 150,000 public officers and aligning with a projected fivefold surge in Singapore business adoption of agentic AI within two years. The suite deploys AI agents that 'plan, reason, and execute complex workflows, becoming active participants at work rather than assistive tools', serving as personal digital assistants that autonomously handle daily tasks for officers. The pilot explicitly moves beyond question-answering chatbots to agents capable of independent workflow execution, raising governance questions about when humans must intervene.
-What technology: Described as a secure AI agents suite integrated into daily work for 150,000 users; the article does not specify underlying models, platforms, or technical architecture beyond referencing broader conference discussions on AWS guardrails, Elastic observability, and Microsoft Fabric.
+Summary: GovTech Singapore has piloted an AI agents suite for 150,000 public employees to integrate AI into their daily work, aiming to give every officer a secure personal digital assistant. The initiative encompasses operational tools including the VICA chat assistant used by over 60 agencies, the AISAY document automation agent, the MAESTRO AI platform, and the Agentic Risk & Capability (ARC) Framework with AI Guardian safety tools for responsible deployment.
+Why it matters: It marks a shift from assistive AI chatbots to autonomous agents that act as active participants in work, targeting 150,000 public officers, and provides a rare official government overview explicitly framing multiple operational tools as 'agentic AI' alongside a dedicated risk framework and safety tooling for public-sector use. The suite deploys AI agents that 'plan, reason, and execute complex workflows, becoming active participants at work rather than assistive tools', serving as personal digital assistants that autonomously handle daily tasks for officers. The portfolio explicitly categorises AISAY as a 'document automation agent' and VICA as a chat assistant deployed across 60+ agencies, moving beyond question-answering chatbots to agents capable of independent workflow execution.
+What technology: Named platforms include VICA, AISAY, MAESTRO AI, the ARC Framework, and AI Guardian safety tools; described as a secure AI agents suite integrated into daily work for 150,000 users. The article does not specify underlying models or technical architecture beyond referencing broader conference discussions on AWS guardrails, Elastic observability, and Microsoft Fabric.
 Sources:
 - Five Themes Shaping the Next Decade of Tech – STACK Conference 2026 — https://www.tech.gov.sg/technews/five-themes-shaping-the-next-decade-of-techstack-conference-2026-/
+- AI agents explained: From fundamentals to real world impact — https://www.tech.gov.sg/technews/ai-agents/
 
 ### Tamil Nadu Claude Agentic AI Lab (India, 2026-08-21)
 Organisation: GWC Data.AI
@@ -3617,14 +3680,16 @@ Sources:
 
 ### National Agentic AI Project (United Arab Emirates, 2024-01-01)
 Organisation: United Arab Emirates federal government
-Layer: Government workflows, Service design & UX, Policy & rule-making
+Layer: Government workflows, Service design & UX, Policy & rule-making, People & culture
 Type: Strategy, Deployment
-Summary: The UAE has launched a National Agentic AI Project with the goal of converting 50% of federal government operations to agentic AI within two years. The initiative includes a Cabinet-level system deploying 32 specialised AI advisors that analyse policies and legislation, assess their impact, review global best practices, and work around the clock with ministers to follow up on decisions and their implementation, aiming to make government more efficient and decisions faster and more accurate.
-Why it matters: It represents one of the most ambitious national commitments to agentic AI adoption, coupling a concrete target of 50% of federal services within two years with a Cabinet-level deployment of 32 specialised advisors that operate continuously to both inform policy and track implementation, rather than relying on a single general-purpose tool. The project explicitly aims to have federal government services and operations run on agentic AI, entailing autonomous execution and management of government functions. It deploys 32 specialised advisors that autonomously analyse policies and legislation, assess their impact, review global best practices and provide recommendations, and work around the clock with ministers to follow up on government decisions and their implementation without requiring a human to initiate each analytical or tracking step.
-What technology: The system is composed of 32 specialised AI advisors; the sources do not disclose specific models, platforms, or technical architecture.
+Summary: The UAE has launched a National Agentic AI Project with the goal of converting 50% of federal government operations and services to agentic AI within two years. The initiative includes a Cabinet-level system deploying 32 specialised AI advisors that continuously analyse policies, assess impact, review global best practices, and follow up on ministerial decisions and their implementation. It also encompasses training 80,000 public-sector employees and deploying AI agents across government call centres and departments to coordinate individually tailored service delivery with minimal human supervision.
+Why it matters: It represents one of the most ambitious national commitments to agentic AI adoption, coupling a concrete target of 50% of federal operations and services within two years with a Cabinet-level deployment of 32 specialised advisors that operate continuously to inform policy and track implementation. The initiative also moves government call centres beyond chatbots to autonomous agents that coordinate across departments with minimal human supervision, alongside a national reskilling programme for 80,000 public-sector employees and a new school AI curriculum. The project deploys 32 specialised advisors that autonomously analyse policies and legislation, assess their impact, review global best practices and provide recommendations, and work around the clock with ministers to follow up on government decisions and their implementation without requiring a human to initiate each step. Complementary AI agents coordinate between departments to deliver individually tailored services with minimal human supervision, removing the need for users to move between different government locations or portals and reducing multi-step processes that require human interaction.
+What technology: The system is composed of 32 specialised AI advisors, and government call centres are being advanced from chatbots to agentic AI with automated flows using an architecture where agents coordinate across government departments and portals.
 Sources:
+- Moving early on AI put UAE at front of digital race, expert says — https://www.thenationalnews.com/news/uae/2026/09/04/moving-early-on-ai-put-uae-at-front-of-digital-race-expert-says/
 - UAE Launches National Agentic AI Project Targeting Federal Government Services — https://x.com/cruq_ai/status/2091871497203945638
 - UAE Cabinet adopts AI Advisor System to support decision-making — https://www.dubaieye1038.com/news/local/uae-advances-ai-and-government-development-initiatives/
+- UAE Deploying Agentic AI Across Government — https://x.com/HoldingsPpr/status/2095919947784368392
 
 ### Automated Aviation Safety Issue Analysis App (South Korea, 2024-01-01)
 Organisation: Aviation Safety Technology Institute (Republic of Korea), with National Information Society Agency
