@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (360 records as of 2026-09-05).
+newest first (364 records as of 2026-09-05).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,36 @@ newest first (360 records as of 2026-09-05).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Tactical AI Satellite (Japan, 2026-09-05)
+Organisation: Japan Ministry of Defense
+Layer: Government workflows, Agent governance
+Type: Deployment
+Summary: Japan's Ministry of Defense contracted NTT Data to build a tactical AI satellite that processes surveillance data onboard rather than relaying it to ground stations. The onboard AI fuses radar, optical, and signals intelligence to generate targeting assessments and transmit them directly to weapons platforms ('shooters') via bidirectional communication, aiming to compress the kill chain against hypersonic and mobile threats. Construction is planned for FY2027–2029 with orbital validation targeted for FY2030.
+Why it matters: It relocates intelligence analysis from ground stations to orbit, eliminating the relay step and transmitting a targeting conclusion rather than raw imagery. This architectural shift is designed to overcome the time delay that allows hypersonic targets to travel hundreds of kilometers during conventional ground-based processing. The onboard AI autonomously fuses multi-sensor data and delivers targeting assessments directly to weapons platforms ('shooters') via bidirectional communication without requiring ground-based analysts to process each feed. The Ministry of Defense press release states the satellite processes "large amounts of collected information in an extremely short time" and connects those processed outputs to "shooters," meaning the satellite transmits a "targeting conclusion" rather than raw imagery.
+What technology: The satellite integrates onboard AI with radar, optical imagery, and signals intelligence sensors, using bidirectional communication links to weapons platforms. It builds on prior Japanese demonstrators including Mitsubishi Heavy Industries' AIRIS and QPS Research Institute's onboard processing satellites.
+Sources:
+- Japan Contracts AI Targeting Satellite: Human Authorization Not Disclosed — https://www.techtimes.com/articles/326748/20260905/japan-contracts-ai-targeting-satellite-human-authorization-not-disclosed.htm
+
+### ChatGPT VLOSE Designation under DSA (European Union, 2026-09-05)
+Organisation: European Commission
+Layer: Agent governance, Policy & rule-making
+Type: Regulation
+Summary: The European Commission designated ChatGPT as a Very Large Online Search Engine (VLOSE) under the Digital Services Act, subjecting OpenAI to systemic risk obligations including monitoring of downstream agent features and autonomous assistants that act on user inputs. This creates a platform-centric accountability model where OpenAI becomes legally responsible for systemic impacts of agents hosted on its platform.
+Why it matters: First time an AI chatbot has been subjected to DSA platform-wide obligations, and first regulatory framework requiring an AI platform to actively monitor and mitigate risks from third-party usage and integrated agentic workflows. The DSA designation requires OpenAI to assess risks from 'downstream agent features, including generative outputs and autonomous assistants that act on user inputs' and to monitor 'the systemic impacts of the agents it hosts'. Developers' agent deployments via ChatGPT APIs are pulled into the platform's regulatory perimeter.
+What technology: ChatGPT platform with API access for third-party developers; DSA Article 33-34 systemic risk assessments; Article 37 independent annual audits; interplay with AI Act Article 50(2) synthetic content marking requirements.
+Sources:
+- ChatGPT Is Now Under the EU’s Strictest Digital Rulebook – and Agents Using It Inherit the Burden — https://forkast.news/chatgpt-is-now-under-the-eus-strictest-digital-rulebook-and-agents-using-it-inherit-the-burden/
+
+### Workday AI Agents for Public Sector HR and Finance (United States, 2026-09-05)
+Organisation: Multiple US state and local governments including City of Akron, State of Georgia, City of Bell Gardens
+Layer: Government workflows, Service design & UX
+Type: Deployment
+Summary: Workday is deploying its unified cloud platform for HR and finance across numerous US state and local governments to replace legacy systems. The implementation includes AI agents—Self-Service Agent, Payroll Agent, and Financial Audit Agent—that automate routine administrative tasks, allowing employees to get answers via natural language and enabling automated payroll validation and audit evidence collection.
+Why it matters: Integration of specialized autonomous agents (Self-Service, Payroll, and Financial Audit) within a unified SaaS platform specifically for government operations, moving beyond simple automation to agentic task execution in HR and financial management. Workday's Self-Service Agent autonomously answers routine workforce questions in natural language without human intervention; Payroll Agent independently performs payroll validation; and Financial Audit Agent automatically collects audit evidence. These agents execute specific multi-step tasks without requiring human initiation for each individual query or validation process.
+What technology: Workday HCM and Workday Financials cloud platform with mobile and self-service capabilities, utilizing natural language processing for the Self-Service Agent and automated workflow orchestration for Payroll and Financial Audit Agents.
+Sources:
+- Workday expands public sector footprint with state and municipal deployments — https://portalerp.com/noticia/workday-expands-public-sector-footprint-with-state-and-municipal-deployments
 
 ### DOT Agentic AI Investigations Support (United States, 2026-09-05)
 Organisation: US Department of Transportation
@@ -21,6 +51,16 @@ Why it matters: The initiative is explicitly identified as an agentic AI deploym
 What technology: The source does not specify models, platforms, architecture, or technical integrations.
 Sources:
 - US DOT and USDA Advance Agentic AI and AI Pilots — https://www.meritalk.com/articles/dot-usda-see-opportunity-in-new-ai-cyber-reality/
+
+### LCOAI - Livellato Costo dell'Intelligenza Artificiale (Italy, 2026-09-04)
+Organisation: AgID (Agenzia per l'Italia Digitale)
+Layer: Public procurement, Public finance
+Type: Procurement, Strategy
+Summary: Italian public procurement guidelines for AI systems that introduce the Levelized Cost of AI (LCOAI) as a metric to evaluate AI purchases, modeled on energy sector cost accounting. The guidelines require disaggregated token consumption data, stable unit definitions, and verifiable criteria to distinguish successful processing from failed attempts that still generate invoices. They are currently in draft form awaiting final approval after public consultation.
+Why it matters: First government procurement framework to apply levelized cost methodology from energy sector to AI systems, treating token measurement as a metrological problem requiring standardization and auditability rather than accepting vendor-defined metrics. The guidelines explicitly address systems where "a reasoning model decides autonomously how much to process before responding, an agentic cycle decides autonomously how many steps to take before stopping, and the exact same request sent twice produces two different invoices." The LCOAI framework is designed to measure and contract for outputs from systems that self-determine their own computational path and stopping conditions.
+What technology: Requires disaggregated telemetry by token type (input, output, reasoning, cache), documented tokenizer version with change notification, API documentation, and audit rights over telemetry data. References FOCUS open billing specification extension for token telemetry.
+Sources:
+- Token, il “chilo variabile” con cui imprese e PA pagano l’AI — https://www.agendadigitale.eu/industry-4-0/token-il-chilo-variabile-con-cui-imprese-e-pa-pagano-lai/
 
 ### GDIT-OpenAI Federal AI Partnership (United States, 2026-09-04)
 Organisation: US Federal Agencies
@@ -115,7 +155,7 @@ Sources:
 
 ### Cabinet AI Advisors (United Arab Emirates, 2026-09-03)
 Organisation: UAE Cabinet
-Layer: Policy & rule-making, Government workflows
+Layer: Policy & rule-making, Government workflows, Agent governance
 Type: Deployment, Strategy
 Summary: Approved on 2 September 2026, the UAE Cabinet deployed 32 specialized AI advisors assigned to ministers. These systems analyse policies and legislation in real time, assess financial, economic, social and environmental impacts against global best practices, and support operational areas including procurement, tax audits and customer service. They work with ministers around the clock to follow up on decisions and their implementation, connecting new topics to relevant past Cabinet decisions to deliver faster, more accurate government decisions as part of the UAE’s strategic transformation programme.
 Why it matters: The initiative provides ministers with dedicated agentic AI advisors that simultaneously conduct real-time policy analysis and cross-functional operational support across procurement, tax, and service delivery, while autonomously linking new agenda items to historical Cabinet decisions and approved sources to generate final recommendations. It represents a claimed move from traditional bureaucratic process to continuous, 24-hour algorithmic execution of government functions at the highest federal level. The 32 specialised AI advisors autonomously analyse policies and legislation in real time, assess financial, economic, social and environmental impacts using global best practices, connect new topics to relevant past Cabinet decisions, and present final recommendations without a human initiating each step. Supported by explicit "agentic AI technologies", the systems also work with ministers 24 hours a day to follow up on decisions and their implementation across procurement, tax audits and customer service.
@@ -123,6 +163,9 @@ What technology: The sources do not specify models, platforms or architecture, b
 Sources:
 - UAE launches Cabinet AI Advisor with 32 specialised assistants — https://tbreak.com/uae-cabinet-ai-advisor/
 - UAE Launches 32 Cabinet AI Advisors for Ministers — https://x.com/WeightsAndVotes/status/2095566874910028175
+- Gli Emirati Arabi Uniti hanno integrato 32 "consiglieri basati sull'intelligenza artificiale" nel proprio governo. — https://www.vietnam.vn/it/uae-dua-32-co-van-ai-vao-hoat-dong-cua-noi-cac
+- Die Vereinigten Arabischen Emirate haben 32 „KI-Berater“ in ihr Kabinett integriert. — https://www.vietnam.vn/de/uae-dua-32-co-van-ai-vao-hoat-dong-cua-noi-cac
+- Les Émirats arabes unis ont intégré 32 « conseillers en IA » au sein de leur gouvernement. — https://www.vietnam.vn/fr/uae-dua-32-co-van-ai-vao-hoat-dong-cua-noi-cac
 
 ### Fairwind Program (Gemini 3.8 Flash Cyber) (United States, 2026-09-03)
 Organisation: Google
