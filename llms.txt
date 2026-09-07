@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (364 records as of 2026-09-05).
+newest first (366 records as of 2026-09-06).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,26 @@ newest first (364 records as of 2026-09-05).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### DoctorSV (Phase 2) (El Salvador, 2026-09-06)
+Organisation: Government of El Salvador
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: An AI-powered telemedicine application launched by the Salvadoran government to transform public healthcare. The integrated AI assistant analyzes patient medical records via questionnaires, automatically generates laboratory test requests without requiring in-person consultations, supplies diagnoses to doctors, and manages ongoing patient follow-up by sending messages and scheduling calls to ensure treatment adherence.
+Why it matters: Claimed by officials to be the first system in the world to integrate AI horizontally from start to finish across the entire public healthcare chain, aiming to become a global reference for AI-driven healthcare in resource-limited settings. The AI assistant autonomously generates laboratory test requests without an in-person consultation, sends messages and schedules calls for doctors, and proactively ensures treatment follow-up. Bukele described the technology as 'a person' dedicated to guaranteeing every Salvadorian adheres to their treatment.
+What technology: Telemedicine application with an integrated AI assistant, developed with support from Google and CAF. It analyzes medical records through patient questionnaires and connects to lab and doctor workflows to automate diagnostics ordering and follow-up coordination.
+Sources:
+- Le discours surmédiatisé sur l’IA touche le système de santé publique au Salvador — https://fr.globalvoices.org/2026/09/07/302126/
+
+### AGALDAT (Spain, 2026-09-06)
+Organisation: Ayuntamiento de Gáldar
+Layer: Government workflows, Tech stack
+Type: Deployment
+Summary: AGALDAT is a municipal project to modernise Gáldar’s banana sector through a central Data and AI Platform and digital twin that optimises irrigation. Deployed across eight pilot farms, it aims to reduce water use by 40–60 % by shifting from reactive to predictive watering, cutting energy and production costs and improving the sector’s international competitiveness.
+Why it matters: It introduces a government-led agricultural “digital twin” that autonomously predicts exact crop water demand and directly adjusts irrigation supply and desalination-plant coordination in real time. The initiative is also novel in redirecting public AI funding away from internal bureaucracy toward hands-on primary-sector resilience. The AI platform anticipates the precise water needs of banana plants via a digital twin and autonomously adjusts irrigation frequency and water supply from desalination plants without requiring human initiation for each intervention, as stated: “el sistema será capaz de anticipar las necesidades hídricas exactas de la planta... se ajustará el suministro”.
+What technology: A central Data and AI Platform integrates soil-moisture sensors, weather stations and plant-identification systems across eight pilot farms to feed a digital twin that predicts water demand and controls irrigation scheduling and desalination storage.
+Sources:
+- Gáldar consigue 3,2 millones de euros de fondos europeos para digitalizar el sector platanero — https://infonortedigital.com/art/193746/galdar-consigue-32-millones-de-euros-de-fondos-europeos-para-digitalizar-el-sector-platanero
 
 ### Tactical AI Satellite (Japan, 2026-09-05)
 Organisation: Japan Ministry of Defense
