@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (370 records as of 2026-09-07).
+newest first (377 records as of 2026-09-08).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,77 @@ newest first (370 records as of 2026-09-07).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### MDASH (United States, 2026-09-08)
+Organisation: United States Government
+Layer: Cyber security, Tech stack
+Type: Deployment
+Summary: Microsoft’s multi-model agentic scanning system codenamed MDASH is deployed via Azure Government to find and validate exploitable vulnerabilities in source code. It uses over 100 specialized AI agents to reason about code and debate findings, producing a prioritized list of vulnerabilities for security teams. Select US federal, national security, state, and local agencies and authorized partners have preview access within FedRAMP High-authorized environments.
+Why it matters: Instead of pattern matching, MDASH employs a harness that coordinates more than 100 specialized agents and multiple models to independently analyze and argue over whether suspected flaws are genuinely reachable and dangerous. This design lets it reason about code like an expert security researcher and rapidly adopt newer models without rebuilding the tool. The system autonomously deploys over 100 specialized AI agents that read and reason about source code, ‘rationalizing the codebase and following how information moves through a program to work out whether a weakness could actually be exploited.’ A second group of agents then argues for and against whether each flaw is genuinely reachable and dangerous, merging and deduplicating results without a human initiating each validation step.
+What technology: MDASH runs as a feature of Microsoft Defender on Azure Government, using models available within the FedRAMP High-authorized Microsoft Foundry service, including Microsoft’s MAI model family. Its harness directs and coordinates multiple models for independent analysis and cost-effective scaling.
+Sources:
+- Codename MDASH brings agentic AI security scanning to US government — https://www.microsoft.com/en-us/microsoft-cloud/blog/us-government/2026/09/08/codename-mdash-brings-agentic-ai-security-scanning-to-us-government/
+- Microsoft Deploys Codename MDASH Agentic AI Scanning to Azure Government — https://www.unite.ai/microsoft-deploys-codename-mdash-agentic-ai-scanning-to-azure-government/
+
+### UK Government Agentic AI Incident Response Capability (United Kingdom, 2026-09-08)
+Organisation: UK Government (National Cyber Security Centre / AI Security Institute)
+Layer: Cyber security, Crisis response
+Type: Deployment
+Summary: The UK government has committed £115 million from the Defence Investment Plan to develop an agentic AI incident response capability for major cyber incidents. The system will autonomously triage, investigate and remediate malicious cyber activity to support human cyber teams and prevent alert fatigue. It forms part of broader cyber resilience efforts including the Cyber Shield programme and the Cyber Security and Resilience Bill.
+Why it matters: This represents one of the first national-level government deployments of autonomous AI agents for cyber defense, moving beyond private sector security operations centers to protect public infrastructure. The initiative specifically targets autonomous response to major cyber incidents rather than merely assisted decision-making. The system will "autonomously triage, investigate and remediate malicious cyber activity" during major cyber incidents without requiring human initiation for each step, operating as "AI first responders" to handle alerts that would otherwise overwhelm human teams.
+What technology: The capability is being developed under the £115 million Defence Investment Plan allocation alongside AI biosecurity programmes, integrated with the Cyber Shield defensive programme and the Cyber Assessment Framework. Specific models or technical architectures were not disclosed.
+Sources:
+- UK government proposes AI first responders for cyber attacks — https://www.computerweekly.com/news/366650021/UK-government-proposes-AI-first-responders-for-cyber-attacks
+
+### Idarati AI (Morocco, 2026-09-08)
+Organisation: Ministry of Digital Transition and Administrative Reform
+Layer: Service design & UX, Tech stack
+Type: Strategy, Deployment
+Summary: Idarati AI is an agentic AI assistant unveiled by the Moroccan government to guide citizens through administrative procedures by informing and directing them. It is one of the first applications launched under the « Maroc IA 2030 » national strategy roadmap, which aims to develop national AI capabilities and strengthen digital sovereignty. The strategy sets quantified targets for 2030, including a contribution of 100 billion dirhams to GDP and the training of 200,000 talents.
+Why it matters: It represents one of the first concrete deployments of agentic AI in Moroccan public services, operating within a sovereign AI marketplace with national infrastructure control. The initiative also marks the country’s shift from AI strategy design to active implementation, linking technological adoption to economic competitiveness and public service modernization. The source describes Idarati AI as an « assistant fondé sur l'IA agentique » destined to accompany users in their administrative procedures, informing and directing them through the required steps without human initiation at each stage.
+What technology: Idarati AI is delivered through Morocco’s sovereign AI marketplace, a platform designed to provide secure access to AI solutions under national infrastructure control and data protection. It was presented alongside a prototype national meta-application and e-wallet as part of the broader digital transformation of public services.
+Sources:
+- Maroc IA 2030 : le gouvernement détaille les premières avancées de la stratégie nationale — https://www.lebrief.ma/maroc-ia-2030-le-gouvernement-detaille-les-premieres-avancees-de-la-strategie-nationale-100165145/
+
+### Torq AI SOC Platform for Federal Agencies (United States, 2026-09-08)
+Organisation: US Federal Agencies
+Layer: Cyber security, Government workflows, Agent governance
+Type: Deployment
+Summary: The Torq AI SOC Platform uses agentic AI to automate security operations center workflows for federal agencies, continuously ingesting and contextualizing alerts, automatically triaging threats, investigating high-risk incidents, and executing response actions within defined guardrails. Integrated into Merlin's SOC Modernization architecture, it unifies disconnected security tools into a coordinated, end-to-end detection-to-response workflow that operates at machine speed while maintaining human oversight and FedRAMP compliance.
+Why it matters: It brings commercial-grade agentic AI to federal cybersecurity operations through a FedRAMP-authorized pathway, enabling autonomous threat investigation and response actions that were previously handled manually by analysts, with a governance model that allows progressive transition from human-in-the-loop to human-on-the-loop operations. The system uses agentic AI to "continuously ingest and contextualize alerts across the existing security stack, automatically triage threats, investigate the highest-risk incidents, and execute response and remediation within agency-defined guardrails" without requiring human initiation of each step, operating through a "human-in-the-loop authorization model" that validates automated actions.
+What technology: Torq AI SOC Platform integrated with Merlin Validated Solutions (MVS) architecture, connecting existing SIEM/SOAR tools into a unified workflow, with FedRAMP authorization pursued through Constellation GovCloud (CGC).
+Sources:
+- Merlin Names Torq a Key Partner for Federal AI SOC Modernization — https://www.prnewswire.com/news-releases/merlin-names-torq-a-key-partner-for-federal-ai-soc-modernization-302870578.html
+
+### IDF Unmanned Systems and Artificial Intelligence Branch (Israel, 2026-09-08)
+Organisation: Israel Defense Forces
+Layer: Crisis response, Government workflows
+Type: Strategy
+Summary: The Israel Defense Forces is creating a new military branch dedicated to unmanned systems and artificial intelligence, scheduled for inauguration by early December 2026. It will oversee robotic capabilities across air, land and maritime domains, with the aim of integrating autonomous systems that can operate alongside manned combat teams or conduct missions independently.
+Why it matters: This marks the first time the IDF has established a formal branch centered on AI and autonomy, transforming these technologies from emerging capabilities into a core organizational pillar of Israel’s military structure. The branch will field systems explicitly described as able to “operate without human combat teams” and to carry out “independent missions” across land, air and maritime domains. The Defense Ministry has already deployed tens of thousands of autonomous systems, from drone swarms to ground robotics, that operate across the battlefield.
+What technology: The branch will coordinate robotic capabilities across aerial, land and maritime environments, including advanced autonomous systems operating above and below sea level, building on the Defense Ministry’s AI and Autonomy Administration established in January 2025.
+Sources:
+- IDF to create new branch for AI and autonomous warfare — https://www.calcalistech.com/ctechnews/article/s12p0a6dmx
+
+### Enterprise Readiness platform (United States, 2026-09-08)
+Organisation: U.S. Department of Defense and federal agencies
+Layer: Government workflows, Public procurement
+Type: Deployment
+Summary: Air's AI-native platform coordinates development, production, delivery and sustainment activities across national security organizations to address the 'Readiness Gap' between front-line requirements and enterprise capabilities. It integrates disparate data on programs, suppliers, and logistics to provide visibility into capacity constraints and support resource allocation and operational execution.
+Why it matters: The platform moves beyond analytical AI to operational workflow coordination, autonomously aligning complex defense supply chain activities across separate systems and organizations to close the readiness gap. The AI is designed to 'coordinate how national security organizations manage development, production, delivery and sustainment' across separate systems, helping organizations 'allocate resources and execute against operational requirements' without manual initiation of each coordination step. Danko's previous work at ServiceNow specifically involved 'agentic AI deployments' for the Defense Logistics Agency and Department of Homeland Security.
+What technology: AI-native platform integrating data on development programs, manufacturing capacity, inventories, suppliers, logistics and sustainment activities; provides visibility into capacity and constraints to identify bottlenecks and align operational requirements.
+Sources:
+- Air Names ServiceNow Veteran Andrej Danko Chief Product and Technology Officer — https://www.citybiz.co/article/899805/air-names-servicenow-veteran-andrej-danko-chief-product-and-technology-officer/
+
+### CDAO Shared-Savings AI and Agentic Workflows Pilot (United States, 2026-09-08)
+Organisation: Department of Defense Chief Digital and Artificial Intelligence Office (CDAO)
+Layer: Public procurement, Government workflows
+Type: Procurement
+Summary: Red Cell Partners secured a one-year, up-to-$100 million agreement with the DoD CDAO to pilot a shared-savings contracting model for AI services and agentic workflows. Under the performance-based structure, Red Cell assumes upfront costs and receives payment only from verified cost savings generated across defense agencies, aiming to improve operational efficiency without relying on new appropriations.
+Why it matters: It introduces a performance-based, shared-savings contracting mechanism for defense AI and agentic workflows where vendor compensation is tied solely to verified cost reductions rather than labor or implementation fees, shifting financial risk to the provider. The agreement specifically covers "agentic workflows" and "agentic AI" applied to existing defense contracts and activities, using "AI and automated workflows" to reduce labor-intensive processes and generate measurable cost savings.
+What technology: Structured under Other Transaction Authority to enable faster contracting with nontraditional technology companies; initial services are supplied by unnamed companies within Red Cell’s portfolio.
+Sources:
+- Red Cell Partners Lands $100M CDAO Agreement to Pilot Shared Savings — https://www.citybiz.co/article/899363/red-cell-partners-lands-100m-cdao-agreement-to-pilot-shared-savings/
 
 ### SARS AI-driven digital twinning for tax processing (South Africa, 2026-09-07)
 Organisation: South African Revenue Service
