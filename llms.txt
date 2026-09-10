@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (377 records as of 2026-09-08).
+newest first (385 records as of 2026-09-10).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,87 @@ newest first (377 records as of 2026-09-08).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### SIDERIUS (United States, 2026-09-10)
+Organisation: Department of Energy
+Layer: Government workflows, Tech stack
+Type: Deployment
+Summary: SIDERIUS is an LLM-based AI agent system funded by the DOE Genesis Mission to analyze data, design models, and run them on specialized chips for fundamental physics and quantum computing research. The project is part of broader UC San Diego collaborations deploying AI agents for particle physics data processing and neutrinoless double beta decay experiments.
+Why it matters: Represents a concrete US government-funded deployment of agentic AI in the public scientific research sector, autonomously handling data analysis and model design for complex physics applications. The system functions as an LLM-based AI agent that autonomously analyzes data, designs models, and runs them on specialized chips without human initiation of each step, executing multi-step scientific workflows in physics and quantum computing research.
+What technology: LLM-based architecture integrated with specialized chips for fundamental physics and quantum computing applications.
+Sources:
+- UC San Diego Leads DOE Genesis Mission Project Deploying AI Agents for Physics and Quantum Computing — https://today.ucsd.edu/story/genesis-mission-to-fund-new-scientific-ai-tools
+
+### Claude for Government platform expansion (United States, United Kingdom, Canada, Australia, New Zealand, 2026-09-09)
+Organisation: United States Government
+Layer: Tech stack, Government workflows
+Type: Deployment
+Summary: Anthropic has made its Fable 5.1 frontier model available on the Claude for Government platform, with plans to move Claude for Government Desktop (including Claude Code and Cowork) to general availability and to offer Mythos and Opus models in classified environments. The company also highlighted its Glasswing program for autonomous cybersecurity vulnerability detection and patching, and emphasized working with the White House and Five Eyes partners to deploy models safely with appropriate guardrails.
+Why it matters: The announcement marks Anthropic's first-party government offering of Fable 5.1 with FedRAMP High authorization, alongside the upcoming general availability of agentic tools like Claude Code and Cowork for government desktops, and the planned deployment of agentic coding models to classified ('high side') environments. The source explicitly describes Opus as 'an agentic coding model' that will be made available in classified environments, and states that Anthropic's Glasswing program deploys models to autonomously 'identify and patch cybersecurity vulnerabilities.' Additionally, Claude for Government Desktop includes Claude Code and Cowork, which are being moved to general availability for widespread government use.
+What technology: Fable 5.1 frontier model available on Claude for Government platform and AWS Bedrock GovCloud; FedRAMP High authorized; Claude for Government Desktop includes Claude Code and Cowork; Mythos and Opus models planned for classified ('high side') environments.
+Sources:
+- Anthropic adds Fable 5.1 to Claude for Government — https://fedscoop.com/anthropic-adds-fable-claude-for-government-carlson/
+
+### FedAI (United Arab Emirates, 2026-09-09)
+Organisation: United Arab Emirates federal government
+Layer: Government workflows, Service design & UX, Policy & rule-making
+Type: Strategy, Deployment
+Summary: The UAE's 'Government of the Future' project is entering its second phase to integrate Agentic AI across federal operations, following a first phase that built capabilities and assessed services. The phase includes launching the 'FedAI' national ecosystem for developing and operating Agentic AI solutions, a customer experience lab, and internal employee competitions to drive adoption.
+Why it matters: The initiative creates a national-scale 'FedAI' ecosystem specifically dedicated to Agentic AI across the federal government, paired with a customer experience lab to test and apply autonomous solutions in public services. It explicitly targets using Agentic AI to proactively shape government policies and decisions, not just automate tasks. The system is intended to leverage Agentic AI to autonomously "develop services, operations and tasks, and to shape policies and decisions" within a "smarter, more flexible and more proactive" government model. The FedAI ecosystem will enable federal entities to "develop, adopt and operate Agentic AI solutions" that execute these functions without requiring human initiation of each step.
+What technology: The initiative centres on a national technical ecosystem named 'FedAI' described as a flexible and secure system for federal entities, alongside a customer experience lab for service applications and a secure digital infrastructure. No specific models or platforms are named in the announcement.
+Sources:
+- Sheikh Mansour reviews second phase of Agentic AI project — https://www.dubaieye1038.com/news/local/sheikh-mansour-reviews-second-phase-of-agentic-ai-project/
+- Ministerial Council for AI reviews 2nd Phase of Agentic AI Project — https://sharjah24.ae/en/Articles/2026/09/09/Ma8
+
+### Legal AI Scholars Program at SMU (Singapore, 2026-09-09)
+Organisation: Singapore Management University (SMU)
+Layer: People & culture
+Type: Deployment
+Summary: SMU's Yong Pung How School of Law is partnering with Legora to become the first Asian university in its Legal AI Scholars Program. Faculty and students will receive training and licenses for Legora's agentic AI platform to conduct legal research, document review and drafting, integrating practical AI competencies into legal education.
+Why it matters: It is the first university in Asia to join the program, embedding an agentic AI operating system directly into law school coursework and pedagogy rather than leaving tool proficiency to post-graduate, on-the-job learning. The source states that on Legora, 'lawyers direct AI agents through the work itself, including legal research, reviewing documents at scale and drafting', meaning the system concretely executes these complex legal tasks autonomously under lawyer direction without requiring step-by-step human initiation.
+What technology: The source describes Legora only as an 'agentic operating system for legal work' and notes that training is delivered by Legora's Asia-Pacific legal engineering team and SMU Libraries; no specific models, APIs or architecture are disclosed.
+Sources:
+- Singapore Management University partners with Legora to bring agentic AI to its law school — https://legora.com/newsroom/singapore-management-university-partners-with-legora-to-bring-agentic-ai-to-its-law-school
+
+### ARPA-H Agentic AI for Heart Disease Care Program (United States, 2026-09-09)
+Organisation: ARPA-H (Advanced Research Projects Agency for Health)
+Layer: Service design & UX, Agent governance
+Type: Deployment, Procurement
+Summary: ARPA-H has selected UpDoc, Tempus AI and Atman Health to participate in a new program to build FDA-authorized agentic AI tools designed to care for patients with heart disease. The initiative aims to develop autonomous AI systems for healthcare delivery under regulatory oversight.
+Why it matters: This represents a rare government-backed push to explicitly develop FDA-authorized agentic AI for chronic disease management, moving beyond experimental pilots toward regulated, autonomous medical devices. The program aims to build "FDA-authorized agentic AI tools to care for people with" heart disease, indicating autonomous care delivery capabilities without requiring human initiation of each care step.
+What technology: Not specified beyond AI tools requiring FDA authorization.
+Sources:
+- ARPA-H selects companies to build AI tools for heart disease — https://endpoints.news/arpa-h-picks-updoc-tempus-and-atman-to-build-ai-tools-for-heart-disease/
+
+### Cognitive Government Initiative (Japan, Sweden, United States, Singapore, United Arab Emirates, Finland, 2026-09-09)
+Organisation: Deloitte (advisory); multiple government agencies cited
+Layer: Service design & UX, Government workflows, Policy & rule-making
+Type: Strategy, Deployment
+Summary: A Deloitte-led framework and collection of government implementations using AI for real-time sensing, predictive simulation, and orchestration of public services. Includes tsunami prediction in Japan, drone-delivered defibrillators in Sweden, subway track inspection in New York, digital twins in Singapore and Dubai, and population-level labor market modeling in the US.
+Why it matters: Moves beyond static dashboards to anticipatory governance through continuous sensing, digital twins for policy pre-testing, and emerging agentic workflows that automate coordination tasks while keeping humans in control of high-stakes decisions. The source explicitly describes 'emerging agentic workflows' that 'automate routine coordination tasks while keeping humans in control of high-stakes decisions,' and quotes Justin Anderson predicting digital twins will become 'a decision-making, autonomous piece of a broader digital nervous system.'
+What technology: Deep learning models for tsunami simulation, AI-powered drone dispatch, smartphone sensor networks with real-time AI analysis, digital twin platforms (Virtual Singapore, Dubai Live, Smart Metro, Energy and Climate Atlas), suicide-risk algorithms analyzing EHRs, and large population models simulating millions of worker interactions.
+Sources:
+- Cognitive government accelerated: From aspiration to operational reality — https://www.deloitte.com/global/en/insights/industry/government-public-sector-services/government-trends/2026/cognitive-government-ai-driven-decision-making.html
+
+### Maroc IA 2030 (Morocco, 2026-09-09)
+Organisation: Government of Morocco
+Layer: Service design & UX, Government workflows
+Type: Strategy, Deployment
+Summary: Morocco unveiled its national "Maroc IA 2030" roadmap and "AI Made in Morocco" strategy to build sovereign, responsible and inclusive AI, targeting 100 billion dirhams in added GDP value, 50,000 jobs and 200,000 certified talents by 2030. The announcement includes a sovereign AI marketplace and Idarati AI, an agentic assistant designed to inform, guide and accompany citizens through administrative procedures, alongside a proof-of-concept for a national meta-application and e-wallet.
+Why it matters: The roadmap establishes the national Jazari institute network as an operational arm for AI research and innovation, and launches a sovereign AI marketplace to keep data and infrastructure under Moroccan control. It also marks a concrete shift from strategic planning to implementation by introducing an agentic AI assistant for citizen-facing administrative services. The source describes Idarati AI as "un assistant IA agentique destiné à informer, orienter et accompagner les usagers dans leurs démarches administratives", meaning it independently provides information, directs and supports users through administrative procedures without a human initiating each step.
+What technology: The initiative relies on the national Jazari institute network (Jazari Root, Jazari Smart City, Jazari EduTech and Jazari Industrie X.0) for research and innovation, and includes a sovereign AI marketplace and a proof-of-concept for a national meta-application and e-wallet; no specific underlying models or architectures are stated for Idarati AI.
+Sources:
+- Maroc IA 2030 : 100 milliards de DH, 50.000 emplois et 200.000 talents au programme — https://telquel.ma/instant-t/2026/09/09/maroc-ia-2030-100-milliards-de-dh-50-000-emplois-et-200-000-talents-au-programme_2006438/
+
+### TMF Agentic AI Investment Pipeline (United States, 2026-09-08)
+Organisation: Technology Modernization Fund (TMF), General Services Administration
+Layer: Tech stack, Agent governance
+Type: Strategy, Procurement
+Summary: The Technology Modernization Fund is preparing to announce new investments at the end of September 2025, including at least one agency seriously exploring agentic AI use cases and safe expansion across government. TMF has $200 million available for project funding until December 11, 2025, with discussions underway to extend the fund to 2032.
+Why it matters: TMF is explicitly signaling interest in funding agentic AI deployments, marking a potential shift toward more autonomous AI systems in federal modernization projects beyond traditional automation or narrow AI applications. At least one unnamed federal agency is 'very seriously' looking at how to use agentic AI and how to safely expand it across government; Posilkin also mentioned potential TMF investment in 'AI coding' which implies autonomous code generation capabilities.
+What technology: Agentic AI systems under consideration for federal deployment; specific technical implementations not yet disclosed as projects remain in pipeline awaiting board decisions.
+Sources:
+- TMF adds new board members from DOJ, EPA, GSA, OMB — https://fedscoop.com/tmf-adds-new-board-members-from-doj-epa-gsa-omb/
 
 ### MDASH (United States, 2026-09-08)
 Organisation: United States Government
@@ -22,6 +103,7 @@ What technology: MDASH runs as a feature of Microsoft Defender on Azure Governme
 Sources:
 - Codename MDASH brings agentic AI security scanning to US government — https://www.microsoft.com/en-us/microsoft-cloud/blog/us-government/2026/09/08/codename-mdash-brings-agentic-ai-security-scanning-to-us-government/
 - Microsoft Deploys Codename MDASH Agentic AI Scanning to Azure Government — https://www.unite.ai/microsoft-deploys-codename-mdash-agentic-ai-scanning-to-azure-government/
+- Microsoft Deploys Codename MDASH AI Scanning Tool for Government — https://www.executivebiz.com/articles/microsoft-codename-mdash-ai-security-azure-government
 
 ### UK Government Agentic AI Incident Response Capability (United Kingdom, 2026-09-08)
 Organisation: UK Government (National Cyber Security Centre / AI Security Institute)
