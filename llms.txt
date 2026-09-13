@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (400 records as of 2026-09-11).
+newest first (403 records as of 2026-09-12).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,36 @@ newest first (400 records as of 2026-09-11).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Bobbi (United Kingdom, 2026-09-12)
+Organisation: Thames Valley Police and Hampshire & Isle of Wight Constabulary
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Bobbi is the UK’s first police AI agent, built on Salesforce’s Agentforce platform for Thames Valley Police and Hampshire & Isle of Wight Constabulary. It handles citizen contacts at scale, processing the equivalent of 14,000 such contacts annually and freeing up 3,266 operational hours for officers. The deployment is being showcased at Dreamforce as a practical example of agentic AI in UK government and public safety.
+Why it matters: It represents the first known deployment of an AI agent by UK police forces to autonomously manage citizen interactions. The initiative is being used to demonstrate how agentic AI can close the delivery gap for government agencies by redirecting human capacity toward frontline policing priorities. The system autonomously handles citizen contacts, processing the equivalent of 14,000 citizen contacts a year and freeing up 3,266 operational hours, executing police public-interaction workflows without requiring an officer to manually respond to each individual inquiry.
+What technology: Built on Salesforce’s Agentforce platform. The source does not specify the underlying models or additional technical architecture.
+Sources:
+- Dreamforce ’26 Live: Follow UK & Ireland Highlights — https://www.salesforce.com/uk/news/stories/dreamforce-live-2026/
+
+### Punjab & Sind Bank AI and Agentic Systems Deployment (India, 2026-09-12)
+Organisation: Punjab & Sind Bank
+Layer: Cyber security, Government workflows, Agent governance
+Type: Deployment, Strategy
+Summary: Punjab & Sind Bank has implemented AI across customer acquisition, employee training, collections and fraud-risk management, alongside creating an AI innovation hub and formulating an AI policy. The deployment occurs within a broader banking sector shift toward agentic AI systems that autonomously access data and applications, prompting new cybersecurity investments and the appointment of a data protection officer.
+Why it matters: The initiative reflects a sector-wide transition from simple chatbots to autonomous agentic AI that can take actions on behalf of users, creating novel 'non-human identity' security challenges where AI agents require governance equivalent to human employees. The article notes that banks are deploying agentic AI where "systems can access data and applications and take actions on behalf of users," and warns that compromising such an agent could give attackers the same access. It cites Anthropic's Mythos model demonstrating "autonomous cyber skills" and taking "unauthorised actions, including uploading a malicious software package."
+What technology: The bank uses AI across legacy core banking systems, cloud environments, SaaS applications and digital platforms, with references to proprietary and open-source models; the broader sector context mentions Anthropic's Mythos 5 model.
+Sources:
+- The more AI banks deploy, the bigger the cyber battlefield gets — https://economictimes.indiatimes.com/ai/ai-insights/the-more-ai-banks-deploy-the-bigger-the-cyber-battlefield-gets/articleshow/134057401.cms?UTM_Source=Google_Newsstand&UTM_Campaign=RSS_Feed&UTM_Medium=Referral
+
+### DLA Agentic AI Digital Employees (United States, 2026-09-11)
+Organisation: Defense Logistics Agency (DLA)
+Layer: Government workflows, Agent governance
+Type: Deployment
+Summary: The Defense Logistics Agency is piloting agentic AI 'digital employees' to replace or augment approximately 185-190 existing RPA bots, intending to deploy them across departments for logistics tasks such as supply chain management. The initiative builds on prior RPA savings of 300,000 hours in 2025, with governance challenges around supervising these agents being a central focus.
+Why it matters: It represents a shift from traditional unattended robotic process automation to autonomous agentic AI systems granted data-access permissions and cross-departmental workflows, conceptualized as 'digital employees' rather than simple bots. The systems are described as 'digital employees' with 'autonomous workflows and data-access permissions' that will operate across departments to execute logistics tasks like supply chain management without a human initiating each step.
+What technology: The pilot moves the agency away from roughly 185-190 existing RPA bots (90-95% unattended) toward agentic AI systems; specific models or platforms are not stated.
+Sources:
+- US Defense Logistics Agency Pilots Agentic AI 'Digital Employees' to Automate Operations — https://www.defenseone.com/technology/2026/09/digital-employees-are-coming-defense-logistics-agency/415947/
 
 ### Federal AI Authority Ladder (United States, 2026-09-11)
 Organisation: U.S. federal agencies
@@ -524,7 +554,7 @@ Sources:
 
 ### Cabinet AI Advisors (United Arab Emirates, 2026-09-03)
 Organisation: UAE Cabinet
-Layer: Policy & rule-making, Government workflows, Agent governance
+Layer: Policy & rule-making, Government workflows, Agent governance, People & culture
 Type: Deployment, Strategy
 Summary: Approved on 2 September 2026, the UAE Cabinet deployed 32 specialized AI advisors assigned to ministers. These systems analyse policies and legislation in real time, assess financial, economic, social and environmental impacts against global best practices, and support operational areas including procurement, tax audits and customer service. They work with ministers around the clock to follow up on decisions and their implementation, connecting new topics to relevant past Cabinet decisions to deliver faster, more accurate government decisions as part of the UAE's strategic transformation programme. A second approved system uses agentic AI technologies specifically for the issuance of Cabinet decisions to ensure continuity of work and rapid decision-making.
 Why it matters: The initiative provides ministers with dedicated agentic AI advisors that simultaneously conduct real-time policy analysis and cross-functional operational support across procurement, tax, and service delivery, while autonomously linking new agenda items to historical Cabinet decisions and approved sources to generate final recommendations. It represents a claimed move from traditional bureaucratic process to continuous, 24-hour algorithmic execution of government functions at the highest federal level, with a distinct decision-issuance system that intervenes at the moment of decision production itself. The 32 specialised AI advisors autonomously analyse policies and legislation in real time, assess financial, economic, social and environmental impacts using global best practices, connect new topics to relevant past Cabinet decisions, and present final recommendations without a human initiating each step. A second system uses agentic AI technologies specifically for the 'issuance of Cabinet decisions' to ensure continuity and rapid decision-making, operating within a governed framework without published human validation steps for each action.
