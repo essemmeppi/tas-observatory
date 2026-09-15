@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (409 records as of 2026-09-14).
+newest first (414 records as of 2026-09-14).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,57 @@ newest first (409 records as of 2026-09-14).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Lavender (Israel, 2026-09-14)
+Organisation: Israel Defense Forces (IDF)
+Layer: Government workflows, Tech stack
+Type: Deployment
+Summary: Lavender is an AI-enabled targeting system used by the Israeli military to calculate risk scores for individuals in Gaza and Lebanon, identifying suspected militants for inclusion in attack schedules. It processes vast heterogeneous data sources to assign every person a 1–100 probability score, generating up to roughly 1,000 potential targets daily with severely compressed human verification. Its use has been linked to systematic civilian harm, with researchers concluding that its design and configuration gravely violate international humanitarian law.
+Why it matters: It applies positive-unlabeled learning across an entire population to autonomously generate mass targeting lists at scale, dynamically adjusting probability thresholds based on available attack capacity rather than individualized threat verification. The system autonomously calculates a 1–100 risk score for every person in Gaza and was, according to the source, 'frequently reconfigured to match the military means available' by lowering the threshold 'until the desired number of new targets was calculated', while human supervisors spent 'a maximum of 20 seconds per target' and described their role as merely 'being a stamp of approval'.
+What technology: It uses positive-unlabeled learning (PUL) to statistically analyze heterogeneous intelligence data—including satellite imagery, cell locations, surveillance footage, geodata, communication metadata, and social structures—across an estimated 13.6 petabyte dataset. The underlying digital infrastructure is provided by Google and Amazon under Project Nimbus, with data integration by Palantir and additional IT services from Microsoft, Cisco, Dell, and Red Hat/IBM.
+Sources:
+- Interview on Lavender: „Civilian harm is pre-programmed into the system“ — https://netzpolitik.org/2026/interview-on-lavender-civilian-harm-is-pre-programmed-into-the-system/
+
+### UAE Federal Agentic AI Integration Initiative (United Arab Emirates, 2026-09-14)
+Organisation: UAE Federal Government
+Layer: Government workflows, Service design & UX
+Type: Strategy, Deployment
+Summary: The UAE federal government announced in April 2026 that agentic AI will be integrated across 50 percent of all government functions within two years. This initiative is part of the country's broader strategy to diversify its hydrocarbon-based economy through frontier technology investment and address emerging security risks including cyber warfare.
+Why it matters: This represents one of the most ambitious government-wide deployments of agentic AI globally, targeting half of all government functions rather than piloting in select agencies. The scale and explicit use of 'agentic AI' rather than general AI distinguishes it from typical automation programs. The source explicitly states 'agentic AI will be integrated across 50 percent of all government functions' — the term 'agentic AI' is used by the UAE government itself to describe the technology being deployed, indicating autonomous decision-making and execution capabilities across government operations rather than simple automation or chatbot interfaces.
+What technology: The initiative will likely leverage the UAE–US AI campus in Abu Dhabi with 5 gigawatts of planned compute capacity, though specific models or platforms are not detailed. Hardware dependencies on US-exported advanced computing technology create infrastructure constraints.
+Sources:
+- US Export Controls and the UAE’s Path Towards AI Capability — https://orfme.org/expert-speak/us-export-controls-and-the-uaes-path-towards-ai-capability/
+
+### Abu Dhabi Hazardous Materials AI Monitoring System (United Arab Emirates, 2026-09-14)
+Organisation: Abu Dhabi Hazardous Materials Management Centre (ADHMMC)
+Layer: Crisis response, Government workflows, Compliance & supervision
+Type: Deployment
+Summary: A partnership between ADHMMC and Presight to deploy agentic AI for continuous monitoring of hazardous materials across their full lifecycle in Abu Dhabi. The system will analyse information from multiple sources, identify unusual patterns and risk indicators, assess priority levels, and recommend actions to specialist teams. The project is currently in the identification and prototyping phase before controlled environment testing.
+Why it matters: First known use of agentic AI specifically for hazardous materials lifecycle management in the UAE, with autonomous risk anticipation and accelerated decision-making capabilities built into government safety operations. The system will 'continuously analyse information from different sources, identify unusual patterns and risk indicators, assess their level of priority and recommend possible actions to specialist teams' and 'monitor evolving conditions, anticipate risks and accelerate decision-making' — concretely autonomously detecting, prioritising and recommending responses without human initiation of each analytical step.
+What technology: Agentic AI platform connecting existing systems, databases and intelligent applications; integration with ADHMMC's hazardous materials monitoring and management infrastructure. Specific models and technical architecture not detailed.
+Sources:
+- Abu Dhabi to use AI to detect hazardous material risks earlier — https://gulfnews.com/uae/abu-dhabi/abu-dhabi-to-use-ai-to-detect-hazardous-material-risks-earlier-1.500674333
+- Abu Dhabi to deploy agentic AI monitoring of hazardous materials — https://www.khaleejtimes.com/uae/abu-dhabi-agentic-ai-monitoring-hazardous-materials?amp=1
+
+### Gartner Government Technology Trends 2026: Agentic AI (Global, 2026-09-14)
+Organisation: Multiple government organisations
+Layer: Government workflows, Agent governance
+Type: Strategy
+Summary: Gartner has identified agentic AI as a top government technology trend for 2026, predicting that AI agents will assume larger roles in operations, software development, service delivery and routine decisions. The shift is pushing public sector bodies to review governance frameworks, digital identity systems and operating models to support organisational transformation beyond isolated technical pilots.
+Why it matters: The report frames agentic AI as creating a 'ripple effect' that demands outcome-based roadmaps and fundamental redesign of business processes and workforce readiness rather than simple technology implementation. It explicitly calls for governments to build adaptable operating models that can evolve with autonomous systems. The source states that AI agents are expected to play a larger role in operations, software development, service delivery and routine decisions, forcing public sector bodies to redesign business processes and governance frameworks to support autonomous execution. Lacheca notes that success depends on 'the ability to redesign business processes' while creating an adaptable foundation for autonomous systems.
+What technology: The source does not specify models, platforms or technical architectures; it discusses agentic AI conceptually and identifies digital identity systems and adaptable operating models as supporting infrastructure.
+Sources:
+- Gartner flags three key tech trends for governments — https://securitybrief.com.au/story/gartner-flags-three-key-tech-trends-for-governments
+
+### Korea AI Security Dual-Track Initiative (South Korea, 2026-09-14)
+Organisation: Ministry of Science and ICT (MSIT)
+Layer: Cyber security, Agent governance
+Type: Deployment, Strategy
+Summary: The South Korean government is pursuing a two-track national program to both defend against risks from agentic AI and harness AI for cybersecurity. Led by MSIT with KISA and NIPA, it includes the AI Security Guide v2.0 to control AI permissions and behaviors, a domestic cybersecurity-specialized AI foundation model, and an autonomous security operations platform where AI agents detect and respond to threats. The effort encompasses proof-of-concept testing, industry-specific threat scenarios, and a 12.04 billion won support program selecting 18 projects with 50 participating companies.
+Why it matters: It explicitly classifies agentic and physical AI as distinct threat vectors requiring new controls over autonomous execution permissions and decision-making, moving beyond traditional data-leak or incorrect-output risks. The dual approach simultaneously builds national guardrails for AI systems and deploys AI agents as autonomous cyber defenders, integrating both 'Security for AI' and 'AI for Security'. The autonomous security operations platform is designed so that 'AI agents automatically carry out the detection, analysis and response to security threats.' The initiative also addresses agentic AI that 'makes its own judgments and executes tasks on external systems' by requiring records of its judgments and actions and establishing systems that can 'intervene in AI execution' when incidents occur.
+What technology: The program includes a cybersecurity-specialized AI foundation model separate from general-purpose AI, and an agentic AI-based autonomous integrated security operations platform being developed by consortia including Logpresso, Monitorapp, Sands Lab and Tatum. KISA's AI Security Guide v2.0 mandates limiting AI permissions and access scope, maintaining records of judgments and actions, and using isolated environments with network and tool access restrictions.
+Sources:
+- AI That Hacks vs. AI That Defends: Korea Builds Both — https://en.sedaily.com/technology/2026/09/15/ai-that-hacks-vs-ai-that-defends-korea-builds-both
 
 ### Australian Government Agentic AI Security Guidance (Australia, 2026-09-14)
 Organisation: Australian Government
@@ -147,12 +198,13 @@ Sources:
 Organisation: Ministry of Deregulation and State Transformation, Argentina
 Layer: Policy & rule-making, Agent governance
 Type: Regulation, Strategy
-Summary: The Argentine government introduced a bill to reform the General Law of Societies that would create 'automated societies'—legal entities operated by autonomous algorithmic systems or AI agents without requiring human workers for ordinary operations. The provision is now at risk of stalling in the Senate due to global AI safety concerns and domestic political opposition, prompting the executive to evaluate stricter human liability requirements to secure allied support.
-Why it matters: It would grant legal personality to companies fully operated by AI agents, removing the traditional requirement for human workers in ordinary operations. This challenges conventional corporate liability frameworks by creating a legal entity whose daily activity is run by autonomous systems. The bill defines automated societies as entities that 'develop their activity through autonomous algorithmic systems or AI agents, without requiring workers or human resources for their ordinary operation'. This establishes a legal framework for firms whose ordinary operation is executed by autonomous systems without human initiation or ongoing intervention.
-What technology: The proposal refers to autonomous algorithmic systems and AI agents generally as the operational basis for automated societies, without naming specific models, platforms, or technical architectures.
+Summary: In early June, Argentina’s government submitted a bill to reform the General Law of Societies to create “Sociedades Automatizadas”—legal entities with legal personality and limited liability that would be operated by autonomous algorithmic systems or AI agents without employees. President Milei has defended the proposal as innovative, yet it is now at risk of stalling in the Senate amid global AI safety concerns and domestic opposition, prompting the executive to consider stricter human liability requirements to secure allied support.
+Why it matters: It would establish one of the first legal frameworks globally to grant full corporate personhood and limited liability to companies fully operated by autonomous AI without human employees, removing the traditional requirement for human workers and challenging conventional corporate liability frameworks. The bill defines automated societies as entities that “develop their activity through autonomous algorithmic systems or AI agents, without requiring workers or human resources for their ordinary operation”, and as reported would “operarían de forma autónoma con algoritmos o IA, sin empleados”—meaning AI systems independently manage and execute all corporate operations without human staff. Harari specifically warns that granting such legal personhood could allow autonomous AI to act inside and potentially take over corporate and state functions without being subject to human punitive deterrence.
+What technology: The legislation proposes that autonomous algorithmic systems or artificial intelligence autonomously manage corporate activities under Argentine law, though neither source names specific models, platforms, or technical architectures.
 Sources:
 - La alerta global por la IA llegó al Congreso: el Gobierno pierde apoyo para avanzar con un proyecto clave — https://www.rionegro.com.ar/politica/la-alerta-global-por-la-ia-llego-al-congreso-el-gobierno-pierde-apoyo-para-avanzar-con-un-proyecto-clave-4718142/
 - “No se puede tratar”: ante la alerta global por la IA, el Gobierno pierde apoyo para impulsar un proyecto clave en el Congreso — https://www.infobae.com/politica/2026/09/11/no-se-puede-tratar-ante-la-alerta-global-por-la-ia-el-gobierno-pierde-apoyo-para-impulsar-un-proyecto-clave-en-el-congreso/
+- IA. Inteligencia artificial: la narrativa de la inevitabilidad — https://www.lavoz.com.ar/ciudadanos/inteligencia-artificial-narrativa-inevitabilidad_0_m9jtja83VV.html
 
 ### DoD Agentic AI Contracts to LLM Providers (United States, 2026-09-11)
 Organisation: US Department of Defense
