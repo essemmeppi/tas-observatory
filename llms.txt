@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (420 records as of 2026-09-15).
+newest first (428 records as of 2026-09-16).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,88 @@ newest first (420 records as of 2026-09-15).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### NIST Agentic AI Vulnerability Database Enrichment (United States, 2026-09-16)
+Organisation: National Institute of Standards and Technology (NIST)
+Layer: Cyber security, Government workflows
+Type: Deployment
+Summary: NIST is developing an AI agent workflow to enrich the National Vulnerability Database (NVD), the U.S. government repository for standards-based vulnerability management data. The initiative aims to autonomously process a rapidly growing volume of CVE submissions—up 263% since 2020—by adding severity scores, affected products and metadata that cybersecurity professionals and automated security tools use to prioritize threats.
+Why it matters: It applies agentic AI to automate enrichment of the central government vulnerability repository, shifting from overwhelmed manual and risk-based triage to autonomous agent workflows that can keep pace with surging submissions. NIST is developing an 'AI agent enrichment workflow' that uses 'autonomous capabilities' to enrich vulnerability records in the National Vulnerability Database with severity scores, affected products and other metadata, helping defenders keep pace with surging CVE submissions.
+What technology: NIST has begun developing a tool called V-etalon that uses AI technologies, and is building an agentic AI enrichment workflow for the NVD; the agency plans to share the approach, architecture, implementation problems and early results in a September 2026 webinar.
+Sources:
+- AI agents are getting better at cybersecurity. That cuts both ways. — https://www.nextgov.com/cybersecurity/2026/09/ai-agents-are-getting-better-cybersecurity-cuts-both-ways/416025/
+
+### Missionforce (United States, 2026-09-16)
+Organisation: United States Department of Defense
+Layer: Government workflows, Tech stack, Service design & UX
+Type: Deployment
+Summary: Salesforce's Missionforce is a government-focused platform combining AI, data, applications and cloud infrastructure, now deployed across 60 U.S. federal agencies, all Cabinet departments, 50 states and six military branches. The Transportation Security Administration uses an AI agent called Ace to handle roughly 100,000 traveler conversations monthly, resolving 96% of routine inquiries without human escalation and reducing interaction costs by over 90%, while the U.S. Army and Air Force apply the platform to human-resources and vehicle-fleet modernization.
+Why it matters: The expansion integrates Nvidia and OpenAI capabilities into a dedicated defense and federal AI agent platform, and the TSA's Ace agent demonstrates large-scale autonomous resolution of traveler inquiries in a security context. Salesforce's public-sector business has become its fastest-growing segment, with defense revenue increasing 80% year over year. The Transportation Security Administration uses an AI agent called Ace that "handle[s] roughly 100,000 traveler conversations each month" and "resolves 96% of routine inquiries without requiring human escalation", managing and concluding those interactions independently without human initiation or intervention for the vast majority of cases.
+What technology: Missionforce combines AI, data, applications and cloud infrastructure on Salesforce's platform, expanded with new Nvidia and OpenAI capabilities. Salesforce is collaborating with OpenAI to integrate advanced AI models and accelerated computing into secure government workloads.
+Sources:
+- Salesforce Expands Missionforce Defense AI Agent Platform — https://technewstube.com/techradar/1867972/salesforce-expanding-missionforce-defense-ai-agent/
+- Salesforce Finds New Winner Inside Its AI Strategy — https://www.tradingview.com/news/gurufocus:75529973f094b:0-salesforce-finds-new-winner-inside-its-ai-strategy/
+
+### Pathumma Connect (Thailand, 2026-09-16)
+Organisation: National Electronics and Computer Technology Center (Nectec)
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Nectec is piloting Pathumma Connect, an agentic AI platform built on its locally developed Pathumma LLM, to enable Thai government agencies to complete citizen tasks—such as preparing documents and filling forms—by connecting to agency tools and data. The initiative is being tested with five agencies and aims to give every agency its own AI assistant without building systems from scratch, while also developing shared government AI-as-a-service infrastructure.
+Why it matters: It upgrades a local Thai LLM into an agentic platform that autonomously executes cross-agency tasks rather than only answering questions, and integrates existing agency chatbots via a common API into a unified service. The platform is explicitly described as an agentic AI system designed to move government services 'beyond answering questions to completing tasks for citizens', with the concrete capability to 'carry out tasks such as preparing documents for people or filling in paper forms within a single conversation' by connecting to state agencies' tools, data and services.
+What technology: Built on Nectec's Pathumma LLM, a Thai-language model available via Hugging Face. Existing agency chatbots can connect through a common application programming interface, and agencies can deploy it within their own systems to retain data control. Nectec is also building a shared government AI-as-a-service platform.
+Sources:
+- New AI platform to enhance government services nationwide — https://www.bangkokpost.com/business/general/3321025/new-ai-platform-to-enhance-government-services-nationwide
+
+### Open Text–Cohere Agentic AI Partnership for Regulated Sectors (Canada, 2026-09-16)
+Organisation: Open Text / Cohere (targeting government clients)
+Layer: Government workflows, Tech stack
+Type: Strategy, Deployment
+Summary: OpenText and Cohere have partnered to integrate Cohere’s North agentic AI platform with OpenText’s enterprise data tools to deliver secure, context-aware AI solutions for governments and regulated industries such as healthcare and financial services. The combined offering is designed to let AI agents reason over trusted enterprise data and automate processes across systems while allowing organizations to retain control over data location, security, and deployment, with the solution expected to reach clients in early 2027.
+Why it matters: The partnership reflects a cross-stack collaboration strategy that pairs OpenText’s enterprise data and context layer with Cohere’s privately deployable North orchestration platform and sovereign AI models, aiming to embed agentic AI directly into existing government and enterprise workflows. It explicitly addresses data residency and security barriers by allowing deployment on-premises or in sovereign, private, or public clouds, targeting regulated environments that have limited agentic AI adoption. The integrated stack is designed to let AI agents reason over trusted enterprise data and act across systems, automating processes across the workflows teams use every day without requiring a human to initiate each step, while maintaining customer control over data location, security, deployment, and accountability.
+What technology: The solution combines Cohere’s North agentic AI orchestration platform and large language models with OpenText’s cloud suite, enterprise data tools, and Aviator AI agents. Deployment options span on-premises and private, public, or sovereign cloud via OpenText Cloud, supported by a SOLEX reseller relationship.
+Sources:
+- OpenText and Cohere Partner on Agentic AI for Regulated Sectors — https://www.unite.ai/opentext-and-cohere-partner-on-agentic-ai-for-regulated-sectors/
+- Open Text (OTEX) Teams Up On Trusted Agentic AI For Regulated Industries — https://simplywall.st/stocks/us/software/nasdaq-otex/open-text/news/open-text-otex-teams-up-on-trusted-agentic-ai-for-regulated/amp
+
+### LinkLive Agentic AI Contact Center Platform (United States, 2026-09-16)
+Organisation: State and local government agencies (USA) — customers of LinkLive
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: LinkLive is an AI-enabled cloud contact center platform serving over 1,100 organizations, including state and local government agencies. Its Agentic AI coordinates customer journeys across voice, chat, and digital channels, deploying specialized AI agents to handle multi-step tasks, anticipate needs, adapt in real time, and seamlessly escalate to live agents without losing context. Customers report up to 78% first-call resolution and 50% cost reduction.
+Why it matters: It applies agentic AI to highly regulated industries—government, banking, and healthcare—within an encrypted, auditable environment built for security and compliance, rather than relying on generic contact center automation. The platform 'coordinates every step of the customer journey across voice, chat, and digital channels – anticipating customer needs, adapting in real time, and moving seamlessly between AI self-service and live agents without losing context,' and uses 'a network of specialized AI agents [that] handles the multi-step tasks traditional automation cannot.'
+What technology: Cloud CCaaS platform featuring a Journey Orchestration Engine; runs in an encrypted, auditable environment and integrates with systems such as Epic.
+Sources:
+- LinkLive Appoints Mike Bourke as CEO to Accelerate Agentic AI-Powered Customer Engagement for Regulated Industries — https://www.prnewswire.com/news-releases/linklive-appoints-mike-bourke-as-ceo-to-accelerate-agentic-ai-powered-customer-engagement-for-regulated-industries-302880561.html
+
+### CORAS Agentic AI Orchestrator (United States, 2026-09-16)
+Organisation: US General Services Administration
+Layer: Government workflows
+Type: Deployment
+Summary: In July 2026, the US General Services Administration made CORAS’s agentic AI orchestrator available to eligible federal agencies for reporting, workflow automation, and decision support, with human review built into the process. The initiative marks a move toward treating autonomy as an operating-model question within federal government operations.
+Why it matters: It represents an explicit deployment of agentic AI orchestration into US federal government operations, making a cross-agency workflow and decision-support tool available rather than relying on isolated automation scripts or chatbots. The system is explicitly described as an ‘agentic AI orchestrator’ deployed for ‘reporting, workflow automation, and decision support’ across federal agencies, meaning it coordinates and executes multi-step internal government processes without a human initiating each individual step, even though human review is built into the process.
+What technology: The source does not specify models, platforms, or technical architecture, only that the orchestrator is provided by CORAS and made available to eligible federal agencies through the General Services Administration.
+Sources:
+- Agentic AI safety risks: IMD AI Safety Clock reaches 23:45 - I by IMD — https://www.imd.org/ibyimd/artificial-intelligence/imd-ai-safety-clock-moves-to-15-minutes-to-midnight/
+
+### UAE Government Agentic AI Services (TAMM) (United Arab Emirates, 2026-09-16)
+Organisation: UAE Government; Abu Dhabi Government
+Layer: Service design & UX, People & culture
+Type: Deployment, Strategy
+Summary: The UAE has deployed agentic AI across government services, exemplified by the TAMM app where users tell an agent what they need and it handles the entire government process for them. The country uses older large language models rather than frontier models to power most government service interactions, and has trained all 80,000 federal civil servants in agentic AI.
+Why it matters: Instead of deploying frontier models, the UAE deliberately uses older large language models for government services to reduce cybersecurity risk, while simultaneously training its entire federal workforce in agentic AI and deploying agents that autonomously handle complete government processes end-to-end. The TAMM app allows users to tell an agent what they need, and the agent "handles the whole government process for them" without the user manually navigating each step, autonomously executing the complete service journey based on the initial request.
+What technology: Government services run on older large language models—explicitly not frontier models such as Anthropic’s Fable or OpenAI’s Astra—to answer citizen questions; the TAMM app orchestrates complete government processes through an agent interface.
+Sources:
+- UAE AI minister: data centres are now “more important than bridges” — https://thenextweb.com/news/uae-ai-minister-al-olama-data-centres-dreamforce-salesforce
+
+### SAINS Sovereign AI Infrastructure (Malaysia, 2026-09-16)
+Organisation: Sarawak Information Systems (SAINS)
+Layer: Government workflows, Tech stack
+Type: Deployment, Strategy
+Summary: SAINS, Sarawak's wholly state-owned technology firm, has launched sovereign AI software infrastructure backed by a double-digit-million investment in private cloud and compute to support the state government's transition to an 'AI government.' It currently hosts over 450 applications and is embedding intelligence layers into government solutions, including agentic AI assistants that autonomously summarise lengthy reports for civil servants. The initiative aims to digitalise all 1,106 state government services by 2030 while ensuring data sovereignty by keeping all critical infrastructure and data within Sarawak.
+Why it matters: The initiative insists on fully sovereign, in-house AI infrastructure rather than relying on foreign hyperscalers, ensuring operational continuity even if external providers restrict access. It also applies a whole-of-government framework with API-by-design principles through the Smart Exchange Platform to prevent siloed systems and data duplication across agencies. The system includes 'agentic AI assistants' that can autonomously summarise a 500-page report for a civil servant 'in a few seconds' instead of weeks, and future personalised AI assistants are expected to 'understand how individual employees work and perform tasks for them' without requiring step-by-step human initiation.
+What technology: SAINS operates an active-active private cloud across two data centre locations and has built its own AI software infrastructure on sovereign compute, while adopting a DevSecOps approach and an API-by-design strategy anchored by the Smart Exchange Platform for inter-agency integration.
+Sources:
+- From computerising government to sovereign AI: SAINS' evolving role in Sarawak's digital ambitions — https://www.digitalnewsasia.com/digital-economy/computerising-government-sovereign-ai-sains-evolving-role-sarawaks-digital-ambitions
 
 ### Microsoft 365 G7 and Agent 365 (United States, 2026-09-15)
 Layer: Government workflows, Agent governance
