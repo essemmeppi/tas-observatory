@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (428 records as of 2026-09-16).
+newest first (434 records as of 2026-09-17).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,66 @@ newest first (428 records as of 2026-09-16).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Virginia Agentic AI Regulatory Modernization Pilot (United States, 2026-09-17)
+Organisation: Virginia Office of Regulatory Management
+Layer: Government workflows, Policy & rule-making
+Type: Deployment
+Summary: Virginia piloted agentic AI to scan state regulatory and guidance documents and identify opportunities to streamline redundant or burdensome language. The initiative uncovered more than $1.4 billion in annual savings and reduced permit and license processing times by nearly 80%.
+Why it matters: It is an early state-level deployment of agentic AI specifically targeting regulatory text modernization, with reported quantified fiscal and operational impacts. The system autonomously scanned the corpus of regulatory and guidance documents and identified specific locations where officials could streamline redundant or burdensome language, without a human initiating each individual review.
+What technology: The source does not specify the underlying models, platforms, or technical architecture used for the document analysis.
+Sources:
+- Urban Institute releases guidance for state and local agentic AI adoption — https://www.route-fifty.com/artificial-intelligence/2026/09/urban-institute-releases-guidance-state-and-local-agentic-ai-adoption/416054/?oref=rf-homepage-river
+
+### Travel & Expense Management digital transformation with agentic AI (Italy, 2026-09-17)
+Organisation: Italian Public Administration (Pubblica Amministrazione)
+Layer: Government workflows, Public finance
+Type: Strategy
+Summary: A digital transformation initiative for travel and expense management across Italian public administration, moving from paper-based processes to integrated digital workflows. The project aims to dematerialize end-to-end T&E processes through cloud platforms and AI technologies, enabling real-time monitoring of spending cycles and predictive budget capabilities.
+Why it matters: The framework introduces a four-level maturity model specifically designed for public sector T&E digitization, combining traditional automation (OCR) with emerging agentic AI capabilities for proactive policy compliance and anticipatory controls. The source explicitly mentions 'applicazioni dell'IA generativa e agentica' (applications of generative and agentic AI) that enable the administration to 'anticipare i controlli, garantire il rispetto delle policy interne' (anticipate controls, ensure compliance with internal policies). This indicates autonomous proactive monitoring and enforcement of spending policies without waiting for human-initiated review steps.
+What technology: Cloud-based SAP Concur platform integrated with existing financial systems, intelligent OCR for automatic receipt capture, and generative/agentic AI applications for policy compliance.
+Sources:
+- Travel & Expense Management: dalla carta al dato — https://www.forumpa.it/pa-digitale/travel-expense-management-dalla-carta-al-dato/
+
+### St. Luke's Agentic AI Call Center (United States, 2026-09-17)
+Organisation: St. Luke's Hospital
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: St. Luke's Hospital is implementing an agentic AI call center developed by NextGen Coding to automate routine patient interactions spanning prescription requests, appointment scheduling and clinical consultations. The system transcribes and classifies incoming calls, routes routine tasks to autonomous agents while escalating complex cases to human operators, and prepares structured clinical summaries to reduce average handle times. Projections estimate monthly labor hours will fall from roughly 100,000 to 27,000 and annual net savings will exceed $28 million.
+Why it matters: The system moves beyond question-answering to autonomously handling end-to-end administrative workflows such as eligibility verification, prescription routing and appointment scheduling, while compiling structured clinical summaries with symptom and severity indicators before a human handoff. It uses progressive automation thresholds with clinical oversight dashboards that track automation rates, abandonment risk and escalation frequency. The system transcribes incoming calls, classifies their intent and autonomously routes them either to an autonomous agent or a human operator according to predetermined escalation policies. It also independently collects symptoms, relevant history and severity indicators before a patient reaches a clinician, and determines when an interaction should be escalated to a person.
+What technology: The platform uses real-time voice transcription and intent classification to process calls, applies predetermined escalation policies for routing, and integrates dashboards tracking automation rates, handle times, abandonment risk and escalation frequency alongside clinical oversight workflows for flagged interactions.
+Sources:
+- St. Luke’s Turns 400,000 Patient Interactions Into an Agentic AI Use Case — https://www.pymnts.com/news/artificial-intelligence/2026/st-lukes-turns-400000-patient-interactions-into-an-agentic-ai-use-case/
+
+### Nokia-Microsoft Agentic Network Automation (Global, 2026-09-17)
+Organisation: Not specified
+Layer: Government workflows, Tech stack
+Type: Deployment
+Summary: Nokia and Microsoft have integrated Nokia Data Suite with Microsoft Fabric to create an agentic, unified data foundation for telecommunications network automation. The platform enables intelligent, agent-based solutions—including autonomous VoNR assurance, geo-experience mapping, and predictive maintenance—to reduce data preparation time from weeks to minutes and improve service quality across multi-vendor, hybrid cloud environments.
+Why it matters: It combines prebuilt, reusable telco data products with glass-box data quality controls and telco-specific semantic modeling on a unified analytics platform, enabling closed-loop autonomous operations. The approach specifically targets the shift from fragmented data environments to scalable, autonomous network management while maintaining human oversight within governance boundaries. AI-driven operational assistants act as copilots that provide contextual insights, recommended actions and automated workflow execution across complex, cross-domain environments. Autonomous agents identify anomalies, run root cause analyses, and recommend actions with 360-degree observability; they also analyze historical and real-time data to anticipate network issues before they impact customers.
+What technology: The solution integrates Nokia Data Suite’s prebuilt telco data products with Microsoft Fabric’s unified analytics platform, OneLake storage, and AI-native apps such as Microsoft 365 Copilot, Foundry and Power BI. It is designed for multi-vendor, cross-domain telecom environments and supports hybrid and cloud infrastructures, including on-premises deployments.
+Sources:
+- Nokia, Microsoft Advance Agentic AI for Network Automation — https://www.thefastmode.com/technology-solutions/50656-nokia-microsoft-advance-agentic-ai-for-network-automation
+
+### Piano per l'adozione dell'Intelligenza Artificiale - Cinisello Balsamo (Italy, 2026-09-17)
+Organisation: Comune di Cinisello Balsamo
+Layer: Government workflows, Agent governance
+Type: Strategy, Deployment
+Summary: The Municipality of Cinisello Balsamo has approved a strategic AI adoption plan that formalizes ongoing experimentation and establishes an organizational framework for structured, responsible AI use. The plan includes five new AI agents for internal use: three on the Galene.ai platform for data consultation, aggregation and document review, and two on Chat GPT for administrative control and drafting support. The municipality has already piloted automatic PEC email sorting and participates in a metropolitan cooperation project with four other municipalities.
+Why it matters: The plan explicitly structures the municipality's AI adoption around five distinct AI agents with specific autonomous functions, moving from fragmented experimentation to a governed, replicable model. It also establishes a multi-municipality cooperation ecosystem for shared AI policies and reusable applications. The five AI agents are designed for autonomous internal tasks: three agents on Galene.ai will perform "consultazione puntuale e incrociata dei dati dell'Ente" (precise and cross-referenced data consultation), "aggregazione" (data aggregation), and "consultazione dei documenti di programmazione" (document review); two agents on Chat GPT will support "attività di controllo e redazione degli atti amministrativi" (control and drafting of administrative acts). These agents operate without citizen-facing interfaces, executing multi-step tasks on internal data and documents.
+What technology: Three agents built on Galene.ai platform for data and document operations; two agents on Chat GPT platform for administrative control and drafting; prototype dashboard integrated with GIS system for thematic mapping; planned webapp for public housing tenants.
+Sources:
+- Il Comune di Cinisello Balsamo adotta il Piano per l’Intelligenza Artificiale — https://www.nordmilano24.it/2026/09/17/il-comune-di-cinisello-balsamo-adotta-il-piano-per-lintelligenza-artificiale/
+
+### Harmattan AI autonomous defence systems (France, United Kingdom, Morocco, 2026-09-17)
+Organisation: French Ministry of the Armed Forces; UK Ministry of Defence
+Layer: Crisis response
+Type: Deployment, Procurement
+Summary: Harmattan AI is a French startup manufacturing autonomous defence systems, including the Sonora drone for military training and operator familiarisation, from a new Paris-region facility with a capacity of 10,000 units per month. It has secured national defence contracts and strategic partnerships with France, the UK and Morocco, and is collaborating with Dassault Aviation to integrate controlled autonomy into combat aviation.
+Why it matters: The company is scaling mass production of autonomous defence AI in Europe while embedding real-time coordinated autonomy across its portfolio, and has secured multiple national Programmes of Record as a long-term partner to allied nations. The firm states it 'embeds autonomy across its systems to support "coordinated action and resilient execution in real-time"', and through its Dassault partnership is integrating 'controlled autonomy and AI technologies into combat aviation systems'.
+What technology: The Sonora drone fuses AI, sensing and mission intelligence into a unified operational capability for repeatable training use, and the company is working with Dassault Aviation on combat aviation autonomy.
+Sources:
+- Harmattan AI: How European Startups Are Scaling Defence AI — https://aimagazine.com/news/harmattan-ai-how-european-startups-are-scaling-defence-ai
 
 ### NIST Agentic AI Vulnerability Database Enrichment (United States, 2026-09-16)
 Organisation: National Institute of Standards and Technology (NIST)
@@ -164,14 +224,16 @@ What technology: It uses positive-unlabeled learning (PUL) to statistically anal
 Sources:
 - Interview on Lavender: „Civilian harm is pre-programmed into the system“ — https://netzpolitik.org/2026/interview-on-lavender-civilian-harm-is-pre-programmed-into-the-system/
 
-### UAE Federal Agentic AI Integration Initiative (United Arab Emirates, 2026-09-14)
+### UAE Federal Agentic AI Integration Initiative (United Arab Emirates, United States, 2026-09-14)
 Organisation: UAE Federal Government
-Layer: Government workflows, Service design & UX
+Layer: Government workflows, Service design & UX, Policy & rule-making
 Type: Strategy, Deployment
-Summary: The UAE federal government announced in April 2026 that agentic AI will be integrated across 50 percent of all government functions within two years. This initiative is part of the country's broader strategy to diversify its hydrocarbon-based economy through frontier technology investment and address emerging security risks including cyber warfare.
-Why it matters: This represents one of the most ambitious government-wide deployments of agentic AI globally, targeting half of all government functions rather than piloting in select agencies. The scale and explicit use of 'agentic AI' rather than general AI distinguishes it from typical automation programs. The source explicitly states 'agentic AI will be integrated across 50 percent of all government functions' — the term 'agentic AI' is used by the UAE government itself to describe the technology being deployed, indicating autonomous decision-making and execution capabilities across government operations rather than simple automation or chatbot interfaces.
-What technology: The initiative will likely leverage the UAE–US AI campus in Abu Dhabi with 5 gigawatts of planned compute capacity, though specific models or platforms are not detailed. Hardware dependencies on US-exported advanced computing technology create infrastructure constraints.
+Summary: The UAE federal government announced in April 2026 that agentic AI will be integrated across 50 percent of all government functions within two years, led by the UAE Government Artificial Intelligence Office and Dubai Centre for Artificial Intelligence. More than 50 Chief AI Officers and government leaders are on a five-day mission to the United States to study emerging applications with global technology firms and academia, while the Abu Dhabi Executive Council has deployed the AI Committee System—an agentic AI platform that autonomously analyses proposals, generates executive summaries and supplies real-time, source-traceable insights during the emirate’s highest-level council meetings. The initiative is part of the country’s broader strategy to diversify its hydrocarbon-based economy through frontier technology investment and address emerging security risks including cyber warfare.
+Why it matters: This represents one of the most ambitious government-wide deployments of agentic AI globally, targeting half of all government functions rather than piloting in select agencies, and institutionalises Chief AI Officers to translate advanced global models into practical pathways. It also encompasses the first use of an agentic AI platform at an emirate’s highest executive level to directly support live government decision-making, with built-in traceability to original source documents. The sources state that agentic AI systems are designed to "carry out more complex, multi-step tasks with greater autonomy" and can "plan actions, use digital tools and complete workflows towards a defined objective, with varying levels of human oversight". The AI Committee System concretely demonstrates this by autonomously analysing proposals, generating executive summaries and providing real-time insights during council meetings without a human initiating each analytical step, while ensuring outputs remain traceable to their original source documents.
+What technology: The delegation will meet representatives from Dell Technologies, NVIDIA, Salesforce, Cognition, Google, Poolside, Snowflake, Databricks, AMD, Microsoft, Stanford University and the Institute of Foundation Models at Mohamed bin Zayed University of Artificial Intelligence, while the initiative will likely leverage the UAE–US AI campus in Abu Dhabi with 5 gigawatts of planned compute capacity. At the executive level, the Abu Dhabi Executive Council has implemented the AI Committee System, an agentic artificial intelligence platform; no specific models, vendors or technical architecture are disclosed for that system.
 Sources:
+- UAE sends 50+ government AI leaders to US as it accelerates agentic AI push — https://gulfnews.com/uae/government/uae-sends-50-government-ai-leaders-to-us-as-it-accelerates-agentic-ai-push-1.500678422
+- Sheikh Khaled chairs first Abu Dhabi Executive Council meeting to use agentic AI platform — https://www.thenationalnews.com/news/uae/2026/09/17/sheikh-khaled-chairs-first-abu-dhabi-executive-council-meeting-to-use-agentic-ai-platform/
 - US Export Controls and the UAE’s Path Towards AI Capability — https://orfme.org/expert-speak/us-export-controls-and-the-uaes-path-towards-ai-capability/
 
 ### Abu Dhabi Hazardous Materials AI Monitoring System (United Arab Emirates, 2026-09-14)
@@ -185,15 +247,16 @@ Sources:
 - Abu Dhabi to use AI to detect hazardous material risks earlier — https://gulfnews.com/uae/abu-dhabi/abu-dhabi-to-use-ai-to-detect-hazardous-material-risks-earlier-1.500674333
 - Abu Dhabi to deploy agentic AI monitoring of hazardous materials — https://www.khaleejtimes.com/uae/abu-dhabi-agentic-ai-monitoring-hazardous-materials?amp=1
 
-### Gartner Government Technology Trends 2026: Agentic AI (Global, 2026-09-14)
+### Gartner Government Technology Trends 2026: Agentic AI (Brazil, United Arab Emirates, 2026-09-14)
 Organisation: Multiple government organisations
-Layer: Government workflows, Agent governance
+Layer: Government workflows, Agent governance, Service design & UX
 Type: Strategy
-Summary: Gartner has identified agentic AI as a top government technology trend for 2026, predicting that AI agents will assume larger roles in operations, software development, service delivery and routine decisions. The shift is pushing public sector bodies to review governance frameworks, digital identity systems and operating models to support organisational transformation beyond isolated technical pilots.
-Why it matters: The report frames agentic AI as creating a 'ripple effect' that demands outcome-based roadmaps and fundamental redesign of business processes and workforce readiness rather than simple technology implementation. It explicitly calls for governments to build adaptable operating models that can evolve with autonomous systems. The source states that AI agents are expected to play a larger role in operations, software development, service delivery and routine decisions, forcing public sector bodies to redesign business processes and governance frameworks to support autonomous execution. Lacheca notes that success depends on 'the ability to redesign business processes' while creating an adaptable foundation for autonomous systems.
-What technology: The source does not specify models, platforms or technical architectures; it discusses agentic AI conceptually and identifies digital identity systems and adaptable operating models as supporting infrastructure.
+Summary: Gartner has identified agentic AI as a top government technology trend for 2026, alongside adaptive cybersecurity and IT service modernization, predicting that AI agents will assume larger roles in operations, software development, service delivery and routine decisions as governments move from experimental phases to organization-wide deployment. The shift is pushing public sector bodies to review governance frameworks, digital identity systems and operating models to support transformation beyond isolated pilots, while 78% of public sector IT leaders plan to invest in workforce training to support these technological shifts.
+Why it matters: The report frames agentic AI as creating a 'ripple effect' that demands outcome-based roadmaps and fundamental redesign of business processes and workforce readiness rather than simple technology implementation. It also highlights a shift from experimental AI to organization-wide deployment where agents autonomously handle routine decisions, and introduces continuous, evolving cybersecurity driven by AI and quantum computing threats in place of static periodic checks. The source states that AI agents will autonomously handle operations, software development, service delivery and routine decisions—including automating routine decisions, improving citizen experience and accelerating program creation—as governments move from testing to organization-wide use. Lacheca notes that success depends on 'the ability to redesign business processes' while building adaptable operating models that enable autonomous execution without a human initiating each step.
+What technology: The report is based on a January 2026 Gartner survey of 1,219 public sector IT leaders and CIDOs; it discusses agentic AI conceptually across government organizations alongside digital identity structures and post-quantum cryptography, without naming specific models, platforms or technical architectures.
 Sources:
 - Gartner flags three key tech trends for governments — https://securitybrief.com.au/story/gartner-flags-three-key-tech-trends-for-governments
+- Tecnologia e Inteligência Artificial mudam o futuro dos governos, aponta Gartner — https://www.bra1.com.br/tecnologia/id-693833/tecnologia_e_inteligencia_artificial_mudam_o_futuro_dos_governos__aponta_gartner
 
 ### Korea AI Security Dual-Track Initiative (South Korea, 2026-09-14)
 Organisation: Ministry of Science and ICT (MSIT)
