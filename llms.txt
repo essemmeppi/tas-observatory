@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (434 records as of 2026-09-17).
+newest first (436 records as of 2026-09-18).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,26 @@ newest first (434 records as of 2026-09-17).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### T-Dome AI Defense System (Taiwan, 2026-09-18)
+Organisation: Ministry of National Defense (Taiwan)
+Layer: Crisis response, Agent governance
+Type: Deployment
+Summary: T-Dome is a multi-layered air-and-missile defense system announced by President Lai Ching-te in October 2025 that uses AI to improve real-time decision-making. The Ministry of National Defense has also established a pilot AI office within its Defense Innovation Division to explore military AI applications including image recognition, cyber defense and anti-hacking.
+Why it matters: Taiwan is explicitly pursuing AI-enabled autonomous weapon systems and decision support for deterrence in a high-tension flashpoint environment, with particular focus on operating in GPS/GNSS-denied conditions where human control may be degraded or impossible. The Hivemind AI pilot from Shield AI 'can decide and act autonomously, without human intervention,' allowing unmanned systems to 'remain effective in GPS- and GNSS-denied environments.' The system enables 'one operator to supervise multiple unmanned systems' and can 'accelerate the targeting cycle — identifying, selecting and engaging targets — reducing the time between detecting a threat and responding to it.'
+What technology: Hivemind end-to-end AI pilot by Shield AI integrated into unmanned systems; AI-enabled decision support systems for maritime patrol and air defense; coastal surveillance drones planned for 2027 acquisition.
+Sources:
+- Taiwan must weigh military AI’s benefits against escalation risks — https://www.taiwannews.com.tw/en/news/6442489
+
+### First AI-agent data breach reported to Spanish Data Protection Agency (Spain, 2026-09-18)
+Organisation: Agencia Española de Protección de Datos (AEPD)
+Layer: Compliance & supervision, Cyber security
+Type: Regulation, Strategy
+Summary: The AEPD received Spain’s first notification of a personal data breach executed by an autonomous AI agent, which logged into a system after searching for vulnerabilities and then independently sought further flaws to modify personal data and access invoices. The incident prompted the privacy association APEP·IA to urge organizations to explicitly incorporate AI-assisted attacks into data-treatment risk analyses and adopt proactive detection and response mechanisms.
+Why it matters: This is the first officially recorded Spanish data breach perpetrated by an AI agent acting without step-by-step human instruction, demonstrating autonomous planning, vulnerability discovery, and adaptive action that outpaces manual security responses. The agent received an objective and autonomously chained steps—planning, testing, interpreting findings, and adjusting its next move without human direction—successfully logging in after searching generic files for vulnerabilities and then independently searching the application for vulnerabilities to modify personal data and access invoices, as described by analysts.
+What technology: The attack was executed through a known large language model; the agent performed vulnerability searches in generic files and adapted its behavior based on findings inside the compromised system.
+Sources:
+- La APEP·IA pide incorporar los ataques asistidos o ejecutados mediante IA a los análisis de riesgos de los tratamientos de datos — https://www.computerworld.es/article/4223783/la-apep-ia-pide-incorporar-los-ataques-asistidos-o-ejecutados-mediante-ia-a-los-analisis-de-riesgos-de-los-tratamientos-de-datos.html
 
 ### Virginia Agentic AI Regulatory Modernization Pilot (United States, 2026-09-17)
 Organisation: Virginia Office of Regulatory Management
@@ -260,13 +280,14 @@ Sources:
 
 ### Korea AI Security Dual-Track Initiative (South Korea, 2026-09-14)
 Organisation: Ministry of Science and ICT (MSIT)
-Layer: Cyber security, Agent governance
+Layer: Cyber security, Agent governance, Tech stack
 Type: Deployment, Strategy
-Summary: The South Korean government is pursuing a two-track national program to both defend against risks from agentic AI and harness AI for cybersecurity. Led by MSIT with KISA and NIPA, it includes the AI Security Guide v2.0 to control AI permissions and behaviors, a domestic cybersecurity-specialized AI foundation model, and an autonomous security operations platform where AI agents detect and respond to threats. The effort encompasses proof-of-concept testing, industry-specific threat scenarios, and a 12.04 billion won support program selecting 18 projects with 50 participating companies.
-Why it matters: It explicitly classifies agentic and physical AI as distinct threat vectors requiring new controls over autonomous execution permissions and decision-making, moving beyond traditional data-leak or incorrect-output risks. The dual approach simultaneously builds national guardrails for AI systems and deploys AI agents as autonomous cyber defenders, integrating both 'Security for AI' and 'AI for Security'. The autonomous security operations platform is designed so that 'AI agents automatically carry out the detection, analysis and response to security threats.' The initiative also addresses agentic AI that 'makes its own judgments and executes tasks on external systems' by requiring records of its judgments and actions and establishing systems that can 'intervene in AI execution' when incidents occur.
-What technology: The program includes a cybersecurity-specialized AI foundation model separate from general-purpose AI, and an agentic AI-based autonomous integrated security operations platform being developed by consortia including Logpresso, Monitorapp, Sands Lab and Tatum. KISA's AI Security Guide v2.0 mandates limiting AI permissions and access scope, maintaining records of judgments and actions, and using isolated environments with network and tool access restrictions.
+Summary: The South Korean government is pursuing a two-track national program to both defend against risks from agentic AI and harness AI for cybersecurity. Led by MSIT with KISA and NIPA, it includes the AI Security Guide v2.0, a domestic cybersecurity-specialized AI foundation model, an autonomous security operations platform, and the AI Star Fellowship led by UNIST that is developing layered security source technology for agentic AI with 11 billion won over 5.5 years. The effort encompasses proof-of-concept testing, industry-specific threat scenarios, and a 12.04 billion won support program selecting 18 projects with 50 participating companies.
+Why it matters: It explicitly classifies agentic and physical AI as distinct threat vectors requiring new controls over autonomous execution permissions and decision-making, while the AI Star Fellowship introduces a "joint safety design between layers" that simultaneously designs safety devices across the model, interface, and execution environments with common standards rather than separate defenses. The dual approach simultaneously builds national guardrails for AI systems and deploys AI agents as autonomous cyber defenders, integrating both "Security for AI" and "AI for Security". The autonomous security operations platform is designed so that "AI agents automatically carry out the detection, analysis and response to security threats." The initiative also addresses agentic AI that "makes its own judgments and executes tasks on external systems" and "judges and works on its own," which based on an LLM "reads documents, searches the web, and uses tools to handle tasks" without human initiation of each step, by requiring records of its judgments and actions, establishing systems that can "intervene in AI execution," and protecting the full judgment-to-execution path.
+What technology: The program includes a cybersecurity-specialized AI foundation model and an agentic AI-based autonomous integrated security operations platform developed by consortia including Logpresso, Monitorapp, Sands Lab and Tatum, alongside an AI Star Fellowship architecture spanning LLM-based agents across model, interface, and execution environment layers that incorporates trusted execution environments and formal verification. KISA's AI Security Guide v2.0 mandates limiting AI permissions and access scope, maintaining records of judgments and actions, and using isolated environments with network and tool access restrictions, with developed technology to be validated in partner companies' actual services.
 Sources:
 - AI That Hacks vs. AI That Defends: Korea Builds Both — https://en.sedaily.com/technology/2026/09/15/ai-that-hacks-vs-ai-that-defends-korea-builds-both
+- UNIST will develop a security source technology that will safely use 'Agentic AI' that judges and wo.. — https://www.mk.co.kr/en/it/12156480
 
 ### Australian Government Agentic AI Security Guidance (Australia, 2026-09-14)
 Organisation: Australian Government
@@ -526,14 +547,16 @@ Sources:
 
 ### FedAI (United Arab Emirates, 2026-09-09)
 Organisation: United Arab Emirates federal government
-Layer: Government workflows, Service design & UX, Policy & rule-making
+Layer: Government workflows, Service design & UX, Policy & rule-making, Public procurement
 Type: Strategy, Deployment
-Summary: The UAE's 'Government of the Future' project is entering its second phase to integrate Agentic AI across federal operations, following a first phase that built capabilities and assessed services. The phase includes launching the 'FedAI' national ecosystem for developing and operating Agentic AI solutions, a customer experience lab, and internal employee competitions to drive adoption.
-Why it matters: The initiative creates a national-scale 'FedAI' ecosystem specifically dedicated to Agentic AI across the federal government, paired with a customer experience lab to test and apply autonomous solutions in public services. It explicitly targets using Agentic AI to proactively shape government policies and decisions, not just automate tasks. The system is intended to leverage Agentic AI to autonomously "develop services, operations and tasks, and to shape policies and decisions" within a "smarter, more flexible and more proactive" government model. The FedAI ecosystem will enable federal entities to "develop, adopt and operate Agentic AI solutions" that execute these functions without requiring human initiation of each step.
-What technology: The initiative centres on a national technical ecosystem named 'FedAI' described as a flexible and secure system for federal entities, alongside a customer experience lab for service applications and a secure digital infrastructure. No specific models or platforms are named in the announcement.
+Summary: A national initiative announced by the UAE government to migrate 50% of federal services and operations to agentic AI within two years, spanning public services, procurement, taxation and support functions and building on the country's history of early AI adoption. The Abu Dhabi Executive Council has already used the AI Committee System, an agentic AI platform, during its meeting to analyse proposals, prepare executive summaries, provide real-time insights and fact-checking, and generate meeting minutes and action reports.
+Why it matters: Represents one of the first national-level commitments to deploy agentic AI across half of all federal government operations within a defined two-year timeframe, and marks the first integration of a fully agentic AI platform into executive council proceedings, moving beyond simple automation to end-to-end meeting intelligence including pre-meeting analysis, real-time deliberation support, and post-meeting documentation and follow-up. The initiative explicitly aims to 'run 50% of federal services and operations on agentic AI', autonomously executing and managing tasks across public services, procurement, tax and support functions without requiring human initiation for each operational step. The AI Committee System autonomously analyses proposals before meetings and prepares executive summaries for each agenda item; during sessions it independently generates real-time insights, fact-checks claims, proposes analysis-based recommendations, and afterwards compiles detailed minutes, action-item summaries and responsibility assignments.
+What technology: The source identifies the system as the AI Committee System, an agentic AI platform; no models, vendors or technical architecture are specified.
 Sources:
+- Abu Dhabi sets out next steps: AI joins Executive Council meeting for first time — https://gulfnews.com/uae/abu-dhabi-sets-out-next-steps-ai-joins-executive-council-meeting-for-first-time-1.500679505
 - Sheikh Mansour reviews second phase of Agentic AI project — https://www.dubaieye1038.com/news/local/sheikh-mansour-reviews-second-phase-of-agentic-ai-project/
 - Ministerial Council for AI reviews 2nd Phase of Agentic AI Project — https://sharjah24.ae/en/Articles/2026/09/09/Ma8
+- UAE pushes 50% of federal services to agentic AI within two years — https://x.com/NajatBenchSave/status/2100823643727044702
 
 ### Legal AI Scholars Program at SMU (Singapore, 2026-09-09)
 Organisation: Singapore Management University (SMU)
