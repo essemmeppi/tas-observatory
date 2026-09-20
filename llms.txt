@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (436 records as of 2026-09-18).
+newest first (439 records as of 2026-09-20).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,36 @@ newest first (436 records as of 2026-09-18).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Humppila Municipal AI Agents (Finland, 2026-09-20)
+Organisation: Municipality of Humppila
+Layer: Government workflows
+Type: Deployment
+Summary: The Finnish municipality of Humppila replaced its administration director and technical director with AI agents that now prepare decision proposals, draft contracts, and run procurement competitions, reportedly saving up to €150,000. The deployment was initiated under mayor Minna Ylikännö and aligns with Finland’s national strategy to migrate the entire public sector to a single AI platform by 2031.
+Why it matters: It appears to be one of the first known cases where municipal leadership roles have been fully substituted by AI agents rather than merely augmented. The initiative also serves as an early local implementation of Finland’s broader 2031 plan to unify public-sector AI infrastructure. The AI agents autonomously carry out work that previously required two leadership positions, specifically to “handle decision proposals, contract drafts, and procurement competitions” without a human initiating each individual step.
+What technology: The source does not specify the underlying models or technical architecture, noting only that the local deployment aligns with the Finnish Ministry of Finance’s planned single AI platform for the whole public sector by 2031.
+Sources:
+- Humppila Municipality, Finland, Replaces Two Officials with AI; Ties to National Public Sector AI Plan — https://x.com/RT_on_X/status/2101257622204932215
+
+### AI Plus Initiative and National AI Diffusion Strategy (China, 2026-09-19)
+Organisation: Government of China
+Layer: Policy & rule-making
+Type: Strategy
+Summary: China's central government is driving economy-wide AI adoption through its "AI Plus" initiative and a five-year plan to 2030, aiming to embed artificial intelligence deeply into the country's industrial base and outpace the United States in the global tech race. The push has rapidly accelerated enterprise use of AI models and agents from 9.6% in 2024 to 47.5% in 2025, with humanoid robots deployed for postal sorting, traffic control, and autonomous food delivery, while contributing to significant job displacement among young workers.
+Why it matters: The novelty lies in the explicitly state-directed, sweeping diffusion of AI agents and autonomous robots across nearly every economic sector as a matter of national industrial policy, with official strategy prioritizing speed of embedding over gradual adoption. This has produced a surge in automation of roles—from coding to parcel sorting and traffic management—that is unusually rapid and centrally orchestrated. Humanoid robots have begun taking on parcel-sorting duties at postal facilities and are being deployed for tasks once handled exclusively by people, including traffic control, while autonomous food delivery robots spread across China; IDC also reports that industrial enterprises rapidly adopted "AI models and agents" to perform tasks previously done by humans.
+What technology: The source cites IDC market intelligence on Chinese industrial enterprises adopting AI models and agents, and describes the deployment of humanoid robots and autonomous delivery robots, without specifying underlying models, platforms, or architectures.
+Sources:
+- China workers face job losses as AI adoption accelerates — https://qz.com/china-workers-ai-job-displacement-youth-unemployment-091826
+
+### Nexwise AI Patrol Robot Dog Pro deployment (China, 2026-09-19)
+Organisation: China's public security authorities (Ministry of Public Security and local public security bureaus)
+Layer: Government workflows, Compliance & supervision
+Type: Deployment
+Summary: China's public security sector is deploying embodied AI policing tools such as the Nexwise robodog, which autonomously identifies threats and fires restraint nets, alongside AI lie detection and aerial patrol drones showcased at the 2026 Public Security Tech Expo. The programme aims to modernise policing through autonomous robotics and AI analytics. The robodog has been sold to 30 prefecture-level cities across nine provinces and exported to over 20 countries.
+Why it matters: The initiative marks a shift from entertainment-focused robots to industrial-grade embodied AI agents capable of independent threat assessment and non-lethal physical response in public spaces. It represents a significant scale-up of autonomous physical agents into frontline government law enforcement operations. The robodog is described as being "trained to respond on its own to more than 200 different scenarios, including identifying suspicious or hostile behaviour," and the source reports that "Raise a knife in front of this robodog, and it will fire a net to restrain you" without a human initiating each step.
+What technology: The Nexwise robodog is an embodied AI device that integrates artificial intelligence into machinery for autonomous patrol and threat response. The expo also featured Tiandy’s MicroSense AI lie-detection system, which analyses micro-expressions and physiological data from video, and Jiangsu Digital Eagle Group’s ZR-028 lightweight aircraft for aerial patrol and rescue.
+Sources:
+- How to catch a baddie: Inside China’s booming police tech industry — https://www.straitstimes.com/asia/how-to-catch-a-baddie-inside-chinas-booming-police-tech-industry
 
 ### T-Dome AI Defense System (Taiwan, 2026-09-18)
 Organisation: Ministry of National Defense (Taiwan)
@@ -549,14 +579,15 @@ Sources:
 Organisation: United Arab Emirates federal government
 Layer: Government workflows, Service design & UX, Policy & rule-making, Public procurement
 Type: Strategy, Deployment
-Summary: A national initiative announced by the UAE government to migrate 50% of federal services and operations to agentic AI within two years, spanning public services, procurement, taxation and support functions and building on the country's history of early AI adoption. The Abu Dhabi Executive Council has already used the AI Committee System, an agentic AI platform, during its meeting to analyse proposals, prepare executive summaries, provide real-time insights and fact-checking, and generate meeting minutes and action reports.
-Why it matters: Represents one of the first national-level commitments to deploy agentic AI across half of all federal government operations within a defined two-year timeframe, and marks the first integration of a fully agentic AI platform into executive council proceedings, moving beyond simple automation to end-to-end meeting intelligence including pre-meeting analysis, real-time deliberation support, and post-meeting documentation and follow-up. The initiative explicitly aims to 'run 50% of federal services and operations on agentic AI', autonomously executing and managing tasks across public services, procurement, tax and support functions without requiring human initiation for each operational step. The AI Committee System autonomously analyses proposals before meetings and prepares executive summaries for each agenda item; during sessions it independently generates real-time insights, fact-checks claims, proposes analysis-based recommendations, and afterwards compiles detailed minutes, action-item summaries and responsibility assignments.
-What technology: The source identifies the system as the AI Committee System, an agentic AI platform; no models, vendors or technical architecture are specified.
+Summary: A national initiative announced by the UAE government aims to migrate 50% of federal services and operations to agentic AI within two years, spanning public services, procurement, taxation and support functions, while Abu Dhabi has set a target to become AI-native across digital government services by 2027. The Abu Dhabi Executive Council has already used the AI Committee System, an agentic AI platform, to analyse proposals, prepare executive summaries, provide real-time insights and fact-checking, and generate meeting minutes and action reports. A Microsoft Q1 2026 report notes that 70.1% of the UAE’s working-age population used generative AI, the highest national rate globally.
+Why it matters: It represents one of the first national-level commitments to deploy agentic AI across half of all federal government operations within a defined two-year timeframe. It also marks the first integration of a fully agentic AI platform into executive council proceedings, moving beyond simple automation to end-to-end meeting intelligence including pre-meeting analysis, real-time deliberation support, and post-meeting documentation and follow-up. The initiative explicitly aims to run 50% of federal services and operations on agentic AI, autonomously executing and managing tasks across public services, procurement, tax and support functions without requiring human initiation for each step. The AI Committee System autonomously analyses proposals before meetings and prepares executive summaries for each agenda item; during sessions it independently generates real-time insights, fact-checks claims, proposes analysis-based recommendations, and afterwards compiles detailed minutes, action-item summaries and responsibility assignments.
+What technology: The source identifies the council-facing system as the AI Committee System, an agentic AI platform. No models, vendors or technical architecture are specified for the broader federal framework; the 70.1% adoption figure is derived from aggregated and anonymised Microsoft telemetry adjusted for market factors.
 Sources:
 - Abu Dhabi sets out next steps: AI joins Executive Council meeting for first time — https://gulfnews.com/uae/abu-dhabi-sets-out-next-steps-ai-joins-executive-council-meeting-for-first-time-1.500679505
 - Sheikh Mansour reviews second phase of Agentic AI project — https://www.dubaieye1038.com/news/local/sheikh-mansour-reviews-second-phase-of-agentic-ai-project/
 - Ministerial Council for AI reviews 2nd Phase of Agentic AI Project — https://sharjah24.ae/en/Articles/2026/09/09/Ma8
 - UAE pushes 50% of federal services to agentic AI within two years — https://x.com/NajatBenchSave/status/2100823643727044702
+- UAE AI adoption reaches 70.1%, Microsoft says — https://tbreak.com/uae-workers-ai-70-percent-microsoft/
 
 ### Legal AI Scholars Program at SMU (Singapore, 2026-09-09)
 Organisation: Singapore Management University (SMU)
