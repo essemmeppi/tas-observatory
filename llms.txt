@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (439 records as of 2026-09-20).
+newest first (440 records as of 2026-09-22).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,16 @@ newest first (439 records as of 2026-09-20).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### UAE Agentic AI Operations Target (United Arab Emirates, 2026-09-22)
+Organisation: UAE Government
+Layer: Government workflows, Agent governance
+Type: Strategy
+Summary: The UAE government announced a target to roll out agentic AI across 50% of its operations within two years. UAE AI Minister HE Omar Al Olama discussed responsible adoption at scale with Salesforce CEO Marc Benioff at Dreamforce, highlighting partnerships with US companies.
+Why it matters: It sets a quantitative national target—agentic AI across half of all government operations within a two-year window—tying a high-level policy goal directly to the deployment of autonomous AI systems. The source states the government aims to roll out 'agentic AI across 50% of its operations' within two years, though it does not specify the concrete autonomous decisions or executions individual systems will perform.
+What technology: The source does not specify models, platforms or architecture, noting only partnerships with US companies.
+Sources:
+- UAE Targets Agentic AI Across 50% of Government Operations in Two Years — https://x.com/uaepreferred/status/2102054240092905621
 
 ### Humppila Municipal AI Agents (Finland, 2026-09-20)
 Organisation: Municipality of Humppila
