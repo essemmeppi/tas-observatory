@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (440 records as of 2026-09-22).
+newest first (441 records as of 2026-09-22).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,16 @@ newest first (440 records as of 2026-09-22).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### U.S. public-sector AI infrastructure right-sizing (United States, 2026-09-22)
+Organisation: U.S. Census Bureau and California DMV
+Layer: Tech stack, Government workflows
+Type: Strategy, Deployment
+Summary: Federal and state agencies are optimizing AI economics by shifting inference workloads from expensive GPU clouds to local CPUs and edge NPUs, cutting energy and token costs. The U.S. Census Bureau used a local 8-billion-parameter model on standard CPUs to parse complex SEC filings for the economic census, saving millions and reaching 99.9% accuracy when paired with human experts. The California DMV deployed local edge object detection on CPU hardware to optimize customer wait times without streaming sensitive raw video back to a central cloud hub.
+Why it matters: It challenges the GPU-centric ‘CUDA lock-in’ misconception by demonstrating that most government AI workloads can run efficiently on existing CPU and NPU infrastructure. It also identifies the ‘token trap’—exponential cost growth caused by agentic AI’s continuous background reasoning loops in billed cloud environments. The article reports that advanced agentic AI utilizes ‘continuous reasoning loops’ where a single user prompt triggers ‘dozens of back-and-forth automated queries’ in the background as ‘different specialized models plan, retrieve data, compare answers, and refine their reasoning’ without a human initiating each step, causing token consumption to compound exponentially.
+What technology: Agencies are using modern enterprise CPUs with AMX (e.g., Intel Xeon 6), NPUs under 30W in enterprise laptops, and small local language models (e.g., 8B parameters) for inference. Hybrid agentic solutions such as Intel SuperClaw for PCs and edge devices are cited to reduce average cloud compute token consumption by up to 70%.
+Sources:
+- Why federal leaders must reclaim the economics of AI — https://fedscoop.com/ai-infrastructure-economics-public-sector/
 
 ### UAE Agentic AI Operations Target (United Arab Emirates, 2026-09-22)
 Organisation: UAE Government
