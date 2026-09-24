@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (441 records as of 2026-09-22).
+newest first (442 records as of 2026-09-24).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,16 @@ newest first (441 records as of 2026-09-22).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Sovereign Agentic AI Procurement Specifications (India, 2026-09-24)
+Organisation: Government of India
+Layer: Public procurement, Tech stack
+Type: Procurement
+Summary: India has incorporated new technical requirements into its public sector procurement specifications for AI systems, mandating open-weight components, prohibiting single-vendor lock-in, and requiring full on-premise deployment support. Sovereign AI is now explicitly listed as a line item in government procurements to ensure secure, independent AI agent deployments.
+Why it matters: Making sovereign AI and technical autonomy (open-weight, no lock-in, on-prem) explicit, mandatory procurement criteria specifically for agentic AI systems, rather than general IT procurement guidelines. The specifications explicitly target 'agentic AI' and 'AI agent deployments', establishing procurement rules for autonomous systems that will operate independently within government infrastructure, though specific autonomous decision-making capabilities are not detailed in the source.
+What technology: Requires open-weight model components, full on-premise deployment support, and architectural safeguards against single-vendor lock-in.
+Sources:
+- India Includes Sovereign AI Requirements in Agentic AI Procurement Specs — https://x.com/deepakmca05/status/2102739862042325105
 
 ### U.S. public-sector AI infrastructure right-sizing (United States, 2026-09-22)
 Organisation: U.S. Census Bureau and California DMV
