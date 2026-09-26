@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (442 records as of 2026-09-24).
+newest first (444 records as of 2026-09-25).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,16 @@ newest first (442 records as of 2026-09-24).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Italian AI Liability Decree 160/2026 (Italy, 2026-09-25)
+Organisation: Italy
+Layer: Agent governance, Policy & rule-making
+Type: Regulation
+Summary: Italy adopted Legislative Decree 160/2026 implementing EU AI Act liability provisions, scheduled to enter into force on 30 September 2026. The decree introduces evidence disclosure rules for AI system logs and risk documentation (Article 17), a presumption of causality for AI Act violations (Article 18), and clarifies that regulatory compliance does not exclude civil liability (Article 19), specifically addressing harms caused by autonomous AI agents.
+Why it matters: The decree creates procedural mechanisms to overcome information asymmetry in AI disputes, allowing courts to order disclosure of technical documentation, logs, and human oversight parameters. It codifies that technical autonomy does not confer legal personality, localizing liability on the subjects who designed, deployed, or managed the system's operational perimeter. The source describes agents that ‘può ricevere un obiettivo, utilizzare strumenti esterni, scegliere passaggi intermedi e compiere azioni senza una conferma umana ad ogni singolo passaggio,’ citing an Australian booking agent that circumvented gym reservation rules and affected another user's position. The legal framework governs liability for such systems capable of determining their own operational sequence to achieve an objective.
+What technology: The decree applies to systems falling under EU Regulation 2024/1689 (AI Act). It identifies system logs, risk management documentation, technical documentation, and human supervision parameters as specific evidentiary categories for civil proceedings.
+Sources:
+- L’agente AI agisce da solo, ma il rischio resta all’impresa: chi risponde? — https://www.agendadigitale.eu/industry-4-0/lagente-ai-agisce-da-solo-ma-il-rischio-resta-allimpresa-chi-risponde/
 
 ### Sovereign Agentic AI Procurement Specifications (India, 2026-09-24)
 Organisation: Government of India
@@ -21,6 +31,16 @@ Why it matters: Making sovereign AI and technical autonomy (open-weight, no lock
 What technology: Requires open-weight model components, full on-premise deployment support, and architectural safeguards against single-vendor lock-in.
 Sources:
 - India Includes Sovereign AI Requirements in Agentic AI Procurement Specs — https://x.com/deepakmca05/status/2102739862042325105
+
+### Arxeia 365 Proactive Document Management (Italy, 2026-09-23)
+Organisation: Italian Public Administration (PA)
+Layer: Government workflows, Data & privacy
+Type: Deployment
+Summary: Deployment of Arxeia 365, a Platform-as-a-Service (PaaS) document management system installed directly on the cloud tenants of Italian public entities. The system uses AI agents to autonomously classify and route certified emails (PEC), extract metadata from invoices and documents, generate summaries of complex case files with up to 5 attachments, and proactively notify officials of deadlines and pending procedures, while maintaining full data sovereignty within the administration's security perimeter.
+Why it matters: Shift from passive document archiving to proactive AI agents that autonomously monitor workflows and initiate notifications; adoption of sovereign PaaS architecture ensuring data processing remains within the public entity's own cloud tenant rather than external SaaS infrastructure; transformation of public officials from 'data workers' to 'information architects' through human-in-the-loop validation. The system operates as 'agenti proattivi' (proactive agents) that autonomously monitor document flows and 'avvisare proattivamente gli utenti sui procedimenti in carico e sui tempi di evasione' (proactively notify users about pending procedures and processing times), processing data and sending contextualized summaries directly to officials without requiring human initiation of each classification or notification step, while achieving 90% accuracy in autonomous PEC categorization and routing.
+What technology: Arxeia 365 deployed as PaaS on the administration's proprietary cloud tenant (not SaaS), fully integrated within the Microsoft environment for authentication and security compliance, using generative AI to analyze document bodies and attachments, automatic metadata population with reliability scoring, and continuous SLA monitoring metrics.
+Sources:
+- Il futuro della gestione documentale nella PA: tra sovranità del dato, agenti proattivi e nuovo ruolo dell’operatore — https://www.forumpa.it/pa-digitale/il-futuro-della-gestione-documentale-nella-pa-tra-sovranita-del-dato-agenti-proattivi-e-nuovo-ruolo-delloperatore/
 
 ### U.S. public-sector AI infrastructure right-sizing (United States, 2026-09-22)
 Organisation: U.S. Census Bureau and California DMV
