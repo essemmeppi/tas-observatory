@@ -434,6 +434,27 @@ def test_budget_exhaustion_propagates():
             raise AssertionError("BudgetExhausted was swallowed")
 
 
+def test_gnews_decoding():
+    # The decoder's result shape is an external contract: 0.2.1 renamed "status"
+    # to "success" and every Google News link failed for a week while runs stayed
+    # green. Check both halves: a success decodes, a failure raises with a reason.
+    link = "https://news.google.com/rss/articles/CBMi"
+    with patch.object(sources, "gnewsdecoder",
+                      return_value={"success": True, "decoded_url": "https://a.example/x"}):
+        check("a decoded link yields the article URL",
+              sources.resolve_url(link) == "https://a.example/x")
+    with patch.object(sources, "gnewsdecoder",
+                      return_value={"success": False, "message": "rate limited"}):
+        try:
+            sources.resolve_url(link)
+        except ValueError as e:
+            check("an undecodable link raises with the decoder's reason", "rate limited" in str(e))
+        else:
+            raise AssertionError("an undecodable link passed silently")
+    check("a non-Google URL is left alone",
+          sources.resolve_url("https://a.example/y") == "https://a.example/y")
+
+
 def test_degraded_marker():
     run.DEGRADED_MARKER.unlink(missing_ok=True)
     run._finish(None)
@@ -620,7 +641,7 @@ def main():
         test_extraction_call_shape, test_dedupe_call_shape,
         test_extraction_retry,
         test_resolve_duplicates, test_resolve_falls_back_when_dedupe_dies,
-        test_budget_exhaustion_propagates, test_degraded_marker, test_digest, test_real_db,
+        test_budget_exhaustion_propagates, test_gnews_decoding, test_degraded_marker, test_digest, test_real_db,
     ]
     for fn in offline:
         print(f"\n-- {fn.__name__}")

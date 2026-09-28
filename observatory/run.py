@@ -112,10 +112,11 @@ def _news_date(assessment: dict, run_date: str) -> str:
 def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
     """Assess one article into a record, or None.
 
-    None means the link would not resolve, yielded no text, or the model judged it
-    irrelevant or non-agentic. Duplicates are *not* handled here — they are folded
-    into the records they repeat by resolve_duplicates at the end of the run, which
-    can merge and enrich rather than merely discard.
+    None means the link yielded no text, or the model judged it irrelevant or
+    non-agentic; a link that will not resolve raises, and counts as an error.
+    Duplicates are *not* handled here — they are folded into the records they
+    repeat by resolve_duplicates at the end of the run, which can merge and
+    enrich rather than merely discard.
     """
     url, title = item["url"], item.get("title", "")
     # Never spend a call twice on one URL, whatever the earlier verdict was.
@@ -125,10 +126,9 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
         # Decode the Google News redirect only now, for an item we intend to
         # assess. Doing this for all ~375 feed entries up front was most of the
         # run's wall-clock, spent mostly on articles that were then discarded.
+        # Raises when the link cannot be decoded: the caller counts that as an
+        # error, so a decoder that stops working turns the run red.
         resolved = sources.resolve_url(url)
-        if not resolved:
-            print(f"  could not resolve link: {title[:70]}")
-            return None
         if resolved != url:
             # Check before recording: the real URL may be one we already hold,
             # with only the redirect token looking new.
@@ -477,13 +477,22 @@ def main():
             print(f"Wrote digest archive entry for {run_date}")
             if not args.no_slack and digest.post_to_slack(text):
                 print("Posted digest to Slack")
-        elif not degraded and fresh:
+        elif degraded:
+            # A degraded night with nothing to show still tells the team, in
+            # Slack only: on 2026-09-27 the credits ran out after 25 articles
+            # and the only sign was a red run nobody was looking at. The archive
+            # is left alone — "we scanned a fraction of the usual sources" is an
+            # ops note, not a day's finding for the public page.
+            text = digest.build_digest([], run_date, degraded=degraded,
+                                       unassessed=unassessed, dedupe_ran=dedupe_ran,
+                                       scanned=len(fresh), assessed=processed)
+            print("\n" + text)
+            if not args.no_slack and digest.post_to_slack(text):
+                print("Posted degraded-run notice to Slack")
+        elif fresh:
             # A clean night with nothing over the bar is reported, not skipped:
             # "scanned N, no new initiatives" says the observatory ran and the
             # bar held, so silence in the channel only ever means breakage.
-            # Degraded quiet nights stay out of public view — the red run
-            # already tells the team, and "we scanned a fraction of the usual
-            # sources" is an ops note, not a day's finding.
             text = digest.build_digest([], run_date, scanned=len(fresh), assessed=processed)
             print("\n" + text)
             digest.write_archive(digest.archive_row([], run_date, [], None,

@@ -1,4 +1,6 @@
 requests>=2.32
 feedparser>=6.0
 trafilatura>=1.12
-googlenewsdecoder>=0.1.7
+# Pinned: 0.2.1 renamed its result key, and an unpinned upgrade silently broke
+# every Google News link from 2026-09-21. Bump deliberately, with the live smoke test.
+googlenewsdecoder==0.2.1
