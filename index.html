@@ -40,6 +40,18 @@ h1:hover{color:var(--accent)}
 #chart-map path{transition:opacity .15s}
 #chart-map path.land:hover{opacity:.75; cursor:pointer}
 #chart-map path.land.active{stroke:var(--ink); stroke-width:1}
+#chart-map{position:relative}
+#chart-map path.land:focus{outline:none; stroke:var(--ink); stroke-width:1}
+.map-tip{position:absolute; pointer-events:none; z-index:3; min-width:190px; max-width:260px; background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:12px; box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.cs-name{font-weight:500; color:var(--ink)}
+.cs-total{font-family:"Newsreader",Georgia,serif; font-style:italic; font-size:22px; font-weight:350; line-height:1.2}
+.cs-total span{font-family:"Inter",Helvetica,sans-serif; font-style:normal; font-size:12px; color:var(--ink-3); margin-left:4px}
+.cs-rows{display:flex; flex-wrap:wrap; gap:2px 14px; margin-top:4px; color:var(--ink-3)}
+.cs-rows b{color:var(--ink); font-weight:500; margin-right:3px}
+.cs-latest{margin-top:6px; color:var(--ink-3)}
+#country-summary{border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:14px 0 0; background:var(--card); font-size:13px}
+#country-summary .cs-total{font-size:28px}
+#country-summary .cs-latest a{color:var(--accent)}
 .chart{border:1px solid var(--line); border-radius:10px; padding:16px; background:var(--card)}
 .chart h3{font-size:13px; font-weight:500; margin-bottom:12px}
 .bar-row{display:flex; align-items:center; gap:10px; margin-bottom:7px; font-size:12px; cursor:pointer; border-radius:4px}
@@ -134,6 +146,7 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
     <select id="f-layer"><option value="">All layers</option></select>
     <select id="f-type"><option value="">All types</option></select>
   </div>
+  <div id="country-summary" hidden></div>
   <div class="count-line" id="countline"></div>
   <div id="feed"></div>
   <button class="loadmore" id="loadmore" hidden>Load more</button>
@@ -157,6 +170,7 @@ const AUTONOMY = {0:"L0 manual",1:"L1 rule-based",2:"L2 process automation",3:"L
 // Development type: what form the news takes, not what domain it serves.
 // Primary first; a record can carry one secondary type for findability.
 const TYPES = {deployment:"Deployment", strategy:"Strategy", regulation:"Regulation", procurement:"Procurement"};
+const TYPES_PLURAL = {deployment:"deployments", strategy:"strategies", regulation:"regulations", procurement:"procurements"};
 const PAGE = 50;
 // `status` and `functions` are still collected in every record — they are just
 // not rendered or filterable here (reader feedback: not important to the public).
@@ -285,8 +299,8 @@ async function drawMap(){
   counts.forEach((n, name) => {
     const key = MAP_ALIASES[name] || name;
     const cur = byFeature.get(key);
-    if(cur){ cur.n += n; if(n > cur.topN){ cur.name = name; cur.topN = n; } }
-    else byFeature.set(key, {name, n, topN: n});
+    if(cur){ cur.n += n; cur.names.push(name); if(n > cur.topN){ cur.name = name; cur.topN = n; } }
+    else byFeature.set(key, {name, n, topN: n, names: [name]});
   });
   const peak = Math.max(1, ...[...byFeature.values()].map(v => v.n));
   const current = $("f-country").value;
@@ -309,14 +323,91 @@ async function drawMap(){
       return `color-mix(in srgb, var(--accent) ${pct.toFixed(0)}%, var(--bg))`;
     })
     .style("stroke", "var(--bg)").style("stroke-width", .4)
+    .attr("tabindex", d => byFeature.has(d.properties.name) ? 0 : null)
+    .attr("aria-label", d => {
+      const hit = byFeature.get(d.properties.name);
+      return hit ? `${hit.name}: ${hit.n} initiative${hit.n>1?"s":""}` : null;
+    })
     .on("click", (e, d) => {
       const hit = byFeature.get(d.properties.name);
+      tip.hidden = true;
       if(hit) setFilter("f-country", hit.name);
     })
-    .append("title").text(d => {
+    .on("keydown", (e, d) => {
       const hit = byFeature.get(d.properties.name);
-      return hit ? `${hit.name}: ${hit.n} initiative${hit.n>1?"s":""}` : d.properties.name;
-    });
+      if(hit && (e.key === "Enter" || e.key === " ")){ e.preventDefault(); setFilter("f-country", hit.name); }
+    })
+    .on("pointermove focus", (e, d) => {
+      const hit = byFeature.get(d.properties.name);
+      if(!hit){ tip.hidden = true; return; }
+      countryBlock(tip, hit.name, countryStats(hit.names), false);
+      tip.hidden = false;
+      // Beside the pointer, or beside the shape on keyboard focus; kept inside the card.
+      const box = el.getBoundingClientRect();
+      const at = e.type === "focus" ? e.target.getBoundingClientRect() : {left: e.clientX, top: e.clientY, width: 0};
+      let x = at.left - box.left + at.width / 2 + 14, y = at.top - box.top + 14;
+      if(x + tip.offsetWidth > box.width) x = Math.max(0, x - tip.offsetWidth - 28);
+      if(y + tip.offsetHeight > box.height) y = Math.max(0, box.height - tip.offsetHeight);
+      tip.style.left = x + "px"; tip.style.top = y + "px";
+    })
+    .on("pointerleave blur", () => { tip.hidden = true; });
+  const tip = document.createElement("div");
+  tip.className = "map-tip"; tip.hidden = true;
+  el.appendChild(tip);
+}
+
+// What the map tooltip and the selected-country panel show. Records are
+// counted once per country even when they name several; types by the
+// primary (first) type, so the breakdown adds up to the total.
+function countryStats(names){
+  const set = new Set(names);
+  const recs = all.filter(r => (r.countries||[]).some(c => set.has(c)));
+  const byType = new Map();
+  recs.forEach(r => { const t = (r.types||[])[0] || "other"; byType.set(t, (byType.get(t)||0) + 1); });
+  const since = new Date(Date.now() - 30*864e5).toISOString().slice(0,10);
+  const layers = new Map();
+  recs.forEach(r => (r.layers||[]).forEach(l => layers.set(l, (layers.get(l)||0) + 1)));
+  return {
+    n: recs.length,
+    types: [...byType].sort((a,b) => b[1]-a[1]),
+    recent: recs.filter(r => (r.news_date || r.date_added || "") >= since).length,
+    layers: [...layers].sort((a,b) => b[1]-a[1]).slice(0, 2).map(([l]) => LAYERS[l] || l),
+    latest: recs[0],  // `all` is sorted newest first
+  };
+}
+
+// Built with textContent: names come from the data.
+function countryBlock(el, name, s, full){
+  const node = (tag, cls, text) => { const n = document.createElement(tag); if(cls) n.className = cls; if(text != null) n.textContent = text; return n; };
+  el.replaceChildren();
+  el.appendChild(node("div", "cs-name", name));
+  const total = node("div", "cs-total", String(s.n));
+  total.appendChild(node("span", null, `initiative${s.n === 1 ? "" : "s"}`));
+  el.appendChild(total);
+  const rows = node("div", "cs-rows");
+  s.types.forEach(([t, n]) => {
+    const row = node("span"); row.appendChild(node("b", null, String(n)));
+    row.appendChild(document.createTextNode(n === 1 ? (TYPES[t] || "Other").toLowerCase() : TYPES_PLURAL[t] || "other"));
+    rows.appendChild(row);
+  });
+  const recent = node("span"); recent.appendChild(node("b", null, String(s.recent)));
+  recent.appendChild(document.createTextNode("in the last 30 days"));
+  rows.appendChild(recent);
+  el.appendChild(rows);
+  if(s.layers.length) el.appendChild(node("div", "cs-latest", "Mostly: " + s.layers.join(", ")));
+  if(s.latest){
+    const latest = node("div", "cs-latest", "Latest: ");
+    latest.appendChild(full ? Object.assign(node("a", null, s.latest.name), {href: "#r=" + s.latest.id})
+                            : node("span", null, s.latest.name));
+    latest.appendChild(document.createTextNode(` · ${fmtDate(s.latest.news_date || s.latest.date_added)}`));
+    el.appendChild(latest);
+  }
+}
+
+function countrySummary(){
+  const el = $("country-summary"), country = $("f-country").value;
+  el.hidden = !country;
+  if(country) countryBlock(el, country, countryStats([country]), true);
 }
 
 function charts(){
@@ -339,6 +430,7 @@ function apply(){
       .join(" ").toLowerCase().includes(q))
   );
   charts();
+  countrySummary();
   render(true);
 }
 
