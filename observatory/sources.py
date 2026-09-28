@@ -2,8 +2,6 @@
 import json
 import re
 import urllib.parse
-from concurrent.futures import ThreadPoolExecutor
-from concurrent.futures import TimeoutError as FutureTimeout
 
 import feedparser
 import requests
@@ -22,16 +20,19 @@ def _parse_feed(url: str):
     return feedparser.parse(resp.content)
 
 
-def _decode_gnews(link: str) -> str | None:
-    """gnewsdecoder's internal requests have no timeout either; enforce one."""
-    with ThreadPoolExecutor(max_workers=1) as pool:
-        future = pool.submit(gnewsdecoder, link, 1)
-        try:
-            decoded = future.result(timeout=25)
-        except (FutureTimeout, Exception):
-            return None
-    if not decoded.get("status"):
-        return None
+def _decode_gnews(link: str) -> str:
+    """The article URL behind a Google News redirect, or raise with the reason.
+
+    Raising rather than returning None is what makes a broken decoder visible:
+    googlenewsdecoder 0.2.1 renamed its result key from "status" to "success",
+    every decode from 2026-09-21 read as a failure, and because a None was
+    logged as an ordinary skip the runs stayed green for a week while ~55% of
+    each queue never reached the model. As an exception it counts towards the
+    run's error tally, and the log says why.
+    """
+    decoded = gnewsdecoder(link, interval=1, timeout=15)
+    if not decoded.get("success"):
+        raise ValueError(f"could not resolve link ({decoded.get('message', 'no reason given')})")
     return decoded["decoded_url"]
 
 
@@ -101,12 +102,12 @@ def fetch_google_news(query: dict, max_entries: int = 25) -> list:
     return items
 
 
-def resolve_url(url: str) -> str | None:
+def resolve_url(url: str) -> str:
     """Turn a Google News redirect into the real article URL.
 
     Called only once an item is about to be extracted and assessed: trafilatura
     needs a fetchable page, and the URL we store has to point at the article.
-    None if the redirect cannot be decoded.
+    Raises if the redirect cannot be decoded.
     """
     if "news.google.com" not in url:
         return url

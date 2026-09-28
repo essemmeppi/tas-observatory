@@ -48,6 +48,13 @@ def _fetch(url: str) -> str | None:
         return None
 
 
+def _resolve(url: str) -> str | None:
+    try:
+        return sources.resolve_url(url)
+    except Exception:
+        return None
+
+
 def build_sample(n_positive: int, n_live: int) -> list:
     """Known-good records plus a slice of a real queue.
 
@@ -67,7 +74,7 @@ def build_sample(n_positive: int, n_live: int) -> list:
     deduper = db.Deduper(records)
     queue = run.prepare_items(sources.fetch_all_feeds(), deduper)[:n_live]
     with ThreadPoolExecutor(max_workers=8) as pool:
-        resolved = list(pool.map(lambda i: sources.resolve_url(i["url"]), queue))
+        resolved = list(pool.map(lambda i: _resolve(i["url"]), queue))
         texts = list(pool.map(lambda u: _fetch(u) if u else None, resolved))
     live = [{"kind": "live", "url": u, "title": i.get("title", ""), "text": t}
             for i, u, t in zip(queue, resolved, texts) if t]
