@@ -11,6 +11,8 @@ import argparse
 import collections
 import itertools
 import sys
+import threading
+import time
 from datetime import date, timedelta
 from pathlib import Path
 from unittest.mock import patch
@@ -455,6 +457,60 @@ def test_gnews_decoding():
           sources.resolve_url("https://a.example/y") == "https://a.example/y")
 
 
+def test_deduper_claim_is_atomic():
+    # Two Google News links can decode to one article. With several workers
+    # decoding at once, check-then-add let both take it: two records, one id.
+    deduper = db.Deduper([])
+    wins, start = [], threading.Barrier(16)
+
+    def grab():
+        start.wait()
+        if deduper.claim("https://www.example.gov/a?utm_source=x"):
+            wins.append(1)
+    threads = [threading.Thread(target=grab) for _ in range(16)]
+    [t.start() for t in threads]
+    [t.join() for t in threads]
+    check("of 16 simultaneous claims on one article exactly one wins", len(wins) == 1, str(len(wins)))
+    check("a claimed URL is known in any of its shapes", deduper.known_url("https://example.gov/a/"))
+
+
+def test_assess_queue_parallel():
+    # Fake articles that only wait, like the real ones mostly do.
+    queue = [{"title": f"t{i}", "url": f"https://a.example/{i}", "source": "rss:a"} for i in range(20)]
+
+    def fake(item, deduper, run_date, log=print):
+        time.sleep(0.2)
+        log(f"  done {item['title']}")
+        i = int(item["title"][1:])
+        if i == 7:
+            raise ValueError("could not resolve link (test)")
+        return {"id": item["title"]} if i % 3 == 0 else None
+
+    far = time.monotonic() + 60
+    t0 = time.monotonic()
+    got, processed, errors, degraded = run.assess_queue(queue, db.Deduper([]), RUN_DATE, far, workers=4, assess=fake)
+    took = time.monotonic() - t0
+    check(f"4 workers assess 20 x 0.2s articles in about a quarter of the time ({took:.1f}s)", took < 1.6, f"{took:.2f}s")
+    check("every article is counted", processed == 20 and errors == 1 and degraded is None,
+          f"{processed} {errors} {degraded}")
+    check("records come back in queue order", [r["id"] for r in got] == ["t0", "t3", "t6", "t9", "t12", "t15", "t18"],
+          str([r["id"] for r in got]))
+
+    def broke(item, deduper, run_date, log=print):
+        time.sleep(0.05)
+        if int(item["title"][1:]) >= 5:
+            raise llm.BudgetExhausted("402 test")
+        return None
+    got, processed, errors, degraded = run.assess_queue(queue, db.Deduper([]), RUN_DATE, far, workers=4, assess=broke)
+    check("a budget error stops new work and marks the run", degraded and "budget" in degraded
+          and processed < 12, f"{processed} {degraded}")
+
+    got, processed, errors, degraded = run.assess_queue(queue, db.Deduper([]), RUN_DATE, time.monotonic() - 1,
+                                                        workers=4, assess=fake)
+    check("past the deadline nothing starts and the run says why",
+          processed == 0 and degraded and "time budget" in degraded, f"{processed} {degraded}")
+
+
 def test_degraded_marker():
     run.DEGRADED_MARKER.unlink(missing_ok=True)
     run._finish(None)
@@ -641,7 +697,8 @@ def main():
         test_extraction_call_shape, test_dedupe_call_shape,
         test_extraction_retry,
         test_resolve_duplicates, test_resolve_falls_back_when_dedupe_dies,
-        test_budget_exhaustion_propagates, test_gnews_decoding, test_degraded_marker, test_digest, test_real_db,
+        test_budget_exhaustion_propagates, test_gnews_decoding, test_deduper_claim_is_atomic,
+        test_assess_queue_parallel, test_degraded_marker, test_digest, test_real_db,
     ]
     for fn in offline:
         print(f"\n-- {fn.__name__}")

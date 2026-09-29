@@ -3,6 +3,7 @@ import difflib
 import hashlib
 import json
 import re
+import threading
 from datetime import date, timedelta
 
 from . import config, urls
@@ -87,6 +88,9 @@ class Deduper:
     """
 
     def __init__(self, records: list):
+        # The nightly loop assesses several articles at once; the lock makes
+        # claim() a single step, so two workers can never both take one URL.
+        self._lock = threading.Lock()
         self.urls = set()
         for r in records:
             self.urls.add(urls.canonical_url(r["url"]))
@@ -106,7 +110,23 @@ class Deduper:
         could be extracted and assessed more than once (and, at temperature 0.2,
         come back with contradictory verdicts).
         """
-        self.urls.add(urls.canonical_url(url))
+        with self._lock:
+            self.urls.add(urls.canonical_url(url))
+
+    def claim(self, url: str) -> bool:
+        """Remember `url` and say whether it was new, in one step.
+
+        Two Google News links can decode to the same article. Checked and then
+        added separately, two workers decoding them at the same moment would
+        both see the article as new and both assess it, into two records with
+        one id.
+        """
+        key = urls.canonical_url(url)
+        with self._lock:
+            if key in self.urls:
+                return False
+            self.urls.add(key)
+            return True
 
 
 def recent_records(records: list, days: int = config.DEDUP_LLM_WINDOW_DAYS) -> list:
