@@ -35,14 +35,21 @@ SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL", "").strip()
 if SLACK_WEBHOOK_URL and not SLACK_WEBHOOK_URL.startswith("http"):
     SLACK_WEBHOOK_URL = "https://" + SLACK_WEBHOOK_URL
 
-# Safety valves for a single run. Both are calibrated against what the pipeline
-# actually collects (~300 distinct candidates a day) and the workflow's 80-minute
-# hang backstop -- not against the old 25-minute ingest, which is why the previous
-# pair (150 / 30) silently discarded 232 of 301 candidates on 2026-07-26.
-MAX_ITEMS_PER_RUN = int(os.getenv("MAX_ITEMS_PER_RUN", "320"))
-# ~26s per article observed, so 60 min covers ~140. Not all ~300: reaching those
-# needs concurrent gate calls, which is a separate change.
-TIME_BUDGET_MIN = int(os.getenv("TIME_BUDGET_MIN", "60"))  # processing loop cutoff
+# Safety valves for a single run. The cap is a runaway guard, not a working
+# limit: a normal night brings ~400-450 new items, and a cap below that trims
+# the lowest-ranked of every source each night (at 320 it cut ~100 on
+# 2026-09-29). It exists for the abnormal night - a feed that suddenly returns
+# thousands of entries, or a bug that repeats the queue.
+MAX_ITEMS_PER_RUN = int(os.getenv("MAX_ITEMS_PER_RUN", "600"))
+# Processing loop cutoff, kept 20 minutes under the workflow's 80-minute hard
+# kill so the commit step always runs. With WORKERS in flight a full queue
+# takes ~25 minutes, so this is reached only when something is slow.
+TIME_BUDGET_MIN = int(os.getenv("TIME_BUDGET_MIN", "60"))
+# Articles assessed at once. ~13s per article is almost all network waiting
+# (redirect, page, model), so threads overlap it; one at a time reached only
+# 281 of 320 in the budget on 2026-09-29. Kept low for Google's redirect
+# decoding, which throttled the runner once (2026-08-17).
+WORKERS = int(os.getenv("WORKERS", "4"))
 
 # Only store items classified as agentic AI (the observatory's focus).
 AGENTIC_ONLY = os.getenv("AGENTIC_ONLY", "1") == "1"

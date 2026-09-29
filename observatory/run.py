@@ -8,6 +8,7 @@ import itertools
 import re
 import sys
 import time
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -109,7 +110,7 @@ def _news_date(assessment: dict, run_date: str) -> str:
     return extracted if re.match(r"^\d{4}", extracted) else run_date
 
 
-def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
+def process_item(item: dict, deduper: db.Deduper, run_date: str, log=print) -> dict | None:
     """Assess one article into a record, or None.
 
     None means the link yielded no text, or the model judged it irrelevant or
@@ -117,6 +118,9 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
     Duplicates are *not* handled here — they are folded into the records they
     repeat by resolve_duplicates at the end of the run, which can merge and
     enrich rather than merely discard.
+
+    `log` receives the progress lines, so the parallel loop can print each
+    article's lines together instead of interleaved.
     """
     url, title = item["url"], item.get("title", "")
     # Never spend a call twice on one URL, whatever the earlier verdict was.
@@ -130,18 +134,16 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
         # error, so a decoder that stops working turns the run red.
         resolved = sources.resolve_url(url)
         if resolved != url:
-            # Check before recording: the real URL may be one we already hold,
-            # with only the redirect token looking new.
-            already_known = deduper.known_url(resolved)
-            deduper.add(resolved)
-            if already_known:
-                print(f"  already in DB once resolved: {title[:60]}")
+            # The real URL may be one we already hold, with only the redirect
+            # token looking new, or one another worker is assessing right now.
+            if not deduper.claim(resolved):
+                log(f"  already in DB once resolved: {title[:60]}")
                 return None
         url = resolved
 
     text = item.get("prefetched_text") or extract.extract_text(url)
     if not text:
-        print(f"  no text: {title[:70]}")
+        log(f"  no text: {title[:70]}")
         return None
 
     published = item.get("published", "")
@@ -150,10 +152,10 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
     # screened articles are rejected — so it only runs on what survives.
     screen = llm.screen_article(text, url, published)
     if not screen.get("relevant"):
-        print(f"  not relevant: {title[:70]}")
+        log(f"  not relevant: {title[:70]}")
         return None
     if config.AGENTIC_ONLY and not screen.get("agentic"):
-        print(f"  not agentic (gate): {title[:70]}")
+        log(f"  not agentic (gate): {title[:70]}")
         return None
 
     assessment = llm.extract_record(text, url, published)
@@ -166,7 +168,7 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
     if config.AGENTIC_ONLY and not assessment.get("agentic"):
         # One decision refined, not two: the full assessment has the layer and
         # function taxonomies in front of it, so it overrules the cheap gate.
-        print(f"  not agentic (full assessment): {title[:70]}")
+        log(f"  not agentic (full assessment): {title[:70]}")
         return None
 
     record = {
@@ -198,7 +200,7 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str) -> dict | None:
         "layers": assessment.get("layers") or [],
         "functions": assessment.get("functions") or [],
     }
-    print(f"  ADDED [{'agentic' if record['agentic'] else 'ai-gov'}]: {record['name']}")
+    log(f"  ADDED [{'agentic' if record['agentic'] else 'ai-gov'}]: {record['name']}")
     return record
 
 
@@ -363,6 +365,67 @@ def _finish(degraded: str | None):
     sys.exit(1)
 
 
+def assess_queue(queue: list, deduper: db.Deduper, run_date: str, deadline: float,
+                 workers: int = config.WORKERS, assess=None) -> tuple:
+    """Assess the queue with up to `workers` articles in flight.
+
+    Returns (new_records, processed, errors, degraded). Nearly all of an
+    article's time is spent waiting on the network (the redirect, the page,
+    the model), so a few threads overlap that waiting: on 2026-09-29 one at a
+    time reached 281 of 320 articles in the 60-minute budget.
+
+    Work is handed out from the front of the queue, so priority order holds.
+    Past the deadline or on a budget error no new article starts; those in
+    flight finish and are kept. Records come back in queue order, and each
+    article's log lines print together.
+    """
+    assess = assess or process_item
+    new_records, processed, errors, degraded = [], 0, 0, None
+    todo, running = list(enumerate(queue)), {}
+
+    def run_one(item):
+        lines = []
+        try:
+            return assess(item, deduper, run_date, log=lines.append), None, lines
+        except Exception as e:  # noqa: BLE001 - classified by the caller
+            return None, e, lines
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        while todo or running:
+            while todo and not degraded and len(running) < workers:
+                if time.monotonic() > deadline:
+                    degraded = f"time budget ({config.TIME_BUDGET_MIN} min) reached"
+                    print(f"  {degraded}, stopping early")
+                    break
+                idx, item = todo.pop(0)
+                running[pool.submit(run_one, item)] = (idx, item)
+            if not running:
+                break
+            done, _ = wait(running, return_when=FIRST_COMPLETED)
+            for future in done:
+                idx, item = running.pop(future)
+                record, exc, lines = future.result()
+                for line in lines:
+                    print(line)
+                if isinstance(exc, llm.BudgetExhausted):
+                    # Every further call would fail identically. On 2026-07-25
+                    # carrying on produced 106 useless 402s and left the dedupe
+                    # pass unfunded.
+                    if not degraded:
+                        degraded = f"LLM budget exhausted ({exc})"
+                        print(f"  {degraded}; stopping the loop")
+                    continue
+                processed += 1
+                if exc is not None:
+                    # Log the headline, not the URL: an undecoded Google News
+                    # link is a 300-character token that tells you nothing.
+                    print(f"  error on '{item.get('title', '')[:60]}': {exc}")
+                    errors += 1
+                elif record:
+                    new_records.append((idx, record))
+    return [r for _, r in sorted(new_records, key=lambda x: x[0])], processed, errors, degraded
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true", help="don't write the DB or post to Slack")
@@ -392,30 +455,8 @@ def main():
     # lose the whole harvest (the commit step never runs on a killed job).
     deadline = time.monotonic() + config.TIME_BUDGET_MIN * 60
     queue = fresh[: args.max_items]
-    new_records, touched, processed, errors = [], [], 0, 0
-    for item in queue:
-        if time.monotonic() > deadline:
-            degraded = f"time budget ({config.TIME_BUDGET_MIN} min) reached"
-            print(f"  {degraded}, stopping early")
-            break
-        try:
-            record = process_item(item, deduper, run_date)
-        except llm.BudgetExhausted as e:
-            # Every further call would fail identically. On 2026-07-25 carrying
-            # on produced 106 useless 402s and left the dedupe pass unfunded.
-            degraded = f"LLM budget exhausted ({e})"
-            print(f"  {degraded}; stopping the loop")
-            break
-        except Exception as e:
-            # Log the headline, not the URL: an undecoded Google News link is a
-            # 300-character token that tells you nothing about what failed.
-            print(f"  error on '{item.get('title', '')[:60]}': {e}")
-            processed += 1
-            errors += 1
-            continue
-        processed += 1
-        if record:
-            new_records.append(record)
+    new_records, processed, errors, degraded = assess_queue(queue, deduper, run_date, deadline)
+    touched = []
 
     unassessed = len(queue) - processed
     # A handful of dead links is normal; most of the batch failing is not, and it

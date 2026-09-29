@@ -14,6 +14,10 @@ on:
         description: "Skip the Slack digest — for test runs, so the channel does not get a second digest"
         type: boolean
         default: false
+      dry_run:
+        description: "Full run that writes, commits and posts nothing — for testing pipeline changes"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -49,7 +53,7 @@ jobs:
           GATE_MODEL: ${{ vars.GATE_MODEL }}
           GATE_REASONING: ${{ vars.GATE_REASONING }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: python -m observatory.run ${{ inputs.no_slack && '--no-slack' || '' }}
+        run: python -m observatory.run ${{ inputs.no_slack && '--no-slack' || '' }} ${{ inputs.dry_run && '--dry-run' || '' }}
 
       # Runs even when the observatory step degraded (continue-on-error above):
       # whatever the harvest wrote is what llms.txt should mirror.
