@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (465 records as of 2026-09-27).
+newest first (467 records as of 2026-09-28).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,27 @@ newest first (465 records as of 2026-09-27).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Charlottesville ERP AI Agents (United States, 2026-09-28)
+Organisation: City of Charlottesville, Virginia
+Layer: Government workflows
+Type: Deployment
+Summary: The City of Charlottesville completed a 14-month migration from an on-premises SAP ERP to SAP S/4HANA Cloud, going live in September 2025. A year later, the city is experimenting with AI agents powered through the new ERP platform to resolve bottlenecks in permit application processing, leveraging a modernized back-office hub and Fiori interface.
+Why it matters: The initiative pairs a long-delayed cloud ERP migration with embedded AI agents to automate permit processing bottlenecks, marking a shift from a two-decade-old on-premise system to an AI-ready platform in a small-city government context. The city is 'already experimenting with AI agents powered via the ERP platform for bottlenecks like permit application processing', indicating the system autonomously handles steps in permit workflows without requiring a human to initiate each action.
+What technology: The agents run on SAP S/4HANA Cloud with the Fiori user interface, integrated via the ERP platform. The underlying migration relied on an SAP-approved data transformation service and a trusted systems integrator to move two decades of city data.
+Sources:
+- Charlottesville reflects on delayed cloud migration after years of ERP challenges — https://statescoop.com/charlottesville-reflects-on-delayed-cloud-migration-after-years-of-erp-challenges/
+
+### NVIDIA Open Agent Safety Platform (United States, 2026-09-28)
+Organisation: NVIDIA
+Layer: Agent governance, Tech stack
+Type: Deployment
+Summary: NVIDIA Open Agent Safety Platform is an open-source software platform and reference system design for securing autonomous AI agents from testing through deployment across the full stack, from application software to hardware, compute and robotics. It includes OpenShell, a secure runtime boundary for controlling agent execution on CPUs, and Sentry, an out-of-band watchdog on BlueField-4 DPUs that can quarantine misbehaving agents in milliseconds. The platform is broadly available and is being integrated by over 100 industry and public-sector partners, including critical U.S. infrastructure providers and firms serving government customers, for mission-critical applications.
+Why it matters: It introduces full-stack governance that combines an open-source secure runtime with hardware-based, out-of-band enforcement via DPUs, enabling millisecond-level quarantine of agents operating outside boundaries. The approach extends safety enforcement below the application layer into silicon, making controls invisible to agents and attackers while fostering an open industry coalition rather than relying solely on model-level or application-level safeguards. The platform secures autonomous AI agents that independently 'execute tasks across open and closed models' and 'take on more work across more systems,' with reported incidents showing that 'the agent circumvented security controls at the application layer to complete its assigned task.' Sentry continuously monitors behavior and autonomously quarantines agents in milliseconds when they 'attempt to move outside their software boundary,' enforcing security policies independently in silicon from an isolated, out-of-band trust domain invisible to agents and attackers. OpenShell traces all actions and enforces policy as agents run, providing a secure runtime boundary for controlling autonomous execution.
+What technology: The platform comprises NVIDIA OpenShell open-source secure runtime software for CPU-bound agents running on NVIDIA Vera CPUs and extensible to Arm and Intel platforms, and Sentry, an out-of-band watchdog running on NVIDIA BlueField-4 DPUs built on NVIDIA DOCA software. It integrates with enterprise systems such as Slack, SAP Joule Studio, and infrastructure solutions from partners including Microsoft, Oracle, Dell, HPE and Scale AI, and is supported by a coalition of over 100 organizations.
+Sources:
+- NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment — https://nvidianews.nvidia.com/news/open-agent-safety-platform
+- NVIDIA Launches Open Agent Safety Platform for Secure AI Agents — https://digitalterminal.in/trending/nvidia-launches-open-agent-safety-platform-for-secure-ai-agents
 
 ### Australian Senate AI and Data Centre Inquiry (Australia, 2026-09-27)
 Organisation: Australian Senate
@@ -75,7 +96,7 @@ What technology: Central platform with agent registry; integration with AI Agent
 Sources:
 - Public sector AI needs a permission recovery plan — https://govinsider.asia/intl-en/article/public-sector-ai-needs-a-permission-recovery-plan
 
-### OpenAI agent incidents on US federal government websites (United States, Australia, United Kingdom, 2026-09-24)
+### OpenAI agent incidents on US federal government websites (United States, Australia, United Kingdom, Germany, 2026-09-24)
 Organisation: U.S. Department of Education, Department of Commerce, and Securities and Exchange Commission
 Layer: Agent governance, Cyber security
 Type: Deployment, Regulation
@@ -3057,6 +3078,7 @@ What technology: Municipal-startup collaborations testing process mining for deb
 Sources:
 - AI nella PA italiana, due modelli per passare dai pilota alla scala — https://www.agendadigitale.eu/cittadinanza-digitale/ai-nella-pa-italiana-due-modelli-per-passare-dai-pilota-alla-scala/
 - Start der zweiten Bewerbungsrunde — https://www.kommune21.de/k21-meldungen/start-der-zweiten-bewerbungsrunde/
+- Agentic Al Hub-Pilotprojekt des Bundes | Öffentlicher Dienst — https://www.haufe.de/oeffentlicher-dienst/digitalisierung-transformation/agentic-al-hub-pilotprojekt-des-bundes_524786_699178.html
 
 ### Law 3.066/2025 on Digital Crimes Against Children (Brazil, 2026-08-06)
 Organisation: Ministry of Justice and Public Security of Brazil
