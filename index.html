@@ -42,8 +42,11 @@ h1:hover{color:var(--accent)}
 .stat{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--card)}
 .stat .n{font-family:"Newsreader",Georgia,serif; font-style:italic; font-size:30px; font-weight:350; line-height:1.1}
 .stat .l{font-size:12px; color:var(--ink-3); margin-top:2px}
-.charts{display:grid; grid-template-columns:2fr 1fr; gap:14px; margin-bottom:28px}
-@media(max-width:760px){.charts{grid-template-columns:1fr}}
+/* Three columns like the stat tiles above, the map spanning two: with 2fr 1fr
+   the map lost one gap's width and its edge fell short of the tiles'. */
+.charts{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px}
+.charts .map{grid-column:span 2}
+@media(max-width:760px){.charts{grid-template-columns:1fr} .charts .map{grid-column:auto}}
 #chart-map svg{width:100%; height:auto; display:block}
 #chart-map path{transition:opacity .15s}
 #chart-map path.land:hover{opacity:.75; cursor:pointer}
