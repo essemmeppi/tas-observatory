@@ -24,7 +24,9 @@
 body{font-family:"Inter",Helvetica,sans-serif; font-weight:300; color:var(--ink); background:var(--bg); line-height:1.55; font-size:15px}
 a{color:var(--accent); text-decoration:none}
 a:hover{text-decoration:underline}
-.wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+/* Same container as agenticstate.org, so content spans the header's width. */
+.wrap{max-width:1200px; margin:0 auto; padding:0 2rem}
+@media(max-width:768px){.wrap{padding:0 20px}}
 header{border-bottom:1px solid var(--line); padding:28px 0 22px; margin-bottom:0}
 .head-row{display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap}
 .kicker{font-size:12px; color:var(--ink-3); font-weight:400; margin-bottom:6px}
