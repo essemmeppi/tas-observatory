@@ -1,5 +1,5 @@
 {
-  "_comment": "Ingestion sources. google_news: Google News RSS search queries (no account needed, 'when:1d' = last 24h). rss: standard RSS/Atom feeds — the second block is non-English, added because the multilingual Google News queries alone had produced almost no non-English records; official bodies and digital-policy publications are on-topic by construction rather than by luck. Spain and Brazil have no usable government RSS and stay on Google News only. google_alerts: optional Google Alerts RSS feed URLs.",
+  "_comment": "Ingestion sources. google_news: Google News RSS search queries (no account needed, 'when:1d' = last 24h). rss: standard RSS/Atom feeds — the second block is non-English, added because the multilingual Google News queries alone had produced almost no non-English records; official bodies and digital-policy publications are on-topic by construction rather than by luck. Spain and Brazil have no usable government RSS and stay on Google News only. google_alerts: optional Google Alerts RSS feed URLs. sheets: Google Sheet tabs published as CSV (timestamp and link columns only, never personal data). 'submission' mirrors the public Suggest an Initiative form and goes through the gate like any article, for 48 hours after submission; 'internal' is typed by the team and trusted: its links skip the relevance and agentic checks and go straight to extraction and dedupe.",
   "google_news": [
     {"q": "\"agentic AI\" (government OR \"public sector\") when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"},
     {"q": "\"AI agents\" (government OR \"public sector\" OR ministry) when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"},
@@ -18,6 +18,10 @@
     {"q": "government AI (\"white paper\" OR playbook OR toolkit OR registry) when:1d", "hl": "en-US", "gl": "US", "ceid": "US:en"}
   ],
   "google_alerts": [],
+  "sheets": [
+    {"label": "submission", "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRaPUcLEgTXtQzOhNpiH4wCbdms9yvCBcs8ibTlm8Mgy3N8q3WPr5y-4j80-dIMGci3dP3o6ieHxcSM/pub?gid=0&single=true&output=csv", "max_age_hours": 48},
+    {"label": "internal", "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRaPUcLEgTXtQzOhNpiH4wCbdms9yvCBcs8ibTlm8Mgy3N8q3WPr5y-4j80-dIMGci3dP3o6ieHxcSM/pub?gid=877243765&single=true&output=csv", "trusted": true}
+  ],
   "rss": [
     "https://fedscoop.com/feed/",
     "https://statescoop.com/feed/",

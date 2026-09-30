@@ -121,8 +121,16 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str, log=print) -> d
 
     `log` receives the progress lines, so the parallel loop can print each
     article's lines together instead of interleaved.
+
+    A `trusted` item (the team's internal sheet) skips both agentic checks: the
+    team has already judged it in scope, so it goes straight to extraction and
+    dedupe. A trusted link that yields no text raises instead of passing as a
+    skip, so a wanted story can't vanish silently.
     """
     url, title = item["url"], item.get("title", "")
+    trusted = bool(item.get("trusted"))
+    # Sheet links carry no headline; the URL is the only thing to log them by.
+    label = title or url
     # Never spend a call twice on one URL, whatever the earlier verdict was.
     deduper.add(url)
 
@@ -137,26 +145,29 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str, log=print) -> d
             # The real URL may be one we already hold, with only the redirect
             # token looking new, or one another worker is assessing right now.
             if not deduper.claim(resolved):
-                log(f"  already in DB once resolved: {title[:60]}")
+                log(f"  already in DB once resolved: {label[:60]}")
                 return None
         url = resolved
 
     text = item.get("prefetched_text") or extract.extract_text(url)
     if not text:
-        log(f"  no text: {title[:70]}")
+        if trusted:
+            raise ExtractionFailed(f"no readable text at a trusted link: {url}")
+        log(f"  no text: {label[:70]}")
         return None
 
     published = item.get("published", "")
     # Two stages on purpose. The gate is small; extraction carries the 12 layers,
     # the 70 government functions and a dozen generated prose fields, and ~83% of
     # screened articles are rejected — so it only runs on what survives.
-    screen = llm.screen_article(text, url, published)
-    if not screen.get("relevant"):
-        log(f"  not relevant: {title[:70]}")
-        return None
-    if config.AGENTIC_ONLY and not screen.get("agentic"):
-        log(f"  not agentic (gate): {title[:70]}")
-        return None
+    if not trusted:
+        screen = llm.screen_article(text, url, published)
+        if not screen.get("relevant"):
+            log(f"  not relevant: {label[:70]}")
+            return None
+        if config.AGENTIC_ONLY and not screen.get("agentic"):
+            log(f"  not agentic (gate): {label[:70]}")
+            return None
 
     assessment = llm.extract_record(text, url, published)
     if not assessment:
@@ -165,10 +176,10 @@ def process_item(item: dict, deduper: db.Deduper, run_date: str, log=print) -> d
         # that was a primary-source government roadmap. Log the URL so it can be
         # recovered, and let the caller count it as an error.
         raise ExtractionFailed(f"extraction failed after retries: {url}")
-    if config.AGENTIC_ONLY and not assessment.get("agentic"):
+    if config.AGENTIC_ONLY and not trusted and not assessment.get("agentic"):
         # One decision refined, not two: the full assessment has the layer and
         # function taxonomies in front of it, so it overrules the cheap gate.
-        log(f"  not agentic (full assessment): {title[:70]}")
+        log(f"  not agentic (full assessment): {label[:70]}")
         return None
 
     record = {
@@ -419,7 +430,7 @@ def assess_queue(queue: list, deduper: db.Deduper, run_date: str, deadline: floa
                 if exc is not None:
                     # Log the headline, not the URL: an undecoded Google News
                     # link is a 300-character token that tells you nothing.
-                    print(f"  error on '{item.get('title', '')[:60]}': {exc}")
+                    print(f"  error on '{(item.get('title') or item['url'])[:60]}': {exc}")
                     errors += 1
                 elif record:
                     new_records.append((idx, record))

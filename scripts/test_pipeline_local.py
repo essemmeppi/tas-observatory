@@ -511,6 +511,58 @@ def test_assess_queue_parallel():
           processed == 0 and degraded and "time budget" in degraded, f"{processed} {degraded}")
 
 
+def test_submission_sheets():
+    from datetime import datetime, timedelta
+    from zoneinfo import ZoneInfo
+    now = datetime.now(ZoneInfo("Europe/Rome"))
+    fmt = lambda d: d.strftime("%d/%m/%Y %H:%M:%S")
+    public = ("\ufeffTimestamp,Link\n"
+              f"{fmt(now - timedelta(hours=3))},https://gov.example/new\n"
+              f"{fmt(now - timedelta(days=5))},https://gov.example/old\n"
+              f"{fmt(now)},not a link\n"
+              "garbled,https://gov.example/undated\n")
+    internal = "Link\nhttps://gov.example/team-pick\n\n"
+
+    class Resp:
+        def __init__(self, text): self.content = text.encode("utf-8")
+        def raise_for_status(self): pass
+
+    with patch.object(sources.requests, "get", return_value=Resp(public)):
+        got = sources.fetch_sheet({"label": "submission", "url": "x", "max_age_hours": 48})
+    check("public submissions keep only the last 48 hours of real links",
+          [i["url"] for i in got] == ["https://gov.example/new"], str(got))
+    check("public submissions are not trusted", not got[0]["trusted"])
+    with patch.object(sources.requests, "get", return_value=Resp(internal)):
+        got = sources.fetch_sheet({"label": "internal", "url": "x", "trusted": True})
+    check("internal links need no timestamp and are trusted",
+          [(i["url"], i["trusted"], i["source"]) for i in got]
+          == [("https://gov.example/team-pick", True, "sheet:internal")], str(got))
+
+    assessment = {"agentic": False, "name": "Team pick", "countries": ["Italy"]}
+    for trusted in (False, True):
+        item = {"title": "", "url": f"https://gov.example/{trusted}", "source": "sheet:x",
+                "trusted": trusted, "prefetched_text": "Some article text."}
+        screens = []
+        with patch.object(run.llm, "screen_article",
+                          side_effect=lambda *a, **k: screens.append(1) or {"relevant": False}), \
+             patch.object(run.llm, "extract_record", return_value=assessment), \
+             patch.object(run.config, "AGENTIC_ONLY", True):
+            record = run.process_item(item, db.Deduper([]), RUN_DATE, log=lambda _: None)
+        if trusted:
+            check("a trusted link skips the gate and the agentic drop",
+                  record is not None and not screens, f"{record} {screens}")
+        else:
+            check("a public submission still goes through the gate", record is None and screens)
+    with patch.object(run.extract, "extract_text", return_value=None):
+        try:
+            run.process_item({"title": "", "url": "https://gov.example/paywall", "source": "sheet:internal",
+                              "trusted": True}, db.Deduper([]), RUN_DATE, log=lambda _: None)
+        except run.ExtractionFailed:
+            check("an unreadable trusted link is an error, not a silent skip", True)
+        else:
+            raise AssertionError("an unreadable trusted link passed silently")
+
+
 def test_degraded_marker():
     run.DEGRADED_MARKER.unlink(missing_ok=True)
     run._finish(None)
@@ -698,7 +750,7 @@ def main():
         test_extraction_retry,
         test_resolve_duplicates, test_resolve_falls_back_when_dedupe_dies,
         test_budget_exhaustion_propagates, test_gnews_decoding, test_deduper_claim_is_atomic,
-        test_assess_queue_parallel, test_degraded_marker, test_digest, test_real_db,
+        test_assess_queue_parallel, test_submission_sheets, test_degraded_marker, test_digest, test_real_db,
     ]
     for fn in offline:
         print(f"\n-- {fn.__name__}")
