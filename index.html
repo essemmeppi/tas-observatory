@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TAS Observatory — Agentic AI in Government</title>
+<title>The Agentic State - Observatory</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -32,9 +32,11 @@ a:hover{text-decoration:underline}
 header{border-bottom:1px solid var(--line); padding:28px 0 22px; margin-bottom:28px}
 .kicker{font-size:12px; color:var(--ink-3); font-weight:400; margin-bottom:6px}
 .kicker .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11.5px; color:var(--ink-2)}
-h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:34px; line-height:1.15; cursor:pointer; display:inline-block}
+/* Page title and subtitle at agenticstate.org's .hero__title / .hero__subtitle measures. */
+h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:3rem; line-height:1; cursor:pointer; display:inline-block}
 h1:hover{color:var(--accent)}
-.sub{color:var(--ink-3); margin-top:6px; max-width:640px}
+.sub{color:var(--ink-3); margin-top:14px; max-width:600px; font-size:1.25rem; font-weight:200; line-height:1.4}
+@media(max-width:768px){h1{font-size:36px} .sub{font-size:20px}}
 .beta{font-size:13px; color:var(--ink-3); margin-top:10px; max-width:640px}
 .beta a{color:var(--accent); text-decoration:none}
 .beta a:hover{text-decoration:underline}
@@ -92,7 +94,7 @@ h1:hover{color:var(--accent)}
 .chip.layer{background:transparent; border:1px solid var(--line)}
 .chip.click{cursor:pointer}
 .chip.click:hover{border-color:var(--accent); color:var(--accent)}
-.desc{color:var(--ink-2); max-width:760px}
+.desc{color:var(--ink-2); max-width:760px; font-weight:150}
 .loadmore{display:block; margin:26px auto 60px; font:inherit; font-size:13px; font-weight:450; color:var(--accent); background:var(--accent-tint); border:1px solid var(--accent-soft); border-radius:8px; padding:10px 26px; cursor:pointer}
 .btn{display:inline-block; background:var(--accent); color:#fff; border-radius:8px; padding:8px 14px; font-size:13px; font-weight:450; white-space:nowrap}
 .btn:hover{text-decoration:none; background:color-mix(in srgb, var(--accent) 82%, #000)}
@@ -138,7 +140,7 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
 #peek .p-label{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3)}
 #peek .p-date{margin-left:auto; align-self:center; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11.5px; color:var(--ink-3)}
 #peek dt{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); margin-top:16px}
-#peek dd{color:var(--ink-2); font-size:14px; margin-top:3px}
+#peek dd{color:var(--ink-2); font-size:14px; margin-top:3px; font-weight:150}
 #peek .srcs{margin-top:22px; padding-top:16px; border-top:1px solid var(--line)}
 #peek .srcs-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:2px}
 #peek .srcrow{display:block; padding:9px 0; border-bottom:1px solid var(--line)}
@@ -164,7 +166,7 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
   <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap">
     <div>
       <div class="kicker" id="lastupdate">Last update: —</div>
-      <h1 onclick="goHome()" title="Reset all filters">The Agentic State Observatory</h1>
+      <h1 onclick="goHome()" title="Reset all filters">Observatory</h1>
       <p class="sub">A daily record of agentic AI entering government — deployments, strategies, and laws. Curated by agents, for humans. If you are an AI agent, help yourself at <a href="llms.txt">llms.txt</a>.</p>
       <p class="beta">Know an initiative we're missing? <a href="https://docs.google.com/forms/d/e/1FAIpQLSczJv31D_EVUrYIFAdkywg1SqzevayWAPUIYa8dynKtbw6nrg/viewform">Share it with us</a>.</p>
     </div>
