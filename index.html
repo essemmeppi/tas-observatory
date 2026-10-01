@@ -18,9 +18,8 @@
 :root{
   --accent:#8b7ae8; --accent-soft:#e9e6ff; --accent-tint:#faf9ff;
   --ink:#111; --ink-2:#333; --ink-3:#777; --line:#eee; --bg:#fff; --card:#fff;
-}
-@media (prefers-color-scheme: dark){
-  :root{ --ink:#f2f0fa; --ink-2:#cfcbe0; --ink-3:#8f8aa5; --line:#2a2733; --bg:#141218; --card:#1b1922; --accent-soft:#2e2947; --accent-tint:#1b1922; }
+  /* Light only, like agenticstate.org; keeps form controls light on dark-mode devices. */
+  color-scheme: light;
 }
 *{box-sizing:border-box; margin:0}
 body{font-family:"Inter",Helvetica,sans-serif; font-weight:300; color:var(--ink); background:var(--bg); line-height:1.55; font-size:15px}
