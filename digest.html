@@ -27,7 +27,11 @@ a:hover{text-decoration:underline}
 .wrap{max-width:1200px; margin:0 auto; padding:0 2rem}
 @media(max-width:768px){.wrap{padding:0 20px}}
 header{border-bottom:1px solid var(--line); padding:28px 0 22px; margin-bottom:0}
-.head-row{display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap}
+/* The header on the same three columns as the stat tiles and charts: title
+   and subtitle span two, the buttons take the third. */
+.head-row{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; align-items:start}
+.head-row > :first-child{grid-column:span 2}
+@media(max-width:760px){.head-row{grid-template-columns:1fr} .head-row > :first-child{grid-column:auto}}
 .kicker{font-size:12px; color:var(--ink-3); font-weight:400; margin-bottom:6px}
 .kicker a{color:inherit}
 .kicker a:hover{color:var(--accent)}
@@ -37,7 +41,7 @@ h1 a{color:var(--ink)}
 h1 a:hover{color:var(--accent); text-decoration:none}
 .sub{color:var(--ink-3); margin-top:14px; max-width:600px; font-size:1.25rem; font-weight:200; line-height:1.4}
 @media(max-width:768px){h1{font-size:36px} .sub{font-size:20px}}
-.beta{font-size:13px; color:var(--ink-3); margin-top:10px; max-width:640px}
+.beta{font-size:13px; color:var(--ink-3); margin-top:10px}
 .beta a{color:var(--accent); text-decoration:none}
 .beta a:hover{text-decoration:underline}
 .btn{display:inline-block; background:var(--accent); color:#fff; border-radius:8px; padding:8px 14px; font-size:13px; font-weight:450; white-space:nowrap}
@@ -111,8 +115,8 @@ h1 a:hover{color:var(--accent); text-decoration:none}
   <button type="button" aria-label="Menu" aria-expanded="false" onclick="const n=this.closest('.site-nav'); this.setAttribute('aria-expanded', n.classList.toggle('open'))"><span></span><span></span></button>
   <ul>
     <li><a href="https://agenticstate.org/paper.html">Vision Paper</a></li>
+    <li><a href="./">Observatory</a></li>
     <li><a href="https://agenticstate.org/projects.html">Projects</a></li>
-    <li><a href="./" aria-current="page">Observatory</a></li>
     <li><a href="https://agenticstate.org/contacts.html">Contact</a></li>
   </ul>
 </div></nav>
@@ -121,8 +125,8 @@ h1 a:hover{color:var(--accent); text-decoration:none}
     <div>
       <div class="kicker"><a href="./">Observatory</a></div>
       <h1>Daily Digest</h1>
-      <p class="sub">The Agentic State taking shape around the world, day by day. If you are an AI agent, help yourself at <a href="llms.txt">llms.txt</a>.</p>
-      <p class="beta">Know an initiative we're missing? <a href="https://docs.google.com/forms/d/e/1FAIpQLSczJv31D_EVUrYIFAdkywg1SqzevayWAPUIYa8dynKtbw6nrg/viewform">Share it with us</a>.</p>
+      <p class="sub">The Agentic State taking shape around the world, day by day.</p>
+      <p class="beta">Know an initiative we're missing? <a href="https://docs.google.com/forms/d/e/1FAIpQLSczJv31D_EVUrYIFAdkywg1SqzevayWAPUIYa8dynKtbw6nrg/viewform">Share it</a> with us.</p>
     </div>
     <div class="actions">
       <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSck7hYMvDeHPcFdO2hmDqa5LR6FzY_tvpmFo4tuI4atuHQl8Q/viewform">Subscribe to the briefing</a>
