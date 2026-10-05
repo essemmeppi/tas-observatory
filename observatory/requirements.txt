@@ -4,3 +4,6 @@ trafilatura>=1.12
 # Pinned: 0.2.1 renamed its result key, and an unpinned upgrade silently broke
 # every Google News link from 2026-09-21. Bump deliberately, with the live smoke test.
 googlenewsdecoder==0.2.1
+# Pinned: selectolax 1.0 removed the Modest backend that googlenewsdecoder 0.2.1
+# imports (selectolax.parser), breaking every run from 2026-10-04.
+selectolax<1.0
