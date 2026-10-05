@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TAS Observatory — Daily Digest</title>
+<title>The Agentic State - Daily Digest</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -16,27 +16,58 @@
 :root{
   --accent:#8b7ae8; --accent-soft:#e9e6ff; --accent-tint:#faf9ff;
   --ink:#111; --ink-2:#333; --ink-3:#777; --line:#eee; --bg:#fff; --card:#fff;
-}
-@media (prefers-color-scheme: dark){
-  :root{ --ink:#f2f0fa; --ink-2:#cfcbe0; --ink-3:#8f8aa5; --line:#2a2733; --bg:#141218; --card:#1b1922; --accent-soft:#2e2947; --accent-tint:#1b1922; }
+  /* Light only, like agenticstate.org; keeps form controls light on dark-mode devices. */
+  color-scheme: light;
 }
 *{box-sizing:border-box; margin:0}
 body{font-family:"Inter",Helvetica,sans-serif; font-weight:300; color:var(--ink); background:var(--bg); line-height:1.55; font-size:15px}
 a{color:var(--accent); text-decoration:none}
 a:hover{text-decoration:underline}
-.wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+/* Same container as agenticstate.org, so content spans the header's width. */
+.wrap{max-width:1200px; margin:0 auto; padding:0 2rem}
+@media(max-width:768px){.wrap{padding:0 20px}}
 header{border-bottom:1px solid var(--line); padding:28px 0 22px; margin-bottom:0}
-.head-row{display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap}
+/* The header on the same three columns as the stat tiles and charts: title
+   and subtitle span two, the buttons take the third. */
+.head-row{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; align-items:start}
+.head-row > :first-child{grid-column:span 2}
+@media(max-width:760px){.head-row{grid-template-columns:1fr} .head-row > :first-child{grid-column:auto}}
 .kicker{font-size:12px; color:var(--ink-3); font-weight:400; margin-bottom:6px}
-h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:34px; line-height:1.15}
+.kicker a{color:inherit}
+.kicker a:hover{color:var(--accent)}
+/* Page title and subtitle at agenticstate.org's .hero__title / .hero__subtitle measures. */
+h1{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:3rem; line-height:1}
 h1 a{color:var(--ink)}
 h1 a:hover{color:var(--accent); text-decoration:none}
-.sub{color:var(--ink-3); margin-top:6px; max-width:640px}
-.beta{font-size:13px; color:var(--ink-3); margin-top:10px; max-width:640px}
+.sub{color:var(--ink-3); margin-top:14px; max-width:600px; font-size:1.25rem; font-weight:200; line-height:1.4}
+@media(max-width:768px){h1{font-size:36px} .sub{font-size:20px}}
+.beta{font-size:13px; color:var(--ink-3); margin-top:10px}
 .beta a{color:var(--accent); text-decoration:none}
 .beta a:hover{text-decoration:underline}
 .btn{display:inline-block; background:var(--accent); color:#fff; border-radius:8px; padding:8px 14px; font-size:13px; font-weight:450; white-space:nowrap}
 .btn:hover{text-decoration:none; background:color-mix(in srgb, var(--accent) 82%, #000)}
+.actions{display:flex; flex-direction:column; align-items:flex-end; gap:8px}
+@media(max-width:760px){.actions{align-items:flex-start}}
+.btn.soft{background:color-mix(in srgb, var(--accent) 9%, var(--bg)); color:var(--accent)}
+.btn.soft:hover{background:color-mix(in srgb, var(--accent) 16%, var(--bg))}
+/* The agenticstate.org header, matched to its own measures: a 1200px
+   container with 2rem gutters, 4rem tall, links at the body's 1.2rem, all
+   of it scaled up by that site's 20px base under 768px. It is the one
+   thing that sticks while scrolling, as it does there. */
+.site-nav{position:sticky; top:0; z-index:15; border-bottom:1px solid var(--line); background:var(--bg)}
+.site-nav .bar{max-width:1200px; margin:0 auto; padding:0 2rem; height:4rem; display:flex; align-items:center; justify-content:space-between}
+.site-nav a{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:300; font-size:1.2rem; line-height:1.5; color:var(--ink); text-decoration:none; transition:color .15s}
+.site-nav a:hover{color:var(--accent)}
+.site-nav ul{display:flex; gap:2rem; list-style:none; margin:0; padding:0}
+.site-nav button{display:none; background:none; border:0; padding:8px; margin-right:-8px; color:var(--ink); cursor:pointer}
+.site-nav button span{display:block; width:20px; height:2px; background:currentColor; margin:4px 0}
+@media(max-width:768px){
+  .site-nav .bar{padding:0 20px; height:80px}
+  .site-nav a{font-size:24px}
+  .site-nav button{display:block}
+  .site-nav ul{display:none; position:absolute; top:80px; left:0; right:0; flex-direction:column; gap:20px; padding:40px 20px; background:var(--bg); border-bottom:1px solid var(--line)}
+  .site-nav.open ul{display:flex}
+}
 .backdays{display:none; font:inherit; font-size:13px; color:var(--accent); background:none; border:none; padding:0; margin-bottom:14px; cursor:pointer}
 
 .split{display:grid; grid-template-columns:210px 1fr; min-height:70vh}
@@ -53,7 +84,7 @@ h1 a:hover{color:var(--accent); text-decoration:none}
 .note h2{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:350; font-size:26px; line-height:1.2}
 .note .n-kicker{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); margin-bottom:4px}
 .note .stats{color:var(--ink-3); font-size:13px; margin-top:10px}
-.note .lede{color:var(--ink-2); margin:14px 0 4px; font-size:15.5px}
+.note .lede{color:var(--ink-2); margin:14px 0 4px; font-size:15.5px; font-weight:150}
 .note h3{font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); margin:26px 0 4px}
 .entry{padding:12px 0; border-bottom:1px solid var(--line)}
 .entry:last-child{border-bottom:none}
@@ -62,7 +93,7 @@ h1 a:hover{color:var(--accent); text-decoration:none}
 .entry .e-name a:hover{color:var(--accent); text-decoration:none}
 /* Exactly the main page's country chip: .chip.layer — outlined, not filled. */
 .entry .e-country{font-family:"Inter",Helvetica,sans-serif; font-style:normal; font-weight:300; font-size:11px; line-height:1.55; color:var(--ink-2); background:transparent; border:1px solid var(--line); border-radius:20px; padding:2px 9px; margin-left:6px; vertical-align:3px}
-.entry .e-desc{color:var(--ink-2); font-size:14px; margin-top:3px}
+.entry .e-desc{color:var(--ink-2); font-size:14px; margin-top:3px; font-weight:150}
 .entry .e-src{font-size:12px; margin-top:4px}
 .err{padding:40px 0 40px 34px; color:var(--ink-3)}
 /* Mobile is a drill-in, like Notes on a phone: the list of days first, tap one
@@ -79,15 +110,28 @@ h1 a:hover{color:var(--accent); text-decoration:none}
 </style>
 </head>
 <body>
+<nav class="site-nav" aria-label="The Agentic State"><div class="bar">
+  <a class="logo" href="https://agenticstate.org/">The Agentic State</a>
+  <button type="button" aria-label="Menu" aria-expanded="false" onclick="const n=this.closest('.site-nav'); this.setAttribute('aria-expanded', n.classList.toggle('open'))"><span></span><span></span></button>
+  <ul>
+    <li><a href="https://agenticstate.org/paper.html">Vision Paper</a></li>
+    <li><a href="./">Observatory</a></li>
+    <li><a href="https://agenticstate.org/projects.html">Projects</a></li>
+    <li><a href="https://agenticstate.org/contacts.html">Contact</a></li>
+  </ul>
+</div></nav>
 <header><div class="wrap">
   <div class="head-row">
     <div>
-      <div class="kicker">Daily digest</div>
-      <h1><a href="./">The Agentic State Observatory</a></h1>
-      <p class="sub">The Agentic State taking shape around the world, day by day. If you are an AI agent, help yourself at <a href="llms.txt">llms.txt</a>.</p>
-      <p class="beta">A beta project by <a href="https://agenticstate.org">The Agentic State</a> — share <a href="mailto:hello@agenticstate.org">your feedback</a>!</p>
+      <div class="kicker"><a href="./">Observatory</a></div>
+      <h1>Daily Digest</h1>
+      <p class="sub">The Agentic State taking shape around the world, day by day.</p>
+      <p class="beta">Know an initiative we're missing? <a href="https://docs.google.com/forms/d/e/1FAIpQLSczJv31D_EVUrYIFAdkywg1SqzevayWAPUIYa8dynKtbw6nrg/viewform">Share it</a> with us.</p>
     </div>
-    <a class="btn" href="./">Back to the observatory</a>
+    <div class="actions">
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSck7hYMvDeHPcFdO2hmDqa5LR6FzY_tvpmFo4tuI4atuHQl8Q/viewform">Subscribe to the briefing</a>
+      <a class="btn soft" href="./">Back to the observatory</a>
+    </div>
   </div>
 </div></header>
 

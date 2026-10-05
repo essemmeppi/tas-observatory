@@ -1,7 +1,11 @@
-"""Ingestion sources: Google Alerts feeds, plain RSS feeds, and the X sweep via Grok."""
+"""Ingestion sources: Google Alerts feeds, plain RSS feeds, submission sheets, and the X sweep via Grok."""
+import csv
+import io
 import json
 import re
 import urllib.parse
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 import feedparser
 import requests
@@ -114,6 +118,44 @@ def resolve_url(url: str) -> str:
     return _decode_gnews(url)
 
 
+def fetch_sheet(sheet: dict) -> list:
+    """Links from a Google Sheet tab published as CSV.
+
+    Two tabs feed this: `submission` mirrors the public form (timestamp and
+    link only; names and emails stay in the unpublished responses sheet), and
+    `internal` is typed by the team. A `max_age_hours` keeps only recent rows:
+    a rejected link is never stored, so without it every public submission
+    would be re-assessed every night. The internal tab needs no window, since
+    its links become known once they are in the database.
+
+    Timestamps are the form's, written in the sheet's locale (day first) and
+    Rome time.
+    """
+    resp = requests.get(sheet["url"], timeout=config.REQUEST_TIMEOUT, headers=UA)
+    resp.raise_for_status()
+    rows = csv.DictReader(io.StringIO(resp.content.decode("utf-8-sig")))
+    tz = ZoneInfo("Europe/Rome")
+    since = (datetime.now(tz) - timedelta(hours=sheet["max_age_hours"])
+             if sheet.get("max_age_hours") else None)
+    items = []
+    for row in rows:
+        link = (row.get("Link") or "").strip()
+        if not link.startswith("http"):
+            continue
+        if since:
+            try:
+                stamp = datetime.strptime(row.get("Timestamp", "").strip(),
+                                          "%d/%m/%Y %H:%M:%S").replace(tzinfo=tz)
+            except ValueError:
+                continue
+            if stamp < since:
+                continue
+        items.append({"title": "", "url": link, "published": "",
+                      "source": f"sheet:{sheet['label']}",
+                      "trusted": bool(sheet.get("trusted"))})
+    return items
+
+
 def fetch_all_feeds(feeds_path=config.FEEDS_PATH) -> list:
     with open(feeds_path, encoding="utf-8") as fh:
         feeds = json.load(fh)
@@ -137,6 +179,14 @@ def fetch_all_feeds(feeds_path=config.FEEDS_PATH) -> list:
         label = f"rss:{urllib.parse.urlparse(url).netloc}"
         try:
             got = fetch_feed(url, label, is_google_alert=False)
+            print(f"  {label}: {len(got)} items")
+            items.extend(got)
+        except Exception as e:
+            print(f"  warning: {label} failed ({e})")
+    for sheet in feeds.get("sheets", []):
+        label = f"sheet:{sheet['label']}"
+        try:
+            got = fetch_sheet(sheet)
             print(f"  {label}: {len(got)} items")
             items.extend(got)
         except Exception as e:

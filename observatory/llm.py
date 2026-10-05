@@ -59,7 +59,7 @@ Respond with ONLY a JSON object:
 {
   "relevant": true,               // always true here; kept for schema stability
   "agentic": true/false,          // true only if it involves AI agents / agentic AI / autonomous task execution, not just any AI or chatbot
-  "name": "short name of the initiative",
+  "name": "short name of the initiative, in English",
   "organisation": "public body responsible",
   "countries": ["Country", ...],  // full English country names
   "country_codes": ["USA", ...],  // ISO 3166-1 alpha-3 codes, same order as countries
