@@ -474,11 +474,15 @@ function countryShapeSvg(country){
 function listItem(r){
   const countryChips = (r.countries||[]).map(c =>
     `<span class="chip layer click" data-s="f-country" data-v="${esc(c)}">${esc(c)}</span>`).join("");
+  // Layers shown in the list too: records carry several, so the layer chart's
+  // totals (workflows especially) only make sense when you can see the mix.
+  const layerChips = (r.layers||[]).map(l =>
+    `<span class="chip click" data-s="f-layer" data-v="${esc(l)}">${esc(LAYERS[l]||l)}</span>`).join("");
   return `<article class="card" data-id="${r.id}" data-country="${esc((r.countries||[])[0]||"")}">
     <div class="card-shape"></div>
     <div class="card-head"><h2><a href="#r=${r.id}">${esc(r.name)}</a></h2>${countryChips}</div>
     <p class="desc">${esc(r.description)}</p>
-    <div class="meta"><span class="mdate">${fmtDate(r.news_date||r.date_added||r.year)}</span></div>
+    <div class="meta"><span class="mdate">${fmtDate(r.news_date||r.date_added||r.year)}</span>${layerChips}</div>
   </article>`;
 }
 
