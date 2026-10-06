@@ -72,9 +72,9 @@ item in it.
 
 ## 3. Find what is changing
 
-This becomes the **opening** of the email: flowing prose that reflects on what
-is happening globally, before the list. Do this step before you finalise the
-list, because the themes you find can change which items earn a bullet. Use two
+This becomes the **reflection** that follows the list: normal prose that
+explains what is happening globally and why. Do this step before you finalise
+the list, because the themes you find can change which items earn a bullet. Use two
 kinds of evidence:
 
 - **Emerging topics (the main part).** Read the descriptions and novelty fields.
@@ -85,7 +85,7 @@ kinds of evidence:
   have to match a taxonomy value. Name the theme in plain words, say how many
   records show it and where, and give one concrete example. If
   `previous_briefings` already named the theme, say whether it is growing,
-  stable, or fading. Connect the themes to each other — the opening is one
+  stable, or fading. Connect the themes to each other — the reflection is one
   argument about the period, not a list of observations.
 - **Numbers (supporting).** Use `stats` only when a shift is large and makes
   sense, for example "half of this week's records deal with agent governance, up
@@ -123,23 +123,27 @@ LinkedIn post. No emoji, no exclamation marks.
 ```
 Subject: <specific, ≤ 9 words, names the strongest item or theme>
 
-<Opening: 2–3 paragraphs weekly, 3–4 monthly. Normal prose, no bullets, no
-sub-headings. The global reflection from step 3: what is changing, where, and
-why it matters. It may mention items from the list in passing, but it must not
-pre-summarise the bullets one by one.>
+<Intro: one simple sentence, e.g. "Here is what happened in the agentic state
+around the world last week." (monthly: "…last month."). Vary the wording a
+little from week to week. No analysis here.>
 
-What happened
 • <Initiative or cluster> (<Country>) — <what was done, by whom, 1–3 sentences.> <card link>
 • …
+
+<Reflection: 2–3 paragraphs weekly, 3–4 monthly. Normal prose, no bullets, no
+sub-headings. The analysis from step 3: why this is happening (for example, an
+incident that triggered responses), how the themes connect, and the supporting
+numbers ("half of this week's records deal with agent governance, up from…").
+It can refer back to items in the list, but it must not re-summarise the
+bullets one by one.>
 
 <One closing line: explore the Observatory + "Know an initiative we're missing? Share it with us.">
 ```
 
-Nothing comes after the list except the closing line: no "What we see"
-section, no second set of bullets. The reflection lives in the opening only.
+No section headings anywhere (no "What happened", no "What we see"), and only
+one set of bullets. The analysis lives in the reflection only.
 
-Monthly differs only in scale: more bullets, a longer opening, and you may lead
-with the month's single biggest change.
+Monthly differs only in scale: more bullets and a longer reflection.
 
 Bullet rule: lead with the actor and the action, not the product name. Write
 "Uganda's revenue authority started a pilot…", not "TaxBot: Uganda's…". Link the
@@ -154,8 +158,8 @@ Go through the draft again:
   or a count you made from `records`.
 - No vendor-led item in the bullets.
 - Country and layer diversity rules hold.
-- The opening and the bullets do not repeat each other. If a sentence in the
-  opening only restates a bullet, cut it or make it a broader point.
+- The reflection and the bullets do not repeat each other. If a sentence in the
+  reflection only restates a bullet, cut it or make it a broader point.
 - Every sentence has 20 words or fewer. Fix the long ones.
 - Look for any banned words or passive voice. Fix them.
 
