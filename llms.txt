@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (551 records as of 2026-10-07).
+newest first (558 records as of 2026-10-08).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,67 @@ newest first (551 records as of 2026-10-07).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Delaware Agent-Managed Companies Regulatory Sandbox (United States, 2026-10-08)
+Organisation: Delaware Department of State
+Layer: Agent governance, Policy & rule-making
+Type: Regulation
+Summary: The Delaware Department of State is developing a regulatory sandbox for Agent-Managed Companies, where an AI agent could autonomously run an entity owned by a human member under registration, disclosure and oversight requirements. Norm Ai is assisting the department in building the sandbox infrastructure. The initiative was discussed publicly at Norm Ai’s Central Park AI Forum in September 2026.
+Why it matters: It represents one of the first state-level proposals to create a legally sanctioned environment explicitly allowing AI agents to manage corporate entities, testing autonomous business governance within a regulated framework. The system would allow an AI agent to run an entity owned by a human member under registration, disclosure and oversight requirements, autonomously managing the company without a human initiating each business decision.
+What technology: The source states Norm Ai is helping the Delaware Department of State build the sandbox infrastructure but does not specify underlying models, platforms or technical architecture.
+Sources:
+- Five lessons from Norm AI’s forum on the agentic economy — https://fintech.global/2026/10/08/five-lessons-from-norm-ais-forum-on-the-agentic-economy/
+
+### Alli (L1 IT Service Desk AI Specialist) (United States, 2026-10-08)
+Organisation: City of Raleigh, North Carolina
+Layer: Government workflows, Service design & UX, Tech stack
+Type: Deployment
+Summary: An agentic AI bot co-developed with ServiceNow that serves as an L1 IT Service Desk Specialist for the city's IT department. It resolves complete IT support workflows and tickets for 4,400 city staff across 13,000 devices, rather than merely routing requests to human technicians, effectively augmenting a lean team of four IT staff.
+Why it matters: First city government to deploy ServiceNow's agentic IT Service Desk AI Specialist in a live production environment, serving as a real-world testbed that shaped the commercial product. Uses an 'AI Orchestrator' to critique ticket resolution quality and enable continuous learning. The system 'resolves complete workflows' rather than just routing tickets, and 'resolves problems rather than directing a staffer to an instruction article'. It makes autonomous decisions to solve tech problems at the L1 level, with an AI Orchestrator scoring its performance on completed tickets to identify when it lacked capabilities, data or access.
+What technology: Built on the ServiceNow platform as an L1 IT Service Desk AI Specialist agent, featuring an 'AI Orchestrator' component that critiques resolution quality and scores performance to drive iterative improvement.
+Sources:
+- This New Raleigh, N.C., IT Help Desk Agent Is, Well, Agentic — https://www.govtech.com/artificial-intelligence/this-new-raleigh-n-c-it-help-desk-agent-is-well-agentic
+
+### AI waste collection routing and dispatch system (France, 2026-10-08)
+Organisation: Perpignan Méditerranée Métropole
+Layer: Government workflows, Service design & UX
+Type: Deployment
+Summary: Nord Engineering France, partner of Perpignan Méditerranée Métropole since 2017, is proposing an AI solution to modernise waste collection. The technology predicts container fill levels based on user habits and dynamically adapts truck routes to actual needs. Citizens can report illegal dumping via a mobile app, after which the system identifies a nearby truck to intervene; the solution is already deployed on 10,000 containers in Tuscany but remains under discussion for a Perpignan pilot.
+Why it matters: It combines predictive analytics on user disposal habits with real-time route adaptation for waste collection fleets. Additionally, it integrates citizen-generated reports of illegal dumping with automated dispatch of the most suitable intervention vehicle. The system autonomously anticipates container filling based on user habits and adapts truck routes to actual needs without a human initiating each routing decision. When a citizen reports illegal dumping via an application, the system independently identifies a truck susceptible to intervene in the concerned sector.
+What technology: The solution uses artificial intelligence to monitor container states and predict fill levels, and integrates with a citizen mobile application for photo-based reporting of illegal dumping; it is designed to work alongside robotic collection vehicles where operators control cranes from the cabin.
+Sources:
+- "Nous voulons faciliter le travail des opérateurs, pas les remplacer" : cette entreprise inaugure sa base à Perpignan et mise sur l’intelligence artificielle pour moderniser la collecte des déchets — https://www.lindependant.fr/2026/10/08/nous-voulons-faciliter-le-travail-des-operateurs-pas-les-remplacer-cette-entreprise-inaugure-sa-base-a-perpignan-et-mise-sur-lintelligence-13591545.php
+
+### X-BAT autonomous aircraft program (United States, 2026-10-08)
+Organisation: U.S. Navy
+Layer: Government workflows, Public procurement, Tech stack
+Type: Deployment, Procurement
+Summary: X-BAT is a low-observable, multirole unmanned aircraft developed by Shield AI under the U.S. Navy and Defense Innovation Unit’s RIMES program to deliver runway-independent, long-range strike capabilities from ships and austere sites. Shield AI’s Hivemind software serves as an onboard AI pilot, enabling flight operations in GPS-denied and communications-constrained environments. The program has completed engine light-off, thrust-vectoring nozzle integration and weapons-bay wind-tunnel validation, with flight testing scheduled to begin later this year.
+Why it matters: The aircraft introduces an autonomous AI pilot—Shield AI’s Hivemind—that can manage flight operations in denied environments, enabling unmanned sortie generation from small-deck naval vessels alongside manned carrier air wings. Its vertical-takeoff, low-observable design is intended to extend expeditionary strike reach without relying on fixed airfields. Shield AI’s Hivemind software serves as the aircraft’s AI pilot, autonomously enabling operations in GPS-denied and communications-constrained conditions without a human operator initiating each step. The source states it is designed for ‘safe, high-tempo manned-unmanned flight deck operations’ alongside carrier air wings, indicating independent coordination of deck and flight activities.
+What technology: The system centers on Shield AI’s Hivemind autonomous pilot software integrated into a low-observable, thrust-vectoring vertical-takeoff-and-landing airframe. The team has completed engine light-off, thrust-vectoring nozzle integration and weapons-bay aerodynamics validation in low- and high-speed wind-tunnel tests ahead of flight testing.
+Sources:
+- Shield AI and U.S. government commitments to X-BAT fighter program reach $400 million — https://defence-industry.eu/shield-ai-and-u-s-government-commitments-to-x-bat-fighter-program-reach-400-million/
+- Shield AI and U.S. government investment in X-BAT reaches $400 million — https://shield.ai/shield-ai-and-u-s-government-investment-in-x-bat-reaches-400-million/
+
+### Autonomous Warfare Command (AUTOWARCOM) (United States, 2026-10-08)
+Organisation: U.S. Department of Defense (Pentagon)
+Layer: Government workflows, Public procurement
+Type: Deployment, Strategy
+Summary: The Pentagon announced AUTOWARCOM, a new four-star combatant command devoted to AI-enabled robotic and autonomous warfare, scheduled for formal establishment by October 1, 2027. It will consolidate directed manpower, budget, and acquisition authorities to scale autonomous and robotic capabilities—including mass drones and attritable systems—across the joint force. Secretary Hegseth also launched Project Meridian, a 120-day commission co-led by Elon Musk, Newt Gingrich, and Palmer Luckey to identify capabilities for next-generation battlefield dominance.
+Why it matters: This marks the first U.S. four-star combatant command dedicated specifically to autonomous warfare, concentrating procurement and career pathways for robotic systems under a single authority. It also embeds defense contractors and tech executives directly into long-range military planning through Project Meridian, bypassing traditional Pentagon planning processes. The command is designed to field 'mass drones and other autonomous attritable systems that flip the cost exchange and impose unrelenting pressure on an adversary on the battlefield,' and Hegseth suggested 'weapons would be tested on battlefields whenever feasible,' reflecting autonomous combat execution without human initiation of each engagement.
+What technology: The initiative centers on artificial intelligence, autonomy, robotics, directed energy, and biotechnology, and will prototype a 'Warfighting Acquisition' construct under Project Agincourt that fuses operators with entrepreneurs in rapid adaptation cycles; the article also references Palantir’s Maven Smart System as an existing AI-enabled targeting precedent.
+Sources:
+- Pete Hegseth’s Military of the Future: Defined by AI and an Utter Lack of Oversight — https://theintercept.com/2026/10/08/hegseth-military-ai-drones-autonomous-war/
+
+### Fully Automated Administrative Decisions (AVG Amendment) (Austria, 2026-10-08)
+Organisation: Austrian Federal Government
+Layer: Policy & rule-making, Agent governance
+Type: Regulation
+Summary: Draft amendment to Austria's General Administrative Procedure Act (AVG) would allow authorities to issue fully automated, legally binding administrative decisions using large language models without human review of individual outcomes. The change would apply across nearly all administrative proceedings, from social assistance and building permits to business licensing and public subsidies, affecting federal, state and municipal levels. Civil society group epicenter.works has challenged the proposal citing risks of hallucination, black box decision-making, and bias.
+Why it matters: Austria would be the first jurisdiction to explicitly authorize LLMs to make binding government decisions with no human oversight across such a broad range of administrative matters. The draft treats generative AI equivalently to deterministic rule-based systems despite fundamental technical differences in hallucination, explainability, and bias. The system issues "fully automated administrative decisions" - legally binding rulings with direct effect on a person's rights where "no human ever reviewing the specific outcome before it goes out" and "no human involved in the individual case". The AI can autonomously treat citizen chatbot inputs as formal submissions in proceedings (§§ 13, 13a AVG) and determine final outcomes without human initiation or review of each specific case.
+What technology: Large language models (LLMs) with noted hallucination rates of 17-33% in legal contexts; contrasted with deterministic rule-based systems. References Austria's state-run AI assistant "ida" as an example of government AI deployment.
+Sources:
+- No human required: Austria’s plan for AI-only government decisions — https://edri.org/our-work/no-human-required-austrias-plan-for-ai-only-government-decisions/
 
 ### Abu Dhabi AI-Native Government (TAMM) (United Arab Emirates, 2026-10-07)
 Organisation: Abu Dhabi Department for Government Assistance (DGE)
@@ -56,16 +117,18 @@ What technology: The source does not name specific models, platforms or architec
 Sources:
 - Singapore government running trials to understand how to implement AI agents responsibly: Tan Kiat How — https://www.channelnewsasia.com/singapore/ai-agents-safety-mddi-tan-kiat-how-parliament-6438106
 - Singapore trials agentic AI safeguards as govt reviews frameworks for autonomous systems: Tan Kiat How — https://news.theonlinecitizen.com/2026/10/07/singapore-trials-agentic-ai-safeguards-as-govt-reviews-frameworks-for-autonomous-systems-tan-kiat-how
+- Singapore weighs stronger AI safeguards as government runs agentic trials — https://www.mlex.com/mlex/articles/2535483/singapore-weighs-stronger-ai-safeguards-as-government-runs-agentic-trials
 
 ### Insight (United Arab Emirates, 2026-10-07)
 Organisation: Abu Dhabi Government
-Layer: Government workflows
+Layer: Government workflows, Service design & UX
 Type: Deployment
 Summary: Inception42, G42’s sovereign agentic AI company, launched Insight, an AI-native decision intelligence platform for boards and executive teams. Already deployed in executive meetings across government and enterprises, it generates meeting summaries and agendas, provides real-time insights and voting during meetings, and captures decisions and action items afterwards.
 Why it matters: It brings agentic reasoning into board and executive decision-making processes, simulating decisions before meetings and automating the full meeting lifecycle from preparation to follow-up. Before meetings, it can generate summaries, build agendas, and simulate decisions; during meetings, it provides real-time insights, AI-powered chat, and integrated voting; and afterwards, it captures decisions, produces smart minutes, and identifies action items without requiring human initiation of each step.
 What technology: Available as SaaS or on private cloud with English and Arabic interfaces across web, mobile, desktop, and voice; runs on sovereign cloud infrastructure with zero-trust security and role-based access controls.
 Sources:
 - AI gets down to business at Ai Everything Abu Dhabi — https://fastcompanyme.com/news/ai-gets-down-to-business-at-ai-everything-abu-dhabi/
+- ZAWYA: Inception42 marks AI Everything Abu Dhabi with Insight launch — https://www.tradingview.com/news/reuters.com,2026-10-08:newsml_Zaw5km0G8:0-zawya-inception42-marks-ai-everything-abu-dhabi-with-insight-launch/
 
 ### South Korea AI Welfare and Elderly Care Plan (South Korea, 2026-10-07)
 Organisation: Ministry of Health and Welfare (South Korea)
@@ -139,14 +202,16 @@ Sources:
 
 ### UAE Government 4.0 Agentic AI Transition (United Arab Emirates, 2026-10-06)
 Organisation: United Arab Emirates federal government
-Layer: Government workflows, Agent governance
+Layer: Government workflows, Agent governance, People & culture, Service design & UX
 Type: Strategy, Deployment
-Summary: Under the UAE Government 4.0 directive, the UAE Cabinet announced in April 2026 a framework requiring federal institutions to convert 50 percent of government sectors, services, and operations to autonomous Agentic AI models within two years, overseen by the Artificial Intelligence and Data Authority chaired by Minister Omar Al Olama. The strategy includes training 80,000 government employees as 'super users' capable of building agents and leveraging AI models. Optro has established a regional hub in Dubai to provide localized agentic GRC tools, enabling continuous risk assessments, non-human access identity management, and automated compliance mapping against evolving UAE regulations.
-Why it matters: It mandates that half of federal government operations shift to autonomous Agentic AI models within two years, explicitly authorizing non-human agents to issue binding administrative decisions—a rare government-wide conversion with a defined timeline. The framework also targets the creation of 'one-person companies' by training 80,000 employees as 'super users' who can build their own agents rather than only consuming pre-built tools. Non-human agents gain authority to execute workflows, invoke APIs, and issue binding administrative decisions without a human initiating each step. Minister Omar Al Olama stated that AI agents are already performing tasks at 'multiple speed' while improving productivity, with over 10% of one business's workforce now consisting of AI agents that autonomously execute tasks and multiply individual worker capabilities.
-What technology: Optro deploys an AI-powered GRC Intelligence Platform with agentic AI tailored to regional frameworks, alongside AI-native autonomous controls testing via its Midship acquisition and regional data hosting in the UAE. The government is also working with Microsoft on a campaign to train one million people as 'super-propellers of AI' and is training employees to build agents and leverage AI models.
+Summary: In April, the UAE Cabinet announced a framework requiring federal institutions to convert 50 percent of government sectors, services, and operations to autonomous Agentic AI models within two years, overseen by the Artificial Intelligence and Data Authority chaired by Minister Omar Al Olama, with a major unveiling event scheduled for November. Aiming to multiply worker productivity and overcome demographic constraints, the strategy includes training 80,000 government employees as 'super users' capable of building agents and leveraging AI models. Optro has established a regional hub in Dubai to provide localized agentic GRC tools, enabling continuous risk assessments, non-human access identity management, and automated compliance mapping against evolving UAE regulations.
+Why it matters: It mandates that half of federal government operations shift to autonomous Agentic AI models within two years, explicitly authorizing non-human agents to issue binding administrative decisions—a rare government-wide conversion with a defined timeline. The framework also targets the creation of 'one-person companies' by training 80,000 employees as 'super users' who can build their own agents, framing agentic AI as a way for a small-population state to economically compete with much larger countries. Non-human agents gain authority to execute workflows, invoke APIs, and issue binding administrative decisions without a human initiating each step. Minister Omar Al Olama stated that AI agents are already performing tasks at 'multiple speed' while improving productivity and decision-making, and the framework envisions agents that multiply a person's ability, skills and impact to autonomously operate across sectors, with over 10% of one business's workforce now consisting of AI agents that autonomously execute tasks.
+What technology: Optro deploys an AI-powered GRC Intelligence Platform with agentic AI tailored to regional frameworks, alongside AI-native autonomous controls testing via its Midship acquisition and regional data hosting in the UAE. The government is also working with Microsoft on a national campaign to train one million people as 'super-propellers of AI' and is training employees to build agents and leverage AI models.
 Sources:
 - AI agents could create one-person billion-dollar companies, UAE minister says — https://www.khaleejtimes.com/business/tech/ai-everything-abu-dhabi-ai-agents-create-one-person-billion-dollar-companies?amp=1
 - Optro Establishes UAE Hub to Support Rapid Transition to Agentic GRC Across the Middle East — https://www.prnewswire.com/ae/news-releases/optro-establishes-uae-hub-to-support-rapid-transition-to-agentic-grc-across-the-middle-east-302899185.html
+- AI agents could create one-person billion-dollar companies, UAE minister says — https://qazinform.com/amp/ai-agents-could-create-one-person-billion-dollar-companies-uae-minister-says-e48751/
+- UAE ranks first globally with 89% satisfaction for digital government — https://fastcompanyme.com/news/uae-ranks-first-globally-with-89-satisfaction-for-digital-government/
 
 ### AI for All (South Korea, 2026-10-06)
 Organisation: Ministry of Science and ICT
@@ -1466,13 +1531,14 @@ Sources:
 
 ### Unified AI Assistant and Bot Platform (India, 2026-09-13)
 Organisation: National eGovernance Division (NeGD), Ministry of Electronics and Information Technology (MeitY)
-Layer: Government workflows, Service design & UX
-Type: Deployment
+Layer: Government workflows, Service design & UX, Tech stack
+Type: Deployment, Procurement
 Summary: NeGD under MeitY is developing a reusable, LLM-driven unified AI assistant and bot platform, with DigiLocker as the initial implementation, to orchestrate multiple AI components across government administrative processes and procurement. Separately, CERT-In is operationalising an AI-powered cyber defence 'war room' to counter AI-driven attacks.
 Why it matters: It marks a shift from isolated chatbots to agentic AI that orchestrates multiple components across government services, while surfacing a 'sequencing problem' where systems are being piloted before DPDP consent and erasure mechanisms are fully operational. The platform is designed to orchestrate multiple AI components and delegate administrative processes to machines, with experts noting that agents may act without human instruction at every step and that agentic design erodes the human-in-the-loop assumption.
 What technology: An LLM-driven platform integrated with DigiLocker and Aadhaar ecosystems; CERT-In is testing advanced AI models for an AI-powered cyber defence 'war room'.
 Sources:
 - India's government adopts agentic AI; cyber risks, accountability questions emerge — https://techgig.com/amp/news/ai/indias-government-adopts-agentic-ai-cyber-risks-accountability-questions-emerge/134214692
+- CoRover wins MeitY agentic AI contract — https://www.thehindubusinessline.com/info-tech/corover-wins-meity-agentic-ai-contract/article71560088.ece
 
 ### Malaysia Government Agentic AI Service (Malaysia, 2026-09-13)
 Organisation: Digital Ministry, Malaysia
@@ -5538,6 +5604,16 @@ Why it matters: One of the first comprehensive national deployments of AI agents
 What technology: AI voice, chat and email agents for contact centers; Scale AI's platform with integration into existing government systems; personalized learning platform and AI teacher assistant.
 Sources:
 - Scale AI working with Qatar to develop AI agents for education, health care and transportation — https://www.cnbc.com/2025/04/16/scale-ai-working-with-qatar-on-ai-agents-for-education-health-care.html
+
+### ICO Call for Evidence on Agentic AI (United Kingdom, 2025-03-20)
+Organisation: UK Information Commissioner's Office (ICO)
+Layer: Agent governance, Policy & rule-making
+Type: Regulation, Strategy
+Summary: The UK Information Commissioner's Office launched a call for evidence seeking input on governance frameworks for agentic AI systems. The consultation covers security, transparency, accountability, automated decisions, fairness, and lawfulness of autonomous AI systems that can take actions and access data.
+Why it matters: This represents one of the first regulatory consultations specifically targeting agentic AI governance by a national data protection authority, moving beyond general AI regulation to address systems with autonomous action capabilities. The ICO explicitly addresses AI systems that "can take actions and access data" autonomously, distinguishing these from conventional automated systems by their capacity for independent action initiation.
+What technology: Not specified in source.
+Sources:
+- UK ICO opens call for evidence on agentic AI — https://x.com/ikennaiheuwa/status/2108184385400803767
 
 ### DigiLocker Agentic AI Layer (India, 2025-03-20)
 Organisation: Government of India
