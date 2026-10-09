@@ -69,6 +69,10 @@ jobs:
             echo "No new records today"
           else
             git commit -m "observatory: daily update $(TZ=Europe/Rome date +%F)"
+            # main can move during the ~45-minute run: on 2026-10-09 the weekly
+            # Briefing draft landed mid-run and the push was rejected, losing the
+            # day's records. The drafts touch other files, so the rebase is clean.
+            git pull --rebase --autostash
             git push
           fi
 
