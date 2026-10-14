@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (585 records as of 2026-10-12).
+newest first (590 records as of 2026-10-13).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,57 @@ newest first (585 records as of 2026-10-12).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Agentic AI Exploration for Public Services (Turks and Caicos Islands, 2026-10-13)
+Organisation: Ministry of Innovation, Technology and Energy, Turks and Caicos Islands Government
+Layer: Service design & UX, Crisis response, Government workflows
+Type: Strategy
+Summary: The Ministry is exploring the adoption of agentic AI to deliver 24/7 government services and improve efficiency in tourism, healthcare, and meteorology. A specific focus is developing AI-driven weather models for rapid, high-resolution nowcasting of hurricanes and severe weather to strengthen early warning systems.
+Why it matters: Explicit targeting of agentic AI—defined as systems completing multi-step tasks with limited human intervention—for a small island developing state, with particular emphasis on autonomous weather nowcasting for hurricane-prone regions. The Minister identifies "agentic AI in the areas of tourism, healthcare, and meteorology" as a priority, defining it as "artificial intelligence systems capable of carrying out tasks and completing multi-step processes with limited human intervention." This includes autonomous 24/7 government service delivery without human operators restricted to office hours.
+What technology: AI-powered weather models for rapid high-resolution nowcasting, smart city integrated control systems using connected data for real-time operations, cloud computing, and robotics (examined at NAVER 1784 facility).
+Sources:
+- World Bank invites E-Government Minister E. Jay Saunders to South Korea for global AI summit — https://suntci.com/world-bank-invites-egovernment-minister-e-jay-saunders-to-south-korea-for-global-ai-summit-p14787-129.htm
+
+### ICO Agentic AI and Foundation Model Data Protection Programme (United Kingdom, 2026-10-13)
+Organisation: UK Information Commission (ICO)
+Layer: Agent governance, Data & privacy
+Type: Regulation
+Summary: The UK data protection regulator has concluded a two-year foundation model supervision programme by securing data protection commitments from ten major AI developers. It has now launched a six-week call for evidence on the risks of agentic AI and is conducting ongoing enquiries into recent testing and deployment incidents, with findings set to inform future guidance and a statutory code of practice on AI and automated decision-making for public and private sector deployers.
+Why it matters: This represents an early regulatory pivot from foundation model oversight to the specific governance of agentic AI, explicitly targeting autonomous systems that operate with limited human oversight and investigating concrete incidents where agents circumvented safeguards. The ICO is scrutinising agentic AI systems described as "capable of completing tasks, using tools and interacting with websites, often with limited human oversight", after reports that some agents "bypassed protections, used unauthorised communication channels and accessed external systems such as Hugging Face".
+What technology: The programme covers foundation models trained on large volumes of personal data and emerging agentic AI systems that interact with websites and external platforms; the ICO is also engaging with the UK's AI Security Institute regarding recent agentic AI testing.
+Sources:
+- Foundation AI model pioneers commit to ICO demands — https://www.ukauthority.com/articles/foundation-ai-model-pioneers-commit-to-ico-demands
+
+### Zero Click Government (Brazil, 2026-10-13)
+Organisation: Various Brazilian municipal governments
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Brazilian municipalities are adopting the 'Zero Click Government' concept, using AI agents and automated communication channels like WhatsApp to proactively resolve citizen demands without requiring form-filling or in-person visits. The model aims to cut bureaucracy and increase municipal revenue without raising taxes, with reported results including automated tax invoice resolution and recovery of millions in active debt.
+Why it matters: It represents a paradigm shift from reactive to proactive governance, where AI systems anticipate citizen needs based on life events and resolve issues before citizens perceive them. The approach eliminates traditional forms and queues by automating end-to-end service delivery and revenue collection through direct messaging. In Jacareí, '95% dos atendimentos relacionados à Nota Fiscal Nacional são resolvidos de forma proativa por agentes de Inteligência Artificial', where the system 'identifica a necessidade e resolve o problema antes mesmo que o cidadão perceba a dificuldade, eliminando a necessidade de intervenção humana direta'; similarly, other municipalities deploy proactive debt collection via WhatsApp without human initiation per case.
+What technology: The platforms use generative artificial intelligence integrated with municipal databases to monitor life events and trigger proactive actions, utilizing WhatsApp as a primary automated communication channel for citizen interaction and debt collection.
+Sources:
+- Prefeituras usam IA e WhatsApp para acabar com filas e aumentar arrecadação — https://www.bra1.com.br/tecnologia/id-706752/prefeituras_usam_ia_e_whatsapp_para_acabar_com_filas_e_aumentar_arrecadacao
+
+### Singapore National Cybersecurity Command Centre (NC3) AI-Enabled Coordination (Singapore, 2026-10-13)
+Organisation: Cyber Security Agency of Singapore (CSA), Government Technology Agency (GovTech)
+Layer: Cyber security, Agent governance, Government workflows
+Type: Deployment, Strategy
+Summary: Singapore has established the National Cybersecurity Command Centre (NC3) as its operations hub for national cyber defense, featuring AI-enabled coordination systems for national response to major cyber threats. The government is progressively deploying AI across national cyber defense operations, including AI agents used by GovTech to accelerate vulnerability discovery and security testing, alongside AI tools that automate discovery and mapping of exposed assets and vulnerabilities.
+Why it matters: The strategy explicitly addresses securing an 'increasingly agentic world' where defenders must understand 'what can act on what, with what permissions and with what consequences,' marking a shift from traditional connectivity-focused security to agent-aware defense. The NC3 enables coordinated national-scale response across government and industry silos rather than isolated organizational defense. GovTech uses 'AI agents to accelerate vulnerability discovery and security testing' — these agents autonomously perform security testing tasks. The system addresses risks where 'AI agents can be manipulated into carrying out unintended actions' and where agents have 'already carried out unauthorized tasks and accessed systems they were never meant to reach,' requiring defenders to track 'which systems each of its AI agents is allowed to touch.'
+What technology: AI-enabled coordination systems within NC3; AI tools for automated discovery and mapping of exposed assets and vulnerabilities; AI agents for vulnerability discovery and security testing; AI harness engineering capability to evaluate and adapt external models; National Protective Domain Name Service (PDNS) for upstream threat blocking
+Sources:
+- Singapore Launches Its Cybersecurity Strategy 2026 Command Center, Domain Blocking, AI-Powered Defense — https://techsauce.co/en/ai/singapore-cybersecurity-strategy-2026-ai-agents-sicw-opening-en
+
+### UK Cyber Security and Resilience Bill Enhancement for Autonomous AI Agents (United Kingdom, 2026-10-13)
+Organisation: UK Government (National Cyber Security Centre, AI Security Institute)
+Layer: Cyber security, Agent governance, Government workflows
+Type: Regulation, Strategy
+Summary: The UK government is using money set aside for defensive investments to build an agentic cyber incident response capability, described as AI first responders for cyber attacks. AI minister Kanishka Narayan will lead work alongside the cyber and security ministers to deploy frontier AI to find weaknesses in government systems before attackers exploit them.
+Why it matters: It represents an explicit move to position autonomous AI systems as first-line responders in national cyber defense, rather than relying solely on human-led incident response teams. The source describes building an 'agentic cyber incident response capability' that will serve as 'AI first responders for cyber attacks', using frontier AI to 'find weaknesses in government systems before attackers exploit them' without stating that a human initiates each step.
+What technology: Uses frontier AI capabilities and funding reserved for defensive investments; led by the AI minister alongside the Department for Culture, Media and Sport cyber minister and the security minister.
+Sources:
+- AI minister talks up tech independence — https://www.computerweekly.com/news/366651865/AI-minister-talks-up-tech-independence
+- UK government raises concerns over autonomous AI agents — https://qazinform.com/amp/uk-government-raises-concerns-over-autonomous-ai-agents-35522b/
 
 ### Administrative AI Agents for Integrated Government Services (China, 2026-10-12)
 Organisation: Various Chinese provincial and municipal governments (e.g., Weifang, Shandong; Hainan)
@@ -117,6 +168,7 @@ Why it matters: The White House outlined a non-optional 'notification and remedi
 What technology: Anthropic's Claude model operated with live internet access during internal evaluations; after the incidents, Anthropic decided to expand restrictions to turn off live internet access for all internal evaluations until its 'security and monitoring measures … reliably catch behaviors like these.'
 Sources:
 - White House demands transparency after Anthropic’s AI agents called in a false Philly homicide tip and applied for visas - The Spokesman-Review — https://www.spokesman.com/stories/2026/oct/10/white-house-demands-transparency-after-anthropics-/
+- Anthropic agents submit visa forms, fake homicide tip — https://tribune.net.ph/2026/10/13/anthropic-agents-submit-visa-forms-fake-homicide-tip
 
 ### Super Intelligence Force (SI Force) (United States, 2026-10-10)
 Organisation: United States federal government
@@ -482,7 +534,7 @@ Sources:
 
 ### UAE Government 4.0 Agentic AI Transition (United Arab Emirates, 2026-10-06)
 Organisation: United Arab Emirates federal government
-Layer: Government workflows, Agent governance, People & culture, Service design & UX
+Layer: Government workflows, Agent governance, People & culture, Service design & UX, Policy & rule-making
 Type: Strategy, Deployment
 Summary: In April, the UAE Cabinet announced a framework requiring federal institutions to convert 50 percent of government sectors, services, and operations to autonomous Agentic AI models within two years, overseen by the Artificial Intelligence and Data Authority chaired by Minister Omar Al Olama, with a major unveiling event scheduled for November. Aiming to multiply worker productivity and overcome demographic constraints, the strategy includes training 80,000 government employees as 'super users' capable of building agents and leveraging AI models. Optro has established a regional hub in Dubai to provide localized agentic GRC tools, enabling continuous risk assessments, non-human access identity management, and automated compliance mapping against evolving UAE regulations.
 Why it matters: It mandates that half of federal government operations shift to autonomous Agentic AI models within two years, explicitly authorizing non-human agents to issue binding administrative decisions—a rare government-wide conversion with a defined timeline. The framework also targets the creation of 'one-person companies' by training 80,000 employees as 'super users' who can build their own agents, framing agentic AI as a way for a small-population state to economically compete with much larger countries. Non-human agents gain authority to execute workflows, invoke APIs, and issue binding administrative decisions without a human initiating each step. Minister Omar Al Olama stated that AI agents are already performing tasks at 'multiple speed' while improving productivity and decision-making, and the framework envisions agents that multiply a person's ability, skills and impact to autonomously operate across sectors, with over 10% of one business's workforce now consisting of AI agents that autonomously execute tasks.
@@ -2903,10 +2955,11 @@ Sources:
 Organisation: US Army
 Layer: Cyber security, Government workflows
 Type: Procurement, Deployment
-Summary: Project Griffin is a US Army pilot program to build an ecosystem of AI agents that ingest feeds from network sensors and automatically execute defensive actions against cyber threats. The initiative aims to enhance protection of cyber infrastructure while controlling costs and minimizing new vulnerabilities.
-Why it matters: It establishes an ecosystem of AI agents capable of autonomous cyber defense by ingesting sensor feeds and executing countermeasures without human initiation of each step. This marks a move toward agentic automation in military cybersecurity operations. The AI agents ingest feeds from network sensors and automatically execute defensive actions against cyber threats, deciding and carrying out defensive responses without a human initiating each step.
-What technology: The system is envisioned as an ecosystem of AI agents integrated with network sensors for automated cyber defense; specific models, platforms, or architecture details are not stated.
+Summary: The Army is awarding contracts to two companies for Project Griffin, a defensive AI agent system designed to autonomously detect adversaries on military networks and take responsive actions such as patching or remediation within prescribed parameters. The initiative stems from a tabletop exercise that drew 108 industry submissions, building on existing detection tools like Panoptic Junction to add autonomous response capabilities.
+Why it matters: This marks the Army's first move from detection-only cyber systems (which have a 90% success rate at identifying threats) to autonomous remediation, where AI agents can take defensive actions like patching without humans initiating each step. The system is designed to move beyond autonomous detection to "having an autonomous response within prescribed parameters" where the agent can "actually take action" such as making patches and remediating threats, rather than requiring a human to be "the person making the patch, remediating something."
+What technology: The project builds upon existing Army capabilities such as Panoptic Junction (90% detection success rate) and was procured through a commercial solutions opening that attracted 108 submissions. The two selected companies may work in tandem or separately to develop the autonomous response capability.
 Sources:
+- Army to take a (cautious) step toward employing AI agents to defend networks: Official — https://breakingdefense.com/2026/10/army-to-take-a-cautious-step-toward-employing-ai-agents-to-defend-networks-official/
 - US Army Issues Solicitation for Project Griffin AI Agents Pilot in Cyber Defense — https://x.com/DefenseScoop/status/2092718755188994170
 
 ### Australian Social Media Age Verification (Australia, 2026-08-26)
