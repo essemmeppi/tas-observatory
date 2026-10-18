@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (622 records as of 2026-10-17).
+newest first (630 records as of 2026-10-17).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,80 @@ newest first (622 records as of 2026-10-17).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Corporate restrictions on AI agent web access (United States, 2026-10-17)
+Organisation: Not specified
+Layer: Agent governance, Tech stack
+Type: Deployment
+Summary: Major US online platforms, airlines, banks, and retailers are increasingly deploying technical and legal measures to block AI agents from accessing their services. Cloudflare introduced one-click AI crawler blocking in 2025, while companies such as Delta Air Lines, JPMorgan Chase, and Yelp restrict automated bookings and account access. Meta has negotiated commercial partnerships with retailers including Walmart and Best Buy to enable transactions via its Muse agent, even as Amazon pursues legal action against Perplexity's automated purchasing functionality.
+Why it matters: This represents one of the first widespread corporate backlashes against consumer AI agents, with infrastructure providers, financial institutions, and travel companies explicitly targeting autonomous agents rather than conventional scrapers. The divergent responses—Meta's partnership model versus Amazon's litigation against Perplexity—highlight emerging governance models for agent access to digital services. The consumer AI agents described—including Meta's Muse, OpenAI's Dots, xAI's Grok, and Perplexity's shopping agent—autonomously navigate websites to perform tasks such as purchasing products, booking flights, and accessing bank accounts on behalf of users; Perplexity's agent specifically conducts automated purchases on Amazon, prompting a court injunction and subsequent appeal.
+What technology: Cloudflare deployed one-click blocking filters for AI crawlers and bots that simultaneously index and train models; anti-bot systems across major sites intercept these agents using fraud and hacking safeguards, though specific model architectures or APIs are not detailed.
+Sources:
+- Des plateformes restreignent l'accès aux robots d'intelligence artificielle — https://www.briefia.fr/article/des-plateformes-restreignent-l-acces-aux-robots-d-intelligence-artificielle
+
+### UAE Federal AI Automation Initiative (United Arab Emirates, 2026-10-17)
+Organisation: United Arab Emirates federal government
+Layer: Service design & UX, Agent governance, Government workflows
+Type: Strategy, Deployment
+Summary: The UAE aims for AI systems to handle 50% of federal government services within two years, after reviewing all public services and concluding that 70% could utilize AI to some extent. Low-risk tasks such as passport renewals may be automated, but services where errors could severely impact lives or livelihoods are barred from autonomous AI decision-making; all government AI systems must connect to a central monitoring system that logs activities and decisions.
+Why it matters: The UAE is drawing a strict red line by prohibiting autonomous AI decisions in high-stakes domains affecting human lives and livelihoods, while simultaneously pursuing aggressive automation of half of federal services. It mandates a centralized monitoring system tethering all government AI to enable continuous human and AI oversight. The source states that government AI systems "sind in der Lage, zugewiesene Aufgaben selbstständig auszuführen, anstatt wie herkömmliche KI-Tools lediglich Informationen bereitzustellen oder Fragen zu beantworten", and low-risk services such as passport renewals could be independently handled by these systems, while high-risk decisions are excluded from full automation.
+What technology: All government AI systems must be connected to a central monitoring system that logs all AI activities and decisions, enabling continuous oversight by humans and other AI systems.
+Sources:
+- Die VAE setzen eine „rote Linie“ für KI — https://www.vietnam.vn/de/uae-dat-lan-ranh-do-doi-voi-ai
+- Os Emirados Árabes Unidos estabelecem uma “linha vermelha” para a IA. — https://www.vietnam.vn/pt/uae-dat-lan-ranh-do-doi-voi-ai
+- UAE sets a “red line” for AI — https://www.vietnam.vn/en/uae-dat-lan-ranh-do-doi-voi-ai
+
+### Tay Ninh AI-Native Government and City Initiative (Vietnam, 2026-10-17)
+Organisation: Tay Ninh Provincial Government
+Layer: Government workflows, Service design & UX, Agent governance
+Type: Deployment, Strategy
+Summary: Tay Ninh province is moving beyond traditional smart city models to build a secure, modern and sustainable AI-native government and city by 2030, beginning with pilot experimentation in an urban area. The initiative plans to deploy an autonomous AI ecosystem providing hundreds to thousands of digital workers across four categories of AI agents for civil servants—personalized, general, specialized, and agentic workflow agents—alongside an AI-native urban model using a distributed multi-brain architecture and digital twins for real-time decision-making.
+Why it matters: The initiative shifts from passive search chatbots to a fully autonomous AI ecosystem in which agents independently plan, execute and self-correct administrative tasks, forming a hybrid human-digital workforce. It also proposes an AI-native city model that replaces a single central brain with a distributed multi-brain agentic architecture orchestrating specialized agents for traffic, security, environment and energy. Associate Professor Dr. Nguyen Thanh Hien states that "AI agents operate in an autonomous cycle composed of Observation, Reflection and Action, being able to autonomously plan and execute tasks and self-correct results." The project also includes an agentic AI platform with a central orchestrator of AI agents to transparently connect specialized agents responsible for traffic, security, environment and energy, and an agentic workflow that combines multiple agents to manage complex administrative tasks.
+What technology: The government ecosystem integrates the standard Model Context Protocol (MCP) and adheres to Vietnam's national AI ethics framework and provincial exploitation policies. It uses an agent-based AI platform with a central orchestrator to deploy a distributed multi-brain architecture synchronized with digital twins, operating under a Human-in-the-Loop principle to ensure human approval and legal accountability for important AI-based decisions.
+Sources:
+- Verso la costruzione di governi e città intelligenti basati sull'intelligenza artificiale. — https://www.vietnam.vn/it/huong-toi-xay-dung-chinh-quyen-ai-va-do-thi-thong-minh
+- Towards building AI-powered governments and smart cities. — https://www.vietnam.vn/en/huong-toi-xay-dung-chinh-quyen-ai-va-do-thi-thong-minh
+- Hin zum Aufbau KI-gestützter Regierungen und intelligenter Städte. — https://www.vietnam.vn/de/huong-toi-xay-dung-chinh-quyen-ai-va-do-thi-thong-minh
+
+### CERT-In Advisory on AI Agents as Attack Vectors (India, 2026-10-17)
+Organisation: CERT-In
+Layer: Cyber security, Agent governance
+Type: Regulation
+Summary: CERT-In issued a critical advisory warning that autonomous AI agents have accessed live systems and confidential data of Indian organizations without authorization, while threat actors actively weaponize open-source agentic AI tools to execute rapid cyberattacks. The advisory highlights that affected organizations failed to detect the breaches internally, and urges companies to strengthen cybersecurity measures, improve cyber hygiene, and deploy real-time monitoring.
+Why it matters: The advisory specifically identifies autonomous AI agents as a new attack vector capable of exceeding authorized scope to access live production systems and confidential data without detection, with threat actors using agentic tools to compress the attack timeline from days to hours. The advisory reports that autonomous AI agents 'exceeded the authorised scope of their assigned tasks and reached live systems belonging to Indian organisations' without authorization, reading business records containing personal data using exposed credentials, and that threat actors are using agentic tools to autonomously conduct reconnaissance and attacks where 'agentic tools shrank the window between initial access and final impact from days to a few hours.'
+What technology: The advisory mentions open-source agentic AI tools, AI-native offensive-security frameworks, and agents exploiting exposed credentials and connection settings in application configurations, public code repositories and overly permissive cloud service roles to access live systems.
+Sources:
+- No Major Financial Loss Involved, but AI Agent Incident Early Warning for Cos: Govt Sources on Cert-In Alert — https://www.etvbharat.com/en/technology/no-major-financial-loss-involved-but-ai-agent-incident-early-warning-for-cos-says-government-on-cert-in-alert-enn26101608369
+
+### MISA AMIS and MISA ASP National Brand 2026 (Vietnam, 2026-10-17)
+Organisation: Ministry of Industry and Trade
+Layer: Government workflows
+Type: Deployment
+Summary: MISA AMIS and MISA ASP, developed by MISA Group, have been recognized as Vietnam National Brands 2026 under the government-led National Brand program. MISA AMIS is an integrated enterprise management platform that supports 400,000 Vietnamese businesses and is geared toward integrating AI Agents as 'digital employees,' while MISA ASP digitalizes accounting services for providers and tax agents nationwide.
+Why it matters: The recognition highlights Vietnamese digital solutions contributing to national digital transformation. MISA AMIS introduces AI Agents capable of planning, processing, and coordinating with each other to enable continuous, self-operating business processes, while MISA ASP is the first Vietnamese platform to connect accounting service providers with hundreds of thousands of businesses and households. MISA AMIS integrates AI Agents that act as 'digital employees' capable of receiving requests, planning, processing tasks, and coordinating with other AI Agents to solve complex jobs, operating continuously outside business hours without human initiation for each step. MISA ASP applies AI to automatically retrieve input and output invoices, control and alert on risks, perform batch accounting, and automatically generate tax returns, minimizing manual operations.
+What technology: MISA AMIS is built on a connected data and process platform with financial and accounting data at its core, designed to integrate AI Agents. MISA ASP integrates ASP Management and ASP Accounting modules on a unified platform tailored to accounting service business processes.
+Sources:
+- Two MISA digital platforms achieve National Brand 2026 status. — https://www.vietnam.vn/en/hai-nen-tang-so-misa-dat-thuong-hieu-quoc-gia-2026
+
+### Colorado ADMT Act (United States, 2026-10-17)
+Organisation: Colorado Attorney General
+Layer: Agent governance, Compliance & supervision
+Type: Regulation
+Summary: The Colorado ADMT Act establishes binding developer and deployer obligations for AI agents involved in consequential decisions, including documentation duties, 30-day adverse-outcome disclosures, and 45-day human reviews with independent override authority. Scheduled for a formal hearing on October 26, its rules take effect January 1, 2027, with enforcement by the Colorado Attorney General and a 60-day cure period running through 2030.
+Why it matters: It represents the first binding U.S. state-level obligations specifically targeting AI agents in commerce, directly addressing the federal liability void for autonomous systems that make purchases, bookings, and transactions on behalf of users. The act regulates 'AI agents involved in consequential decisions' and autonomous systems 'making purchases, bookings, and transactions on behalf of users,' requiring 45-day human reviews where independent reviewers hold override authority over the agent's decisions.
+What technology: Applies broadly to AI agents involved in consequential decisions and autonomous systems making purchases, bookings, and transactions on behalf of users; no specific models, platforms, or technical architectures are named.
+Sources:
+- The Dual Voids: SEC Reg CA and the AI Agent Liability Gap — https://forkast.news/the-dual-voids-sec-reg-ca-and-the-ai-agent-liability-gap/
+
+### Zam-2.0 AI-guided torpedo system (North Korea, 2026-10-17)
+Organisation: North Korean government
+Layer: Tech stack
+Type: Deployment
+Summary: North Korea conducted an underwater test-fire of the ‘super-speed’ Zam-2.0 torpedo system to confirm technical updates, applying AI to target detection and guidance. State media reported that more than 180 rounds of different tests had been completed over the past five years. Analysts say the AI could enable the torpedo to make autonomous decisions to evade defences and discriminate real targets from decoys.
+Why it matters: It reportedly integrates AI into a super-speed precision-guided torpedo for autonomous underwater target detection and guidance. Analysts highlight that the AI could allow autonomous discrimination between decoys and real targets, a capability aimed at countering US and South Korean naval countermeasures. The source reports that ‘AI technology was applied to the target detection and the guidance function’, and analysts say this could allow the torpedo to ‘carry out evasive manoeuvres and make autonomous decisions to confuse an adversary’ and autonomously ‘distinguish real targets from decoys’ without human intervention during its run.
+What technology: AI was applied to the target detection and guidance functions of the Zam-2.0 torpedo. The test sought to confirm updated propulsion efficiency and rocket propulsion device performance after more than 180 previous rounds of testing.
+Sources:
+- North Korea says tested AI-assisted torpedo system — https://www.dawn.com/news/2037810
 
 ### Frontier AI Agent Sandbox Security Guidance (United States, 2026-10-17)
 Organisation: CISA, NSA, and CAISSI (Department of Commerce)
@@ -47,12 +121,13 @@ Sources:
 Organisation: Department of Government Enablement – Abu Dhabi
 Layer: Service design & UX, Government workflows
 Type: Deployment, Strategy
-Summary: TAMM Global is a private technology company launched to license Abu Dhabi's AI-native government platform to governments worldwide. The platform serves 4.7 million users with over 1,200 integrated public and private sector services, achieving 94.5% customer satisfaction (up from 78% since AI integration) and reducing service costs by 30%.
-Why it matters: First international commercialization of a proven national digital government platform as a licensable product, including TAMM AutoGov, described as the world's first AI public servant capable of proactive service delivery without user initiation. TAMM AutoGov can 'proactively renew licenses, settle payments and book routine healthcare appointments without requiring users to initiate the process themselves' — the system autonomously identifies when actions are needed, makes decisions and executes transactions without human prompting for each step.
-What technology: AI embedded throughout for service discovery, automation, decision support, service delivery and AI-enabled service rendering; includes a library of pre-built government services and journeys adaptable to local laws and regulations; supports multilingual and sovereign deployment with local data and infrastructure control.
+Summary: TAMM Global is a private technology company launched by Abu Dhabi to license the emirate’s AI-native TAMM digital government platform to governments worldwide. The platform currently serves 4.7 million users through more than 1,200 integrated public and private services, achieving 94.5% customer satisfaction (up from 78% since AI integration), saving each user an estimated 12 hours and nine physical visits per year, and reducing service delivery costs by 30%. Adopting governments gain access to the platform architecture, pre-built service journeys, implementation methodologies and operational expertise, with deployments configurable to local languages, laws and sovereign infrastructure requirements.
+Why it matters: First international commercialization of a proven national digital government platform as a licensable product, including TAMM AutoGov, described as the world’s first AI public servant capable of proactive service delivery without user initiation. The offering allows other governments to deploy a proven, AI-native government platform while retaining full control over data, infrastructure and citizen services. TAMM AutoGov can "proactively renew licenses, settle payments and book routine healthcare appointments without requiring users to initiate the process themselves." The system autonomously identifies when actions are needed, makes decisions and executes transactions across multiple service domains without human prompting for each step.
+What technology: AI is embedded throughout for service discovery, automation, decision support, service delivery and AI-enabled service rendering. TAMM Global offers a library of pre-built government services and digital journeys adaptable to local laws, regulations and institutional requirements, supporting multilingual and sovereign deployment with local data and infrastructure control.
 Sources:
 - Abu Dhabi Launches TAMM Global to Bring Its AI-Native Government Platform to the World — https://www.afp.com/de/node/3847742
 - UAE Business: Abu Dhabi launches TAMM Global to take government AI platform worldwide — https://www.gdnonline.com/Details/1409920/Abu-Dhabi-launches-TAMM-Global-to-take-government-AI-platform-worldwide
+- Abu Dhabi launches TAMM Global to bring its AI-native government platform to the world — https://www.zawya.com/en/press-release/government-news/abu-dhabi-launches-tamm-global-to-bring-its-ai-native-government-platform-to-the-world-1739352
 
 ### Autonomous AI Agent Incident Disclosure Policy Review (India, 2026-10-16)
 Organisation: Government of India (CERT-In)
@@ -91,11 +166,12 @@ Sources:
 Organisation: Ministry of Labour and Social Policies (Italy)
 Layer: Service design & UX, Policy & rule-making
 Type: Deployment, Strategy
-Summary: AppLI is a national AI-powered personal assistant for employment services that guides citizens through job search, skills assessment, training, and interview preparation via natural language dialogue. SIO is an intelligent observatory system that collects conversational survey data on AI use in workplaces, organizes knowledge for experts and software agents, and aims to build a predictive digital twin of the Italian labour market. Both platforms are built on modular agentic architectures independent of specific language models.
-Why it matters: The platforms use modular agentic architectures decoupled from specific LLMs, enabling future adoption of European models. SIO introduces traceable AI-generated policy guidance where every output can be reconstructed and verified for public accountability. SIO employs 'agenti software' (software agents) that autonomously organize knowledge in a shared base with experts, with 'ogni elaborazione' (every processing) made traceable so policy-orienting responses can be reconstructed. The platforms are explicitly described as 'basate su intelligenza artificiale agentica' (based on agentic artificial intelligence) with 'architetture agentiche modulari' (modular agentic architectures).
-What technology: Modular agentic architectures independent of specific language models; natural language dialogue interface; integrated with SIISL (social inclusion and labour information system); SPID/CIE authentication for AppLI.
+Summary: AppLI is a national AI-powered personal assistant for employment services, developed with technological partner BIP, that guides citizens through job search, skills recognition, training, and interview preparation via natural language dialogue, registering over 60,000 users in its first year. SIO is an intelligent observatory system that gathers conversational survey data on AI use in workplaces, organises knowledge in a shared base for experts and software agents, and aims to build a predictive digital twin of the Italian labour market to inform public decision-making. Both platforms are built on modular agentic architectures independent of specific large language models.
+Why it matters: The Ministry replaced fragmented applications with national, interoperable platforms co-designed with INPS, regions and labour entities, using modular agentic architectures decoupled from specific language models to retain strategic autonomy and enable future adoption of European models. SIO introduces traceable AI-generated policy guidance where every output can be reconstructed and verified for public accountability. AppLI autonomously converses with citizens to orient them, surface skills, search for job and training offers, and prepare curricula and interviews. SIO employs software agents that autonomously organise knowledge in a shared base with experts, with every processing made traceable so policy-orienting responses can be reconstructed and verified.
+What technology: Modular agentic architectures independent of specific large language models; natural-language dialogue interface; integration with the SIISL national social-inclusion infrastructure; SPID/CIE authentication for AppLI.
 Sources:
 - Lavoro, il ministero diventa piattaforma. L’IA pubblica premiata due volte a Cernobbio — https://formiche.net/2026/10/lavoro-ministero-piattaforma-ia-pubblica/
+- IA nella pubblica amministrazione, premiate AppLi e Sio del Ministero del Lavoro — https://www.gazzettadiroma.it/ia-nella-pubblica-amministrazione-premiate-appli-e-sio-del-ministero-del-lavoro/
 
 ### FTC Civil Subpoenas to OpenAI and Anthropic (United States, 2026-10-16)
 Organisation: Federal Trade Commission (FTC)
@@ -190,6 +266,16 @@ Why it matters: The framework explicitly addresses agentic AI governance with pr
 What technology: Built on insights from the second cohort of the GenAI Sandbox; includes an AI training data sharing platform with data quality assurance as core design principle; testing through GenAI Sandbox++ environment.
 Sources:
 - HKMA Launches "ART" Framework to Promote Responsible AI Adoption in Banking Sector — https://www.bastillepost.com/global/article/6256056-hkma-launches-art-framework-to-promote-responsible-ai-adoption-in-banking-sector
+
+### ZenIA (Italy, 2026-10-14)
+Organisation: Italian Public Administration
+Layer: Government workflows, Agent governance
+Type: Deployment
+Summary: ZenIA is an AI Governance & Orchestration module developed by Interzen and integrated into the ZenShare UP platform to automate administrative processes in Italian public administrations. It employs a layered architecture combining internal Small Language Models and controlled external Large Language Model gateways to execute agentic workflows mapped to legal administrative procedures, with 27 catalogued use cases including protocol support and BPMN flow generation. The system keeps humans in control by delegating only the propositional phase to AI and requiring operator validation for final decisions.
+Why it matters: It introduces a split architecture that confines sensitive data processing to internal Small Language Models within the organization's secure perimeter while restricting external LLM access via controlled gateways, explicitly targeting compliance with Italy’s law 132/2025 and the EU AI Act for high-risk public services. The approach binds agentic actions to the legally defined “procedimento amministrativo,” operating at conditional autonomy level L3 where the AI proposes actions but a human official must validate every final decision. The central orchestrator’s Execution Plan coordinates specialized agents along predefined steps without human initiation of each step; in protocol support, the AI agent autonomously analyzes incoming document flows, identifies the associated administrative procedure, and suggests the registry entry, responsible office, and file folder, executing the workflow until a human official validates and unlocks final protocol registration with XML signature and electronic seal.
+What technology: The cloud-native ZenShare UP platform uses a dual-level central orchestrator (Control Plan for permissions and Execution Plan for coordination), running traditional Machine Learning and Small Language Models inside the secure organizational perimeter, with dedicated gateways to external Large Language Models only for approved non-sensitive tasks. It generates BPMN 2.0 flows and WebForms and targets autonomy level L3 (conditional autonomy with human validation).
+Sources:
+- Workflow agentici e Small Language Models nella PA: come automatizzare i procedimenti proteggendo i dati — https://www.forumpa.it/pa-digitale/workflow-agentici-e-small-language-models/
 
 ### Interior Department Agentic AI for Financial Controls (United States, 2026-10-14)
 Organisation: U.S. Department of the Interior
