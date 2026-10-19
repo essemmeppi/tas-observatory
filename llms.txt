@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (630 records as of 2026-10-17).
+newest first (631 records as of 2026-10-18).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,16 @@ newest first (630 records as of 2026-10-17).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Nolla Health Autonomous AI Dermatology Prescription (United States, 2026-10-18)
+Organisation: State of Utah
+Layer: Service design & UX, Agent governance, Compliance & supervision
+Type: Deployment, Regulation
+Summary: Utah approved a pilot allowing Nolla Health's AI to autonomously diagnose acne and write prescriptions without human examination. Patients use a mobile app to submit facial photos and medical history; the AI assigns severity scores, selects from 8 topical medications, and transmits prescriptions directly to pharmacies, deployed through a three-stage rollout with progressively reduced physician oversight.
+Why it matters: First US regulatory approval of fully autonomous AI medical diagnosis and prescription for first-time patients (not just refills), utilizing a staged autonomy framework that transitions from dual-physician review to 10% monthly spot-checks. The AI autonomously assigns acne severity scores (0-5), applies exclusion criteria (pregnancy, organ disease) to determine escalation, selects specific medications from a formulary of 8 topical drugs, and transmits prescriptions to pharmacies. In the final stage, 90% of prescriptions are delivered to patients before any human review, with only 10% random monthly spot-checks by doctors.
+What technology: Mobile application capturing facial photos from five angles, medical history questionnaire, AI severity scoring algorithm, automated pharmacy integration for prescription fulfillment.
+Sources:
+- The $4.99 AI Doctor: Affordable Smart Medical Consultation & Budget-Friendly AI Healthcare Solution — https://eu.36kr.com/en/p/4030675884265865
 
 ### Corporate restrictions on AI agent web access (United States, 2026-10-17)
 Organisation: Not specified
@@ -55,6 +65,7 @@ Why it matters: The advisory specifically identifies autonomous AI agents as a n
 What technology: The advisory mentions open-source agentic AI tools, AI-native offensive-security frameworks, and agents exploiting exposed credentials and connection settings in application configurations, public code repositories and overly permissive cloud service roles to access live systems.
 Sources:
 - No Major Financial Loss Involved, but AI Agent Incident Early Warning for Cos: Govt Sources on Cert-In Alert — https://www.etvbharat.com/en/technology/no-major-financial-loss-involved-but-ai-agent-incident-early-warning-for-cos-says-government-on-cert-in-alert-enn26101608369
+- India's cyber agency says AI agents read confidential files without permission — https://startupfortune.com/indias-cyber-agency-says-ai-agents-read-confidential-files-without-permission/
 
 ### MISA AMIS and MISA ASP National Brand 2026 (Vietnam, 2026-10-17)
 Organisation: Ministry of Industry and Trade
@@ -119,7 +130,7 @@ Sources:
 
 ### TAMM Global (United Arab Emirates, 2026-10-16)
 Organisation: Department of Government Enablement – Abu Dhabi
-Layer: Service design & UX, Government workflows
+Layer: Service design & UX, Government workflows, Tech stack, Agent governance
 Type: Deployment, Strategy
 Summary: TAMM Global is a private technology company launched by Abu Dhabi to license the emirate’s AI-native TAMM digital government platform to governments worldwide. The platform currently serves 4.7 million users through more than 1,200 integrated public and private services, achieving 94.5% customer satisfaction (up from 78% since AI integration), saving each user an estimated 12 hours and nine physical visits per year, and reducing service delivery costs by 30%. Adopting governments gain access to the platform architecture, pre-built service journeys, implementation methodologies and operational expertise, with deployments configurable to local languages, laws and sovereign infrastructure requirements.
 Why it matters: First international commercialization of a proven national digital government platform as a licensable product, including TAMM AutoGov, described as the world’s first AI public servant capable of proactive service delivery without user initiation. The offering allows other governments to deploy a proven, AI-native government platform while retaining full control over data, infrastructure and citizen services. TAMM AutoGov can "proactively renew licenses, settle payments and book routine healthcare appointments without requiring users to initiate the process themselves." The system autonomously identifies when actions are needed, makes decisions and executes transactions across multiple service domains without human prompting for each step.
@@ -128,6 +139,8 @@ Sources:
 - Abu Dhabi Launches TAMM Global to Bring Its AI-Native Government Platform to the World — https://www.afp.com/de/node/3847742
 - UAE Business: Abu Dhabi launches TAMM Global to take government AI platform worldwide — https://www.gdnonline.com/Details/1409920/Abu-Dhabi-launches-TAMM-Global-to-take-government-AI-platform-worldwide
 - Abu Dhabi launches TAMM Global to bring its AI-native government platform to the world — https://www.zawya.com/en/press-release/government-news/abu-dhabi-launches-tamm-global-to-bring-its-ai-native-government-platform-to-the-world-1739352
+- Abu Dhabi lança a TAMM Global para levar ao mundo sua plataforma governamental nativa em IA — http://www.afp.com/pt/infos/abu-dhabi-lanca-tamm-global-para-levar-ao-mundo-sua-plataforma-governamental-nativa-em-ia
+- Abu Dhabi Launches TAMM Global to Bring Its AI-Native Government Platform to the World — https://en.antaranews.com/amp/news/436229/abu-dhabi-launches-tamm-global-to-bring-its-ai-native-government-platform-to-the-world
 
 ### Autonomous AI Agent Incident Disclosure Policy Review (India, 2026-10-16)
 Organisation: Government of India (CERT-In)
