@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (640 records as of 2026-10-20).
+newest first (644 records as of 2026-10-21).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,46 @@ newest first (640 records as of 2026-10-20).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### 2026 Public AI Transformation Challenge (South Korea, 2026-10-21)
+Organisation: Ministry of the Interior and Safety
+Layer: Government workflows, Agent governance
+Type: Deployment
+Summary: A government-wide competition to scale AI tools built by civil servants from individual experimentation to institutional operating systems. The challenge includes categories for converting vibe-coded tools into shared administrative services and developing autonomous work agents using sovereign AI models deployed on the ministry's network.
+Why it matters: Institutionalizes grassroots 'vibe coding' experiments by civil servants into government-wide standards, with a dedicated track for building autonomous agents using only natural language prompts without coding expertise. The 'Independent AI Agent category' requires participants to develop 'work agents' using only prompts without coding, deployed on South Korean-made independent AI. Specific agent types include a 'work handover assistant,' 'administrative affairs secretary,' and 'regulation drafting and amendment agent' that perform multi-step administrative tasks.
+What technology: Built on South Korean-made independent AI models served on the ministry's internal work network; supports 'vibe coding' (conversational coding) allowing civil servants to create tools and agents through natural language prompts without specialized development knowledge.
+Sources:
+- South Korea's Interior Ministry Launches Government-Wide Push to Scale AI Tools Built by Civil Servants, With approximately $13,000 Contest — https://finance.biggo.com/news/df1da183-ca47-46b7-97e0-847eb313d8a6
+
+### Investigation into Artex AI cyberattacks (Japan, 2026-10-21)
+Organisation: Japanese Government
+Layer: Cyber security, Agent governance
+Type: Strategy
+Summary: The Japanese government is investigating a wave of cyberattacks against domestic enterprises in which perpetrators deployed the autonomous AI program Artex to independently identify system vulnerabilities. The Cabinet Secretariat and cybersecurity ministry are analyzing the attacks to determine the extent of AI misuse and whether foreign actors were involved, while security firms GMO Cybersecurity and JPCERT/CC have identified multiple attack infrastructures targeting specific industries.
+Why it matters: This marks one of the first documented government-level investigations into the weaponization of autonomous vulnerability-scanning AI (Artex) for criminal cyberattacks, highlighting the shift from manual hacking to AI-driven autonomous exploitation of corporate infrastructure. The Artex program was capable of autonomously detecting vulnerabilities in computer systems without requiring human initiation of each individual scan, as described by the developer and security researchers: 'selbstständig Schwachstellen in Computersystemen aufspüren' (independently/autonomously detect vulnerabilities) and 'eigenständig Schwachstellen untersuchen' (independently investigate vulnerabilities).
+What technology: The Artex AI program, originally developed by the Chinese user 'Autumn-27' for legitimate security testing, autonomously scanned for known security vulnerabilities and attacked internet service interfaces; attackers also used it to analyze Android apps to discover weaknesses in connected backend systems.
+Sources:
+- Japanische Sicherheitsfirma findet Hinweise auf chinesische KI hinter den jüngsten Cyberangriffen — https://sumikai.com/nachrichten-aus-japan/japanische-sicherheitsfirma-findet-hinweise-auf-chinesische-ki-hinter-den-juengsten-cyberangriffen-381879/
+
+### Walmart Agent Profiles (United States, Canada, 2026-10-21)
+Organisation: Walmart
+Layer: Service design & UX
+Type: Deployment
+Summary: Walmart unveiled tools allowing AI agents to shop on behalf of its customers. The system lets customers register AI assistants as separate profiles within their Walmart account, set spending limits, and delegate purchasing decisions to agents that can search for products, compare prices, and complete purchases.
+Why it matters: Walmart is taking an open approach allowing third-party AI agents from providers like Meta and Anthropic to make purchases on its platform, contrasting with rival Amazon's restrictive stance that blocks outside agents while promoting its own AI tools. The AI agents can "carry out multi-step tasks on a user's behalf -- such as searching for products, comparing prices and completing a purchase" and can "buy on its own up to a spending limit they set, such as $50, $100 or $200" without requiring human approval for each individual transaction.
+What technology: Integration with third-party AI agents including Meta's Muse and Anthropic's Claude Duet through "Agent Profiles" that register each AI assistant as a separate profile within Walmart accounts, with configurable spending limits and approval settings.
+Sources:
+- Walmart welcomes AI agents as Anthropic launches its own — https://www.ctvnews.ca/sci-tech/article/walmart-welcomes-ai-agents-as-anthropic-launches-its-own/
+
+### Berlin Automated Behavioral Analysis (Verhaltensscanner) (Germany, 2026-10-20)
+Organisation: Berlin Police
+Layer: Compliance & supervision, Data & privacy
+Type: Deployment
+Summary: The Berlin Police operates an AI-powered behavioral analysis system using approximately 30 cameras at Kottbusser Tor. The software overlays stick figures on video feeds to analyze poses and movements via vectors, compares them with training data, and autonomously alerts a video control center when it detects likely police-relevant behavior. A 24/7 pilot operation is planned to follow the current intermittent testing phase, while coalition negotiations will determine its future beyond the scheduled 2028 evaluation.
+Why it matters: Unlike earlier systems in Mannheim that relied on thousands of police reenactments for training, the Berlin software was trained with AI-generated scenes. The system is also integrated with federal facial recognition databases, enabling identification of flagged individuals via screenshots sent to the BKA face search system. The system permanently analyzes monitored persons' poses and movements using vector-based stick figures and assesses context without human initiation; when it determines something is police-relevant, it autonomously issues an alert: 'Wenn sie feststellt, dass etwas mit hinreichend großer Wahrscheinlichkeit polizeilich relevant aussieht, gibt sie eine Meldung aus. Dann geht in der Videoleitstelle ein Monitor an.'
+What technology: The software uses pose estimation with vector-based stick figures overlaid on video feeds and compares movements against AI-generated training data. It runs on Axis cameras and was developed by Staige GmbH, a subsidiary of Adesso SE.
+Sources:
+- FAQ: Was man zum Verhaltensscanner in Berlin wissen sollte — https://netzpolitik.org/2026/faq-was-man-zum-verhaltensscanner-in-berlin-wissen-sollte/
 
 ### ICE Legal Discovery AI Platform (United States, 2026-10-20)
 Organisation: U.S. Immigration and Customs Enforcement (ICE)
@@ -61,20 +101,6 @@ Why it matters: The proposal extends legal accountability specifically to compan
 What technology: Not specified beyond reference to AI agents capable of autonomous web browsing and task completion.
 Sources:
 - Australian laws are tougher on hacked companies than rogue AI doing it - here's what needs to change to make agents accountable — https://www.startupdaily.net/topic/artificial-intelligence-machine-learning/australian-laws-are-tougher-on-hacked-companies-than-rogue-ai-doing-it-heres-what-needs-to-change-to-make-agents-accountable/
-
-### Gemini Launchpads (United States, 2026-10-19)
-Organisation: U.S. federal agencies
-Layer: Government workflows, Tech stack, Service design & UX, Crisis response
-Type: Deployment, Strategy
-Summary: A Google Public Sector initiative—currently in preview with the U.S. Department of Health and Human Services and the State of Missouri among early pilots—to help federal, state, and local agencies deploy and scale agentic AI quickly, automating multistep workflows such as acquisition proposal review, regulatory analysis, constituent document processing, and FOIA redaction. Built on Google’s Gemini models and supported by implementation partners including Accenture Federal Services, Deloitte, and SAIC, the platform connects to existing agency systems and is designed to accelerate agentic AI adoption in public-sector operations, with general availability expected later this year.
-Why it matters: The platform lets users describe goals in natural language so that Gemini autonomously determines which prebuilt skills, tools, and workflows to execute, using specialized rules that keep tasks on script. It also bundles centralized governance, audit logging, and a prescreened marketplace of third-party AI agents from partners such as Accenture Federal Services and Deloitte, integrated via secure connectors to common government platforms and federal regulatory databases. The platform uses agentic AI to carry out multistep workflows such as reviewing acquisition proposals against the Federal Acquisition Regulation, analyzing regulations, processing constituent documents, handling FOIA redactions, and drafting ServiceNow incident tickets for compliance remediation. Rather than requiring employees to select individual tools or build agents, users describe what they want to accomplish in natural language and Gemini determines which prebuilt skills and workflows to execute, while pre-built specialized skills act as rules instructing the agent to complete tasks without going off script.
-What technology: Built on Google’s Gemini models and offered through Google Cloud, the platform integrates with Google Workspace, Microsoft SharePoint, Outlook 365, Salesforce, ServiceNow, Oracle enterprise applications, and federal regulatory sources including the Electronic Code of Federal Regulations, Regulations.gov, the Federal Register, and BLEN databases. Partner deployments add zero-trust security frameworks, tailored data fabrics, and specialized accelerators—such as Onix’s Orchestrator for emergency response and Egen’s higher-education and fraud-intelligence modules—with the ecosystem designed to meet FedRAMP High and CMMC compliance standards.
-Sources:
-- Google Launches Gemini for Government Services, With HHS Among Early Users — https://www.meritalk.com/articles/google-launches-gemini-for-government-services-with-hhs-among-early-users/
-- Google Public Sector unveils Gemini for government services — https://www.nextgov.com/artificial-intelligence/2026/10/google-public-sector-unveils-gemini-government-services/416681/
-- Accenture Federal Services and Google Public Sector Launch Gemini Launchpads for Federal AI Agents — https://newsroom.accenture.com/news/2026/accenture-federal-services-and-google-public-sector-establish-gemini-launchpads-to-power-purpose-built-agents-across-federal-missions
-- Accenture, Google Team Up on Agentic AI Capabilities for Federal Agencies — https://www.morningstar.com/news/dow-jones/202610193858/accenture-google-team-up-on-agentic-ai-capabilities-for-federal-agencies
-- Accenture Expands Federal AI Push With Google's Gemini Agents, Months After OpenAI Partnership — https://finance.yahoo.com/technology/ai/articles/accenture-expands-federal-ai-push-124140285.html
 
 ### Task Force Lexington Agentic Cyber Protection Teams (United States, 2026-10-19)
 Organisation: Army Cyber Command
@@ -206,7 +232,7 @@ Sources:
 
 ### AI CITY Solution and Global Ecosystem Alliance (China, Saudi Arabia, Angola, Ethiopia, 2026-10-16)
 Organisation: State Information Center of China
-Layer: Government workflows, Service design & UX
+Layer: Government workflows, Service design & UX, Tech stack
 Type: Deployment, Strategy
 Summary: Huawei and the State Information Center of China released the AI CITY Development Research Report 2026 and launched the Global AI CITY Innovation & Development Ecosystem Alliance to promote autonomous "city super agents" for urban governance and public services. Live implementations include Chinese cities such as Shenzhen Longgang, Shantou, Wuhan and Karamay, and Saudi Arabia's National Municipal Operations Command and Control Center, where an intelligent work-order system automatically classifies urban incidents and performs closed-loop verification to improve safety and efficiency.
 Why it matters: The report defines a shift from data-driven cities to an era of autonomous "city super agents" that proactively manage governance and services. It also introduces a Token Factory cross-border model that keeps data local while exporting AI services, and a unified AI CITY technical reference architecture based on OpenHarmony and Ascend AI compute. The city governance agent automatically classifies urban governance events in seconds, makes city safety visible, conducts closed-loop intelligent verification and reduces labor costs, achieving over 80% accuracy in Saudi Arabia without a human initiating each step. The government service agent enables "Chat-to-Process," proactively identifying eligible citizens and delivering benefits directly rather than waiting for manual applications or visits to service windows.
@@ -214,6 +240,7 @@ What technology: The AI CITY Solution uses OpenHarmony as a unified terminal fou
 Sources:
 - Huawei and State Information Center Release AI CITY Development Research Report and Launch Global AI CITY Innovation & Development Ecosystem Alliance — https://www.prnewswire.co.uk/news-releases/huawei-and-state-information-center-release-ai-city-development-research-report-and-launch-global-ai-city-innovation--development-ecosystem-alliance-302910928.html
 - Global Government AI CITY Innovation Summit Successfully Held — https://www.prnewswire.com/news-releases/global-government-ai-city-innovation-summit-successfully-held-302910844.html
+- Global Government AI CITY Innovation Summit Successfully Held — https://en.antaranews.com/amp/news/436997/global-government-ai-city-innovation-summit-successfully-held
 
 ### VA Clinical Note Drafting AI Agent (United States, 2026-10-16)
 Organisation: US Department of Veterans Affairs
@@ -701,6 +728,7 @@ Sources:
 - Anthropic agents submit visa forms, fake homicide tip — https://tribune.net.ph/2026/10/13/anthropic-agents-submit-visa-forms-fake-homicide-tip
 - Anthropic discloses fake tip to police among new rogue AI incidents — https://arizonadigitalfreepress.com/anthropic-discloses-fake-tip-to-police-among-new-rogue-ai-incidents/
 - Anthropic AI model submits 20 visa applications on live US government website — https://www.tbsnews.net/worldbiz/usa/anthropic-ai-model-submits-20-visa-applications-live-us-government-website-1568141
+- An AI model’s false tip to Philadelphia police reveals how digital agents can do as they’re told and still cause trouble — https://theconversation.com/an-ai-models-false-tip-to-philadelphia-police-reveals-how-digital-agents-can-do-as-theyre-told-and-still-cause-trouble-294228
 
 ### Super Intelligence Force (SI Force) (United States, 2026-10-10)
 Organisation: United States federal government
@@ -6133,6 +6161,20 @@ What technology: AlemGPT is described as a multi-agent AI platform with a conver
 Sources:
 - All public services to be moved to AlemGPT in Kazakhstan — https://en.tengrinews.kz/kazakhstan_news/all-public-services-to-be-moved-to-alemgpt-in-kazakhstan-270629/
 
+### Gemini Launchpads (United States, 2026-01-01)
+Organisation: U.S. federal agencies
+Layer: Government workflows, Tech stack, Service design & UX, Crisis response
+Type: Deployment, Strategy
+Summary: A Google Public Sector initiative—currently in preview with the U.S. Department of Health and Human Services and the State of Missouri among early pilots—to help federal, state, and local agencies deploy and scale agentic AI quickly, automating multistep workflows such as acquisition proposal review, regulatory analysis, constituent document processing, and FOIA redaction. Built on Google’s Gemini models and supported by implementation partners including Accenture Federal Services, Deloitte, and SAIC, the platform connects to existing agency systems and is designed to accelerate agentic AI adoption in public-sector operations, with general availability expected later this year.
+Why it matters: The platform lets users describe goals in natural language so that Gemini autonomously determines which prebuilt skills, tools, and workflows to execute, using specialized rules that keep tasks on script. It also bundles centralized governance, audit logging, and a prescreened marketplace of third-party AI agents from partners such as Accenture Federal Services and Deloitte, integrated via secure connectors to common government platforms and federal regulatory databases. The platform uses agentic AI to carry out multistep workflows such as reviewing acquisition proposals against the Federal Acquisition Regulation, analyzing regulations, processing constituent documents, handling FOIA redactions, and drafting ServiceNow incident tickets for compliance remediation. Rather than requiring employees to select individual tools or build agents, users describe what they want to accomplish in natural language and Gemini determines which prebuilt skills and workflows to execute, while pre-built specialized skills act as rules instructing the agent to complete tasks without going off script.
+What technology: Built on Google’s Gemini models and offered through Google Cloud, the platform integrates with Google Workspace, Microsoft SharePoint, Outlook 365, Salesforce, ServiceNow, Oracle enterprise applications, and federal regulatory sources including the Electronic Code of Federal Regulations, Regulations.gov, the Federal Register, and BLEN databases. Partner deployments add zero-trust security frameworks, tailored data fabrics, and specialized accelerators—such as Onix’s Orchestrator for emergency response and Egen’s higher-education and fraud-intelligence modules—with the ecosystem designed to meet FedRAMP High and CMMC compliance standards.
+Sources:
+- Google Public Sector Launches Gemini for Government Services Agentic AI Platform — https://cloud.google.com/blog/topics/public-sector/announcements-and-highlights-from-google-public-sector-summit-2026
+- Google Launches Gemini for Government Services, With HHS Among Early Users — https://www.meritalk.com/articles/google-launches-gemini-for-government-services-with-hhs-among-early-users/
+- Google Public Sector unveils Gemini for government services — https://www.nextgov.com/artificial-intelligence/2026/10/google-public-sector-unveils-gemini-government-services/416681/
+- Accenture Federal Services and Google Public Sector Launch Gemini Launchpads for Federal AI Agents — https://newsroom.accenture.com/news/2026/accenture-federal-services-and-google-public-sector-establish-gemini-launchpads-to-power-purpose-built-agents-across-federal-missions
+- Accenture, Google Team Up on Agentic AI Capabilities for Federal Agencies — https://www.morningstar.com/news/dow-jones/202610193858/accenture-google-team-up-on-agentic-ai-capabilities-for-federal-agencies
+
 ### Uranos KI (Germany, 2025-12-10)
 Organisation: Federal Ministry of Defence (Germany)
 Layer: Crisis response, Government workflows
@@ -6239,13 +6281,14 @@ Sources:
 
 ### CGI Federal AI Agent Catalog (United States, 2025-09-22)
 Organisation: CGI Federal
-Layer: Government workflows, Tech stack
+Layer: Government workflows, Tech stack, Agent governance
 Type: Deployment, Procurement
-Summary: CGI Federal announced an AI Agent Catalog offering agentic AI tools tailored for U.S. federal government use cases. The initiative targets federal workflows to improve efficiency and operations across public sector agencies.
-Why it matters: This represents a vendor-led commercialization of pre-built government-specific agentic AI tools, moving beyond generic enterprise offerings to purpose-built federal agency solutions. The offering is explicitly described as 'agentic AI tools' for federal workflows, though the source does not detail specific autonomous decision-making or task execution capabilities beyond the 'agentic' framing.
-What technology: Catalog-based delivery model for government-tailored AI agents; specific models, platforms, or architecture not stated.
+Summary: CGI Federal launched an AI Agent Catalog developed with Amazon Web Services to help U.S. federal agencies deploy agentic AI securely. The catalog offers curated use cases—including cyber defence, fraud detection, benefits processing and back-office modernization—alongside tools that generate self-directed agents for secure federal environments and governance advisory services to maintain oversight and compliance.
+Why it matters: This represents a vendor-led commercialization of pre-built government-specific agentic AI tools, moving beyond generic enterprise offerings to purpose-built federal agency solutions. It packages agentic AI into a curated, deployment-ready catalog specifically designed for highly regulated federal settings, integrating pre-built use cases with built-in governance, auditing and compliance capabilities. The catalog includes tools that generate "self-directed agents able to operate in secure federal environments and automate administrative and operational workflows," with agents that take actions such as retrieving records, completing forms, routing cases and flagging anomalies without a human initiating each step.
+What technology: The catalog is built with Amazon Web Services to fit within existing federal cloud environments and draws on CGI's AI-powered IT modernization offering and CGI Yukon digital workforce accelerator.
 Sources:
 - CGI Federal Introduces AI Agent Catalog for U.S. Agencies — https://x.com/movesurge/status/2104878986887090565
+- CGI’s AI Agent Catalog: How the Firm Is Scaling AI — https://kalkinemedia.com/ca/stocks/artificial-intelligence/cgis-ai-agent-catalog-how-the-firm-is-scaling-ai
 
 ### Waymo Self-Driving Service Integration (United States, 2025-09-21)
 Organisation: Waymo, City of Chandler
