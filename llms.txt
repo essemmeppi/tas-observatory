@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (656 records as of 2026-10-23).
+newest first (653 records as of 2026-10-23).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,26 +11,6 @@ newest first (656 records as of 2026-10-23).
 - Feedback: hello@agenticstate.org
 
 ## Records
-
-### Siemens-Nvidia AI Manufacturing Deployment at Erlangen (Germany, 2026-10-23)
-Organisation: Siemens
-Layer: Government workflows, Tech stack
-Type: Deployment
-Summary: Siemens and Nvidia are deploying AI systems including digital twins, AI-generated training data, and AI agents at Siemens' Electronics Factory in Erlangen, Germany. The initiative aims to create fully AI-powered manufacturing plants, with applications including photorealistic PCB assembly generation for training inspection systems and AI agents for production scenario modeling. Over 100 AI algorithms are already in use across production, logistics, quality inspection and maintenance, with claimed reductions of up to 85% in engineering effort and 40% in time-to-market.
-Why it matters: The project represents a shift from one-off AI projects to a shared industrial AI platform integrating digital twins, simulation capabilities, and AI models for scalable automation. It uses Nvidia's Cosmos world models for synthetic training data and Factory Operations Blueprint for AI agent-supported production planning. AI agents autonomously model and predict production scenarios, with a digital twin used to validate proposed plans before implementation. The Factory Operations Blueprint specifically supports AI agents in production planning, allowing the system to simulate proposed plans against real factory data without requiring human initiation of each planning step.
-What technology: Nvidia Cosmos world models for synthetic training data generation, Nvidia Factory Operations Blueprint for AI agent orchestration, Nvidia Omniverse libraries for simulation, and digital twin technology for factory modeling and PCB assembly visualization.
-Sources:
-- Siemens, Nvidia deploy industrial AI to reduce engineering effort — https://www.techtarget.com/ai/news/366652655/Siemens-Nvidia-deploy-industrial-AI-to-reduce-engineering-effort
-
-### Autonomous Robotaxi Pilot in Kazakhstan (Kazakhstan, 2026-10-23)
-Organisation: Government of Kazakhstan
-Layer: Service design & UX, Agent governance
-Type: Deployment
-Summary: Partnership between Pony.ai, NVIDIA and inDrive to launch Level 4 autonomous robotaxis in Astana, Kazakhstan. The pilot will use Pony.ai's seventh-generation vehicles and NVIDIA AI infrastructure, operating through the inDrive ride-hailing app following the establishment of Kazakhstan's first legal framework for driverless transport.
-Why it matters: Kazakhstan serves as the first test market for this specific partnership, selected specifically for its regulatory readiness after creating the country's first structured legal framework for driverless transport. Level 4-ready autonomous vehicles that can perform all driving tasks under specific conditions without human intervention, providing autonomous ride-hailing services to riders through the inDrive app.
-What technology: Pony.ai seventh-generation (Gen-7) robotaxis, NVIDIA AI infrastructure, and inDrive ride-hailing platform integration.
-Sources:
-- Pony.ai partners with inDrive, Nvidia to launch robotaxis in Kazakhstan — https://uk.finance.yahoo.com/news/pony-ai-partners-indrive-nvidia-050808658.html
 
 ### Secure Military AI Layer (India, 2026-10-23)
 Organisation: Ministry of Defence (MoD)
@@ -41,18 +21,6 @@ Why it matters: It represents a strategic effort to build indigenous, sovereign 
 What technology: The layer will run on secure domestic computing infrastructure with already-procured compute, developed by leveraging private industries selected by India’s AI Mission. It is designed to support joint operations across land, sea, air, space and cyber domains.
 Sources:
 - Defence Ministry, AI Mission join hands to build secure military AI layer, says RK Singh — https://www.thehindubusinessline.com/news/defence-ministry-ai-mission-join-hands-to-build-secure-military-ai-layer-says-rk-singh/article71616224.ece
-
-### Wayve-Stellantis-NVIDIA French Autonomous Vehicle Deployment Partnership (France, 2026-10-23)
-Organisation: Government of France (Ministry of Transport)
-Layer: Service design & UX, Agent governance, Policy & rule-making
-Type: Deployment, Strategy
-Summary: Wayve, Stellantis and NVIDIA announced a collaboration with the French government to promote autonomous vehicle diffusion in France and accelerate development across the EU. The initiative combines Stellantis L4-Ready vehicle platforms, Wayve’s end-to-end embodied AI driving system and NVIDIA Halos OS on Hyperion compute/sensor architecture to build a full-value-chain ecosystem. An L2++ hands-free, door-to-door supervised driving assistant has already been demonstrated on Fiat 500e and Maserati Grecale development vehicles, with a target launch in 2028, alongside future driverless mobility services.
-Why it matters: The partnership integrates end-to-end embodied AI that learns from real-world experience without high-definition maps, hand-coded driving rules or custom hardware into a government-backed industrial ecosystem. It also establishes a formal government-industry collaboration model that includes unions, city authorities and mobility operators to manage the societal transition to autonomous transport. The system acts as a “general-purpose AI driver, able to equip any vehicle, anywhere” (“conducente IA per uso generale”), using end-to-end embodied AI to autonomously execute hands-free, door-to-door driving on highways and in urban areas, and is intended to power future driverless mobility services (“servizi di mobilità senza conducente”) without human initiation of each driving manoeuvre.
-What technology: Wayve’s embodied AI end-to-end driving system integrates NVIDIA Halos OS on NVIDIA Hyperion compute and sensor architecture, paired with Stellantis L4-Ready platforms and the STLA AutoDrive technology stack. Development vehicles (Fiat 500e and Maserati Grecale) demonstrated L2++ hands-free supervised driving, moving from integration to on-road testing in under four weeks.
-Sources:
-- Wayve, Stellantis e NVIDIA collaborano con il governo francese per la diffusione dei veicoli autonomi — https://www.unite.ai/it/wayve-stellantis-and-nvidia-join-french-government-on-av-deployment/
-- Wayve, Stellantis and Nvidia team up with France on self-driving cars — https://thenextweb.com/news/wayve-stellantis-nvidia-france-self-driving
-- Wayve, Stellantis, and NVIDIA Join French Government on AV Deployment — https://www.unite.ai/wayve-stellantis-and-nvidia-join-french-government-on-av-deployment/
 
 ### G42 Agentic AI Partnerships with Greek Ministry of Digital Governance (Greece, United Arab Emirates, 2026-10-23)
 Organisation: Greece Ministry of Digital Governance and Artificial Intelligence
