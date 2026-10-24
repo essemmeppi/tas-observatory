@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (649 records as of 2026-10-22).
+newest first (656 records as of 2026-10-23).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,80 @@ newest first (649 records as of 2026-10-22).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Siemens-Nvidia AI Manufacturing Deployment at Erlangen (Germany, 2026-10-23)
+Organisation: Siemens
+Layer: Government workflows, Tech stack
+Type: Deployment
+Summary: Siemens and Nvidia are deploying AI systems including digital twins, AI-generated training data, and AI agents at Siemens' Electronics Factory in Erlangen, Germany. The initiative aims to create fully AI-powered manufacturing plants, with applications including photorealistic PCB assembly generation for training inspection systems and AI agents for production scenario modeling. Over 100 AI algorithms are already in use across production, logistics, quality inspection and maintenance, with claimed reductions of up to 85% in engineering effort and 40% in time-to-market.
+Why it matters: The project represents a shift from one-off AI projects to a shared industrial AI platform integrating digital twins, simulation capabilities, and AI models for scalable automation. It uses Nvidia's Cosmos world models for synthetic training data and Factory Operations Blueprint for AI agent-supported production planning. AI agents autonomously model and predict production scenarios, with a digital twin used to validate proposed plans before implementation. The Factory Operations Blueprint specifically supports AI agents in production planning, allowing the system to simulate proposed plans against real factory data without requiring human initiation of each planning step.
+What technology: Nvidia Cosmos world models for synthetic training data generation, Nvidia Factory Operations Blueprint for AI agent orchestration, Nvidia Omniverse libraries for simulation, and digital twin technology for factory modeling and PCB assembly visualization.
+Sources:
+- Siemens, Nvidia deploy industrial AI to reduce engineering effort — https://www.techtarget.com/ai/news/366652655/Siemens-Nvidia-deploy-industrial-AI-to-reduce-engineering-effort
+
+### Autonomous Robotaxi Pilot in Kazakhstan (Kazakhstan, 2026-10-23)
+Organisation: Government of Kazakhstan
+Layer: Service design & UX, Agent governance
+Type: Deployment
+Summary: Partnership between Pony.ai, NVIDIA and inDrive to launch Level 4 autonomous robotaxis in Astana, Kazakhstan. The pilot will use Pony.ai's seventh-generation vehicles and NVIDIA AI infrastructure, operating through the inDrive ride-hailing app following the establishment of Kazakhstan's first legal framework for driverless transport.
+Why it matters: Kazakhstan serves as the first test market for this specific partnership, selected specifically for its regulatory readiness after creating the country's first structured legal framework for driverless transport. Level 4-ready autonomous vehicles that can perform all driving tasks under specific conditions without human intervention, providing autonomous ride-hailing services to riders through the inDrive app.
+What technology: Pony.ai seventh-generation (Gen-7) robotaxis, NVIDIA AI infrastructure, and inDrive ride-hailing platform integration.
+Sources:
+- Pony.ai partners with inDrive, Nvidia to launch robotaxis in Kazakhstan — https://uk.finance.yahoo.com/news/pony-ai-partners-indrive-nvidia-050808658.html
+
+### Secure Military AI Layer (India, 2026-10-23)
+Organisation: Ministry of Defence (MoD)
+Layer: Government workflows, Tech stack
+Type: Deployment
+Summary: The Ministry of Defence is collaborating with India’s AI Mission to develop a dedicated military AI layer on secure domestic computing infrastructure to provide decision-making support, target acquisition and data fusion. The initiative aims to establish a sensor-to-shooter loop for the armed forces while sustaining technological sovereignty, and compute for the layer has already been procured.
+Why it matters: It represents a strategic effort to build indigenous, sovereign military AI capabilities rather than relying on foreign technology that could contain backdoors or kill switches. The project piggybacks on the national AI Mission and selected private industry partners to create a dedicated secure compute layer specifically for military operations. The system is intended to autonomously execute a ‘sensor-to-shooter loop’ by fusing sensor data and performing target acquisition to connect detection directly to engagement. The Defence Secretary stated the AI layer would provide ‘decision-making support, target acquisition and data fusion, leading to a sensor-to-shooter loop’.
+What technology: The layer will run on secure domestic computing infrastructure with already-procured compute, developed by leveraging private industries selected by India’s AI Mission. It is designed to support joint operations across land, sea, air, space and cyber domains.
+Sources:
+- Defence Ministry, AI Mission join hands to build secure military AI layer, says RK Singh — https://www.thehindubusinessline.com/news/defence-ministry-ai-mission-join-hands-to-build-secure-military-ai-layer-says-rk-singh/article71616224.ece
+
+### Wayve-Stellantis-NVIDIA French Autonomous Vehicle Deployment Partnership (France, 2026-10-23)
+Organisation: Government of France (Ministry of Transport)
+Layer: Service design & UX, Agent governance, Policy & rule-making
+Type: Deployment, Strategy
+Summary: Wayve, Stellantis and NVIDIA announced a collaboration with the French government to promote autonomous vehicle diffusion in France and accelerate development across the EU. The initiative combines Stellantis L4-Ready vehicle platforms, Wayve’s end-to-end embodied AI driving system and NVIDIA Halos OS on Hyperion compute/sensor architecture to build a full-value-chain ecosystem. An L2++ hands-free, door-to-door supervised driving assistant has already been demonstrated on Fiat 500e and Maserati Grecale development vehicles, with a target launch in 2028, alongside future driverless mobility services.
+Why it matters: The partnership integrates end-to-end embodied AI that learns from real-world experience without high-definition maps, hand-coded driving rules or custom hardware into a government-backed industrial ecosystem. It also establishes a formal government-industry collaboration model that includes unions, city authorities and mobility operators to manage the societal transition to autonomous transport. The system acts as a “general-purpose AI driver, able to equip any vehicle, anywhere” (“conducente IA per uso generale”), using end-to-end embodied AI to autonomously execute hands-free, door-to-door driving on highways and in urban areas, and is intended to power future driverless mobility services (“servizi di mobilità senza conducente”) without human initiation of each driving manoeuvre.
+What technology: Wayve’s embodied AI end-to-end driving system integrates NVIDIA Halos OS on NVIDIA Hyperion compute and sensor architecture, paired with Stellantis L4-Ready platforms and the STLA AutoDrive technology stack. Development vehicles (Fiat 500e and Maserati Grecale) demonstrated L2++ hands-free supervised driving, moving from integration to on-road testing in under four weeks.
+Sources:
+- Wayve, Stellantis e NVIDIA collaborano con il governo francese per la diffusione dei veicoli autonomi — https://www.unite.ai/it/wayve-stellantis-and-nvidia-join-french-government-on-av-deployment/
+- Wayve, Stellantis and Nvidia team up with France on self-driving cars — https://thenextweb.com/news/wayve-stellantis-nvidia-france-self-driving
+- Wayve, Stellantis, and NVIDIA Join French Government on AV Deployment — https://www.unite.ai/wayve-stellantis-and-nvidia-join-french-government-on-av-deployment/
+
+### G42 Agentic AI Partnerships with Greek Ministry of Digital Governance (Greece, United Arab Emirates, 2026-10-23)
+Organisation: Greece Ministry of Digital Governance and Artificial Intelligence
+Layer: Government workflows, Service design & UX, Tech stack
+Type: Deployment, Strategy
+Summary: G42 subsidiaries Inception42 and Presight signed MoUs with Greece's Ministry of Digital Governance to deploy agentic AI across government operations and municipal services, extending G42's Intelligence Grid into Greece within a broader set of UAE-Greece agreements valued at €12.75 billion. Inception42 will explore AI agents to support cabinet meetings, track the implementation of government priorities, and train officials through AI tutors and learning platforms, while Presight will demonstrate agentic AI for municipal waste management and water-network monitoring using synthetic and open data. The agreements were signed in Athens in October 2026 during an official UAE visit, with Core42 and Khazna Data Centres providing the underlying cloud, AI compute and data centre infrastructure.
+Why it matters: Marks one of the first explicit deployments of agentic AI for high-level government decision-support and cross-ministry priority monitoring in Greece, alongside autonomous infrastructure management for municipal services. It also represents the first extension of G42's Intelligence Grid into Europe as part of a major UAE-Greece AI infrastructure collaboration involving sovereign AI capabilities, an AI factory and sector-specific applications. Inception42 will deploy AI agents that autonomously support cabinet meetings and track the implementation of government priorities without human initiation for each step, and will train officials to work with AI agents through AI tutors and learning platforms; Presight will demonstrate agentic AI that independently analyzes real-time data and autonomously manages municipal waste management and water-network monitoring using synthetic and open data.
+What technology: Built on G42's Intelligence Grid, with Core42 providing cloud and AI compute infrastructure and Khazna Data Centres developing the physical AI factory and data centre footprint; Presight deploys an urban analytics platform using synthetic and open data for real-time analysis, while Inception42 builds platforms for government meeting support, priority tracking, and education applications.
+Sources:
+- Abu Dhabi’s G42 plans AI factory in Greece as UAE-Greece ties deepen — https://www.khaleejtimes.com/business/abu-dhabis-g42-plans-ai-factory-in-greece-as-uae-greece-ties-deepen?amp=1
+- G42 in Greece: AI Infra, Smart Cities, Life Sciences — https://www.therecursive.com/g42-deepens-uae-greece-ties-across-ai-infrastructure-smart-cities-and-life-sciences/
+- G42 signs preliminary agreements on AI infrastructure in Greece — The National — https://ua.news/en/technologies/g42-uklala-poperedni-ugodi-shchodo-shi-infrastrukturi-v-gretsiyi-the-national
+
+### Seoul Halloween AI Crowd Safety System (South Korea, 2026-10-23)
+Organisation: Seoul Metropolitan Government
+Layer: Crisis response, Government workflows
+Type: Deployment
+Summary: Seoul deployed 361 AI-equipped crowd detection cameras across 14 nightlife districts to monitor pedestrian density in real-time during Halloween celebrations. When density reaches critical thresholds (5-6 people/m²), the system automatically alerts the city command center, police and firefighters to trigger evacuation procedures. The deployment includes drones for live video feeds and mobile command buses, mobilizing over 3,000 personnel following the 2022 Itaewon crowd crush tragedy.
+Why it matters: Integration of AI-powered real-time crowd density monitoring with automated emergency alert triggering and cross-agency response coordination to prevent crowd disasters, transforming Halloween from a spontaneous commercial event into a technology-enabled public safety operation. The AI system autonomously monitors crowd density across 361 cameras and automatically triggers alert protocols when density reaches 5-6 people/m², immediately notifying the city command center, police and firefighters to initiate evacuation procedures without human initiation of each alert.
+What technology: 361 AI-equipped crowd detection cameras for real-time density analysis, drones for live video transmission over congestion points, mobile command buses equipped with satellite communication systems and high-power loudspeakers, integrated with city emergency operations.
+Sources:
+- Séoul mobilise plus de 3 000 personnes et l'intelligence artificielle pour protéger les touristes pendant Halloween. — https://www.vietnam.vn/fr/seoul-huy-dong-hon-3-000-nhan-su-va-ai-bao-ve-du-khach-dip-halloween
+
+### Pentagon AI Weapons and Autonomous Systems (United States, 2026-10-23)
+Organisation: U.S. Department of Defense
+Layer: Government workflows, Agent governance
+Type: Deployment, Regulation
+Summary: The Pentagon is developing over 300 AI-enabled weapons and tools, including autonomous systems that automatically identify targets on the battlefield, process surveillance, and improve tactical decision-making. A GAO report found that 6 of 10 reviewed projects had identified operational risks, 4 were not aligned with Responsible AI tenets, and the Department of the Responsible AI Division is severely understaffed.
+Why it matters: The GAO report provides rare visibility into Pentagon AI weapons development, revealing systemic gaps between 2021 Responsible AI guidelines and actual implementation, with officials citing lack of expertise and staffing to ensure proper oversight of autonomous systems. The systems automatically identify targets on the battlefield with little human control, and the Pentagon has established a new warfare command focused on autonomous weapon development including drones, with leadership encouraging 'rapid autonomous innovation'.
+What technology: AI systems for automatic target identification, surveillance processing, and tactical decision-making improvement; specific models or architectures not disclosed.
+Sources:
+- The Pentagon’s guidelines for “responsible AI” aren’t always followed, report shows — https://www.npr.org/2026/10/23/nx-s1-6012296/ai-department-of-defense-war
 
 ### Google Agentic AI Solution for Government Services (United States, 2026-10-22)
 Organisation: Google Public Sector
@@ -197,13 +271,14 @@ Sources:
 
 ### Corporate restrictions on AI agent web access (United States, 2026-10-17)
 Organisation: Not specified
-Layer: Agent governance, Tech stack
-Type: Deployment
+Layer: Agent governance, Tech stack, Compliance & supervision
+Type: Deployment, Regulation
 Summary: Major US online platforms, airlines, banks, and retailers are increasingly deploying technical and legal measures to block AI agents from accessing their services. Cloudflare introduced one-click AI crawler blocking in 2025, while companies such as Delta Air Lines, JPMorgan Chase, and Yelp restrict automated bookings and account access. Meta has negotiated commercial partnerships with retailers including Walmart and Best Buy to enable transactions via its Muse agent, even as Amazon pursues legal action against Perplexity's automated purchasing functionality.
 Why it matters: This represents one of the first widespread corporate backlashes against consumer AI agents, with infrastructure providers, financial institutions, and travel companies explicitly targeting autonomous agents rather than conventional scrapers. The divergent responses—Meta's partnership model versus Amazon's litigation against Perplexity—highlight emerging governance models for agent access to digital services. The consumer AI agents described—including Meta's Muse, OpenAI's Dots, xAI's Grok, and Perplexity's shopping agent—autonomously navigate websites to perform tasks such as purchasing products, booking flights, and accessing bank accounts on behalf of users; Perplexity's agent specifically conducts automated purchases on Amazon, prompting a court injunction and subsequent appeal.
 What technology: Cloudflare deployed one-click blocking filters for AI crawlers and bots that simultaneously index and train models; anti-bot systems across major sites intercept these agents using fraud and hacking safeguards, though specific model architectures or APIs are not detailed.
 Sources:
 - Des plateformes restreignent l'accès aux robots d'intelligence artificielle — https://www.briefia.fr/article/des-plateformes-restreignent-l-acces-aux-robots-d-intelligence-artificielle
+- AI Agents Access Bank Accounts With Customers' Permission, Then Appear to Act Independently: US Banks Scramble — https://www.techtimes.co.uk/us-banks-restrict-third-party-ai-agents-1809358
 
 ### UAE Federal AI Automation Initiative (United Arab Emirates, 2026-10-17)
 Organisation: United Arab Emirates federal government
@@ -228,6 +303,7 @@ Sources:
 - Verso la costruzione di governi e città intelligenti basati sull'intelligenza artificiale. — https://www.vietnam.vn/it/huong-toi-xay-dung-chinh-quyen-ai-va-do-thi-thong-minh
 - Towards building AI-powered governments and smart cities. — https://www.vietnam.vn/en/huong-toi-xay-dung-chinh-quyen-ai-va-do-thi-thong-minh
 - Hin zum Aufbau KI-gestützter Regierungen und intelligenter Städte. — https://www.vietnam.vn/de/huong-toi-xay-dung-chinh-quyen-ai-va-do-thi-thong-minh
+- Intégrer l'intelligence artificielle dans l'administration publique et le développement socio-économique. — https://www.vietnam.vn/fr/dua-tri-tue-nhan-tao-vao-quan-tri-nha-nuoc-va-phat-trien-kinh-te-xa-hoi
 
 ### CERT-In Advisory on AI Agents as Attack Vectors (India, 2026-10-17)
 Organisation: CERT-In
@@ -6399,14 +6475,15 @@ Sources:
 Organisation: General Services Administration (GSA), Google
 Layer: Public procurement, Tech stack, Government workflows, Service design & UX
 Type: Procurement, Deployment
-Summary: The Gemini for Government suite provides federal government agencies with access to Google's AI platform, cloud services, and agentic AI solutions at a discounted rate. It aims to modernize and streamline Federal IT acquisitions, offering tools like NotebookLM and Veo, and features robust security and compliance measures.
-Why it matters: The project is innovative due to its comprehensive AI solution that combines Google's AI-optimized cloud services, Gemini models, and agentic capabilities, offering federal agencies advanced AI tools and infrastructure to enhance their operations. The source explicitly describes the suite as including 'agentic AI solutions' and 'agentic capabilities' intended to autonomously support federal operations beyond standard AI tools, though it does not detail specific multi-step autonomous workflows.
-What technology: The suite runs on Google's AI-optimized cloud infrastructure and leverages Gemini models, incorporating applications such as NotebookLM and Veo, and is designed to meet government security and compliance requirements.
+Summary: The Gemini for Government suite provides U.S. federal, state, and local agencies with access to Google's AI platform, cloud services, and agentic AI solutions at a discounted rate through a GSA agreement. Launched in preview, it bundles tailored autonomous agents, specialized domain skills, and Model Context Protocol connectors into turnkey offerings that integrate with enterprise systems including Google Workspace, Microsoft SharePoint, Salesforce, ServiceNow, and Oracle Cloud, supported by system integrators such as Accenture Federal Services and Deloitte. It aims to modernize Federal IT acquisitions and streamline government workflows with robust security and compliance measures.
+Why it matters: It represents the public-sector vertical expansion of the Gemini platform—joining legal and financial services packages—offering pre-built agents and specialized domain skills rather than open-ended horizontal chat, and leverages the Google Cloud Marketplace as an operational launchpad for governed, turnkey procurement. The initiative also combines a GSA discount agreement with autonomous, cross-system integration capabilities to modernize federal IT acquisitions. The suite deploys "autonomous agents" that use Model Context Protocol connectors to link directly to business-critical enterprise data across multiple systems and supports "agent-to-agent (A2A) interoperability" for cross-system task execution, enabling agents to discover, procure, and operate across government workflows without a human initiating each step.
+What technology: The suite runs on Google's AI-optimized cloud infrastructure and the Gemini Enterprise platform, leveraging Gemini models, the Agent Development Kit, and applications such as NotebookLM and Veo, while using Model Context Protocol connectors and agent-to-agent interoperability protocols to integrate with enterprise systems. It is distributed through Google Cloud Marketplace surfaces including the Agent Gallery and a natural-language AI agent finder, and is designed to meet government security and compliance requirements.
 Sources:
 - GSA, Google Ink OneGov Discount Deal for Gemini Government Suite — https://www.meritalk.com/articles/gsa-google-ink-onegov-discount-deal-for-gemini-government-suite/
 - GSA Announces OneGov Agreement With Google for Gemini for Government — https://www.executivegov.com/articles/gsa-google-onegov-gemini-government-ai
 - Accelerating Innovation and Impact in the Public Sector — https://cloud.google.com/blog/topics/public-sector/accelerating-innovation-and-impact-across-the-public-sector
 - https://nationaltoday.com/us/ca/los-angeles/news/2026/04/10/google-named-company-to-beat-in-enterprise-agentic-ai/
+- Google Cloud Marketplace: Can It Become Gemini’s Front Door to the Enterprise? — https://futurumgroup.com/insights/google-cloud-marketplace-can-it-become-geminis-front-door-to-the-enterprise/
 
 ### Agentic AI (United Kingdom, 2025-08-17)
 Organisation: UK Government
