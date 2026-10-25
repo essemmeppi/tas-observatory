@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (659 records as of 2026-10-24).
+newest first (658 records as of 2026-10-24).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -53,16 +53,6 @@ Why it matters: The system extends AI-driven surveillance beyond remote desert a
 What technology: The towers integrate radar for long-range motion detection, high-resolution cameras, and AI classification systems; much of the infrastructure has been manufactured by the defense company Anduril.
 Sources:
 - El muro de Trump va más allá del acero: inteligencia artificial vigila comunidades fronterizas — https://www.infobae.com/mexico/2026/10/24/el-muro-de-trump-va-mas-alla-del-acero-inteligencia-artificial-vigila-comunidades-fronterizas/
-
-### FINRA 2026 AI trading agent risk oversight (United States, 2026-10-24)
-Organisation: Financial Industry Regulatory Authority (FINRA)
-Layer: Compliance & supervision, Agent governance
-Type: Regulation, Deployment
-Summary: FINRA's 2026 annual report identifies flawed reward functions in autonomous trading agents as a systemic risk that could harm investors, firms and markets. Major US brokerages including Charles Schwab and JPMorgan are meanwhile blocking unauthorized AI agents from executing trades or transferring funds, permitting only tightly controlled human-overseen access.
-Why it matters: The primary US securities self-regulator has formally classified poorly designed AI agent reward functions as a key annual risk, while major brokerages are actively refusing to offer AI-generated trading strategies and blocking autonomous agents from acting on behalf of clients. FINRA describes 'Handelsagenten' as autonomous systems that analyze market conditions, generate trading strategies and execute transactions with varying levels of human oversight. Schwab's CEO states the firm blocks unauthorized agents attempting to log in and trade on behalf of customers, calling it too risky to 'give away the keys'.
-What technology: Schwab allows external customer AI models to connect under strict controls but blocks unauthorized agents; its own assistant Charley is limited to administrative tasks. JPMorgan permits external AI tools to view account data but blocks payment and money-transfer functions.
-Sources:
-- Aktien-Reichtum durch KI-Broker? Wall-Street-Experte hat eine klare Meinung – und sagt, was ihm zu riskant ist — https://www.fr.de/wirtschaft/aktien-reichtum-durch-ki-broker-wall-street-experte-pocht-auf-vorschriften-zr-94556385.html
 
 ### Berlin AI-Powered Behavioral Surveillance Cameras (Kottbusser Tor) (Germany, 2026-10-23)
 Organisation: Berlin State Government (Senate), Berlin Police
