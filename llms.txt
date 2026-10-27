@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (665 records as of 2026-10-26).
+newest first (674 records as of 2026-10-27).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,86 @@ newest first (665 records as of 2026-10-26).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Rwanda Agentic AI Workflows on Government Platforms (Rwanda, 2026-10-27)
+Organisation: Rwanda AI Agency
+Layer: Government workflows, Service design & UX
+Type: Procurement
+Summary: The Rwanda AI Agency issued a call for expressions of interest from consulting firms to develop AI-enabled agentic workflows on three live government platforms under a World Bank-financed program. The three lots cover citizen complaint handling on Mbaza, AI-guided licensing on IremboAI, and agentic compliance reviews for building permits on Kubaka. Bids are due by 9 November 2026 and firms may bid on up to two lots.
+Why it matters: It represents an explicit government procurement for agentic AI across multiple live citizen-facing platforms simultaneously, bundling heterogeneous use cases—complaints, licensing, and building compliance—into a single World Bank-backed program rather than isolated pilots. The call seeks ‘AI-enabled agentic workflows on live government platforms’ and specifically ‘agentic compliance reviews for building permits on Kubaka’, meaning the AI is expected to autonomously handle citizen complaints, guide licensing, and conduct compliance checks on the respective platforms without a human initiating each step.
+What technology: The systems will be integrated into Rwanda’s existing live government platforms—Mbaza for complaints, IremboAI for licensing, and Kubaka for building permits. No specific models, APIs, or architectures are disclosed in the call.
+Sources:
+- Rwanda AI Agency Procurement for Agentic AI Proofs of Concept on Government Platforms — https://x.com/c4ir_rw/status/2114798288230666359
+
+### Youth AI Growth Pass (South Korea, 2026-10-27)
+Organisation: Seoul Metropolitan Government
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: The Seoul Metropolitan Government is preparing to launch a program providing one year of access to high-performance AI services for 500,000 young people (aged 19-39), combined with tailored assignments, educational programs, and employment support. The initiative was revised after its entire 5.625 billion won budget was cut in 2026 supplementary deliberations, shifting from simple subscription subsidies to an integrated model linking AI access with hands-on training and startup support.
+Why it matters: The program combines subsidized access to high-performance AI tools with structured, interest-based assignments and an autonomous AI feedback system that provides personalized improvement suggestions, specifically targeting socially vulnerable youth to narrow the digital divide. An 'AI feedback agent' autonomously analyzes participants' completed assignments and proactively suggests specific ways to improve their work and recommends relevant training courses matched to their skill levels and interests, without requiring human initiation for each feedback instance.
+What technology: High-performance AI service platforms integrated with an AI feedback agent system; assignments developed in collaboration with universities, businesses, and public institutions covering tasks from résumé improvement to product prototyping.
+Sources:
+- Seoul steps up preparations to launch the “Youth AI Growth Pass” next year; winning city council backing is key — https://en.fnnews.com/news/202610270916450312
+
+### Chamber AI Hub (United Arab Emirates, 2026-10-26)
+Organisation: Dubai Chambers
+Layer: Government workflows, Service design & UX
+Type: Deployment
+Summary: Dubai Chambers has launched the Chamber AI Hub, an agentic AI marketplace providing members access to specialised artificial intelligence agents across seven business areas. The platform enables private sector businesses to select and deploy AI agents most relevant to their needs to transform operating models and improve efficiency.
+Why it matters: This represents a government-backed marketplace model for agentic AI, curating specialised autonomous agents for private sector use rather than offering general-purpose AI tools, effectively acting as a public sector broker for business automation. The Hub provides 'specialised artificial intelligence agents across seven areas' that businesses can deploy to autonomously transform operating models, allowing members to choose agents that execute tasks relevant to their business needs without requiring human initiation of each individual step.
+What technology: Cloud-based marketplace platform providing access to pre-built specialised AI agents; specific models, architectures or integration methods not detailed.
+Sources:
+- Dubai launches agentic AI marketplace — https://www.smartcitiesworld.net/news/dubai-launches-agentic-ai-marketplace
+
+### MailFWD (Germany, 2026-10-26)
+Organisation: City of Hamburg
+Layer: Government workflows, Service design & UX
+Type: Deployment
+Summary: MailFWD is an AI email-triage tool developed by Dataport for the City of Hamburg. It automatically monitors municipal functional mailboxes every minute, classifies incoming citizen emails by topic using NLP, extracts details such as file numbers, and routes messages to the responsible departments. Deployed across six Hamburg departments, it saves roughly 75 workdays per month, with a target accuracy of 80% and over 95% achieved in some use cases.
+Why it matters: Rather than using resource-intensive large language models, MailFWD relies on lightweight SetFit transformer models for text classification and Named Entity Recognition, requiring only about 0.5 GB of RAM and no powerful GPUs. All processing of sensitive citizen data takes place inside Dataport’s sovereign, high-security data-center infrastructure. MailFWD autonomously checks functional mailboxes once per minute, analyses message content to classify emails by predefined topics, extracts specific information like file numbers, and executes routing actions—moving, marking or forwarding emails to responsible clerks—without a human initiating each step. As the source states, 'MailFWD schaut einmal pro Minute in das Funktionspostfach, ordnet zu und leitet weiter.' Planned extensions include automatically sending standardized replies and filing messages in e-files via dRPA based on recognized file numbers.
+What technology: Built on SetFit, a lightweight transformer-based text-classification architecture, combined with Named Entity Recognition (NER) for targeted information extraction. The models are trained on anonymized example emails categorized by the respective authority and run on standard CPUs within Dataport’s secure data centers.
+Sources:
+- Mit KI geht die Post ab - die Technik hinter MailFWD — https://www.dataport.de/newsroom/stories/die-technik-hinter-mailfwd/
+
+### RADIUS Force AI with AI Engage for Malaysian Government (Malaysia, 2026-10-26)
+Organisation: Malaysian Government Agency (unnamed)
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Braiin's RADIUS platform, featuring the Force AI orchestration layer, has been deployed with a Malaysian government agency as a generative AI virtual agent with knowledge base capabilities. The AI Engage module provides autonomous customer service agents that understand intent, reason through requests, and execute business workflows end-to-end. The platform handles over 4.5 million customer interactions annually with 99.9% uptime and supports multiple LLMs without vendor lock-in.
+Why it matters: The Force AI layer enables model-agnostic deployment across OpenAI, Claude, Gemini, Azure OpenAI and open-source models like Llama and Mistral, allowing government clients to switch models based on cost, performance or regulatory needs. The system combines autonomous agents, human co-pilots and analytics in a unified orchestration layer. AI Engage agents 'interact with customers on their own: they understand intent, reason through requests and execute business workflows end to end, escalating to a human with full context only when needed.' The System Action Engine 'runs automated workflows such as CRM updates.' The Malaysian deployment specifically uses a 'generative AI virtual agent with knowledge base' that operates autonomously.
+What technology: Force AI orchestration layer with LLM-agnostic gateway supporting OpenAI GPT, Anthropic Claude, Google Gemini, Azure OpenAI, Llama and Mistral; retrieval-augmented generation for grounded answers; System Action Engine for workflow automation; real-time PII masking and audit trails; available on cloud, on-premises and hybrid deployments.
+Sources:
+- AI agents can now handle routine customer requests, bringing in a person when needed. — https://www.stocktitan.net/news/BRAI/braiin-targets-usd-56-9-billion-cx-software-market-with-agentic-ai-bvddzogjab6f.html
+
+### Proactive Public Administration AI Model (Spain, 2026-10-26)
+Organisation: Ministry of Finance and Public Function, Government of Spain
+Layer: Service design & UX, Government workflows
+Type: Strategy, Deployment
+Summary: A proposed model of public administration that uses AI to anticipate citizen needs and automatically complete most bureaucratic procedures, leaving citizens only to complement or validate pre-completed processes. The minister presented this vision at the launch of NTT DATA's Future Government Center, citing Spain's existing proactive tax declaration system as a precedent where tax authorities prepare returns that citizens merely review.
+Why it matters: Inverts the traditional citizen-institution relationship by having the administration proactively initiate and complete services rather than waiting for citizen requests, with AI handling the full workflow autonomously. The system would "anticiparía las necesidades de los ciudadanos y realizaría de forma automática la mayoría de trámites" (anticipate citizen needs and automatically complete most procedures), with citizens only needing to "complementar o validar" (complement or validate) already-executed processes. This represents autonomous initiation and execution of multi-step administrative workflows without per-step human initiation.
+What technology: Built on AI for predictive citizen need anticipation and automatic procedure completion; reference to existing tax system infrastructure suggests integration with administrative databases and pre-filled form generation.
+Sources:
+- López aboga por una Administración proactiva que use la IA para anticiparse a las gestiones de los ciudadanos — https://forbes.es/ultima-hora/1055164/lopez-aboga-por-una-administracion-proactiva-que-use-la-ia-para-anticiparse-a-las-gestiones-de-los-ciudadanos/
+
+### US Military 'Superintelligence' Terminology Shift and AUTOWARCOM (United States, 2026-10-26)
+Organisation: US Department of Defense
+Layer: Policy & rule-making, Government workflows
+Type: Strategy
+Summary: The US military has begun replacing the term 'artificial intelligence' with 'superintelligence' (SI) in official Navy and Marine Corps documents, training materials, and communications following an executive order by President Trump. The change aims to reflect and accelerate the adoption of autonomous and semi-autonomous weapons systems across all branches. Concurrently, the Pentagon announced plans to establish AUTOWARCOM, a four-star combatant command for autonomous warfighting, targeted for creation by October 2027 pending congressional approval.
+Why it matters: The initiative replaces the standard administrative term 'artificial intelligence' with 'superintelligence' in non-legal military documents to signal a strategic pivot beyond traditional automation. It also plans to create the first dedicated unified combatant command (AUTOWARCOM) specifically for the development, testing, and operational use of autonomous and semi-autonomous military systems. The initiative explicitly targets the 'beschleunigten Einsatz autonomer Systeme' (accelerated deployment of autonomous systems) for 'autonome Kampfeinsätze' (autonomous combat operations), with the planned AUTOWARCOM designated for the 'Einsatz autonomer und teilautonomer Systeme' (deployment of autonomous and semi-autonomous systems) in military operations without human initiation of each step.
+What technology: The initiative covers algorithmic systems that make predictions, recommendations or support decisions based on predefined goals, alongside drones, robotics and autonomous combat platforms. Current machine learning solutions are described as exceeding traditional automation by developing innovative optimization methods for complex tasks rather than merely imitating human thought.
+Sources:
+- Das US-Militär ändert den Begriff KI in SI, um die Einführung autonomer Kampfeinsätze zu beschleunigen. — https://www.vietnam.vn/de/quan-doi-my-thay-doi-cach-goi-ai-thanh-si-nham-day-nhanh-viec-ung-dung-tac-chien-tu-hanh
+
+### Market Intelligence by HigherGov (United States, 2026-10-26)
+Organisation: Procurement Sciences (private contractor platform, not government body)
+Layer: Public procurement, Government workflows
+Type: Deployment
+Summary: An AI-native platform combining 100+ million federal, state and local government contracting records with AI agents to help contractors find opportunities, analyze competitors, develop winning strategies, and accelerate proposal development. The system is FedRAMP Authorized and integrates HigherGov market intelligence into the Awarded AI platform.
+Why it matters: First integration of HigherGov's massive contracting database with autonomous AI agents that can perform end-to-end market research and strategy development, eliminating the need for contractors to manually synthesize data from multiple disconnected tools. AI agents that 'actually do the research, analyze the market and help contractors win' — contractors can ask questions like 'which competitors are winning in a new market' and receive answers grounded in data with reviewable sources, then agents 'help teams build capture and proposal strategies' without requiring manual initiation of each research and analysis step.
+What technology: FedRAMP Authorized platform, SOC 2 Type II certified, customer data never used to train public AI models; integrates HigherGov database (100M+ records including 65M+ contract/grant awards since 2000) with Awarded AI's agent architecture.
+Sources:
+- Procurement Sciences Launches Market Intelligence That Gives Its AI Agents 100M+ Government Contracting Records — https://www.prnewswire.com/news-releases/procurement-sciences-launches-market-intelligence-that-gives-its-ai-agents-100m-government-contracting-records-302918318.html
 
 ### Compass (United States, 2026-10-26)
 Organisation: US Patent and Trademark Office (USPTO)
@@ -84,7 +164,7 @@ Sources:
 
 ### UK National Cyber Shield (United Kingdom, 2026-10-24)
 Organisation: UK Government
-Layer: Cyber security, Government workflows, Crisis response, Tech stack
+Layer: Cyber security, Government workflows, Crisis response, Tech stack, Public finance
 Type: Deployment, Strategy
 Summary: A £60 million programme announced in October 2026 to deploy agentic AI for national cyber defence, using autonomous agents to identify threats, analyse vulnerabilities, test defences and support computer incident response with reduced human supervision. The initiative includes a £25 million challenge fund for British AI and cybersecurity companies and provisions for a regulatory sandbox to test agentic security tools across critical infrastructure, government and industry. It is designed to counter adversaries who are already using AI to automate offensive operations.
 Why it matters: Marks a strategic shift from traditional AI tools to autonomous AI agents for national defence, explicitly distinguishing these systems from chatbots through their capacity for unsupervised action chains in live security operations. The programme is designed to counter AI-automated offensive operations by deploying agentic defences that identify threats, analyse vulnerabilities and support incident response without requiring human initiation of each step. The programme uses 'agentic AI' that can carry out chains of actions with less direct human supervision, automatically identifying threats, analysing vulnerabilities, testing defences and supporting computer incident response without a human initiating each step. It is explicitly intended to counter adversaries who are already using AI systems to automate offensive operations by deploying autonomous defensive agents in live security environments.
@@ -93,6 +173,8 @@ Sources:
 - UK Announces £600 Million AI Security Package Covering Cyber and Bio Threats — https://the420.in/uk-600-million-ai-security-biosecurity-cyber-defence/
 - Reino Unido investe 600 milhões de libras em segurança da IA — https://www.techenet.com/2026/10/reino-unido-600-milhoes-seguranca-da-ia/
 - Reino Unido gasta 100 milhões de libras em laboratório de IA contra ameaças biológicas — https://www.bra1.com.br/tecnologia/id-713650/reino_unido_gasta_100_milhoes_de_libras_em_laboratorio_de_ia_contra_ameacas_biologicas
+- UK chancellor announces AI investment package ahead of Budget — https://nationaltechnology.co.uk/UK_Chancellor_Announces_AI_Investment_Package_Ahead_Of_Budget.php
+- Britain bets £600 million on AI defenses against threats AI helps create — https://news.lavx.hu/article/britain-bets-600-million-on-ai-defenses-against-threats-ai-helps-create
 
 ### Abu Dhabi Executive Council Agentic AI Meeting Support (United Arab Emirates, 2026-10-24)
 Organisation: Abu Dhabi Executive Council
@@ -6724,6 +6806,18 @@ Why it matters: Agentic AI can reason, plan, remember, and act without continuou
 What technology: The article mentions natural language processing for clinical notes analysis, AI agents integrated with building management systems, and Workato's GEARS framework for assessing organisational readiness across people, process, and technology domains.
 Sources:
 - Beyond automation: Agentic AI as the next generation of public service efficiency — https://govinsider.asia/intl-en/article/beyond-automation-agentic-ai-as-the-next-generation-of-public-service-efficiency
+
+### Gennai Agent Functions (Japan, 2025-04-17)
+Organisation: Japan Digital Agency
+Layer: Government workflows, Service design & UX, People & culture
+Type: Deployment
+Summary: The Digital Agency added agent functions to its existing Gennai generative AI platform for government staff, enabling chained task execution from a single instruction. The rollout targets approximately 180,000 civil servants with capabilities for preparing, summarizing, and sharing meeting minutes, plus document drafting, translation, and law research.
+Why it matters: Claimed as the first government body to deploy AI agents at this scale, with one instruction triggering multi-step workflows across document preparation and distribution. The system enables 'one instruction to chain tasks like preparing, summarizing, and sharing meeting minutes' — a single user prompt triggers an autonomous sequence of multiple distinct actions without requiring separate human initiation of each step.
+What technology: Built on the existing Gennai generative AI platform with added agent functions; includes planned Gennai Library for cross-ministry know-how sharing.
+Sources:
+- Japan Digital Agency Rolls Out AI Agents on Gennai Platform to 180,000 Civil Servants — https://x.com/Sachi_0298/status/2114737624414093522
+- Digital Agency adds AI agent to Gennai government platform — https://www.japantimes.co.jp/news/2026/10/26/japan/digital-agency-ai-agent-gennai/
+- Japan adds AI agent to platform for 180,000 civil servants — The Japan Times — https://ua.news/en/technologies/iaponiia-dodala-shi-agenta-do-platformi-dlia-180-tisiach-derzhsluzhbovtsiv-the-japan-times
 
 ### Gemini for Government (United States, 2025-04-17)
 Organisation: General Services Administration (GSA), Google
