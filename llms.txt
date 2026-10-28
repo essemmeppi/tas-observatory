@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (686 records as of 2026-10-28).
+newest first (684 records as of 2026-10-28).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -82,16 +82,6 @@ What technology: AI voice agents with live translation capabilities, integrated 
 Sources:
 - From paperwork to prevention: How AI could change local government services — https://www.thinkdigitalpartners.com/news/2026/10/27/from-paperwork-to-prevention-how-ai-could-change-local-government-services/
 
-### Stellantis-NVIDIA-Wayve L4 Autonomous Driving Collaboration (France, 2026-10-27)
-Organisation: Government of France
-Layer: Tech stack, Agent governance
-Type: Deployment
-Summary: A collaboration between Stellantis, NVIDIA, and Wayve to develop Level 4 autonomous vehicle technology in Europe, starting in France. The project aims to integrate Stellantis L4-Ready vehicle platforms, Wayve's AI Driver system, and NVIDIA's Hyperion compute and sensor architecture to enable autonomous mobility services. No commercial launch date or specific models have been announced; the focus is on building the technological, industrial, and regulatory foundations for future deployment.
-Why it matters: The partnership uniquely combines a major automaker, an AI driving specialist, and a compute platform provider in a European-focused ecosystem with direct French government participation. The government is actively shaping safety regulations, data sovereignty frameworks, and social conditions for deployment, rather than treating autonomy as purely a private-sector technology issue. The Wayve AI Driver system, integrated with Stellantis L4-Ready platforms, is designed to use artificial intelligence to control the vehicle and manage driving without human intervention within defined operational conditions, reflecting the Level 4 capability described in the article where 'the system can manage driving without human intervention within defined operational conditions'.
-What technology: The solution integrates Stellantis L4-Ready vehicle platforms, Wayve AI Driver software, and the NVIDIA Hyperion platform comprising a dedicated compute and sensor architecture running NVIDIA Halos OS.
-Sources:
-- Stellantis, NVIDIA e Wayve insieme: la guida autonoma con intelligenza artificiale parte dalla Francia — https://www.inforicambi.it/magazine/accessori-tecnologia/stellantis-nvidia-wayve-guida-autonoma-intelligenza-artificiale-francia_1506783.html
-
 ### Sovereign Agentic AI Framework and BharatGPT on AIKosh (India, 2026-10-27)
 Organisation: Ministry of Electronics and Information Technology (MeitY)
 Layer: Government workflows, Service design & UX
@@ -101,16 +91,6 @@ Why it matters: It brings Indian-developed foundational, instruct and speech-rec
 What technology: BharatGPT Mini is a 538-million-parameter foundational language model for Indic languages; BharatGPT Instruct uses a Mixture-of-Experts architecture for multilingual text generation, coding and reasoning; and ASR Hindi Conformer provides Hindi speech recognition with a 24.72% WER on the AI4Bharat/Lahaja test set, all hosted on the AIKosh platform.
 Sources:
 - CoRover Lists Three BharatGPT Models On Government-Backed AIKosh Platform — https://analyticsindiamag.com/ai-news/corover-lists-three-bharatgpt-models-on-government-backed-aikosh-platform
-
-### Sekoia Self-Hosted SOC Platform (France, 2026-10-27)
-Organisation: Government agencies and defense organizations (target users)
-Layer: Cyber security, Government workflows
-Type: Deployment
-Summary: Sekoia Self-Hosted is a deployment model for the Sekoia SOC platform that enables government agencies, defense organizations and critical infrastructure operators to run intelligence-driven security operations within their own infrastructure. It combines detection, investigation, threat intelligence, response and AI-assisted agentic workflows in customer-controlled environments to meet sovereignty, connectivity and data-control requirements. The model provides signed updates, refreshed detection content and clear operational ownership without requiring public cloud connectivity.
-Why it matters: It brings continuously evolving autonomous threat detection and agentic AI into highly restricted, disconnected or classified environments where public-cloud deployment is unsuitable. Organizations can modernize security operations while retaining full control over data residency, infrastructure and human approval gates. The platform enables "machines [to] investigate and act at scale while security teams set intent, policy and control," autonomously executing detection, investigation, threat intelligence and response workflows within customer-defined policy boundaries.
-What technology: The self-hosted Sekoia SOC platform connects threat intelligence, customer context, investigation memory, AI models, security capabilities and response actions, and is designed to operate across public cloud, private cloud, data centers, OT environments and isolated networks with signed, predictable updates.
-Sources:
-- Sekoia brings modern security operations to government, defense and critical infrastructure with new self-hosted deployment — https://www.manilatimes.net/2026/10/27/tmt-newswire/globenewswire/sekoia-brings-modern-security-operations-to-government-defense-and-critical-infrastructure-with-new-self-hosted-deployment/2454871
 
 ### Customer Councils Program (United Arab Emirates, 2026-10-27)
 Organisation: Ministry of Industry and Advanced Technology (MoIAT)
