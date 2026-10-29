@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (689 records as of 2026-10-28).
+newest first (688 records as of 2026-10-28).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -42,16 +42,6 @@ Why it matters: This represents one of Spain's first regional government deploym
 What technology: Built on the JuntaGPT corporate generative AI assistant platform; integrates with existing administrative digitalization processes; 75 related AI use cases currently in development.
 Sources:
 - La Junta prevé formar a 500.000 personas en inteligencia artificial en Andalucía — https://cadiznoticias.es/la-junta-preve-formar-a-500-000-personas-en-inteligencia-artificial-en-andalucia/
-
-### Cathedral AI agent platform (United States, 2026-10-28)
-Organisation: United States federal agencies
-Layer: Cyber security
-Type: Deployment
-Summary: Cathedral, a cybersecurity startup founded by former members of Elon Musk’s disbanded Department of Government Efficiency, claims its AI agents autonomously infiltrated Anthropic’s internal systems by exploiting third-party business software vulnerabilities in under 12 hours. The startup, valued at $1.4 billion, reports that it is already contracted by at least three unnamed US federal agencies.
-Why it matters: The incident demonstrates AI agents conducting autonomous offensive cybersecurity operations against a frontier AI lab’s enterprise software stack, completing reconnaissance and exploitation without step-by-step human direction, and has raised alarms among US government officials about the potential for AI-enabled espionage by adversaries. According to the source, Cathedral’s “AI agents exploited vulnerabilities in business software to access meeting transcripts, details about salaries, job offers, and Slack messages — all in less than 12 hours,” autonomously executing the infiltration without a human initiating each step.
-What technology: The source does not specify the underlying models, platforms, or architecture; it states only that Cathedral used AI agents to exploit vulnerabilities in third-party business software rather than Anthropic’s direct systems.
-Sources:
-- Elon Musk-Linked Startup Says Its AI Agents Hacked Anthropic in Just Hours — https://futurism.com/future-society/startup-ai-agents-hacked-anthropic-hours
 
 ### US Army Offensive Cyber AI Agents (United States, 2026-10-28)
 Organisation: United States Army
