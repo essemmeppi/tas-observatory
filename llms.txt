@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (699 records as of 2026-10-30).
+newest first (704 records as of 2026-10-31).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,56 @@ newest first (699 records as of 2026-10-30).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### OpenClaw (Austria, 2026-10-31)
+Organisation: Federal Government of Austria
+Layer: Agent governance, Policy & rule-making
+Type: Strategy
+Summary: OpenClaw is an open-source AI agent created by Peter Steinberger that receives commands via WhatsApp and autonomously performs tasks such as programming, booking flights, controlling smart-home systems and steering vehicles. Steinberger is advising the Austrian government alongside Geoffrey Hinton on the proper handling and governance of AI.
+Why it matters: The agent translates natural-language WhatsApp commands into general computer and real-world actions— including physical device control—without step-by-step human operation. OpenClaw is described as an agent that independently implements given goals ('vorgegebene Ziele eigenständig umsetzen') and, after receiving a command via WhatsApp, can program software, book flights, regulate smart-home systems or even steer a Tesla to the front door without a human executing each individual step.
+What technology: Open-source agent interfaced through WhatsApp; reportedly uses a smart websocket for connectivity; capable of general computer control and cross-domain task execution.
+Sources:
+- KI-Genie aus Wien hilft unserer Regierung — https://www.oe24.at/a/ki-genie-aus-wien-hilft-regierung-900128748
+
+### K-FAST AI Dubbing Programme (South Korea, United States, Canada, 2026-10-31)
+Organisation: Korea Ministry of Science and ICT
+Layer: Service design & UX, Tech stack
+Type: Deployment, Strategy
+Summary: A government-funded programme to create AI-dubbed Korean content for FAST channels in North America. The second year includes Hudson AI's consortium producing English and Spanish dubs for CJ ENM K-Dance, a 200+ hour dance channel. Year one produced 1,200 titles reaching 100 million cumulative viewers in 22 countries.
+Why it matters: First government-backed systematic AI dubbing at scale for cultural export, with Hudson AI demonstrating 'agentic dubbing' that distinguishes 40+ characters, assigns unique voices, and uses an AI agent to check every line. Hudson AI's 'agentic dubbing' system autonomously distinguishes more than 40 characters in a video, assigns each its own voice, and has 'an AI agent check every line' without human initiation of each verification step. The system also performs live dubbing of Korean pro baseball broadcasts for real-time distribution.
+What technology: AI dubbing with character voice separation and automated quality verification; live dubbing capability for sports broadcasts; Spanish and English localisation for North American markets; testing of Latvian and Polish dubs for European expansion.
+Sources:
+- CJ ENM Expands K-Dance on North American FAST With Hudson AI Dubbing - K-EnterTech Hub — https://www.kentertechhub.com/j-enm-k-dance-fast-en/
+
+### ITA Airways Agentic AI Workforce Automation (Italy, 2026-10-31)
+Organisation: ITA Airways
+Layer: Government workflows, People & culture
+Type: Deployment
+Summary: ITA Airways has opened a collective redundancy procedure for 226 employees, citing the adoption of agentic AI to automate administrative and organizational tasks—alongside soaring jet fuel costs and weaker demand—as a structural reason for the cuts. The airline plans to integrate the technology within its Lufthansa merger process, hire new automation and machine-learning specialists, and offer training and exit incentives, with first departures expected by December 2026.
+Why it matters: The initiative explicitly names “agentic AI” (IA agentica) as a structural driver for layoffs in a state-controlled flag carrier, marking a rare instance where autonomous task management is formally cited in a redundancy procedure rather than framed as a future efficiency gain. The source states that agentic AI is “capable of managing some tasks in a self-sufficient manner” (capace di gestire alcuni compiti in modo autosufficiente) and that part of administrative and organizational activities will be automated, directly reducing the need for ground staff.
+What technology: The system is described generically as agentic AI and machine learning, to be deployed within ITA’s integration process with Lufthansa; no specific models, platforms, or architectures are named.
+Sources:
+- Ita Airways, parte procedura per 226 esuberi del personale — https://tg24.sky.it/economia/2026/10/31/ita-airways-licenziamenti-esuberi
+
+### Energy AI Kazakhstan (Kazakhstan, 2026-10-31)
+Organisation: Kazakhstan's Ministry of Energy
+Layer: Government workflows, Tech stack
+Type: Strategy, Deployment
+Summary: The concept aims to introduce artificial intelligence into production and management processes across Kazakhstan's fuel and energy sector by creating a unified digital environment. It includes early detection of fuel shortage risks, automation of report preparation and verification, industrial safety monitoring, and digital twins of energy facilities, with an emphasis on keeping data, compute, and models within the country to ensure technological sovereignty.
+Why it matters: The initiative integrates specialized AI agents with industry-specific knowledge bases and information systems into a unified sector-wide digital environment. A distinctive feature is its explicit emphasis on technological sovereignty, requiring all data, computing infrastructure, and industry-specific models to be located domestically under ministry control. The source reports the architecture includes 'specialized AI agents designed to perform specific production and management tasks', including the 'automation of report preparation and verification' and 'early detection of risks of fuel shortages'.
+What technology: The proposed architecture combines industry-specific knowledge bases, information systems, and specialized AI agents, and features digital twins of energy facilities to model production processes, assess equipment conditions, and evaluate scenario consequences. The design requires data, computing infrastructure, and industry-specific models to be hosted within Kazakhstan under ministry control.
+Sources:
+- Kazakhstan presents Energy AI concept for fuel and energy sector — https://www.trend.az/casia/kazakhstan/4241372.html
+
+### PlanAssist AI (United Kingdom, 2026-10-30)
+Organisation: Ministry of Housing, Communities and Local Government (MHCLG)
+Layer: Government workflows
+Type: Deployment
+Summary: PlanAssist AI is an LLM-based tool being piloted in English local councils to accelerate householder planning decisions by automating triage, data summarization, policy checking, and report drafting. Early tests in three councils demonstrated a 58% reduction in officer time on these tasks, leading to an expansion to 15 councils. The pilot, led by MHCLG and DSIT's i.AI with technology partners Google DeepMind, Google Cloud, and Faculty, is intended to scale to all English councils by the end of 2027.
+Why it matters: It is among the first national government pilots to deploy a large language model for end-to-end automation of planning application processing, autonomously performing triage, policy compliance checks, and cited report generation that previously required extensive manual officer work. The system autonomously 'triages applications, summarizes data, checks policies, and drafts cited reports for officers to review and sign off,' handling sequential planning processing steps on each incoming application without a human initiating every individual action.
+What technology: The tool is built on Google's Gemini LLM and deployed through Google Cloud infrastructure, developed in collaboration with Google DeepMind and Faculty for use in local authority planning departments.
+Sources:
+- UK Expands PlanAssist AI Planning Tool Pilot to 15 Councils — https://www.gov.uk/government/news/faster-planning-decisions-as-new-rules-and-ai-tackle-delays
 
 ### China Shipping AI Deployment Guide (China, 2026-10-30)
 Organisation: Ministry of Transport of China
@@ -248,6 +298,7 @@ Why it matters: The program directly involves industrial customers in redesignin
 What technology: The initiative has merged three industrial services into one, automated procedures for the National In-Country Value Program Certificate, and strengthened electronic integration between systems, alongside the deployment of Agentic AI.
 Sources:
 - The Ministry Of Industry And Advanced Technology Engages Manufacturers And Investors In Umm Al Quwain To Enhance Government Services And Deploy Agentic AI — https://menafn.com/1111875232/The-Ministry-Of-Industry-And-Advanced-Technology-Engages-Manufacturers-And-Investors-In-Umm-Al-Quwain-To-Enhance-Government-Services-And-Deploy-Agentic-AI
+- Gulf Craft Highlights AI and Innovation in UAE Manufacturing — https://smestreet.in/global/gulf-craft-highlights-ai-and-innovation-in-uae-manufacturing-12770828
 
 ### Delaware Artificial Intelligence Company (AIC) Initiative (United States, 2026-10-27)
 Organisation: State of Delaware
