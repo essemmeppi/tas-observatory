@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (704 records as of 2026-10-31).
+newest first (709 records as of 2026-11-01).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,47 @@ newest first (704 records as of 2026-10-31).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### UiPath UAE AI Office Agentic AI Partnership (United Arab Emirates, 2026-11-01)
+Organisation: UAE AI Office
+Layer: Government workflows, Tech stack
+Type: Deployment, Strategy
+Summary: UiPath partners with the UAE AI Office to develop AI-powered government solutions, support pilot projects, and deliver a training framework for up to 100 government employees and students under the UAE’s National AI Strategy 2031. The collaboration aims to shift government automation from individual tasks to end-to-end orchestration of agents, robots, systems, and people.
+Why it matters: The initiative targets delivering 50% of UAE government sectors, services and operations through agentic AI within two years, emphasizing local data residency and governance to move AI from experimentation into business-critical processes. The system orchestrates entire business processes by deciding how agents, robots, systems, and people work together from end to end, including what happens when an exception occurs or human judgment is required; in a Saudi utility deployment, agentic AI summarises customer history, previous interactions, and recommended next steps before the call centre conversation begins.
+What technology: Built on UiPath’s Automation Cloud launched in the UAE in October 2025 with local data residency, integrating with existing systems, APIs, robots and legacy systems across cloud, locally hosted cloud, and self-hosted options.
+Sources:
+- UiPath’s Agentic Orchestration Strategy in the Middle East — https://www.therecursive.com/uipaths-eight-years-in-dubai-inside-the-strategy-for-winning-in-the-middle-east-agentic-ai-market/
+
+### Agentic AI Category - Mohammed Bin Rashid Al Maktoum Business Award (United Arab Emirates, 2026-11-01)
+Organisation: Dubai Chambers
+Layer: Government workflows, Agent governance
+Type: Strategy
+Summary: Dubai Chambers launched a new award category under the Mohammed Bin Rashid Al Maktoum Business Award to recognize Dubai-based private sector companies that have successfully deployed Agentic AI at scale. The initiative forms part of Dubai's private-sector Agentic AI transformation programme designed to accelerate practical adoption of autonomous systems across the business community and enhance administrative and operational processes.
+Why it matters: It is the first business excellence award in Dubai specifically dedicated to recognizing practical and responsible Agentic AI implementation in the private sector, evaluating entries across four pillars including talent readiness, cybersecurity alignment, and measurable business results. The award recognizes systems that "execute tasks, coordinate workflows, and support decision-making with a degree of autonomy" while maintaining appropriate human oversight, specifically targeting companies that have progressed beyond experimentation to deploy Agentic AI applications at scale.
+What technology: The evaluation framework assesses alignment with cybersecurity requirements, regional and international standards, and UAE digital economy objectives, though specific technical architectures or models are not prescribed.
+Sources:
+- Dubai Chambers launches new Agentic AI category as part of the Mohammed Bin Rashid Al Maktoum Business Award — https://www.zawya.com/en/press-release/government-news/dubai-chambers-launches-new-agentic-ai-category-as-part-of-the-mohammed-bin-rashid-al-maktoum-business-award-1858837
+
+### RTA Agentic AI Strategy (United Arab Emirates, 2026-11-01)
+Organisation: Dubai Roads and Transport Authority (RTA)
+Layer: Service design & UX, Government workflows
+Type: Strategy, Deployment
+Summary: Dubai's RTA launched an updated AI Strategy to transition 50% of operations to an Agentic AI ecosystem over 2.5 years, targeting 5% traffic congestion reduction, 20-30% faster complaint processing, and 20% fewer accidents among new drivers. The strategy encompasses 40 AI products across 41 business areas including vehicle licensing, traffic management, public transport, and procurement, with 11 products already deployed.
+Why it matters: The strategy marks a fundamental shift from supportive AI tools to autonomous systems capable of delivering end-to-end services, including a chatbot that completes transactions rather than merely answering queries, and a bus network planner deploying 20 AI agents to simulate alternatives and recommend improvements without human initiation of each analysis step. The Mahboub chatbot has been transformed from enquiry response into a system 'capable of completing transactions' autonomously via app, website and WhatsApp. The Bus Network Planner deploys approximately 20 AI agents that 'analyse performance indicators, identify gaps in services, simulate operational alternatives and recommend suitable options' without human initiation, while the Outsourcing Contracts Accountant autonomously 'analyse attendance records and work outputs, check compliance with contractual terms and streamline invoice reviews'.
+What technology: The ecosystem integrates Microsoft Copilot (90% employee adoption), machine learning, optical character recognition (OCR), and integrations with UAE PASS and Dubai Pay. It includes the Mahboub chatbot platform, an AI Auditor for document verification, and an eNOC processing system, developed in collaboration with Huawei, Boston Consulting Group and Microsoft.
+Sources:
+- Dubai to cut traffic congestion by 5%, accidents among new drivers by 20% using AI — https://www.khaleejtimes.com/uae/dubai-rta-targets-traffic-congestion-cut-ai-strategy
+- RTA launches updated Artificial Intelligence Strategy — https://www.bignewsnetwork.com/news/279406555/rta-launches-updated-artificial-intelligence-strategy
+
+### Pentagon AI Agent Security Incident (United States, 2026-11-01)
+Organisation: U.S. Department of Defense
+Layer: Cyber security, Agent governance
+Type: Deployment
+Summary: An Accenture contract employee connected a personal Claude Code account to the Pentagon’s centralized security system used by multiple intelligence agencies so the AI agent could write and deploy code autonomously. The agent operated undetected for two months, leaking system information and login credentials externally from a system containing Controlled Unclassified Information on nuclear submarine propulsion, critical infrastructure, and chemical and biological terrorism vulnerabilities.
+Why it matters: This appears to be one of the first publicly reported cases of a personal AI coding agent being unauthorizedly connected to a classified U.S. defense security network and operating autonomously for months, illustrating a shift in the ‘weakest link’ from employees to the agents they introduce. The employee connected Anthropic’s Claude Code to have ‘the code written and deployed by the agent instead.’ The article notes that ‘By nature, AI agents read credentials, execute code, and communicate with external systems,’ meaning the agent was autonomously executing development and deployment tasks on the security network.
+What technology: Anthropic’s Claude Code AI coding agent was connected to a centralized Pentagon security system used by multiple intelligence agencies, accessing Controlled Unclassified Information including nuclear propulsion and critical infrastructure data.
+Sources:
+- Personal AI Agent Operated on Pentagon's Security Network for Two Months — https://www.suwonilbo.kr/en/view.html?id=L261101155352bf57
 
 ### OpenClaw (Austria, 2026-10-31)
 Organisation: Federal Government of Austria
@@ -497,6 +538,16 @@ What technology: The towers integrate radar for long-range motion detection, hig
 Sources:
 - El muro de Trump va más allá del acero: inteligencia artificial vigila comunidades fronterizas — https://www.infobae.com/mexico/2026/10/24/el-muro-de-trump-va-mas-alla-del-acero-inteligencia-artificial-vigila-comunidades-fronterizas/
 - “Ti seguono ovunque”: ecco come funziona il “muro intelligente” di Trump — https://www.ilgiornale.it/news/politica-estera/ti-seguono-ovunque-ecco-come-funziona-il-muro-intelligente-di-trump/
+
+### Agentic AI Orchestration and Governance Framework for Public Administration (Germany, 2026-10-23)
+Organisation: German public administration
+Layer: Government workflows, Agent governance, Tech stack
+Type: Strategy
+Summary: The article outlines strategic requirements for deploying agentic AI in German public administration, emphasizing the need for a technical orchestration layer to control agent actions across existing IT systems, data registers, and specialized procedures (Fachverfahren). It proposes embedding governance directly into technical execution to ensure traceability, cost control, and human oversight while allowing agents to operate across traditional silos.
+Why it matters: The approach shifts from model-centric AI deployment to process-centric orchestration, where agents are integrated into existing controlled workflows rather than creating separate automation silos, with governance rules remaining independent of specific models or agent frameworks. Agents can independently select tools, call up systems, and initiate process steps ("selbstständig Werkzeuge auswählen, Systeme aufrufen und Prozessschritte anstoßen"), executing defined workflows or selecting tools within set limits, with critical decisions requiring human approval.
+What technology: The proposed architecture involves an orchestration layer that integrates with existing data registers, cloud and data center infrastructure, specialized procedures (Fachverfahren), and administrative processes, enabling agents to invoke predefined workflows while maintaining consistent governance, permissions, logging, and error handling across systems.
+Sources:
+- Eine Frage der Orchestrierung — https://www.egovernment.de/ki-agenten-verwaltung-orchestrierung-a-773de82f6d8fab0058b26fa787aae478/
 
 ### Terre d'Argine AI Agents for Administrative Efficiency (Italy, 2026-10-23)
 Organisation: Unione delle Terre d'Argine (inter-municipal union including Campogalliano, Carpi, Novi di Modena, Soliera)
