@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (709 records as of 2026-11-01).
+newest first (719 records as of 2026-11-03).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,112 @@ newest first (709 records as of 2026-11-01).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Agentic Government and Digital Diplomacy Initiative (South Korea, Estonia, France, 2026-11-03)
+Organisation: Ministry of the Interior and Safety
+Layer: Government workflows, Agent governance
+Type: Strategy
+Summary: South Korea's Ministry of the Interior and Safety dispatched a delegation led by Vice Minister Kim Min-jae to Estonia and France to attend the Digital Nations Ministerial Meeting and the OECD E-Leaders Meeting. The mission aims to strengthen international cooperation in public-sector AI and digital government, share policy experience on digital sovereignty and identity systems, and present South Korea's approach to using agentic AI for government innovation.
+Why it matters: The Digital Nations ministerial meeting is themed 'Agentic Government: From Expectations to Tangible Outcomes,' explicitly centering on AI systems that operate without human intervention. South Korea also used the occasion to highlight its forthcoming chairmanship of the Southeast Asia AI Cooperation Network and expanded cooperation with Brazil and Latin America. The initiative centers on agentic AI that, as described in the source, 'can assess situations and perform tasks independently without human intervention,' which Vice Minister Kim will discuss with counterparts as a means to drive government innovation and ensure accountability.
+What technology: The source does not specify AI models, platforms, or architecture, though it notes discussions will cover the reliability of digital identity systems and broader public-sector AI applications.
+Sources:
+- Interior Ministry Delegation Heads to Estonia, France to Kick Off Public-Sector AI and Digital Diplomacy — https://www.asiae.co.kr/en/article/2026110311120655849
+
+### Key Practices for Incident Readiness and Response in Super Intelligence Training and Evaluation (United States, 2026-11-03)
+Organisation: National Institute of Standards and Technology (NIST), with the National Security Agency (NSA) and Cybersecurity and Infrastructure Security Agency (CISA)
+Layer: Agent governance, Cyber security
+Type: Regulation
+Summary: A voluntary guidance document establishing ten best practices across five lifecycle stages (Prepare, Detect, Respond, Recover, Report) for managing incidents involving super intelligence (SI) agents. It introduces the first government-authored definitions for "SI control incidents" and "SI control near-misses" to address risks when agentic AI systems take actions outside their intended scope.
+Why it matters: This is the first government effort to provide specific guidance on mitigating risks associated with agentic AI systems, distinguishing SI control incidents—where the AI is the source of the incident—from traditional cybersecurity incidents where the system is the target. The document addresses AI agents that take "significant uninstructed actions" that compromise security controls, defined as departing from the operator's mandate without being directed by an adversarial source, and which can autonomously "locate and exploit misconfigurations and vulnerabilities" during long-horizon tasks with limited human supervision.
+What technology: Builds on the NIST Cybersecurity Framework 2.0 and NIST SP 800-61r3; requires monitoring across model, harness, host and network layers; mandates preserving model weights, intermediate checkpoints, reasoning traces, and tamper-resistant logs to reconstruct agent trajectories.
+Sources:
+- When the AI Agent Goes Off-Script: The First Incident Playbook for Frontier AI — https://www.ebglaw.com/workforce-bulletin/when-the-ai-agent-goes-off-script-the-first-incident-playbook-for-frontier-ai
+
+### AI Agent for Energy Invoice Processing (Italy, 2026-11-02)
+Organisation: Comune di Fidenza
+Layer: Government workflows
+Type: Deployment
+Summary: The Municipality of Fidenza deployed an AI agent that automatically processes approximately 140 monthly Enel energy invoices for the Sustainable Mobility and Road Service, extracting data and preparing liquidation documents while monitoring consumption patterns and cost anomalies. The system reduced processing time from 4-5 working days to 4-5 hours monthly. A separate generative AI software was also developed for staff training management and will be released as open-source for other public administrations.
+Why it matters: This represents a concrete deployment of autonomous AI agents for financial document processing in Italian local government, with the municipality committing to open-source distribution of both solutions under the Digital Administration Code to enable reuse by other public bodies. The system automatically processes energy invoices without requiring human initiation of each step, identifies information of interest, prepares necessary data for operator documents, monitors energy consumption to compare costs over time, and autonomously identifies anomalies.
+What technology: The solution uses AI for automated data extraction from Enel invoices and document preparation for liquidation workflows; the training management module uses generative AI capabilities. Both systems were developed internally and will be published on national platforms for public software reuse.
+Sources:
+- Intelligenza artificiale e servizi più efficienti: il Comune di Fidenza accelera sulla trasformazione digitale — https://www.comune.fidenza.pr.it/comunicato/intelligenza-artificiale-e-servizi-piu-efficienti-il-comune-di-fidenza-accelera-sulla-trasformazione-digitale/
+
+### Annual Government Challenge (Agentic AI Edition) (United Arab Emirates, 2026-11-02)
+Organisation: Mohammed bin Rashid Centre for Government Innovation at the Ministry of Cabinet Affairs
+Layer: Government workflows, Service design & UX, Agent governance
+Type: Strategy, Deployment
+Summary: A national initiative inviting federal government employees to develop Agentic AI solutions across three categories: Government Services, Internal Operations, and Unconventional Ideas. The first edition offers Dh9 million in prizes for nine winning projects, with entries assessed on strategic relevance, feasibility, proposed use of agentic AI, impact, scalability, governance and sustainability.
+Why it matters: The challenge explicitly targets Agentic AI as its inaugural theme, marking a structured, employee-driven approach to embedding autonomous AI capabilities across federal government operations rather than top-down procurement. The initiative aims to deploy 'Agentic AI assistants to work alongside government employees to improve efficiency and productivity' and 'redesign government operations and develop new working models'. Entries are specifically assessed on 'proposed use of agentic AI'. The broader plan targets transitioning 50% of government sectors, services and operations to 'Agentic AI models' within two years.
+What technology: Not specified; challenge invites proposals for agentic AI solutions with assessment criteria including governance and sustainability.
+Sources:
+- Sheikh Mohammed launches Annual Government Challenge for federal employees, teams — https://www.gulftoday.ae/news/2026/11/02/sheikh-mohammed-launches-annual-government-challenge-for-federal-employees-teams
+- Sheikh Mohammed launches annual govt challenge, calls for bold ideas, solutions — https://www.khaleejtimes.com/uae/sheikh-mohammed-annual-govt-challenge-bold-ideas-solutions
+- UAE launches annual government challenge, offers AED9 million in prizes for Agentic AI projects — https://hrme.economictimes.indiatimes.com/amp/news/industry/uae-launches-annual-government-challenge-offers-aed9-million-in-prizes-for-agentic-ai-projects/135455209
+
+### KI-Fahrplan 2030 (AI Roadmap) (Germany, 2026-11-02)
+Organisation: Federal Government of Germany (Bundesregierung), led by Federal Ministry for Digital and Transport (BMDV)
+Layer: Government workflows, Agent governance, Tech stack, Service design & UX
+Type: Strategy, Deployment
+Summary: A national strategy to make Germany a 'sovereign AI nation' by 2030, featuring 18 measures including expanded AI computing infrastructure, semiconductor value chain strengthening, and public sector adoption targets. The government will act as a 'strategic anchor customer' through public contracts and pilot projects to support European AI providers.
+Why it matters: Explicit target for AI agents to handle administrative processes 'end to end' with full automation where legally permitted, alongside quantitative adoption goals for federal agencies (90% with at least one AI application in production). The report states that 'AI agents are expected to prepare administrative processes "end to end" and, where legally permitted, complete them with full automation' — indicating autonomous completion of multi-step administrative workflows without human initiation of each step.
+What technology: Plans to expand AI computing infrastructure as a European ecosystem, strengthen semiconductor value chain, and increase AI data center capacity by 300% compared with 2025; collaboration with Mistral and other European providers.
+Sources:
+- Berlin unveils blueprint to catch up on AI — https://www.politico.eu/article/berlin-unveil-blueprint-catch-up-ai-artificial-intelligence/
+- Neuer Plan der Regierung: Deutschland soll „souveräne KI-Nation“ werden — https://www.bild.de/politik/inland/neuer-plan-der-regierung-deutschland-soll-souveraene-ki-nation-werden-6ae850bea44ac0400ca56f05
+
+### ADNOC Frontier AI Agent Platform (United Arab Emirates, 2026-11-02)
+Organisation: Abu Dhabi National Oil Company
+Layer: Government workflows, Tech stack
+Type: Deployment, Strategy
+Summary: ADNOC signed a multi-year deal with OpenAI, through G42 subsidiary Inception42, to deploy the Frontier platform for building and managing AI agents that link decisions across oilfield development, production, refining, and trading. ADNOC is described as the first energy company to implement OpenAI Frontier, and the agreement was signed during the ADIPEC energy conference with Abu Dhabi’s crown prince present. The system runs on G42 infrastructure in the UAE and is part of a broader OpenAI engagement with Abu Dhabi public-sector entities.
+Why it matters: The deployment autonomously coordinates decisions across the full oil value chain—from upstream development to downstream trading—using a dedicated agent-management platform, and ADNOC is described as the first energy company globally to implement OpenAI Frontier, representing a deep operational integration of agentic AI in a state-owned enterprise. The Frontier platform will "link decisions across oilfield development, production, refining, and trading" and is described as a platform that "coordinates AI agents across all commercial operations," autonomously coordinating decisions across these distinct operational domains without requiring a human to initiate each individual step.
+What technology: OpenAI’s Frontier platform for building and managing AI agents, delivered via G42 subsidiary Inception42 and hosted on G42 infrastructure within the UAE under a multi-year agreement.
+Sources:
+- OpenAI’s Sam Altman does deals in Abu Dhabi amid fundraising — https://www.semafor.com/article/11/02/2026/openais-sam-altman-courts-abu-dhabi-ahead-of-ipo
+- Microsoft-backed OpenAI to Deploy AI Agents for Adnoc Oil Operations — https://finance.yahoo.com/energy/articles/microsoft-backed-openai-deploy-ai-095650309.html
+- Altman, de OpenAI, firma acuerdos con el gobierno y los Emiratos Árabes Unidos en medio de un impulso financiero por parte de los países del Golfo. - Al-Monitor — https://www.al-monitor.com/es/originals/2026/11/altman-de-openai-firma-acuerdos-con-el-gobierno-y-los-emiratos-arabes-unidos-en
+- OpenAI's Altman signs UAE energy, government deals amid Gulf funding push - Al-Monitor — https://www.al-monitor.com/originals/2026/11/openais-altman-signs-uae-energy-government-deals-amid-gulf-funding-push
+
+### Zammo AI agents for citizen services (Global, 2026-11-02)
+Organisation: Local governments (demonstration)
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Agentic AI specialist Zammo will demonstrate at Smart City Expo World Congress 2026 a platform that allows local government staff to create live, multilingual citizen service agents using plain language instructions without developers. The system aims to enhance citizen engagement and increase operational efficiency by enabling non-technical employees to deploy autonomous service agents.
+Why it matters: Democratizes AI agent creation by allowing non-technical staff to generate functional citizen service agents through natural language commands rather than coding, removing the developer bottleneck in deploying municipal AI services. The system enables staff to 'turn plain language into a live, multilingual citizen service agent' that operates autonomously without requiring developer intervention for deployment or maintenance, handling citizen interactions independently once created.
+What technology: Natural language interface for agent creation, multilingual processing capabilities, and no-code deployment platform for municipal service automation.
+Sources:
+- Smart City Expo 2026: First global showing of Zammo AI agents — https://www.smartcitiesworld.net/ai-cityxchange/smart-city-expo-2026-first-global-showing-of-zammo-ai-agents
+
+### Autonomous AI Model Development Initiative (South Korea, 2026-11-02)
+Organisation: Government of South Korea
+Layer: Tech stack, Government workflows
+Type: Strategy, Deployment
+Summary: South Korea's 2027 budget proposal includes 4 trillion won (approximately $3 billion) to develop a world-leading autonomous AI model. This is part of a broader 21 trillion won investment in three key projects including a semiconductor production center, a data center, and AI applied to physics. The initiative aims to strengthen national competitiveness in strategic technology sectors.
+Why it matters: The budget represents South Korea's largest annual increase ever (12.8%) and establishes dedicated funding specifically for autonomous AI model development at national scale, alongside a Future Fund of 160 trillion won for economic transformation. The government explicitly plans to develop an 'intelligenza artificiale autonoma' (autonomous AI) model, with the source stating authorities will invest to create a 'modello di intelligenza artificiale autonoma all'avanguardia a livello mondiale' (world-leading autonomous AI model), indicating AI systems capable of independent operation beyond simple automation.
+What technology: The investment covers development of an autonomous AI model and AI applied to physics, alongside supporting infrastructure including a data center and semiconductor production center. Specific technical architectures or models are not detailed.
+Sources:
+- La Corea del Sud propone il suo bilancio più consistente di sempre, incentrato sugli investimenti nell'intelligenza artificiale. — https://www.vietnam.vn/it/han-quoc-de-xuat-du-toan-ngan-sach-lon-nhat-tu-truoc-den-nay-tap-trung-dau-tu-cho-ai
+
+### AI-native Machine-Readable Government initiative (United Arab Emirates, 2026-11-02)
+Organisation: Abu Dhabi Government
+Layer: Government workflows, Compliance & supervision
+Type: Deployment
+Summary: A partnership between Abu Dhabi Government and OpenAI to convert government policies and regulations into machine-readable formats, enabling AI systems to assist officials with regulatory compliance assessments including permit and certificate applications. The first pilot is operational at the Abu Dhabi Agriculture and Food Safety Authority (ADAFSA) for food import assessments.
+Why it matters: Described as the world's first AI-native Machine-Readable Government initiative, with computation running on local GPU infrastructure within UAE data centres. The system autonomously assesses food imports for regulatory compliance and assists with permit and certificate applications, with AI-generated assessments traceable to specific regulations. Government officials retain oversight and final decision authority.
+What technology: Runs on OpenAI GPT models using inference infrastructure located within the UAE, with computation on GPUs in local data centres.
+Sources:
+- OpenAI Signs Four Agreements With Abu Dhabi Across Government, Energy And Investment — https://analyticsindiamag.com/ai-news/openai-signs-four-agreements-with-abu-dhabi-across-government-energy-and-investment
+
+### OpenAI-Inception42 UAE Enterprise AI Partnership (United Arab Emirates, 2026-11-02)
+Organisation: United Arab Emirates
+Layer: Government workflows, Tech stack
+Type: Deployment, Strategy
+Summary: OpenAI and Inception42, G42’s sovereign agentic AI company, will partner to deliver tailored enterprise AI solutions to large UAE organisations, including government institutions. Inception42 is also executing a national initiative to have AI agents handle 50% of federal government operations, and its Insight decision-intelligence platform is already used by more than 30 government and business boards.
+Why it matters: The partnership marks a direct collaboration between OpenAI and a UAE sovereign agentic AI company to customise enterprise-grade AI for major Emirates institutions. It is coupled with an explicit national goal to automate half of federal government operations through AI agents. Inception42 aims to have AI agents handle 50% of federal government operations as part of a national-scale AI initiative launched in May 2026. Its Insight decision-intelligence platform is already being used by more than 30 boards across UAE government and business.
+What technology: Inception42’s Catalyst platform is integrated with Microsoft 365 Copilot, and its Arabic enterprise LLM Seraj was developed on OpenAI’s GPT-4.1 and adapted using Arabic datasets. The collaboration will deliver tailored solutions leveraging OpenAI technology, including the Stargate UAE sovereign AI infrastructure project.
+Sources:
+- OpenAI and Inception42 to offer tailored enterprise AI to large UAE organisations, ADMO says — https://cryptobriefing.com/openai-inception42-uae-enterprise-ai/
 
 ### UiPath UAE AI Office Agentic AI Partnership (United Arab Emirates, 2026-11-01)
 Organisation: UAE AI Office
@@ -697,13 +803,14 @@ Sources:
 
 ### Berlin Automated Behavioral Analysis (Verhaltensscanner) (Germany, 2026-10-20)
 Organisation: Berlin Police
-Layer: Compliance & supervision, Data & privacy
+Layer: Compliance & supervision, Data & privacy, Agent governance
 Type: Deployment
 Summary: The Berlin Police operates an AI-powered behavioral analysis system using approximately 30 cameras at Kottbusser Tor. The software overlays stick figures on video feeds to analyze poses and movements via vectors, compares them with training data, and autonomously alerts a video control center when it detects likely police-relevant behavior. A 24/7 pilot operation is planned to follow the current intermittent testing phase, while coalition negotiations will determine its future beyond the scheduled 2028 evaluation.
 Why it matters: Unlike earlier systems in Mannheim that relied on thousands of police reenactments for training, the Berlin software was trained with AI-generated scenes. The system is also integrated with federal facial recognition databases, enabling identification of flagged individuals via screenshots sent to the BKA face search system. The system permanently analyzes monitored persons' poses and movements using vector-based stick figures and assesses context without human initiation; when it determines something is police-relevant, it autonomously issues an alert: 'Wenn sie feststellt, dass etwas mit hinreichend großer Wahrscheinlichkeit polizeilich relevant aussieht, gibt sie eine Meldung aus. Dann geht in der Videoleitstelle ein Monitor an.'
 What technology: The software uses pose estimation with vector-based stick figures overlaid on video feeds and compares movements against AI-generated training data. It runs on Axis cameras and was developed by Staige GmbH, a subsidiary of Adesso SE.
 Sources:
 - FAQ: Was man zum Verhaltensscanner in Berlin wissen sollte — https://netzpolitik.org/2026/faq-was-man-zum-verhaltensscanner-in-berlin-wissen-sollte/
+- Verhaltensscanner in Berlin: Kreisverkehr der Kontrolle — https://netzpolitik.org/2026/verhaltensscanner-in-berlin-kreisverkehr-der-kontrolle/
 
 ### ICE Legal Discovery AI Platform (United States, 2026-10-20)
 Organisation: U.S. Immigration and Customs Enforcement (ICE)
