@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (719 records as of 2026-11-03).
+newest first (726 records as of 2026-11-04).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,77 @@ newest first (719 records as of 2026-11-03).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Eka-1 and Dhīr indigenous foundational models (India, 2026-11-04)
+Organisation: Ministry of Electronics and Information Technology (MeitY), Government of India
+Layer: Tech stack, Government workflows
+Type: Deployment
+Summary: The Indian government launched three indigenous AI foundational models: Eka-1 (26.3 billion parameters, open sparse hybrid) by Soket Labs and Dhīr 2B and Dhīr 5B by ZenteiQ. The release aims to build a strategic domestic AI ecosystem, boost productivity and operational efficiency, and enable secure, offline-capable AI across government, defence, industrial and educational sectors, including in air-gapped environments.
+Why it matters: These are India’s first government-launched indigenous foundational models explicitly built for agentic use and deployable in air-gapped or low-connectivity settings, with EKA-1 covering all 22 scheduled Indian languages alongside English as an open sparse hybrid model. EKA-1 is explicitly “designed for math, code, reasoning, and agentic use,” while Dhīr 2B and Dhīr 5B enable “offline-capable, document-grounded automation, knowledge retrieval and citizen or enterprise services” across sectors.
+What technology: EKA-1 is a 26.3-billion-parameter open sparse hybrid language model trained on approximately 7.5 trillion tokens and covers 22 scheduled Indian languages plus English. Dhīr 2B and 5B are smaller models built for offline, document-grounded automation and retrieval in sensitive or low-connectivity environments.
+Sources:
+- Govt launches 3 new indigenous AI foundation models under IndiaAI Mission to strengthen homegrown AI capabilities — https://newsonair.gov.in/govt-launches-3-new-indigenous-ai-foundation-models-under-indiaai-mission-to-strengthen-homegrown-ai-capabilities/
+
+### Semarak AI Malaysia (Malaysia, 2026-11-04)
+Organisation: Government of Malaysia
+Layer: Government workflows, People & culture
+Type: Deployment, Strategy
+Summary: AWS launched Semarak AI Malaysia, a flagship national program whose public-sector pillar (AI Negara) will provide 445,000 government officers across 27 federal ministries with six months of complimentary access to Amazon Quick, an agentic AI agent, to reduce repetitive administrative work and support better analysis. AWS is also offering AWS Kiro for government developers, beginning with a 500-developer pilot in 2026 and targeting 4,000 developers by 2028.
+Why it matters: The initiative stands out for its nationwide scale—reaching half a million civil servants across all 27 federal ministries—and for explicitly embedding agentic AI tools and agentic-development platforms (Quick and Kiro) into federal operations rather than limiting them to a single agency or trial. Amazon Quick is described as an 'agentic AI agent' that will be provided to government officers to 'reduce repetitive administrative work, support better analysis, and enable faster, more responsive end services'. AWS Kiro is likewise positioned to bring 'engineering rigor to agentic development' for government developers.
+What technology: The program delivers Amazon Quick (agentic AI agent) and AWS Kiro (agentic development environment) via AWS cloud infrastructure, with six months of complimentary access for federal ministries and a developer pilot starting at 500 users in 2026.
+Sources:
+- AWS to empower half a million Malaysian government officers with agentic AI capabilities — https://www.crnasia.com/news/2026/artificial-intelligence/aws-to-empower-half-a-million-malaysian-government-officers
+
+### Dubai Chamber-Alibaba Cloud Agentic AI Partnership (United Arab Emirates, 2026-11-04)
+Organisation: Dubai Chamber of Digital Economy
+Layer: Tech stack, People & culture
+Type: Strategy
+Summary: Dubai Chamber of Digital Economy signed an MoU with Alibaba Cloud to support adoption of agentic AI across Dubai’s private sector. The partnership provides training, startup support, enterprise deployment assistance, workshops, certifications, mentorship, and tech credits to help businesses test and deploy AI agents for new products and business models.
+Why it matters: It is a government-led initiative explicitly framed around agentic AI rather than general AI adoption, combining workforce capacity building with direct cloud and technical support for AI agent deployment. The initiative is explicitly oriented toward 'Agentic AI technologies' and aims to help businesses test and deploy 'AI agents for new products and business models'. The source does not specify further autonomous decision-making or execution capabilities beyond this agentic framing.
+What technology: Alibaba Cloud is providing tech credits and deployment support, though the source does not specify models, platforms, or technical architecture.
+Sources:
+- Dubai Chamber of Digital Economy MoU with Alibaba Cloud for Agentic AI Adoption — https://x.com/arabtimesnews/status/2117851837638553986
+
+### AI-Equipped Interactive Kiosks for Administrative Services (Vietnam, 2026-11-04)
+Organisation: Can Tho City Public Administrative Service Centres (Cai Khe District, Thanh Hoa Commune)
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Can Tho city has deployed AI-powered interactive kiosks and AI assistants in public administrative centres to automate citizen service delivery. The system autonomously verifies identity, completes administrative requests, and digitizes documents, processing over 2,200 applications in Cai Khe district since August 2026 and achieving 99.74% on-time resolution rates citywide.
+Why it matters: Deployment of AI assistants that autonomously accompany vulnerable citizens through administrative procedures and interactive kiosks that independently verify identity and complete requests without staff handling each step. The AI-equipped interactive kiosks autonomously verify citizen identity and complete administrative requests ('vérifier mon identité et de compléter ma demande'), while AI assistants independently accompany vulnerable people through their administrative procedures.
+What technology: Interactive kiosks integrated with AI for identity verification and document digitization, connected to the national administrative procedures database; implemented in partnership with VNPT Can Tho for digital infrastructure.
+Sources:
+- Utiliser la satisfaction client comme mesure d'efficacité. — https://www.vietnam.vn/fr/lay-su-hai-long-cua-nguoi-dan-lam-thuoc-do-hieu-qua
+
+### NVIDIA Agentic AI for Cities Initiative (Spain, United States, Poland, Malaysia, Nigeria, Taiwan, Morocco, 2026-11-03)
+Organisation: Various municipal and regional governments
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: NVIDIA and its partners are expanding physical and agentic AI to cities worldwide, enabling municipal teams to deploy resident-service agents, vision AI agents, and digital twins for infrastructure planning and operations without massive upfront infrastructure. Live deployments include 150+ municipal service agents across Spain, vision agents for traffic and safety in Poland and Malaysia, and operational agents for refinery and urban planning in Nigeria and Taiwan.
+Why it matters: The initiative provides shared computing infrastructure and NVIDIA blueprints—Cosmos world models, Nemotron, and Metropolis VSS—so that city departments and neighboring municipalities can collaboratively build and extend agentic AI services on RTX workstations or small GPU systems rather than each acquiring dedicated resources. Resident-service agents autonomously handle municipal procedures, appointment requests, urban-planning incidents and service inquiries. Vision AI agents turn existing city camera feeds into operational insights to identify mobility and safety issues and coordinate emergency responses across city services. Interactive AI hosts in public spaces "understand people’s needs, provide answers and take action" tailored to local languages and services.
+What technology: Systems run on NVIDIA RTX PRO GPUs and workstations, using NVIDIA Cosmos world reasoning models, Nemotron open models, Omniverse and Metropolis libraries, and the Metropolis Blueprint for video search and summarization. 1MillionBot combines open-source ALIA models with Nemotron; ITMAX integrates TeraSim traffic simulation and scales on RTX PRO 6000 GPUs; Honeywell Forge Plant Cognition runs on Dell PowerEdge servers with RTX PRO accelerators.
+Sources:
+- Cities Worldwide Build and Scale AI Services With NVIDIA Physical and Agentic AI — https://blogs.nvidia.com/blog/cities-physical-agentic-ai-applications/
+
+### Cohere Defence AI Accelerator (Singapore, 2026-11-03)
+Organisation: Singapore defence and public sector organisations
+Layer: Government workflows, Tech stack
+Type: Deployment
+Summary: Cohere has announced a Defence AI Accelerator in Singapore to help defence and public sector organizations move sovereign AI applications from pilot projects to mission-ready operations. The accelerator provides hands-on engineering collaboration, secure testing environments, and integration support to scale AI systems using Cohere’s North platform across on-premises, hybrid, and air-gapped infrastructure.
+Why it matters: Unlike traditional technology showcases, the accelerator is built around practical deployment in real-world environments, offering dedicated support to transition from proof-of-concept to production in highly secure, sovereign settings. It specifically targets mission-critical defence use cases with flexible air-gapped and on-premises deployment options. The source states that sovereign customers will experiment with Cohere’s 'agentic AI platform, North' to 'deploy agentic AI in secure operational environments', integrating the platform with existing systems and workflows.
+What technology: The accelerator leverages Cohere’s enterprise-grade North platform and AI models, supporting on-premises, hybrid, and air-gapped deployments with governance frameworks and administrative controls for secure, mission-critical operations.
+Sources:
+- [PRNewswire] Cohere Launches Defence AI Accelerator in Singapore — https://en.yna.co.kr/view/RPR20261103004100353
+
+### National Cyber Shield with Agentic AI (United Kingdom, 2026-11-03)
+Organisation: National Cyber Security Centre (NCSC), UK Government
+Layer: Cyber security, Agent governance, Tech stack
+Type: Deployment, Strategy
+Summary: A £60 million national Cyber Shield programme using agentic AI to strengthen UK cyber defences, including a £25 million Challenge Fund for UK AI and cyber security innovators. This is part of a wider package that also includes a £40 million National Agentic Security Unit to monitor and respond to uncontrolled bots and agentic incidents.
+Why it matters: One of the first national-scale deployments explicitly named as using 'agentic AI' for cyber defence, with dedicated funding for an agentic security unit to handle autonomous bot threats. The source explicitly states the Cyber Shield uses 'agentic AI' and that a National Agentic Security Unit will be created 'to develop capabilities to monitor and respond to uncontrolled bots and strengthen resilience against agentic incidents' — indicating autonomous threat detection and response without human initiation per incident.
+What technology: Agentic AI systems for cyber defence; £25 million Challenge Fund for UK AI and cyber security innovators; integration with NCSC's National Exposure and Real-Time Vulnerability (NERV) Centre.
+Sources:
+- New Government-backed cyber security protections could save UK businesses thousands — https://www.gov.uk/government/news/new-government-backed-cyber-security-protections-could-save-uk-businesses-thousands
+- UK Gov Offers SMEs 75% Cyber Essentials Discount — https://www.digit.fyi/cyber-essentials-discount/
 
 ### Agentic Government and Digital Diplomacy Initiative (South Korea, Estonia, France, 2026-11-03)
 Organisation: Ministry of the Interior and Safety
@@ -67,7 +138,7 @@ Sources:
 
 ### ADNOC Frontier AI Agent Platform (United Arab Emirates, 2026-11-02)
 Organisation: Abu Dhabi National Oil Company
-Layer: Government workflows, Tech stack
+Layer: Government workflows, Tech stack, Policy & rule-making
 Type: Deployment, Strategy
 Summary: ADNOC signed a multi-year deal with OpenAI, through G42 subsidiary Inception42, to deploy the Frontier platform for building and managing AI agents that link decisions across oilfield development, production, refining, and trading. ADNOC is described as the first energy company to implement OpenAI Frontier, and the agreement was signed during the ADIPEC energy conference with Abu Dhabi’s crown prince present. The system runs on G42 infrastructure in the UAE and is part of a broader OpenAI engagement with Abu Dhabi public-sector entities.
 Why it matters: The deployment autonomously coordinates decisions across the full oil value chain—from upstream development to downstream trading—using a dedicated agent-management platform, and ADNOC is described as the first energy company globally to implement OpenAI Frontier, representing a deep operational integration of agentic AI in a state-owned enterprise. The Frontier platform will "link decisions across oilfield development, production, refining, and trading" and is described as a platform that "coordinates AI agents across all commercial operations," autonomously coordinating decisions across these distinct operational domains without requiring a human to initiate each individual step.
@@ -77,6 +148,7 @@ Sources:
 - Microsoft-backed OpenAI to Deploy AI Agents for Adnoc Oil Operations — https://finance.yahoo.com/energy/articles/microsoft-backed-openai-deploy-ai-095650309.html
 - Altman, de OpenAI, firma acuerdos con el gobierno y los Emiratos Árabes Unidos en medio de un impulso financiero por parte de los países del Golfo. - Al-Monitor — https://www.al-monitor.com/es/originals/2026/11/altman-de-openai-firma-acuerdos-con-el-gobierno-y-los-emiratos-arabes-unidos-en
 - OpenAI's Altman signs UAE energy, government deals amid Gulf funding push - Al-Monitor — https://www.al-monitor.com/originals/2026/11/openais-altman-signs-uae-energy-government-deals-amid-gulf-funding-push
+- OpenAI expands UAE footprint as it chases $20 billion raise — https://www.newsband.in/article_detail/openai-expands-uae-footprint-as-it-chases-20-billion-raise
 
 ### Zammo AI agents for citizen services (Global, 2026-11-02)
 Organisation: Local governments (demonstration)
@@ -6925,10 +6997,11 @@ Sources:
 Organisation: Department of Government Enablement (DGE), Abu Dhabi
 Layer: Service design & UX, Government workflows
 Type: Deployment
-Summary: TAMM is Abu Dhabi's unified digital platform aggregating services from over 30 government entities into a single app and website. TAMM 4.0 features an AI assistant that completes transactions on users' behalf and AutoGov, described as the world's first transactional AI public servant, which automatically handles recurring tasks such as license renewals, utility payments, and healthcare bookings without requiring individual requests once user preferences are set.
-Why it matters: AutoGov represents a shift from passive assistance to proactive execution, acting as a 'transactional AI public servant' that performs recurring government tasks automatically without being prompted each time. The platform integrates more than 30 disparate government bodies into a single interface with autonomous service completion capabilities. AutoGov is designed to handle recurring tasks such as renewing licences, making utility payments, and booking routine healthcare appointments automatically. Once a user sets their preferences, those actions can be carried out without being requested each time. The assistant also completes many services on the customer's behalf rather than only guiding them to a form.
-What technology: Built on large language models provided by Microsoft and G42, with G42 supplying a sovereign Arabic-language model and contributing to local cloud infrastructure. The platform supports more than 90 languages and operates within defined government standards and limits.
+Summary: TAMM AutoGov is an agentic AI capability on Abu Dhabi’s TAMM government services platform that proactively supports trade license and disability card renewals before they expire, reducing the need for residents to initiate requests. The platform serves 4.7 million users with over 1,200 services, and broader AI integration has helped raise customer satisfaction to 94.5% from 78% while cutting service costs by 30%.
+Why it matters: It shifts government service delivery from reactive to proactive by autonomously initiating renewal support before deadlines, reaching residents before they need to ask. The system uses agentic AI to support proactive trade license and disability card renewals before they expire, reducing the need for residents to initiate the process. The Director General described the intent as a service that 'reaches people before they have to ask for it—before the deadline, before the disruption.'
+What technology: Built on the TAMM platform powered by Microsoft, integrating agentic AI to orchestrate proactive renewal workflows across more than 1,200 government services.
 Sources:
+- Frontier government: People-first lessons from cities around the world — https://www.microsoft.com/en-us/microsoft-cloud/blog/government/2026/11/03/frontier-government-people-first-lessons-from-cities-around-the-world/
 - TAMM: Abu Dhabi's AI assistant for completing government services through a single app — https://apolitical.co/en/navigator/case-studies/tamm-abu-dhabis-ai-assistant-for-completing-government-services-through-a-single-app
 
 ### AlemGPT (Kazakhstan, 2026-01-06)
