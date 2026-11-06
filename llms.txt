@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (735 records as of 2026-11-04).
+newest first (745 records as of 2026-11-05).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,101 @@ newest first (735 records as of 2026-11-04).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Zetrix AI Know-Your-Agent (KYA) Digital Identity Service (China, Malaysia, 2026-11-05)
+Organisation: China's Academy of Information and Communications Technology (CAICT)
+Layer: Agent governance, Tech stack
+Type: Deployment
+Summary: Zetrix AI and CAICT launched a know-your-agent (KYA) service that provides AI agents with verifiable digital identities linked to individuals or organisations. The framework lets governments and businesses verify who an agent represents and what it is authorised to do, while owners can set permissions, transaction limits and spending authority and maintain activity records for accountability. The partners also plan a cross-border pilot across China, ASEAN, the Middle East and Africa to test recognition of agent identities and authorisations across jurisdictions.
+Why it matters: It adapts know-your-customer principles into a 'know-your-agent' standard for autonomous AI, using the W3C Verifiable Credentials framework to bind agents to accountable owners and manage delegated permissions such as spending limits across borders. The service is designed for a future where 'intelligent agents will increasingly make decisions, interact with businesses and execute transactions independently.' It enables agents to hold delegated permissions—including transaction limits and spending authority—tied to verifiable owner identities, allowing them to act and transact without a human initiating each step while remaining traceable to an accountable owner.
+What technology: The service is built on the World Wide Web Consortium's Verifiable Credentials framework and incorporates AvatarLabs' Agentic Wallet technology to manage digital credentials and verify delegated permissions.
+Sources:
+- Zetrix AI and China Academy of Information and Communications Technology Unveil Know Your Agent (KYA) Service to Bring Trust and Accountability to AI Agents — https://www.prnewswire.com/news-releases/zetrix-ai-and-china-academy-of-information-and-communications-technology-unveil-know-your-agent-kya-service-to-bring-trust-and-accountability-to-ai-agents-302930457.html
+- Zetrix, China's CAICT launch AI agent ID service — https://www.klsescreener.com/v2/news/view/1822431/zetrix-china-039-s-caict-launch-ai-agent-id-service
+- Embattled Zetrix AI launches AI agent identity service after RM3.7 bil development spending — https://theedgemalaysia.com/node/824669
+
+### Habit AI Security Operations Center (United States, 2026-11-05)
+Organisation: Cycurion, Inc.
+Layer: Cyber security, Government workflows
+Type: Deployment
+Summary: Cycurion launched Habit, an AI-driven Security Operations Center (SOC) that establishes behavioral baselines for identities, devices, and workloads to proactively identify cybersecurity threats before they disrupt operations. The system combines autonomous threat hunting with 24/7 human analyst oversight and built-in offensive analysis capabilities to study environments like an attacker, serving public-sector agencies and commercial clients.
+Why it matters: Unlike traditional SOC models that process alert volumes reactively, Habit autonomously learns 'what normal looks like' for each client environment and proactively hunts deviations, integrating offensive analysis to uncover weaknesses before they are exploited rather than after incidents occur. The system autonomously learns behavioral baselines for every identity, device, and workload in a client's environment, then independently 'goes after whatever breaks the pattern' without human initiation. It conducts built-in offensive analysis that 'studies the environment the way an attacker would' to autonomously uncover weaknesses, and performs AI-driven triage on detected deviations before human analysts verify threats.
+What technology: The platform connects to existing client tools or deploys its own agents to build a 'living baseline' of normal behavior, utilizing AI for continuous threat detection, triage, and offensive analysis. It operates as a 24/7 managed service and integrates with Cycurion's broader predictive intelligence portfolio including Panoptic and Fathom.
+Sources:
+- New Launch of “Habit”; 24/7 AI Security Center Proactively Guards Against Threats with Human Specialists, Offensive Analysis and Unlimited Incident Response from Cycurion, Inc. (Nasdaq: CYCU) — https://www.financialcontent.com/article/getnews-2026-11-5-new-launch-of-habit-247-ai-security-center-proactively-guards-against-threats-with-human-specialists-offensive-analysis-and-unlimited-incident-response-from-cycurion-inc-nasdaq-cycu
+
+### CSIT-Cohere North Platform for National Security (Singapore, 2026-11-05)
+Organisation: Centre for Strategic Infocomm Technologies (CSIT)
+Layer: Government workflows, Cyber security, Tech stack
+Type: Deployment
+Summary: CSIT is deploying Cohere's North agentic AI platform in secure, on-premises environments to accelerate AI adoption for national security operations, including protecting sensitive government information and strengthening cyber defence. Building on a completed pilot demonstrating on-premises operation and integration with existing systems, the collaboration is developing applications for secure knowledge retrieval, automated analysis and report generation, and agentic workflows within highly secure computing environments.
+Why it matters: Deployment of a sovereign, enterprise-grade agentic AI platform for mission-critical national security operations in fully air-gapped, classified environments where sensitive data never leaves protected on-premises systems, featuring centralized governance to manage agents, workflows, and compliance requirements. Cohere’s North platform builds AI agents that, unlike conventional chatbots, interact with software tools, retrieve information and complete sequences of tasks — concretely, an agent can search authorised technical records, extract relevant findings and prepare an initial report for human review. Centralized AI governance manages agents, workflows, policies, and compliance requirements without requiring human initiation for each step.
+What technology: Cohere’s enterprise-grade AI models delivered via the North platform support fully on-premises, air-gapped deployment within CSIT’s secure computing environments, with integration into existing workflows, role-based access controls, model interoperability, and centralised governance.
+Sources:
+- [PRNewswire] Cohere and Singapore's CSIT Announce Partnership — https://en.yna.co.kr/view/RPR20261105009700353?section=press-release/index
+- Cohere Partners Singapore Defence Agency To Develop Secure AI Systems — https://the420.in/cohere-partners-singapore-defence-agency-to-develop-secure-ai-systems/
+
+### Ajman DED Enhanced Renewal Service (United Arab Emirates, 2026-11-05)
+Organisation: Ajman Department of Economic Development (Ajman DED)
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Ajman DED has developed an enhanced renewal service using Agentic AI to automate business licence and economic permit renewals. The service aims to simplify the customer journey, improve procedural efficiency, and accelerate service delivery for investors and business owners. It forms part of the department's Zero Government Bureaucracy Programme to create proactive digital government services.
+Why it matters: This represents an explicit deployment of Agentic AI for economic licence renewal services in UAE government, moving beyond traditional automation to proactive service delivery that reduces bureaucracy. The system autonomously manages renewal workflows to improve procedural efficiency and accelerate service delivery without requiring human initiation for each step, providing proactive government services that simplify the customer journey.
+What technology: Developed using Agentic AI; showcased via the AI Lab platform as part of Ajman DED's digital transformation initiatives under the Zero Government Bureaucracy Programme.
+Sources:
+- Ajman Government Media Office, Ajman DED partner to support creative economy — https://www.bignewsnetwork.com/news/279412283/ajman-government-media-office-ajman-ded-partner-to-support-creative-economy
+
+### GovTech AI Agent Orchestration Platform (Singapore, 2026-11-05)
+Organisation: Government Technology Agency (GovTech), Singapore
+Layer: Government workflows, Service design & UX, Cyber security, Tech stack
+Type: Deployment, Strategy
+Summary: GovTech Singapore is developing GovHarness, a shared infrastructure to build and operate AI agents across government, redesigning operations around AI-native workflows where agents orchestrate multi-step tasks across systems and teams. Concrete initiatives include a voice assistant for the People's Association OnePA booking system—demonstrated finding facilities, verifying identity via Singpass, auto-filling details and processing payments, using ElevenLabs voice technology and with a trial planned for 2027—as well as an autonomous hiring agent, a cross-agency citizen agent, and AI-driven cybersecurity defenses (Codeguard, Maia, GovShield, GCSOC 2.0).
+Why it matters: The shift from AI-assisted workflows to AI-native workflows where agents autonomously orchestrate multi-step processes across government systems, allowing public officers to focus on judgement and approvals. This is underpinned by GovHarness, a new shared infrastructure providing centralised guardrails, monitoring and evaluation to manage agent behaviour government-wide and prevent siloed legacy systems. Agents "orchestrate the work across steps, systems and teams," including autonomously publishing job postings, shortlisting candidates, scheduling interviews and issuing offers. The demonstrated voice assistant "finds the nearest available slot and with the resident's permission, it fills in the resident's details from their profile, accepts the standard declarations and takes payment," also looking up badminton courts, suggesting alternative times and locations, enrolling users and charging fees without human initiation of each step, while GovHarness is designed for agents that "act and not just answer" and "comb across different agency's platforms and services."
+What technology: GovHarness is a shared infrastructure for building and operating AI agents, incorporating monitoring, common guardrails and evaluation, and leveraging existing platforms such as Singpass, LifeSG and the Standard Data Platform alongside reusable GovTech platforms for identity, case management and workflow. It integrates WebSG, Vica chatbot platform, Oobee accessibility checker and ElevenLabs voice technology, features "team brains" that maintain context throughout development cycles, and includes a security stack of Codeguard (AI code scanning), Maia (AI penetration testing), GovShield (whole-of-government firewall) and GCSOC 2.0 (AI-powered intrusion detection).
+Sources:
+- GovTech looks to rebuild government work around AI agents — https://www.computerweekly.com/news/366653615/GovTech-looks-to-rebuild-government-work-around-AI-agents
+- GovTech Singapore stresses need for shared platforms as AI agents move into citizen services — https://govinsider.asia/intl-en/article/govtech-singapore-stresses-need-for-shared-platforms-as-ai-agents-move-into-citizen-services
+
+### NVIDIA-backed public-sector AI projects across Europe (Belgium, Poland, United Kingdom, Germany, France, Greece, 2026-11-05)
+Organisation: European Commission and national public-sector agencies
+Layer: Government workflows, Tech stack
+Type: Deployment
+Summary: NVIDIA and partners are rolling out public-sector AI projects across Europe, including the European Commission's AI@EC platform and national initiatives in Poland, the UK, Germany, France and Greece. The projects focus on open models, locally controlled infrastructure and synthetic datasets for public administration, covering healthcare imaging, employment services, multilingual document analysis and sovereign collaborative workspaces.
+Why it matters: The initiative coordinates multiple sovereign and agentic AI deployments across EU institutions and member states under a single vendor-backed programme, emphasising open-weight models and local infrastructure. Standout features include dedicated 'agentic factories' for public employment services and country-specific synthetic persona datasets for testing public-service model consistency across demographics. The European Commission's AI@EC platform now integrates 'agent development, execution, optimisation and governance into one system' with deepset Haystack providing 'AI agent orchestration' for document analysis and knowledge management. Poland's Ministry of Family, Labour and Social Policy is developing an 'agentic factory' to support more than 400 labour offices with document search, summarisation and digital assistants, while Greece's KIEFER is building an 'agentic factory' for knowledge retrieval and digital assistants that lets organisations control where agents run.
+What technology: Projects use NVIDIA DGX BasePOD, DGX SuperPOD with DGX GB200, NVIDIA Triton Inference Server, Nemotron open models, NVIDIA Audio2Face and NeMo Data Designer; software includes deepset Haystack Enterprise Platform, Red Hat OpenShift AI, the MONAI framework, and open-weight models such as PLLuM, GPT OSS, Inkling and Sophea.
+Sources:
+- Nvidia backs public-sector AI projects across Europe — https://itbrief.co.uk/story/nvidia-backs-public-sector-ai-projects-across-europe
+
+### Singapore Government AI agent and co-design strategy (Singapore, 2026-11-05)
+Organisation: Government of Singapore / GovTech
+Layer: Government workflows, Policy & rule-making
+Type: Strategy
+Summary: On 5 November 2026, Prime Minister Lawrence Wong announced the next phase of Singapore’s digital transformation, calling for policymakers and technologists to co-design policy and technology from the outset instead of treating IT as an afterthought. The government plans to move away from waterfall IT projects, modernise legacy systems, adopt common GovTech platforms, and empower public officers to use AI agents to improve workflows and service delivery.
+Why it matters: The strategy shifts from sequential ‘waterfall’ policymaking followed by IT implementation to iterative joint design of policy and technology, and it explicitly plans to deploy AI agents—not just chatbots—that can act with minimum human supervision across the public service. The government intends to empower officers to use AI agents described as ‘bots that can take actions with minimum human supervision’ to solve problems and improve the way work gets done, going beyond current uses such as chatbots or drafting documents.
+What technology: The approach replaces waterfall development with iterative product building on common platforms and components developed by GovTech, while systematically reviewing and modernising legacy systems and strengthening public data infrastructure, skills and safeguards.
+Sources:
+- Policymakers and technologists must design public services together: PM Wong — https://www.straitstimes.com/tech/policymakers-and-technologists-must-design-public-services-together-pm-wong?ref=latest-headlines
+
+### AI Cyberattack Simulation Team (Japan, 2026-11-05)
+Organisation: Japanese Government
+Layer: Cyber security
+Type: Deployment
+Summary: Japan plans to establish a dedicated team that uses artificial intelligence to simulate cyberattacks and uncover weaknesses in computer systems, adding automated testing capabilities to the country's cybersecurity framework. The initiative responds to a rise in cyberattacks and aims to identify potential security threats proactively before malicious actors can exploit them.
+Why it matters: The deployment of AI agents to autonomously simulate cyberattacks on national infrastructure and corporate systems represents a shift from manual penetration testing to continuous, automated red-teaming capabilities. The system autonomously simulates cyberattacks and uncovers weaknesses through automated testing capabilities, executing attack simulations and vulnerability discovery without requiring human initiation of each specific test case or attack vector.
+What technology: The system utilizes advanced AI models potentially sourced from OpenAI and Anthropic (with whom the government has negotiated broader access), integrated into automated penetration testing and vulnerability assessment workflows.
+Sources:
+- CPI | Japan Steps Up Pressure on US Tech Giants Over Security and AI — https://www.pymnts.com/cpi-posts/japan-steps-up-pressure-on-us-tech-giants-over-security-and-ai/
+
+### Agentic Agency Framework (Germany, 2026-11-04)
+Organisation: German Federal Digital Ministry
+Layer: Government workflows, Service design & UX, Tech stack
+Type: Deployment, Strategy
+Summary: The German Federal Digital Ministry is developing the Agentic Agency Framework to transform federal administration using agentic AI by 2030, aiming to have AI agents independently handle tasks and coordinate across agencies in the background to relieve staff and shorten application processing times. Pilot projects such as the Agentic AI Hub and Spark-KI Workflow have already reduced processing times by over 90% in some cases by automating completeness checks, document analysis and decision-proposal drafting, while the IT-Planungsrat has mandated open protocols for the Deutschland-Stack to enable agent-to-system and agent-to-agent interoperability.
+Why it matters: It explicitly envisions AI agents autonomously coordinating across authorities in the background to process citizen requests through a single contact point, with humans intervening only based on risk, designed to offset a projected shortfall of 1.5 million public servants by 2035. The binding open-protocol mandate for the Deutschland-Stack creates a new interoperability layer intended to prevent vendor lock-in at the orchestration layer, while new federal rules allow direct contracts up to €100,000 with startups. The framework is designed so that AI agents independently complete many tasks and coordinate across authorities in the background when processing applications, decomposing assignments into subtasks, retrieving information, using tools and triggering actions in other systems via interfaces; in pilots they autonomously check documents, request missing paperwork, analyse content and draft decision proposals, while citizens reach the administration through a single AI-handled contact point and humans check or steer only where necessary based on risk.
+What technology: The framework is being built by DigitalService and PD – Berater der öffentlichen Hand for the Digital Ministry, integrating into existing Fachverfahren via the Deutschland-Stack, which the IT-Planungsrat has mandated to use open protocols allowing agent-to-system and agent-to-agent access; the broader ecosystem relies on cloud platforms, base models, identity systems, workplace software, agent runtimes and connectors, with an existing related project being Spark-KI Workflow.
+Sources:
+- Digitalgipfel: KI-Torschlusspanik — https://netzpolitik.org/2026/digitalgipfel-ki-torschlusspanik/
+- Wer profitiert vom „agentischen Staat“? — https://www.egovernment.de/wer-profitiert-vom-agentischen-staat-a-6d983543e414923e0e797ce37d9bf34a/
 
 ### Shaffra AI Workforce Platform in Bahrain (Bahrain, 2026-11-04)
 Organisation: Innovate for Bahrain (Bahrain FinTech Bay)
@@ -265,12 +360,13 @@ Sources:
 
 ### AI-native Machine-Readable Government initiative (United Arab Emirates, 2026-11-02)
 Organisation: Abu Dhabi Government
-Layer: Government workflows, Compliance & supervision
-Type: Deployment
-Summary: A partnership between Abu Dhabi Government and OpenAI to convert government policies and regulations into machine-readable formats, enabling AI systems to assist officials with regulatory compliance assessments including permit and certificate applications. The first pilot is operational at the Abu Dhabi Agriculture and Food Safety Authority (ADAFSA) for food import assessments.
-Why it matters: Described as the world's first AI-native Machine-Readable Government initiative, with computation running on local GPU infrastructure within UAE data centres. The system autonomously assesses food imports for regulatory compliance and assists with permit and certificate applications, with AI-generated assessments traceable to specific regulations. Government officials retain oversight and final decision authority.
-What technology: Runs on OpenAI GPT models using inference infrastructure located within the UAE, with computation on GPUs in local data centres.
+Layer: Government workflows, Compliance & supervision, Service design & UX
+Type: Deployment, Strategy
+Summary: Abu Dhabi has partnered with OpenAI to deploy frontier AI on sovereign UAE infrastructure as part of a Dh13 billion strategy to become the world's first AI-native government by 2027. A pilot at the Agriculture and Food Safety Authority is already using a machine-readable government system to cut complex food-import processing from days to minutes, while specialised AI agents are being introduced across government to assist with research, software development, recruitment and procurement.
+Why it matters: The initiative creates a 'machine-readable government' that converts policies and regulations into formats AI can interpret, enabling autonomous preliminary examination of complex regulatory cases. It also establishes sovereign in-country hosting of OpenAI's frontier models with government-retained intellectual property, alongside a vision of a 'human plus agents' workforce. Specialised AI agents handle tasks ranging from research and data analysis to writing documents and developing software, generating code equivalent to that produced by 30 developers in a day. At the Agriculture and Food Safety Authority, the AI system 'carries out much of that preliminary work before presenting its findings for review', cutting cycle times for complex cases from days to minutes.
+What technology: OpenAI's frontier models are deployed on in-country UAE computing infrastructure through Stargate UAE to ensure data sovereignty, integrated with Abu Dhabi's existing Tamm digital platform and DGE's machine-readable policy conversion system. DGE is also the first civilian government entity to access OpenAI's Daybreak Blue advanced cyber defence programme.
 Sources:
+- OpenAI deal to cut Abu Dhabi government processing times from days to minutes — https://www.thenationalnews.com/future/technology/2026/11/06/openai-deal-to-cut-abu-dhabi-government-processing-times-from-days-to-minutes/
 - OpenAI Signs Four Agreements With Abu Dhabi Across Government, Energy And Investment — https://analyticsindiamag.com/ai-news/openai-signs-four-agreements-with-abu-dhabi-across-government-energy-and-investment
 
 ### OpenAI-Inception42 UAE Enterprise AI Partnership (United Arab Emirates, 2026-11-02)
@@ -305,14 +401,15 @@ Sources:
 
 ### RTA Agentic AI Strategy (United Arab Emirates, 2026-11-01)
 Organisation: Dubai Roads and Transport Authority (RTA)
-Layer: Service design & UX, Government workflows
+Layer: Service design & UX, Government workflows, Agent governance
 Type: Strategy, Deployment
-Summary: Dubai's RTA launched an updated AI Strategy to transition 50% of operations to an Agentic AI ecosystem over 2.5 years, targeting 5% traffic congestion reduction, 20-30% faster complaint processing, and 20% fewer accidents among new drivers. The strategy encompasses 40 AI products across 41 business areas including vehicle licensing, traffic management, public transport, and procurement, with 11 products already deployed.
-Why it matters: The strategy marks a fundamental shift from supportive AI tools to autonomous systems capable of delivering end-to-end services, including a chatbot that completes transactions rather than merely answering queries, and a bus network planner deploying 20 AI agents to simulate alternatives and recommend improvements without human initiation of each analysis step. The Mahboub chatbot has been transformed from enquiry response into a system 'capable of completing transactions' autonomously via app, website and WhatsApp. The Bus Network Planner deploys approximately 20 AI agents that 'analyse performance indicators, identify gaps in services, simulate operational alternatives and recommend suitable options' without human initiation, while the Outsourcing Contracts Accountant autonomously 'analyse attendance records and work outputs, check compliance with contractual terms and streamline invoice reviews'.
+Summary: Dubai's RTA launched an updated AI Strategy to transition 50% of operations to an Agentic AI ecosystem over 2.5 years, targeting a 5% reduction in traffic congestion, 20–30% faster complaint processing, and 20% fewer accidents among new drivers. The strategy spans 40 AI products across 41 business areas—including vehicle licensing, traffic management, public transport, and procurement—with 11 products already deployed.
+Why it matters: The strategy marks a fundamental shift from supportive AI tools to autonomous systems capable of delivering end-to-end services, including a chatbot that completes transactions rather than merely answering queries, and a bus network planner deploying 20 AI agents to simulate alternatives and recommend improvements without human initiation of each analysis step. The Mahboub chatbot has been transformed from enquiry response into a system 'capable of completing transactions' autonomously via app, website and WhatsApp. The Bus Network Planner deploys approximately 20 AI agents that 'analyse performance indicators, identify gaps in services, simulate operational alternatives and recommend suitable options' without human initiation, while the Outsourcing Contracts Accountant autonomously 'analyses attendance records and work outputs, checks compliance with contractual terms and streamlines invoice reviews'.
 What technology: The ecosystem integrates Microsoft Copilot (90% employee adoption), machine learning, optical character recognition (OCR), and integrations with UAE PASS and Dubai Pay. It includes the Mahboub chatbot platform, an AI Auditor for document verification, and an eNOC processing system, developed in collaboration with Huawei, Boston Consulting Group and Microsoft.
 Sources:
 - Dubai to cut traffic congestion by 5%, accidents among new drivers by 20% using AI — https://www.khaleejtimes.com/uae/dubai-rta-targets-traffic-congestion-cut-ai-strategy
 - RTA launches updated Artificial Intelligence Strategy — https://www.bignewsnetwork.com/news/279406555/rta-launches-updated-artificial-intelligence-strategy
+- AI agents enter government, putting identity and accountability to the test — https://www.biometricupdate.com/202611/ai-agents-enter-government-putting-identity-and-accountability-to-the-test
 
 ### Pentagon AI Agent Security Incident (United States, 2026-11-01)
 Organisation: U.S. Department of Defense
@@ -883,6 +980,16 @@ What technology: AI systems for automatic target identification, surveillance pr
 Sources:
 - The Pentagon’s guidelines for “responsible AI” aren’t always followed, report shows — https://www.npr.org/2026/10/23/nx-s1-6012296/ai-department-of-defense-war
 - The Pentagon's guidelines for "responsible AI" aren't always followed, report shows - Oregon Public Broadcasting — https://www.opb.org/article/2026/10/24/the-pentagons-guidelines-for-responsible-ai-arent-always-followed-report-shows/
+
+### ALTEREGO (Italy, 2026-10-22)
+Organisation: ICS Maugeri S.p.A. SB
+Layer: Service design & UX
+Type: Deployment
+Summary: ALTEREGO introduces assistive humanoid robotics into care pathways for people with amyotrophic lateral sclerosis (ALS). The humanoid robot Alter-Ego integrates telepresence, mobility, anthropomorphic arms and adaptive hands, and is currently undergoing clinical trials in hospital and simulated home environments. Through co-design with patients, caregivers and professionals, the project identified 12 use cases for the system.
+Why it matters: It is the first Italian public healthcare project to deploy a humanoid robot capable of teleoperated, semi-autonomous and autonomous operation specifically for ALS patients, combining physical assistance, telepresence and manipulation in a single platform. The robot Alter-Ego can operate in semi-autonomous or autonomous mode, performing care tasks without a human initiating each step. The source states that it 'può operare in modalità teleoperata, semi-autonoma o autonoma'.
+What technology: Humanoid robot featuring telepresence, mobility, anthropomorphic arms and adaptive hands; clinical trial is underway in both hospital and simulated domestic settings.
+Sources:
+- Premio “FORUM PA Sanità 2026”: scopri i vincitori — https://www.forumpa.it/sanita/premio-forum-pa-sanita-2026-scopri-i-vincitori/
 
 ### Google Agentic AI Solution for Government Services (United States, 2026-10-22)
 Organisation: Google Public Sector
