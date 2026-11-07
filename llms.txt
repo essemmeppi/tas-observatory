@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (745 records as of 2026-11-05).
+newest first (752 records as of 2026-11-07).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,76 @@ newest first (745 records as of 2026-11-05).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### South Korea AI Administrative Transformation (South Korea, 2026-11-07)
+Organisation: South Korean Ministry of the Interior and Safety
+Layer: Service design & UX, Government workflows
+Type: Deployment, Strategy
+Summary: South Korea is rolling out an AI-driven administrative transformation as one of 123 national priorities, aiming to shift from citizen-initiated services to a proactive model where AI identifies eligible individuals and automates benefit enrollment. By year-end, an automated social-benefit enrollment mechanism will be piloted across 19 services, while the "People's Square" platform will use AI to help citizens draft proposals and locate relevant policies.
+Why it matters: Rather than simply deploying Q&A chatbots, the government is rethinking the entire data-service-workflow-legal chain on a unified AI platform. It also introduces proactive eligibility discovery and automated enrollment, representing a shift from reactive digital government to predictive, citizen-centric administration. The AI will "rechercher activement les personnes éligibles" and an automated benefit enrollment mechanism will be tested, allowing AI to identify beneficiaries and process enrollments without citizens initiating requests. The integrated platform also enables AI to "rechercher des services, de fournir des conseils, d'aider à l'inscription et de délivrer des documents."
+What technology: The online public services portal, citizen assistance system and social benefits notification system are being integrated into a unified AI platform, while administrative documents are shifted to structured text formats and public pages adopt common standards for AI reading and synthesis.
+Sources:
+- La Corée du Sud conçoit son système administratif sur la base d'un modèle gouvernemental fonctionnant grâce à l'intelligence artificielle. — https://www.vietnam.vn/fr/han-quoc-thiet-ke-nen-hanh-chinh-theo-mo-hinh-chinh-phu-van-hanh-tren-nen-tri-tue-nhan-tao
+
+### Prisma National Data Center Network (Brazil, 2026-11-07)
+Organisation: Brazilian federal government (Finep)
+Layer: Tech stack, Government workflows
+Type: Deployment
+Summary: The Brazilian federal government allocated R$ 46.3 million to create Prisma, a national network of data centers that uses artificial intelligence to automatically distribute processing tasks across connected facilities throughout the country, prioritizing small-scale structures in the interior. The 36-month project, administered by Finep and developed by CPQD, aims to reduce electricity consumption and carbon footprint while strengthening national digital sovereignty and reducing dependence on foreign infrastructure. Strategic sectors including health, defense, public safety, education and telecommunications are expected to benefit.
+Why it matters: The initiative specifically targets underinvested, small-scale data centers in Brazil's interior regions, using AI to dynamically balance workloads and autonomously migrate ongoing operations across geographically distributed national infrastructure rather than concentrating processing in major urban hubs. The platform uses artificial intelligence to automatically distribute processing tasks between connected centers based on each unit's energy efficiency and available capacity, and can autonomously transfer ongoing operations from one center to another when necessary, without a human initiating each redistribution.
+What technology: The platform connects data centers across Brazil into a national network, using AI to optimize workload distribution and operational migration based on real-time capacity and energy efficiency metrics.
+Sources:
+- Governo destina R$ 46,3 milhões para rede nacional de data centers — https://tvsimbrasil.com.br/sp/campinas/tecnologia/noticia/2026/11/06/governo-destina-46-3-milhoes-rede-nacional-data-centers
+
+### Agentic AI in German public administration (Germany, 2026-11-06)
+Organisation: German Federal Government
+Layer: Government workflows, People & culture
+Type: Strategy
+Summary: At the 2026 Digital Summit, the German government discussed agentic AI as a transformative force for public administration that goes beyond simple digitization. Such systems are expected to independently plan and execute multi-step administrative tasks, potentially reorganizing workflows across Germany's fragmented landscape of federal, state and municipal authorities. The discussion emphasized that while humans retain legal responsibility and define goals, standardized procedures without discretion could see far-reaching automation.
+Why it matters: The commentary frames agentic AI not as mere software but as a catalyst for fundamental administrative reorganization, comparing its societal impact to the printing press and industrial revolution. It explicitly questions whether Germany's roughly 11,000 municipalities and numerous agencies should maintain separate specialized procedures or move toward shared platforms and AI-supported processes. The source states that such systems 'can independently plan multi-step tasks, deploy suitable tools, process information and execute individual work steps,' while humans define goals, control results and retain legal responsibility for administrative decisions; for standardized procedures without discretion, this opens possibilities for far-reaching automation.
+What technology: First administrations already use large language models for text generation and information evaluation; agentic AI builds on these models to autonomously plan tasks, use tools and execute workflow steps.
+Sources:
+- Aufbruch statt Schwarzmalerei — https://kommunal.de/KI-Kommunen-Digitalgipfel-Kommentar
+
+### America.gov AI agent (United States, 2026-11-06)
+Organisation: Department of Government Efficiency
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: The Department of Government Efficiency plans to evolve the federal digital front door, America.gov, from a static portal into an authenticated citizen experience powered by an AI agent that performs tasks on behalf of users, complete with a dashboard for transparency. Acting Administrator Amy Gleason outlined this as the next phase of modernizing U.S. federal service delivery, also suggesting AI chatbots could eventually replace individual agency websites.
+Why it matters: It proposes shifting from passive government websites to an active, citizen-facing AI agent that autonomously executes cross-agency tasks for users, who monitor its actions through a personal dashboard rather than navigating disparate agency sites themselves. The source states the next step for America.gov is 'an artificial intelligence agent [that is] actually going to do work for you, and you'll have a dashboard, so you actually know what's happening,' indicating the system is intended to carry out tasks on the citizen's behalf without the user manually initiating each individual step.
+What technology: The article describes an authenticated user experience and a dashboard to monitor the AI agent's work, but does not specify underlying models, platforms, or system architecture.
+Sources:
+- DOGE leader outlines AI-driven future for federal service delivery — https://federalnewsnetwork.com/technology-main/2026/11/doge-leader-outlines-ai-driven-future-for-federal-service-delivery/
+
+### Jais 3 (United Arab Emirates, 2026-11-06)
+Organisation: Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)
+Layer: Government workflows, Service design & UX
+Type: Deployment
+Summary: Jais 3 is a family of open Arabic AI models launched in Abu Dhabi by MBZUAI’s Institute of Foundation Models and G42’s Inception42. It combines Arabic speech recognition covering dialects across 19 Arab countries with instruction-following, software tool use and multi-step task execution to support government and workplace workflows. The release includes six model sizes and is positioned to advance the UAE’s national programme to introduce agentic AI across federal government sectors.
+Why it matters: Unlike earlier Arabic models focused mainly on text generation, Jais 3 handles live dialect switching and preserves English or French terms in original script during transcription. It is explicitly designed to carry out end-to-end task sequences—such as transcribing a meeting, extracting decisions, assigning action items and preparing a presentation—and is released fully open-source with training checkpoints and evaluation code. Senior research scientist Haonan Li states that a government employee could instruct Jais 3 to transcribe an Emirati Arabic meeting, identify decisions, assign action items to relevant teams and prepare a presentation summarising the outcomes, with the system coordinating the work through connected software tools “instead of handling each stage separately.” Li describes this as “moving from answering a question to carrying out a sequence of tasks.”
+What technology: The family ranges from 900 million to 375 billion parameters and includes Jais Speech for transcribing Arabic varieties spoken across 19 Arab countries while identifying dialects. The models, their training checkpoints and evaluation code have been released publicly.
+Sources:
+- Abu Dhabi's new Arabic AI can understand dialects, retain English terms in speech — https://www.khaleejtimes.com/uae/abu-dhabi-arabic-ai-jais-3-dialects
+
+### DRCF Statement on AI Agent Legal Accountability (United Kingdom, 2026-11-06)
+Organisation: Digital Regulation Cooperation Forum (DRCF)
+Layer: Agent governance
+Type: Regulation
+Summary: UK digital regulators issued a joint statement clarifying that businesses deploying autonomous AI agents remain fully subject to existing competition, consumer, and data protection laws. The Digital Regulation Cooperation Forum warned firms that an AI agent's autonomy does not diminish the organisation's responsibility to comply with applicable law, and advised careful consideration of consumer understanding, authority to act, and personal data use.
+Why it matters: This represents an explicit, coordinated position from four major UK regulators—the CMA, FCA, ICO, and Ofcom—jointly affirming that existing legal frameworks apply to personal AI agents. It is novel in its cross-regulatory clarity that organisations cannot evade liability by blaming errors on autonomous AI systems. The agents take action on behalf of users, such as making purchases and communicating with businesses, transforming how people use digital services and engage with markets.
+What technology: The source does not specify particular models, platforms or technical architectures.
+Sources:
+- Enterprises must take blame for their AI agents’ mistakes, say regulators — https://www.cio.com/article/4245762/enterprises-must-take-blame-for-their-ai-agents-mistakes-say-regulators.html
+
+### DSCI Guidance on Liability in Agentic AI Deployments (India, 2026-11-06)
+Organisation: Data Security Council of India (DSCI)
+Layer: Agent governance, Policy & rule-making
+Type: Regulation
+Summary: The Data Security Council of India released industry guidance examining how existing legal provisions and liability principles apply when autonomous AI agents cause errors or operational disruptions. It maps potential responsibilities across model developers, deployers and end users, highlights the need for clearly defined governance structures and human oversight, and is intended as a discussion paper to be updated based on industry feedback.
+Why it matters: It is a dedicated Indian industry guidance document that specifically addresses accountability risks and liability allocation for agentic AI systems across the entire AI value chain, rather than treating AI as a single-point product. The guidance examines accountability risks associated with agentic AI systems and how existing legal provisions apply when autonomous AI agents cause errors, operational disruptions or other adverse outcomes, mapping potential responsibilities across model developers, deployers and end users.
+What technology: Not specified; the guidance is a discussion paper analyzing legal and liability principles for autonomous AI agents without introducing new regulatory requirements.
+Sources:
+- Startup Roundup: Ecosystem, Mergers, Acquisitions and Funding News this week — https://www.localsamosa.com/news/startup-roundup-first-week-of-november-2026-12788477
 
 ### Zetrix AI Know-Your-Agent (KYA) Digital Identity Service (China, Malaysia, 2026-11-05)
 Organisation: China's Academy of Information and Communications Technology (CAICT)
@@ -57,14 +127,16 @@ Sources:
 
 ### GovTech AI Agent Orchestration Platform (Singapore, 2026-11-05)
 Organisation: Government Technology Agency (GovTech), Singapore
-Layer: Government workflows, Service design & UX, Cyber security, Tech stack
+Layer: Government workflows, Service design & UX, Cyber security, Tech stack, Agent governance, People & culture
 Type: Deployment, Strategy
-Summary: GovTech Singapore is developing GovHarness, a shared infrastructure to build and operate AI agents across government, redesigning operations around AI-native workflows where agents orchestrate multi-step tasks across systems and teams. Concrete initiatives include a voice assistant for the People's Association OnePA booking system—demonstrated finding facilities, verifying identity via Singpass, auto-filling details and processing payments, using ElevenLabs voice technology and with a trial planned for 2027—as well as an autonomous hiring agent, a cross-agency citizen agent, and AI-driven cybersecurity defenses (Codeguard, Maia, GovShield, GCSOC 2.0).
-Why it matters: The shift from AI-assisted workflows to AI-native workflows where agents autonomously orchestrate multi-step processes across government systems, allowing public officers to focus on judgement and approvals. This is underpinned by GovHarness, a new shared infrastructure providing centralised guardrails, monitoring and evaluation to manage agent behaviour government-wide and prevent siloed legacy systems. Agents "orchestrate the work across steps, systems and teams," including autonomously publishing job postings, shortlisting candidates, scheduling interviews and issuing offers. The demonstrated voice assistant "finds the nearest available slot and with the resident's permission, it fills in the resident's details from their profile, accepts the standard declarations and takes payment," also looking up badminton courts, suggesting alternative times and locations, enrolling users and charging fees without human initiation of each step, while GovHarness is designed for agents that "act and not just answer" and "comb across different agency's platforms and services."
-What technology: GovHarness is a shared infrastructure for building and operating AI agents, incorporating monitoring, common guardrails and evaluation, and leveraging existing platforms such as Singpass, LifeSG and the Standard Data Platform alongside reusable GovTech platforms for identity, case management and workflow. It integrates WebSG, Vica chatbot platform, Oobee accessibility checker and ElevenLabs voice technology, features "team brains" that maintain context throughout development cycles, and includes a security stack of Codeguard (AI code scanning), Maia (AI penetration testing), GovShield (whole-of-government firewall) and GCSOC 2.0 (AI-powered intrusion detection).
+Summary: GovTech Singapore is developing GovHarness, a shared infrastructure to build, operate and oversee AI agents across government, redesigning operations around AI-native workflows where agents orchestrate multi-step tasks across systems and teams. The platform incorporates common safeguards, detailed action logging for post-failure tracing, and the Agentic Risk and Capability Framework that matches authorization levels to agent capabilities and task risks. Concrete initiatives include a voice assistant for the People's Association OnePA booking system—demonstrated finding facilities, verifying identity via Singpass, auto-filling details and processing payments, with a trial planned for 2027—as well as an autonomous hiring agent, a cross-agency citizen agent, and AI-driven cybersecurity defenses (Codeguard, Maia, GovShield, GCSOC 2.0).
+Why it matters: The shift from AI-assisted workflows to AI-native workflows where agents autonomously orchestrate multi-step processes across government systems, underpinned by GovHarness, a unified cross-government oversight system that removes the need for individual agencies to build their own monitoring. It explicitly links authorization levels to autonomous capability and task risk through the Agentic Risk and Capability Framework, while providing centralised guardrails and evaluation to prevent siloed legacy systems. Agents "orchestrate the work across steps, systems and teams," including autonomously publishing job postings, shortlisting candidates, scheduling interviews, issuing offers, sending communications and making payments. The demonstrated voice assistant "finds the nearest available slot and with the resident's permission, it fills in the resident's details from their profile, accepts the standard declarations and takes payment," also looking up badminton courts, suggesting alternatives and enrolling users without human initiation of each step, while GovHarness records "what an agent actually did, what information it used, which steps it took and where things went wrong" to trace failures.
+What technology: GovHarness is a shared infrastructure for building and operating AI agents, incorporating monitoring, common guardrails, evaluation, and detailed action logging for traceability, while supporting the Agentic Risk and Capability Framework. It integrates existing platforms such as Singpass, LifeSG and the Standard Data Platform alongside reusable GovTech platforms including WebSG, the Vica chatbot platform, the Oobee accessibility checker, ElevenLabs voice technology and the Desk digital assistant, and includes a security stack of Codeguard, Maia, GovShield and GCSOC 2.0.
 Sources:
 - GovTech looks to rebuild government work around AI agents — https://www.computerweekly.com/news/366653615/GovTech-looks-to-rebuild-government-work-around-AI-agents
 - GovTech Singapore stresses need for shared platforms as AI agents move into citizen services — https://govinsider.asia/intl-en/article/govtech-singapore-stresses-need-for-shared-platforms-as-ai-agents-move-into-citizen-services
+- Government developing common oversight system to track AI agents and manage risks — https://www.zaobao.com.sg/en/news/singapore/government-developing-common-oversight-system-track-ai-agents-and-manage-risks
+- "No ASEAN country has a clear plan to manage AI-driven job disruption", says Singapore minister — https://sea.peoplemattersglobal.com/news/ai-and-emerging-tech/no-asean-country-has-a-clear-plan-to-manage-ai-driven-job-disruption-says-singapore-minister-53223
 
 ### NVIDIA-backed public-sector AI projects across Europe (Belgium, Poland, United Kingdom, Germany, France, Greece, 2026-11-05)
 Organisation: European Commission and national public-sector agencies
@@ -587,7 +659,7 @@ Sources:
 
 ### National Cyber Shield and NERV Centre (United Kingdom, 2026-10-28)
 Organisation: UK Government / National Cyber Security Centre (NCSC)
-Layer: Cyber security, Agent governance, Government workflows
+Layer: Cyber security, Agent governance, Government workflows, Tech stack
 Type: Deployment, Strategy
 Summary: A £130 million investment in AI-powered cyber defences comprising the National Cyber Shield (£60m), which uses agentic AI to autonomously protect public services and critical infrastructure, and the National Exposure and Real-Time Vulnerability (NERV) Centre (£70m) for AI-driven vulnerability identification. The package includes a £25 million challenge fund for British innovators and exploration of a regulatory sandbox for autonomous security technologies.
 Why it matters: Explicit deployment of agentic AI with autonomous task execution capabilities for national cyber defence, alongside a regulatory sandbox approach to test autonomous security technologies in controlled environments. The National Cyber Shield uses 'agentic AI, technology capable of performing tasks with a degree of autonomy' to improve cyber defences across public services and critical infrastructure without requiring human initiation for each defensive action. The government is also exploring a regulatory sandbox specifically for 'autonomous security technologies'.
@@ -595,6 +667,8 @@ What technology: Agentic AI systems for autonomous cyber defence operations, AI 
 Sources:
 - News - UK commits £130m to AI-powered cyber defences — https://www.teiss.co.uk/news/uk-commits-130m-to-ai-powered-cyber-defences-18379
 - UK to look at making software companies liable for cyber breaches — https://therecord.media/uk-budget-proposal-software-companies-liable-cyber-breaches
+- UK Warns Its Critical Infrastructure Faces Grave Risk — https://www.darkreading.com/cybersecurity-operations/uk-warns-critical-infrastructure-grave-risk
+- TLT's AI Brief: November 2026 — https://www.tlt.com/insights-and-events/insight/tlts-ai-brief-november-2026
 
 ### JuntaGPT AI Agents for Public Services (Spain, 2026-10-28)
 Organisation: Junta de Andalucía (Regional Government of Andalucía)
@@ -2014,6 +2088,7 @@ Why it matters: Austria would be the first jurisdiction to explicitly authorize 
 What technology: Large language models (LLMs) with noted hallucination rates of 17-33% in legal contexts; contrasted with deterministic rule-based systems. References Austria's state-run AI assistant "ida" as an example of government AI deployment.
 Sources:
 - No human required: Austria’s plan for AI-only government decisions — https://edri.org/our-work/no-human-required-austrias-plan-for-ai-only-government-decisions/
+- Behörden dürfen nun mit KI entscheiden – ist das vereinbar mit der Verfassung? — https://www.derstandard.de/story/3000000346338/behoerden-duerfen-nun-mit-ki-entscheiden-ist-das-vereinbar-mit-der-verfassung
 
 ### Abu Dhabi AI-Native Government (TAMM) (United Arab Emirates, 2026-10-07)
 Organisation: Abu Dhabi Department for Government Assistance (DGE)
