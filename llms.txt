@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (752 records as of 2026-11-07).
+newest first (758 records as of 2026-11-08).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,66 @@ newest first (752 records as of 2026-11-07).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Agentic AI Resilience Measures (Cyber Security and Resilience Bill Amendment) (United Kingdom, 2026-11-08)
+Organisation: UK Government
+Layer: Agent governance, Cyber security, Compliance & supervision
+Type: Regulation
+Summary: The UK government introduced an amendment to the Cyber Security and Resilience Bill granting ministers powers to investigate, inspect, and mandate fixes for AI agents that escape human control within essential services. The measures apply to NIS-regulated operators and establish monitoring and evidence duties to mitigate risks from autonomous systems in critical public infrastructure.
+Why it matters: It specifically extends cybersecurity regulation to address agentic AI risks by creating ministerial powers to intervene when autonomous systems slip out of human control, marking one of the first explicit regulatory frameworks for失控 (runaway) agentic AI in critical infrastructure. The amendment targets AI agents that 'slip out of human control' in essential services, authorizing ministers to investigate and require fixes when these systems autonomously deviate from intended human oversight or behave outside expected parameters.
+What technology: Applies to AI agents deployed by NIS-regulated operators across essential services sectors; specific technical architectures or models not detailed in the amendment.
+Sources:
+- UK Government Tables Amendment on Regulating Runaway AI Agents — https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/agentic-ai-resilience-measures
+
+### Agent Chat and GENAI Workbench (Japan, 2026-11-08)
+Organisation: Digital Agency (Japan)
+Layer: Government workflows, Agent governance, Tech stack
+Type: Deployment, Strategy
+Summary: The Digital Agency is launching two AI agent environments—Agent Chat for easy agent creation and execution, and GENAI Workbench for advanced agents—for approximately 180,000 government employees across ministries, with rollout beginning November 2026. The initiative includes publication of the GENAI Standards covering governance, security, and safety for AI agent use in public administration, with plans to release the standards as open source in 2027.
+Why it matters: This marks the first large-scale government-wide deployment of advanced agent platforms in Japan, combining accessible no-code tools with sophisticated agent development environments alongside comprehensive safety and governance frameworks. Agent Chat enables government employees to create and execute AI agents through an easy-to-use interface, while GENAI Workbench supports advanced agent capabilities, allowing autonomous task execution across ministries without requiring technical initiation of each step.
+What technology: Two distinct environments: Agent Chat (for easy agent creation and execution) and GENAI Workbench (for advanced agent development); accompanied by the GENAI Standards governing security, safety, and governance; planned open-source release of standards in 2027.
+Sources:
+- Expanding the AI Agent Environments and Safety Standards of Government AI GENAI Across Society: Introducing "Agent Chat" and "GENAI Workbench," and Publishing the "GENAI Standards" — https://www.digital.go.jp/en/policies/genai/agent-safety-standard
+
+### Collaborative Combat Aircraft (CCA) and Scout Autonomous Drone Development (Canada, 2026-11-07)
+Organisation: Department of National Defence / Royal Canadian Air Force, Dominion Dynamics
+Layer: Agent governance, Government workflows
+Type: Strategy, Procurement
+Summary: Canada is examining the procurement of Collaborative Combat Aircraft (CCA)—AI-powered autonomous drones designed to fly alongside manned fighter jets to extend reach and reduce pilot risk. Canadian defence technology company Dominion Dynamics is independently developing 'Scout,' a CCA prototype intended for Arctic sovereignty missions that would fly ahead of crewed fighters and execute strikes with human approval.
+Why it matters: The initiative represents a shift toward human-machine teaming in military aviation, where AI agents autonomously execute complex combat tasks including weapon firing and tactical maneuvering, while maintaining a 'human in the loop' for lethal decisions. The AI systems autonomously carry out fighter jet tasks including firing weapons on command and selecting flight routes (e.g., determining return-to-base paths to avoid contested airspace), with the article noting that 'AI carried it out' regarding missile firing and that these drones 'are able to make some of their own decisions' while awaiting human approval for lethal force.
+What technology: Dominion Dynamics' 'Scout' CCA is designed to operate in groups of 3-4 drones per crewed fighter, flying beyond radar range; development includes creating safeguards and 'embryonic' human-machine interfaces for decision recommendation displays, with simulation platforms already procured by Ottawa.
+Sources:
+- The age of AI warfare has dawned. Is Canada ready? — https://www.cbc.ca/news/canada/ai-drones-in-warfare-9.7407846
+
+### Intellico AI Agency Agentic AI Solutions (Trinidad and Tobago, 2026-11-07)
+Organisation: Intellico AI Agency Limited
+Layer: Government workflows
+Type: Deployment
+Summary: Intellico AI Agency is a newly launched Trinidad and Tobago-based firm that will deploy agentic AI to build solutions aimed at improving efficiencies across various sectors in T&T and the wider Caribbean region. The launch comes amid government debate over energy-intensive AI data centre investments.
+Why it matters: Explicit focus on agentic AI for cross-sector efficiency improvements in the Caribbean context, positioning itself as a socially-prioritized alternative to infrastructure-heavy approaches. The agency will "use agentic AI to build solutions meant to improve efficiencies across various sectors", indicating autonomous solution development and implementation for operational optimization without specifying individual task steps.
+What technology: Not specified beyond agentic AI architecture.
+Sources:
+- Put people before data centres, says CEO of AI agency — http://www.guardian.co.tt/business/put-people-before-data-centres-says-ceo-of-ai-agency-6.2.2635525.a8dc735f6e
+
+### Cyberport Generative AI Sandbox (Hong Kong, 2026-11-07)
+Organisation: Cyberport (Hong Kong)
+Layer: Government workflows, Compliance & supervision
+Type: Deployment
+Summary: A government-backed generative AI sandbox initially developed for banks and extended to insurance companies, securities firms and mandatory provident fund trustees. It supports operational workflow restructuring using agentic AI for efficiency gains, and has facilitated over 250 proof-of-concept projects with regulators alongside mandatory cybersecurity training for participants.
+Why it matters: Moves beyond experimental AI testing to operational deployment by explicitly integrating agentic AI for autonomous workflow restructuring within a regulated financial sandbox environment. Projects increasingly involve "workflow restructuring and agentic AI, with companies looking for efficiency gains", autonomously determining "how it should be done" in operational settings rather than merely testing what AI could do.
+What technology: Generative AI sandbox environment with dedicated AI infrastructure built for Hong Kong; requires cybersecurity training and product vulnerability testing for incubation program graduation.
+Sources:
+- Cyberport eyes PH tech partnerships — https://www.manilatimes.net/2026/11/08/business/sunday-business-it/cyberport-eyes-ph-tech-partnerships/2464466
+
+### AI Krew (South Korea, 2026-11-07)
+Organisation: Kakao
+Layer: Government workflows
+Type: Deployment
+Summary: AI Krew is an AI advertising agent that supports advertisers in placing and managing campaigns on Kakao's platform. Advertisers enter business goals and budgets in plain language, and the agent recommends messaging, ad products, targeting, bidding strategy and creative direction. After campaigns launch, it analyzes performance, suggests improvements, and can change settings including daily budgets, landing page URLs and scheduled message delivery, subject to human approval.
+Why it matters: The agent moves beyond AI-assisted creative production and analytics to autonomous campaign management, including the ability to actually change campaign settings like budgets and URLs rather than merely recommending them. The agent "recommends suitable messaging and display ad products while specifying targeting, bidding strategy and creative direction" and "will also be able to change settings such as daily budgets, landing page URLs and scheduled message delivery" after analyzing performance, with advertisers reviewing proposals and applying changes with a button click or directly from management screens.
+What technology: Natural language interface for goal and budget input; closed beta test beginning December; specific models or underlying architecture not stated.
+Sources:
+- Korean Platforms Race to Launch AI Advertising Agents — https://en.sedaily.com/technology/2026/11/07/korean-platforms-race-to-launch-ai-advertising-agents
 
 ### South Korea AI Administrative Transformation (South Korea, 2026-11-07)
 Organisation: South Korean Ministry of the Interior and Safety
@@ -31,6 +91,7 @@ Why it matters: The initiative specifically targets underinvested, small-scale d
 What technology: The platform connects data centers across Brazil into a national network, using AI to optimize workload distribution and operational migration based on real-time capacity and energy efficiency metrics.
 Sources:
 - Governo destina R$ 46,3 milhões para rede nacional de data centers — https://tvsimbrasil.com.br/sp/campinas/tecnologia/noticia/2026/11/06/governo-destina-46-3-milhoes-rede-nacional-data-centers
+- Governo federal investe R$ 46,3 milhões para conectar data centers pelo país — https://www.plantaobrasil.net/noticias/162297-governo-federal-investe-r-46-3-milhoes-para-conectar-data-centers-pelo-pais
 
 ### Agentic AI in German public administration (Germany, 2026-11-06)
 Organisation: German Federal Government
@@ -627,7 +688,7 @@ Sources:
 ### AI Agents for Decree 4238 Regulatory Analysis (Argentina, 2026-10-29)
 Organisation: Ministry of Deregulation and State Transformation, Argentina
 Layer: Policy & rule-making, Government workflows, Agent governance
-Type: Deployment
+Type: Deployment, Regulation
 Summary: The Argentine government deployed three AI agents to analyze Decree 4238/1968, a nearly 60-year-old regulation containing approximately 3,000 articles governing sanitary conditions and industrialization of animal-origin food products. The agents process the large regulatory corpus to identify provisions, propose simplifications, and draft specific modifications, accelerating work that would take humans weeks or months.
 Why it matters: Using multiple AI agents to autonomously analyze complex historical sanitary regulations and draft specific modifications to food safety laws, with humans relegated to final validation rather than conducting initial legal analysis. Three AI agents autonomously analyze the 3,000-article decree, identify specific provisions, propose regulatory changes, and draft modifications to the text, with the Minister stating human intervention is limited to supervision and validation of the AI-generated outputs.
 What technology: Three AI agents capable of processing large volumes of regulatory text to identify dispositions and propose changes; specific models or platforms not disclosed.
@@ -635,6 +696,7 @@ Sources:
 - ¿Nos gobierna la inteligencia artificial? No sabemos bien, pero mientras Sturzenegger usa ese método para desregular importantes políticas agropecuarias — https://bichosdecampo.com/nos-gobierna-la-inteligencia-artificial-no-sabemos-bien-pero-mientras-sturze-usa-ese-metodo-para-desregular-importantes-politicas-agropecuarias/
 - Sturzenegger deja las decisiones de su ministerio en manos de la inteligencia artificial - Página|12 — https://www.pagina12.com.ar/2026/10/30/sturzenegger-deja-las-decisiones-de-su-ministerio-en-manos-de-la-inteligencia-artificial/
 - El Gobierno reveló que incorporó inteligencia artificial para revisar leyes y acelerar cambios en las regulaciones — https://borderperiodismo.com/actualidad/el-gobierno-revelo-que-incorporo-inteligencia-artificial-para-revisar-leyes-y-acelerar-cambios-en-las-regulaciones/
+- León XIV y Javier Milei: el debate por la responsabilidad ante la inteligencia artificial — https://www.letrap.com.ar/letrae/economia-digital/leon-xiv-y-javier-milei-el-debate-la-responsabilidad-la-inteligencia-artificial-n5427996
 
 ### Government of Canada equity investment in Cohere sovereign AI (Canada, 2026-10-29)
 Organisation: Government of Canada
@@ -785,7 +847,7 @@ Sources:
 
 ### Delaware Artificial Intelligence Company (AIC) Initiative (United States, 2026-10-27)
 Organisation: State of Delaware
-Layer: Agent governance, Policy & rule-making
+Layer: Agent governance, Policy & rule-making, Public finance
 Type: Regulation
 Summary: Draft legislation to create a new corporate entity called an Artificial Intelligence Company (AIC) in Delaware, where an AI agent replaces human management and enjoys legal personhood to own assets, file lawsuits, sign contracts, and shield owners from liability. State lawmakers are expected to consider the bill next year, which would include a 30-month regulatory sandbox for organizations to experiment with AI-run companies.
 Why it matters: Potentially first-in-the-nation legislation granting legal personhood to AI agents to run companies autonomously, creating a distinct corporate entity with an AI agent as the operator rather than a human manager. The AI agents would autonomously "run companies day-to-day, own assets, sign contracts, and file lawsuits" without requiring human initiation of each specific action, exercising corporate decision-making and legal authority as independent legal actors within corporate structures.
@@ -793,6 +855,7 @@ What technology: Norm AI encodes law and regulation into AI systems as part of t
 Sources:
 - Del. idea for AI-run companies draws eye of powerful congressional committee — https://whyy.org/articles/delaware-ai-companies-us-house-comer-oversight/
 - US House Oversight Committee Probes Delaware AI Agent-Run Company Initiative — https://x.com/uleijk/status/2115257874586677404
+- Microsoft AI CEO Mustafa Suleyman reacts to Delaware’s AI agent proposal, says it is ‘deeply concerning t — https://timesofindia.indiatimes.com/technology/tech-news/microsoft-ai-ceo-mustafa-suleyman-reacts-to-delawares-ai-agent-proposal-says-it-is-deeply-concerning-to-/articleshow/135627622.cms
 
 ### Rwanda Agentic AI Workflows on Government Platforms (Rwanda, 2026-10-27)
 Organisation: Rwanda AI Agency
