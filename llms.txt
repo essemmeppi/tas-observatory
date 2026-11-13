@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (777 records as of 2026-11-11).
+newest first (787 records as of 2026-11-12).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,107 @@ newest first (777 records as of 2026-11-11).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### AI Implementation Package for Public Administration Training and Responsible Use (Italy, 2026-11-12)
+Organisation: Council of Ministers of Italy
+Layer: People & culture, Agent governance
+Type: Strategy
+Summary: On 10 June 2026 the Italian Council of Ministers approved an implementing package on AI use in training paths, work, justice, health and public administration. The article discusses the need for targeted training of public managers and employees so that AI, especially agentic AI, supports but does not replace human judgment and ensures transparency in administrative decisions.
+Why it matters: It reframes soft skills such as critical thinking, problem solving and decision-making as hard institutional competencies required to supervise agentic AI, proposing a practical institutional training gym where officials exercise judgment on real administrative cases involving AI recommendations. The source states that agentic AI systems 'possono agire in modo più autonomo per raggiungere un obiettivo. Possono scegliere passaggi intermedi, attivare azioni, coordinare le informazioni e proporre decisioni operative.'
+What technology: The article refers to generative assistants, digital recommendation systems and agentic AI used in public administration for tasks such as document synthesis, waiting-list prioritisation and eligibility assessment, without naming specific models or platforms.
+Sources:
+- Come preparare la Pa all’uso responsabile dell’intelligenza artificiale — https://www.ilsole24ore.com/art/come-preparare-pa-all-uso-responsabile-dell-intelligenza-artificiale-AJIFhxDC
+
+### Local Government AI Playbook (United States, 2026-11-12)
+Organisation: Georgia Technology Authority
+Layer: Agent governance, People & culture
+Type: Strategy
+Summary: The Georgia Technology Authority's Office of Artificial Intelligence released a 53-page guide to help cities and counties adopt AI responsibly, particularly those lacking dedicated AI teams or resources. It establishes frameworks for experimentation while protecting resident information and maintaining accountability, emphasizing that AI should augment rather than replace employees. The playbook specifically prepares local governments for agentic AI systems capable of independent action.
+Why it matters: It is one of the first state-level playbooks explicitly preparing local governments for agentic AI (systems that independently take actions), recommending central guardrails before departmental innovation and problem-driven rather than technology-driven adoption. The playbook addresses systems "capable of independently taking actions rather than simply generating information," recommending that local governments limit agents' permissions initially, require human approval for consequential actions, keep detailed activity logs for the agents, and establish mechanisms to quickly disable systems should things go awry.
+What technology: Not specified in the source; the playbook is a governance framework document rather than a technical specification.
+Sources:
+- Georgia Technology Authority unveils AI playbook for state’s local governments — https://statescoop.com/georgia-technology-authority-unveils-ai-playbook-for-states-local-governments/
+
+### German Intelligence Services Reform (BND/BfV) (Germany, 2026-11-12)
+Organisation: German Federal Government (Bundesregierung)
+Layer: Cyber security, Agent governance
+Type: Regulation
+Summary: A proposed reform of German intelligence law that would significantly expand the powers of the Federal Intelligence Service (BND) and Federal Office for the Protection of the Constitution (BfV). The draft legislation permits AI systems to autonomously make operational decisions and trigger countermeasures during cyber defense operations without prior human knowledge or approval, while also expanding surveillance capabilities including biometric mass analysis and access to public and private video surveillance.
+Why it matters: The bill explicitly authorizes AI systems to independently make operational decisions and automatically initiate countermeasures in cyber defense contexts without requiring human awareness beforehand, representing a significant delegation of autonomous authority to machine agents in national security operations. The automated systems "sollen bei der Abwehr von Cyberangriffen sogar selbstständig operative Entscheidungen treffen und Gegenmaßnahmen automatisch auslösen können – ohne dass ein Mensch davon zuvor auch nur Kenntnis nehmen müsste" (should be able to make operational decisions independently when defending against cyber attacks and automatically trigger countermeasures without a human having to even be aware of it beforehand).
+What technology: AI systems for automated analysis of large datasets, biometric matching of image and video data in real-time, and autonomous cyber defense systems capable of independent operational decision-making and countermeasure deployment.
+Sources:
+- Brief an Abgeordnete: 28 Organisationen wehren sich gegen Geheimdienstreform — https://netzpolitik.org/2026/brief-an-abgeordnete-28-organisationen-wehren-sich-gegen-geheimdienstreform/
+
+### Contrata+Brasil Transactional AI (Brazil, 2026-11-12)
+Organisation: Ministry of Management and Innovation in Public Services (MGI)
+Layer: Service design & UX, Government workflows, Public procurement
+Type: Deployment
+Summary: The Brazilian federal government announced a transactional AI tool for the Contrata+Brasil platform that enables users to complete operations—such as scheduling service appointments and registering in government databases—through natural language conversation. The system is designed to facilitate access for microentrepreneurs (MEIs) and family farmers contracting with the government, representing a shift from informational chatbots to action-oriented AI.
+Why it matters: This marks the first deployment of transactional AI in the Brazilian federal government that executes administrative operations (transactions) rather than merely providing information, enabling task completion directly within conversational interfaces. The system is described as an "inteligência artificial transacional" that "conversa com a pessoa e permite fazer transações," specifically allowing users to "realizar operações diretamente" such as "marcação de horário para fazer o próprio serviço" and "se cadastrar em um cadastro do governo" without human initiation of each step.
+What technology: Integrated into the existing Contrata+Brasil platform; utilizes conversational AI to interface with backend transactional systems for scheduling and registration workflows.
+Sources:
+- Serviços digitais: “Trabalhamos para que o governo seja cada vez mais proativo e personalizado”, afirma Esther Dweck — https://www.gov.br/secom/pt-br/acompanhe-a-secom/noticias/2026/11/servicos-digitais-201ctrabalhamos-para-que-o-governo-seja-cada-vez-mais-proativo-e-personalizado201d-afirma-esther-dweck
+- Nova Carteira de Identidade Nacional já foi emitida por quase 70 milhões de pessoas — https://www.metro1.com.br/noticias/brasil/191350,nova-carteira-de-identidade-nacional-ja-foi-emitida-por-quase-70-milhoes-de-pessoas
+
+### Federal Reserve Agentic AI Banking Supervision (United States, 2026-11-12)
+Organisation: Federal Reserve Board of Governors
+Layer: Agent governance, Compliance & supervision
+Type: Regulation, Strategy
+Summary: Federal Reserve Governor Michael Barr warned that banks face fundamental challenges ensuring agentic AI systems follow customer instructions, creating risks around authorization, audit trails and liability. Major US banks have begun restricting third-party AI agents from accessing customer accounts while building internal tools, as regulators have yet to establish formal risk frameworks for these autonomous systems.
+Why it matters: A senior US banking regulator explicitly identifying 'instruction-following' verification as a critical challenge for autonomous AI agents in finance, signaling potential future supervisory examinations. Banks are proactively restricting external agents and shifting liability to customers through contract terms ahead of formal regulatory guidance. The systems can 'log in, move money and make decisions without checking back at every step' and autonomously 'decide which bills, from which account, in what order and by when' when executing customer instructions like 'pay my bills'.
+What technology: Large banks are exploring generative AI for credit assessment, fraud detection and trading; banks are implementing access restrictions and liability shifts through updated terms of service and internal governance rather than technical architectures specified.
+Sources:
+- Federal Reserve’s Barr warns of agentic AI challenges for banks — https://cryptobriefing.com/fed-barr-agentic-ai-banks-challenges/
+
+### Active Mass Damper seismic protection for Di Bartolo School (Italy, 2026-11-12)
+Organisation: Comune di Buti
+Layer: Crisis response, Tech stack
+Type: Deployment
+Summary: The Municipality of Buti installed eight Active Mass Damper devices on the Francesco Di Bartolo secondary school to provide Italy’s first active seismic protection for a public school building. The non-invasive system uses real-time sensors, a central calculator, and magnetically levitated mobile masses to counteract earthquake oscillations, successfully preventing damage during an August earthquake without interrupting lessons.
+Why it matters: It is the first application of active seismic protection technology in an Italian public school, adapting a method previously used only on large hospital structures to avoid demolition and maintain educational continuity in a seismically vulnerable area. During the August 4 earthquake the system self-activated in real time: high-precision sensors measured building oscillations, the central calculator instantly processed the required inertial forces, and intelligent mobile masses moved in counter-phase on the roof to counterbalance seismic energy and prevent damage, all without human intervention.
+What technology: Eight Active Mass Damper units featuring sensors sampling oscillations 1,000 times per second, a central real-time calculator for inertial force processing, and mobile masses on magnetic levitation tracks; redundant battery packs sustain over 40 consecutive shocks even during total electrical blackout.
+Sources:
+- Scuole sicure e cantieri invisibili: a Buti la prima protezione sismica “attiva” d’Italia — https://www.forumpa.it/riforma-pa/patrimoni-pubblici/scuole-sicure-e-cantieri-invisibili-a-buti-la-prima-protezione-sismica-attiva-ditalia/
+
+### AI Partner Marketplace Government Funding Agent (Canada, 2026-11-12)
+Organisation: Railtown AI Technologies Inc.
+Layer: Public finance
+Type: Deployment
+Summary: Railtown AI and SeedPort are integrating their technologies to provide an AI agent that identifies relevant Canadian federal and provincial funding opportunities for AI companies and assists in preparing application materials. The service aims to automate up to 90% of the administrative work of funding discovery, eligibility matching, and application drafting for premium members of the AI Partner Marketplace. SeedPort advisors review outputs and guide submissions, while final funding decisions remain with government organizations.
+Why it matters: The integration combines company-specific Knowledge Bases from Railengine with SeedPort's structured intelligence on over 1,600 Canadian programs to enable personalized, agentic matching and automated drafting of grant applications. It demonstrates a commercial use of agentic orchestration combined with specialized third-party domain intelligence to automate complex, multi-step government funding workflows. The purpose-built AI agent autonomously reviews company information against funding program criteria, identifies aligned federal and provincial opportunities, prepares tailored company profiles and executive summaries, organizes project details, generates draft application responses and supporting materials, and flags missing information for applicant review, without requiring a human to initiate each individual step.
+What technology: The integration connects SeedPort's funding intelligence platform to Railtown's Conductr agentic AI orchestration platform and Railengine data ingestion infrastructure, with the agent developed using Railtown's Railtracks Agent Development Kit.
+Sources:
+- Railtown AI Announces Technology Integration Partnership with SeedPort to Streamline Government Funding Access for Canadian AI Companies — https://www.tradingview.com/news/tmx_newsfile:83a31159f094b:0-railtown-ai-announces-technology-integration-partnership-with-seedport-to-streamline-government-funding-access-for-canadian-ai-companies/
+
+### GiulIA (Italy, 2026-11-12)
+Organisation: Comune di Porcia
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: GiulIA is a generative AI-based virtual voice assistant deployed by the Municipality of Porcia. Operating 24/7 via the municipal phone line, it handles citizen inquiries, books appointments, and routes calls to appropriate offices. In its first 13 months of operation (October 2025–October 2026), it received over 14,300 calls, autonomously resolving 64% without human operator intervention.
+Why it matters: It is the first generative AI-based virtual assistant activated by an Italian municipality, serving as a digital extension of the municipal front office (Sportello unico) and demonstrating autonomous handling of citizen service requests via telephone. The system autonomously manages 64% of calls without human intervention, deciding whether to handle or escalate requests, and executes tasks including booking appointments ('fissare appuntamenti'), providing information on services like identity cards and waste tax (Tari), and routing citizens to competent offices.
+What technology: Generative AI-powered voice assistant integrated with the municipal telephone system, developed by Insiel in collaboration with Customer Analytics International, funded through Italy's National Recovery and Resilience Plan (PNRR).
+Sources:
+- Un anno con GiulIA, a Porcia l’intelligenza artificiale risolve 6 chiamate su 10 — https://www.diariofvg.it/2026/11/12/un-anno-giulia-porcia-intelligenza-artificiale-risolve-6-chiamate-su-10/
+
+### Missouri Enterprise AI Agent Platform (United States, 2026-11-12)
+Organisation: State of Missouri
+Layer: Government workflows, People & culture
+Type: Deployment
+Summary: Missouri ran an informal competition among enterprise AI chat tools for roughly 200 employees across 17 agencies, selected Google's solution, and integrated it with state systems including Microsoft 365. The resulting GenAI.mo.gov portal deploys AI agents that standardize multi-step review processes—reducing software technical review from six to eight months to about 30 days—and process handwritten grant applications by flagging missing information. The state is also using AI agents to record institutional knowledge from veteran employees nearing retirement.
+Why it matters: The initiative creates a single statewide portal modeled on the federal GenAI.mil that automatically provisions licenses and delivers compliance training, while using benchmarked AI "skills" refined against expected inputs and outputs to ensure consistent enterprise-grade results rather than variable consumer-style outputs. It also explicitly deploys agents to capture institutional knowledge from a workforce where about half is currently eligible for retirement. The platform rolled out "agents and skills" that autonomously precheck and grade work against built standards "the same" every time; the AI reads handwritten grant applications and flags missing basics such as an address or requested dollar amount so reviewers can focus on complete submissions; and agents record institutional knowledge by having veteran employees press a microphone button and talk about how they do their jobs.
+What technology: Google's enterprise AI tool (Gemini) integrated with Missouri's Microsoft 365 environment and accessed through the GenAI.mo.gov portal, with skills benchmarked against expected inputs and outputs and refined until meeting enterprise launch standards.
+Sources:
+- From Pilot to Playbook: How Missouri Is Scaling AI Across State Agencies — https://statetechmagazine.com/article/2026/11/pilot-playbook-how-missouri-scaling-ai-across-state-agencies
+
+### AI Agent Shopping Risk Framework Study (Taiwan, 2026-11-12)
+Organisation: Ministry of Digital Affairs (Taiwan)
+Layer: Agent governance, Compliance & supervision
+Type: Strategy, Regulation
+Summary: Taiwan's Ministry of Digital Affairs has agreed to formally study a risk framework for AI applications in e-commerce following industry calls to clarify rules for AI agent shopping. The framework aims to address liability allocation, authorization scope, and identity verification for transactions where AI assistants autonomously compare prices, place orders, and make payments on behalf of consumers.
+Why it matters: This represents an early government-level attempt to create a dedicated regulatory framework specifically for autonomous AI agent transactions in retail, addressing the shift from human-initiated purchases to 'agentic transactions' where algorithms make buying decisions. The AI assistants autonomously 'compare prices, place orders and even make payments on behalf of users' without human initiation of each step, constituting 'agentic transactions' and 'non-human ordering' that current consumer protection frameworks do not address.
+What technology: The framework will incorporate digital credential technology for privacy-preserving age verification (confirming 'at least 18 years old' without disclosing additional personal information) and builds upon the existing RISAC retail cybersecurity intelligence-sharing mechanism for joint defense.
+Sources:
+- AI Agent Ordering Sparks Debate: Taiwan's Non-Store Retailers Association Calls for Three Rules, Ministry of Digital Affairs Agrees to Study Risk Framework — https://finance.biggo.com/news/da8d3150-af6d-4632-b29f-2cfeaa3d371a
 
 ### Public Medical AI Expressway (South Korea, 2026-11-11)
 Organisation: Ministry of Health and Welfare (South Korea)
@@ -43,6 +144,7 @@ Sources:
 - UAE Sets Goal for Agentic AI in Half of Government Services — https://x.com/ferrarivarese/status/2120078264039547366
 - Alaa Halawi on the rise of agentic AI and workflow intelligence in government - Consultancy-me.com — https://www.consultancy-me.com/news/14872/alaa-halawi-on-the-rise-of-agentic-ai-and-workflow-intelligence-in-government
 - How AI Is Transforming Dubai’s Banking Sector and Shaping the Future of Financial Services — https://fortune.com/2026/11/11/inside-the-ai-revolution-reshaping-dubais-banking-sector/
+- The hybrid future of enterprise AI — https://www.intelligentcio.com/me/2026/11/12/the-hybrid-future-of-enterprise-ai/
 
 ### Federal Agentic AI Governance and Data Strategy (United States, 2026-11-10)
 Organisation: U.S. Department of Commerce, Defense Health Agency
@@ -402,13 +504,14 @@ Sources:
 
 ### Singapore Government AI agent and co-design strategy (Singapore, 2026-11-05)
 Organisation: Government of Singapore / GovTech
-Layer: Government workflows, Policy & rule-making
-Type: Strategy
+Layer: Government workflows, Policy & rule-making, Agent governance, Data & privacy
+Type: Strategy, Regulation
 Summary: On 5 November 2026, Prime Minister Lawrence Wong announced the next phase of Singapore’s digital transformation, calling for policymakers and technologists to co-design policy and technology from the outset instead of treating IT as an afterthought. The government plans to move away from waterfall IT projects, modernise legacy systems, adopt common GovTech platforms, and empower public officers to use AI agents to improve workflows and service delivery.
 Why it matters: The strategy shifts from sequential ‘waterfall’ policymaking followed by IT implementation to iterative joint design of policy and technology, and it explicitly plans to deploy AI agents—not just chatbots—that can act with minimum human supervision across the public service. The government intends to empower officers to use AI agents described as ‘bots that can take actions with minimum human supervision’ to solve problems and improve the way work gets done, going beyond current uses such as chatbots or drafting documents.
 What technology: The approach replaces waterfall development with iterative product building on common platforms and components developed by GovTech, while systematically reviewing and modernising legacy systems and strengthening public data infrastructure, skills and safeguards.
 Sources:
 - Policymakers and technologists must design public services together: PM Wong — https://www.straitstimes.com/tech/policymakers-and-technologists-must-design-public-services-together-pm-wong?ref=latest-headlines
+- Singapore ups ante in fintech, AI innovation with Visa — https://coingeek.com/singapore-ups-ante-in-fintech-ai-innovation-with-visa/
 
 ### AI Cyberattack Simulation Team (Japan, 2026-11-05)
 Organisation: Japanese Government
