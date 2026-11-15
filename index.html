@@ -107,21 +107,27 @@ h1:hover{color:var(--accent)}
 .btn.soft{background:color-mix(in srgb, var(--accent) 9%, var(--bg)); color:var(--accent)}
 .btn.soft:hover{background:color-mix(in srgb, var(--accent) 16%, var(--bg))}
 /* The agenticstate.org header, matched to its own measures: a 1200px
-   container with 2rem gutters, 4rem tall, links at the body's 1.2rem, all
-   of it scaled up by that site's 20px base under 768px. It is the one
-   thing that sticks while scrolling, as it does there. */
+   container with 2rem gutters, 4rem tall, Newsreader italic links at the
+   body's 1.2rem, all of it scaled up by that site's 20px base under 768px.
+   Same links in the same order as there. Under 768px the links give way to
+   a hamburger that opens a full-screen menu (Home first, in Inter), as
+   that site's .site-modal does. It is the one thing that sticks while
+   scrolling, as it does there. */
 .site-nav{position:sticky; top:0; z-index:15; border-bottom:1px solid var(--line); background:var(--bg)}
 .site-nav .bar{max-width:1200px; margin:0 auto; padding:0 2rem; height:4rem; display:flex; align-items:center; justify-content:space-between}
-.site-nav a{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:300; font-size:1.2rem; line-height:1.5; color:var(--ink); text-decoration:none; transition:color .15s}
-.site-nav a:hover{color:var(--accent)}
+.site-nav a{font-family:"Newsreader",Georgia,serif; font-style:italic; font-weight:300; font-size:1.2rem; line-height:1.5; color:#000; text-decoration:none; transition:color .15s}
+.site-nav a:hover{color:#a491fc}
 .site-nav ul{display:flex; gap:2rem; list-style:none; margin:0; padding:0}
-.site-nav button{display:none; background:none; border:0; padding:8px; margin-right:-8px; color:var(--ink); cursor:pointer}
+.site-nav .home{display:none}
+.site-nav button{display:none; background:none; border:0; padding:8px; margin-right:-8px; color:#000; cursor:pointer}
 .site-nav button span{display:block; width:20px; height:2px; background:currentColor; margin:4px 0}
 @media(max-width:768px){
   .site-nav .bar{padding:0 20px; height:80px}
-  .site-nav a{font-size:24px}
+  .site-nav .logo{font-size:24px}
   .site-nav button{display:block}
-  .site-nav ul{display:none; position:absolute; top:80px; left:0; right:0; flex-direction:column; gap:20px; padding:40px 20px; background:var(--bg); border-bottom:1px solid var(--line)}
+  .site-nav ul{display:none; position:fixed; top:80px; left:0; right:0; bottom:0; overflow:auto; flex-direction:column; gap:20px; padding:40px 20px; background:var(--bg)}
+  .site-nav ul a{font-family:"Inter",Helvetica,sans-serif; font-style:normal; font-weight:200; font-size:24px}
+  .site-nav .home{display:list-item}
   .site-nav.open ul{display:flex}
 }
 footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px solid var(--line)}
@@ -160,9 +166,10 @@ footer{color:var(--ink-3); font-size:12px; padding:30px 0 50px; border-top:1px s
   <a class="logo" href="https://agenticstate.org/">The Agentic State</a>
   <button type="button" aria-label="Menu" aria-expanded="false" onclick="const n=this.closest('.site-nav'); this.setAttribute('aria-expanded', n.classList.toggle('open'))"><span></span><span></span></button>
   <ul>
+    <li class="home"><a href="https://agenticstate.org/">Home</a></li>
+    <li><a href="https://agenticstate.org/projects.html">Our Work</a></li>
+    <li><a href="./" aria-current="page">Observatory</a></li>
     <li><a href="https://agenticstate.org/paper.html">Vision Paper</a></li>
-    <li><a href="./">Observatory</a></li>
-    <li><a href="https://agenticstate.org/projects.html">Projects</a></li>
     <li><a href="https://agenticstate.org/contacts.html">Contact</a></li>
   </ul>
 </div></nav>
