@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (805 records as of 2026-11-16).
+newest first (806 records as of 2026-11-16).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,16 @@ newest first (805 records as of 2026-11-16).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Industrial AI Cloud Munich Expansion (Germany, Spain, 2026-11-16)
+Organisation: Deutsche Telekom (via T-Systems)
+Layer: Tech stack
+Type: Deployment
+Summary: Deutsche Telekom and T-Systems are expanding their sovereign Industrial AI Cloud (AI Factory) in Munich by adding NVIDIA Blackwell Ultra B300 GPUs, nearly doubling AI compute capacity to 20 megawatts. The facility provides high-performance AI infrastructure for enterprises, startups, research institutions and the public sector to develop, train and deploy AI applications—including agent-based AI, large language models and robotics—within a European data-protection-compliant environment. The initial phase reached full capacity within seven months, prompting this expansion to move AI from pilot projects to broad industrial deployment.
+Why it matters: It is one of Europe’s largest sovereign AI infrastructure scale-ups, explicitly architected to support agent-based AI applications alongside physical AI, digital twins and industrial simulation. The facility achieves a highly efficient PUE of 1.2 and has absorbed additional capacity so rapidly that it is driving a shift from pilot AI projects to production-grade deployment across Germany and Spain. The source states that the new GPU systems are designed for 'aplicaciones basadas en agentes' (agent-based applications) and that enterprises can use the platform to 'implementar IA basada en agentes' (implement agent-based AI), alongside robotics, digital twins and large-model reasoning.
+What technology: The expansion adds NVIDIA Blackwell Ultra B300 and RTX PRO 6000 Blackwell Server Edition GPUs to the Munich facility, reaching 20 MW capacity and a PUE of 1.2; it also uses NVIDIA CUDA X and Omniverse software for digital-twin and robotics workloads.
+Sources:
+- Deutsche Telekom y T-Systems responden a la demanda de inteligencia artificial empresarial ampliando su centro de IA en Múnich — https://es.tradingview.com/news/moodys:af640f405fea1:0/
 
 ### National HyperAI (United Arab Emirates, 2026-11-16)
 Organisation: du
