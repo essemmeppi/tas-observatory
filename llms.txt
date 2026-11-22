@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (841 records as of 2026-11-21).
+newest first (847 records as of 2026-11-22).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,61 @@ newest first (841 records as of 2026-11-21).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### AI Future Lab (AI X LAB) and RDI Lab (United Arab Emirates, 2026-11-22)
+Organisation: General Directorate of Identity and Foreigners Affairs – Dubai (GDRFA Dubai)
+Layer: Government workflows, Service design & UX
+Type: Deployment, Strategy
+Summary: GDRFA Dubai launched two complementary laboratories: the Research, Development and Innovation Lab (RDI Lab) and the AI Future Lab (AI X LAB). The RDI Lab focuses on scientific research and experimental methodologies to identify institutional challenges and develop evidence-based solutions. The AI Future Lab explores and tests advanced AI applications including autonomous and multi-agent digital systems, data analytics and intelligent simulation to improve government services and operational efficiency.
+Why it matters: The AI Future Lab specifically targets 'autonomous and multi-agent digital systems' for government service delivery, representing a structured institutional approach to developing agentic AI capabilities within a dedicated experimental environment. The RDI Lab's Research, Development and Innovation Guide is described as the first of its kind across the Government of Dubai. The AI Future Lab will focus on 'autonomous and multi-agent digital systems' that can 'anticipate future challenges and opportunities' and develop 'proactive solutions' without requiring human initiation for each step. The lab explicitly aims to test how these systems 'can be applied to real institutional needs and future scenarios', indicating autonomous decision-making and coordination capabilities.
+What technology: Autonomous and multi-agent digital systems, data analytics, intelligent simulation, and AI applications tested in an integrated research and experimentation environment.
+Sources:
+- GDRFA launches two new AI and research labs to drive innovation — https://gulfnews.com/uae/dubai/gdrfa-launches-two-new-ai-and-research-labs-to-drive-innovation-1.500756596
+
+### Competition Law Review for AI Agents (Australia, 2026-11-21)
+Organisation: Australian Government
+Layer: Policy & rule-making, Agent governance
+Type: Regulation, Strategy
+Summary: The Australian government is reviewing competition and consumer laws to ensure they remain effective as consumers increasingly use AI agents to shop, make payments and manage money on their behalf. The review, led by Assistant Minister Andrew Leigh, will examine whether laws need updating to address agent autonomy, responsibility, and AI-driven 'surveillance pricing' where consumers are charged different prices based on their personal data.
+Why it matters: This represents an early national-level effort to explicitly adapt competition law frameworks to autonomous AI agents acting on behalf of consumers in retail and financial services, rather than regulating AI merely as a product or service provider. It also specifically targets 'surveillance pricing'—dynamic, data-driven individualised pricing—as a distinct consumer harm requiring regulatory attention. The sources report that AI agents are 'designed to shop, make payments and manage money on behalf of users', with customers 'handing over decision-making to agents' and agents 'act[ing] for consumers'—making purchasing decisions and executing financial transactions without the user initiating each individual step. Their 'growing autonomy is forcing financial institutions to work out how much authority to give them and who is responsible for their actions'.
+What technology: The sources do not specify models, platforms, or technical architecture.
+Sources:
+- Australia vows to manage AI agent shoppers, surveillance pricing — https://www.straitstimes.com/asia/australianz/australia-vows-to-manage-ai-agent-shoppers-surveillance-pricing?ref=latest-headlines
+- Government Reviews Competition Rules for AI Shopping Agents — https://wisevoter.com/world/au/2026/11/21/australia-reviews-competition-laws-ai-shopping-agents
+
+### CERT-In Advisory on AI-Driven Agentic Offensive Frameworks (India, 2026-11-21)
+Organisation: Indian Computer Emergency Response Team (CERT-In)
+Layer: Cyber security, Government workflows, Agent governance, Public finance
+Type: Regulation, Strategy
+Summary: CERT-In issued a security advisory warning that AI-driven agentic offensive frameworks are being used to target government-linked payment systems, vendor payouts and business payment workflows. Attackers deploy multiple autonomous agents to alter business records and approval processes, enabling unauthorised financial transactions through legitimate channels without immediate detection. The advisory identifies this as a shift from conventional API-targeting attacks to autonomous manipulation of underlying business approval logic.
+Why it matters: The advisory is a detailed government assessment explicitly identifying coordinated multi-agent 'AI-driven agentic offensive frameworks' that autonomously conduct parallel reconnaissance, privilege discovery and intrusion against public-sector payment workflows. It shifts the threat model beyond direct API attacks and banks to the autonomous manipulation of business approval logic, while highlighting adaptive capabilities that let agents adjust attack scripts and routes based on target responses without human intervention. The advisory states that the frameworks use 'multiple agents or automated workers to undertake reconnaissance, privilege discovery and other intrusion tasks in parallel', and that attackers can autonomously 'adjust scripts and requests after seeing errors or other responses from a target', changing attack routes and preparing exploit changes without requiring manual initiation of each step.
+What technology: The frameworks misuse open-source agentic AI tools to target business payment workflows, particularly those relying on Java and PHP, by manipulating records and approval processes rather than attacking payment APIs directly. They automate credential testing, vulnerability exploit preparation and concurrent access-rights investigation, dynamically adapting scripts based on error messages or other target responses.
+Sources:
+- From fintechs to govt payouts: CERT-In flags expanding AI-driven cyberattacks — https://www.moneycontrol.com/artificial-intelligence/from-fintechs-to-govt-payouts-cert-in-flags-expanding-ai-driven-cyberattacks-article-14085964.html
+- CERT-In warns of AI-driven cyberattacks targeting business payment systems — https://telanganatoday.com/cert-in-warns-of-ai-driven-cyberattacks-targeting-payment-systems-across-sectors
+- Govt Warns Hackers Are Exploiting Payment And Business Systems: Is Your Money At Risk? — https://www.timesnownews.com/technology-science/govt-warns-hackers-are-exploiting-payment-and-business-systems-is-your-money-at-risk-article-156545476
+- CERT-In AI Alert: Hackers Target Payment Systems in India — https://theopenpress.in/article/cert-in-ai-alert-payment-systems-cyberattack
+- CERT-In warns of payment fraud beyond banks and AI-assisted cyberattacks — https://businessupturn.com/technology/cert-in-warns-of-payment-fraud-beyond-banks-and-ai-assisted-cyberattacks/
+
+### Global Fintech Fest 2026 Agentic AI Initiative (India, 2026-11-21)
+Organisation: Ministry of Electronics and Information Technology (MeITy), Reserve Bank of India (RBI), NITI Aayog
+Layer: Service design & UX, Government workflows, Compliance & supervision
+Type: Strategy, Deployment
+Summary: The 7th Global Fintech Fest 2026 is a government-backed international conference themed "Potential to Impact: Agentic AI | Tokenisation | Quantum" focusing on autonomous financial systems. It serves as a platform to showcase India's digital public infrastructure and shape global standards for AI-powered financial services with strong governance frameworks.
+Why it matters: The event explicitly positions Agentic AI as a foundational technology for government-backed financial transformation, marking India's first major policy platform dedicated to autonomous AI systems in finance with international standard-setting ambitions. The source describes Agentic AI as enabling financial systems to "sense, decide, and act in real time" and to "orchestrate end-to-end workflows" within governance frameworks, with capabilities for autonomous fraud prevention and personalized financial services at scale while empowering human decision-making through explainable intelligence.
+What technology: Agentic AI systems integrated with India's Digital Public Infrastructure including UPI, Aadhaar, and ONDC; quantum-safe cryptography and tokenisation technologies; AI/ML-based fraud monitoring already deployed by NPCI for UPI transactions.
+Sources:
+- 7th Global Fintech Fest 2026 — https://www.pib.gov.in/FactsheetDetails.aspx?id=151001&NoteId=151001&ModuleId=16
+
+### Digital Colleagues (Mohammed Bin Rashid Housing Establishment) (United Arab Emirates, 2026-11-21)
+Organisation: Mohammed Bin Rashid Housing Establishment
+Layer: Government workflows, Agent governance
+Type: Deployment
+Summary: The Mohammed Bin Rashid Housing Establishment launched a hybrid organizational model deploying 'digital colleagues'—AI agents named Murshid, Ammar, and Itqan—that work alongside human employees on operational and administrative tasks. These agents analyze data, monitor performance indicators, prepare executive summaries, track tasks, and support decision-making while reporting to human managers in a hybrid virtual structure.
+Why it matters: This represents one of the first explicit deployments of named, role-specific AI agents with defined responsibilities and permissions integrated into a government workforce as 'digital colleagues' rather than tools, complete with performance metrics and hierarchical reporting structures. Each digital colleague 'acts as an AI agent, helping the manager organise workflows, track tasks, analyse data and indicators, and make informed decisions' with 'defined responsibilities, permissions, approved data sources and clear performance indicators.' The agents autonomously 'analyse data and information, monitor performance indicators and processes, prepare executive summaries' and track housing project progress.
+What technology: Generative and agentic AI powering three named agents (Murshid for leadership decision support, Ammar for housing project tracking, Itqan for financial monitoring); hybrid virtual organizational structure with governance framework including human oversight and output verification.
+Sources:
+- Mohammed Bin Rashid Housing Establishment launches unprecedented hybrid organisational model in the housing sector — https://www.zawya.com/en/press-release/government-news/mohammed-bin-rashid-housing-establishment-launches-unprecedented-hybrid-organisational-model-in-the-housing-sector-2442733
 
 ### Osaka Prefecture AI Agent Pilots (Japan, 2026-11-21)
 Organisation: Osaka Prefecture
@@ -131,6 +186,16 @@ Why it matters: The initiative shifts manufacturing AI from predictive to prescr
 What technology: NLP-based agentic systems, gradient boosting models for rubber mixing optimization, operations research models for turnaround time reduction, and AI/ML models using 18 machine and 15 material parameters for tread design prediction, all built on a connected-machine data lake and MES infrastructure established since 2015.
 Sources:
 - Inside CEAT’s AI playbook: CDTO Debashish Roy on building a living plant — https://www.expresscomputer.in/artificial-intelligence-ai/inside-ceats-ai-playbook-cdto-debashish-roy-on-building-a-living-plant/141517/
+
+### Oracle VA EHRM Clinical AI Agent (United States, 2026-11-19)
+Organisation: Department of Veterans Affairs (VA)
+Layer: Government workflows, Service design & UX
+Type: Deployment, Procurement
+Summary: The Department of Veterans Affairs' electronic health record modernization (EHRM) contract with Oracle, valued at over $27 billion, includes deployment of Oracle's clinical AI agent as part of the next software version. The system is intended to support veteran healthcare delivery, though rollout has faced delays, cost overruns, and congressional scrutiny over data privacy and AI training concerns.
+Why it matters: The clinical AI agent represents an expansion of the EHRM contract scope beyond traditional EHR functionality into autonomous clinical decision support, though specific capabilities remain unspecified in the hearing. Oracle's co-CEO Mike Sicilia stated the company wants the VA to roll out 'the most modern technology in the world,' including 'the company's clinical AI agent.' While specific autonomous behaviors are not detailed, the reference to a 'clinical AI agent' implies autonomous clinical decision support or task execution within the EHR workflow.
+What technology: Built on Oracle's acquisition of Cerner's EHR platform; next software version includes clinical AI agent capabilities at no additional cost.
+Sources:
+- A ‘signal’ to government contractors: House panel grills Oracle execs on VA EHRM, AI, data — https://fedscoop.com/house-va-oracle-execs-ehrm-ai-veterans-data/
 
 ### City AI Agent (United Arab Emirates, 2026-11-19)
 Organisation: Government of Dubai
@@ -430,15 +495,16 @@ What technology: The software is being developed internally by the municipal tec
 Sources:
 - Incorporan inteligencia artificial a las cámaras de seguridad del COM — https://laverdadonline.com/incorporan-inteligencia-artificial-a-las-camaras-de-seguridad-del-com/
 
-### FBI FLASH Report on ARTEX Autonomous Penetration Testing Framework (United States, 2026-11-14)
+### FBI FLASH Report on ARTEX Autonomous Penetration Testing Framework (United States, France, European Union, 2026-11-14)
 Organisation: Federal Bureau of Investigation (FBI)
 Layer: Cyber security, Agent governance
-Type: Strategy
-Summary: The FBI released a TLP:CLEAR FLASH advisory (FLASH-20261113-001) warning that ARTEX, an open-source LLM-driven agentic platform originally built for authorized penetration testing, has been weaponized by malicious cyber actors to automate intrusions at machine speed. The report aggregates tactics, techniques, and procedures from eleven industry and government sources, maps observed activity to MITRE ATT&CK, and provides prioritized mitigations for defenders.
-Why it matters: This represents the clearest signal yet that U.S. law enforcement views agentic offensive frameworks as a mainstream threat rather than a research curiosity, formally documenting the shift from adversaries using LLMs as assistants to autonomous agents that independently execute multi-stage intrusions. ARTEX translates high-level natural language goals into machine commands executed by specialized 'super intelligence (SI) agents,' requiring minimal human interaction beyond setting the objective. A planner agent converts goals into attack 'intents' executed by worker agents in a loop until the goal is met, enabling autonomous progression 'from reconnaissance through data exfiltration' at machine speed.
-What technology: ARTEX is written in Go and implements a multi-agent architecture abstracting the attack lifecycle across six specialized sub-agents. It does not include its own model but integrates with external LLM providers via APIs, including frontier models and open-source or Chinese-origin models.
+Type: Strategy, Deployment
+Summary: The FBI released a TLP:CLEAR FLASH advisory (FLASH-20261113-001) warning that ARTEX, an open-source LLM-driven agentic platform originally built for authorized penetration testing, has been weaponized by malicious cyber actors since August 2026 to automate intrusions at machine speed against targets including French and EU entities. The report aggregates tactics, techniques, and procedures from eleven industry and government sources, maps observed activity to MITRE ATT&CK, and provides prioritized mitigations, while ANSSI warns that such AI agents serve as a 'force multiplier' enabling far more attacks at greater speed.
+Why it matters: This represents the clearest signal yet that U.S. law enforcement views agentic offensive frameworks as a mainstream threat rather than a research curiosity, formally documenting the shift from adversaries using LLMs as assistants to autonomous agents that independently execute multi-stage intrusions. Google separately detected in Q4 2026 that malicious actors used AI to entirely automate the discovery and exploitation of vulnerabilities against French entities without any human intervention, marking the first confirmed fully automated attack campaigns of this kind. ARTEX translates high-level natural language goals into machine commands executed by specialized 'super intelligence (SI) agents,' requiring minimal human interaction beyond setting the objective. A planner agent converts goals into attack 'intents' executed by worker agents in a loop until the goal is met, enabling autonomous progression 'from reconnaissance through data exfiltration' at machine speed and automatically testing alternative attack paths 'dans la seconde' when one fails, while Google detected in Q4 2026 'des acteurs malveillants utilisant des [IA] pour automatiser entièrement la découverte et l'exploitation de vulnérabilités, sans aucune intervention humaine'.
+What technology: ARTEX is written in Go and implements a multi-agent architecture with six specialized sub-agents that integrate with external LLM providers via APIs, including frontier models and open-source or Chinese-origin models. Sources report that such autonomous frameworks can exploit vulnerabilities within 15 minutes of disclosure and generate detectable traffic through unrestricted autonomous execution, with comparable tools including Cairn, CyberStrikeAI, and PentAGI also observed in the threat landscape.
 Sources:
 - FBI FLASH on ARTEX: Agentic AI Hacking Frameworks Move From Pen Testing Tool to Mainstream Threat — https://oodaloop.com/analysis/ooda-original/fbi-flash-on-artex-agentic-ai-hacking-frameworks-move-from-pen-testing-tool-to-mainstream-threat/
+- "Des campagnes d'attaques de plus en plus automatisées" : comment les cybercriminels ont placé l'intelligence artificielle au cœur de leurs opérations — https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/des-campagnes-d-attaques-de-plus-en-plus-automatisees-comment-les-cybercriminels-ont-place-l-intelligence-artificielle-au-c-ur-de-leurs-operations_8292092.html
 
 ### Conecta ADS (Brazil, United Kingdom, 2026-11-14)
 Organisation: Prefeitura do Recife (Municipal Government of Recife)
