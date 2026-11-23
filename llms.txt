@@ -3,7 +3,7 @@
 > A daily record of agentic AI entering government — deployments, strategies, and laws across the world, mapped to the Agentic State framework.
 
 This file is the full public dataset, regenerated on every daily run,
-newest first (847 records as of 2026-11-22).
+newest first (853 records as of 2026-11-23).
 
 - Site: https://observatory.agenticstate.org
 - The framework: https://agenticstate.org/paper
@@ -11,6 +11,56 @@ newest first (847 records as of 2026-11-22).
 - Feedback: hello@agenticstate.org
 
 ## Records
+
+### Cohere Oil and Gas AI Solutions (Canada, 2026-11-23)
+Organisation: Cohere (private company, with Canadian government investment)
+Layer: Government workflows, Tech stack
+Type: Deployment, Strategy
+Summary: Cohere, Canada's leading AI company, is marketing agentic AI systems to oil and gas companies to optimize drilling locations, pipeline monitoring, leak detection, and transportation logistics across the entire fossil fuel value chain. The company received $1.6 billion in government funding commitment and promotes these tools as transforming exploration, production, refining, and midstream operations.
+Why it matters: Cohere explicitly positions agentic AI as a recursive solution where AI-optimized fossil fuel extraction powers AI data centers, creating a self-reinforcing cycle between energy demand and AI infrastructure growth. Cohere's 2025 e-book specifically promotes 'agentic AI systems' to 'transform the oil and gas value chain' including autonomous identification of 'ideal drilling locations', pipeline monitoring and leak detection, and transportation logistics coordination 'spanning upstream exploration and production to midstream logistics, downstream refining, and services'.
+What technology: Large language models (LLMs) developed by Cohere, including through merger with Aleph Alpha; deployed via Bell data centers including hydroelectric-powered facility in Merritt, BC and proposed gas-powered 900MW expansion in Saskatchewan.
+Sources:
+- AI Needed to Produce More Gas to Power More AI, Tech Firm Cohere Says — https://goodmenproject.com/featured-content/ai-needed-to-produce-more-gas-to-power-more-ai-tech-firm-cohere-says/
+
+### Diia.AI and Agentic State Initiative (Ukraine, 2026-11-23)
+Organisation: Ministry of Digital Transformation of Ukraine
+Layer: Service design & UX, Government workflows, Tech stack, Agent governance
+Type: Strategy, Deployment
+Summary: Ukraine is developing an 'Agentic State' where AI agents proactively coordinate government processes, understand citizen needs, and guide users through services. The initiative includes Diia.AI with voice capabilities for natural language interaction, and AI applications within the Mriia education ecosystem to personalise learning and reduce teacher administrative workload. The strategy emphasises three pillars of AI sovereignty: sovereign datasets, an AI Factory computing infrastructure, and multilayered AI security.
+Why it matters: The shift from reactive digital services to proactive AI agents that independently understand context, identify needs, and coordinate processes without citizens knowing which service they need in advance. Ukraine is also pioneering AI sovereignty under wartime conditions with domestic datasets, local compute infrastructure, and security-first architecture. AI agents 'coordinate individual processes, perform designated tasks, and reduce the number of steps people have to take themselves' and 'help understand the context of a request, identify a person's needs, find relevant government services, and guide citizens through different stages of their interactions with the state'. The system moves from 'waiting for requests to proactive interaction'.
+What technology: Diia.AI platform with voice capabilities for natural language interaction; sovereign datasets for fine-tuning models on Ukrainian legislation; AI Factory for domestic compute infrastructure; multilayered security architecture with algorithmic guardrails and access controls; integration with Diia super app and Mriia education ecosystem.
+Sources:
+- How Ukraine is building an AI-powered government that can withstand war — https://govinsider.asia/intl-en/article/how-ukraine-is-building-an-ai-powered-government-that-can-withstand-war
+
+### UnionPay-Debia Agentic Payments MoU (Singapore, 2026-11-23)
+Organisation: UnionPay International and Debia Pte. Ltd.
+Layer: Service design & UX, Government workflows
+Type: Deployment, Strategy
+Summary: A memorandum of understanding between UnionPay International and Singapore-based merchant acquirer Debia to develop agentic payment capabilities. The collaboration explores how AI agents can recommend products, support purchasing decisions, and initiate payments on behalf of consumers, with Debia's AI agent platform integrating UnionPay's payment network for merchant adoption.
+Why it matters: First known government-relevant collaboration in Singapore to enable AI agents to autonomously initiate payments as part of the consumer purchasing process, moving beyond recommendation to actual transaction execution. The AI agent platform is designed to 'recommend products, support consumers' purchasing decisions and initiate payments on their behalf' and 'make it practical for merchants to accept payments initiated by those agents', with the agent autonomously executing the payment initiation step without human initiation of each transaction.
+What technology: Debia's AI agent platform integrated with UnionPay International's payment network; specific models or architecture not stated.
+Sources:
+- UnionPay International and Debia Ink MoU to Explore Agentic Payments in Singapore — https://voiceofasean.com/newsroom/pr-gov/unionpay-international-and-debia-ink-mou-to-explore-agentic-payments-in-singapore/
+
+### Engineer It with AI - Agentic AI Competition (Oman, 2026-11-22)
+Organisation: Ministry of Transport, Communications and Information Technology
+Layer: Government workflows, Tech stack
+Type: Deployment, Strategy
+Summary: The second edition of the "Engineer It with AI" competition, dedicated to agentic artificial intelligence, attracted more than 300 teams with over 1,000 participants. Twenty-five teams qualified and received intensive practical training, with fifteen teams reaching the final stage and launching 15 applications based on agentic AI. The competition is part of Oman's broader National Digital Economy Programme to develop AI capabilities and practical implementations across government sectors.
+Why it matters: This represents Oman's first dedicated national competition specifically focused on agentic AI, moving beyond general AI applications to autonomous systems that can execute tasks independently. The competition produced 15 functional agentic AI applications, indicating a shift from theoretical AI development to operational autonomous systems in government contexts. The competition was explicitly "dedicated to agentic artificial intelligence" and resulted in 15 teams launching "15 applications based on agentic AI." Additionally, the "AI Makers" initiative and other projects like the smart assistant "Nadeem" and "Murshid" via WhatsApp demonstrate autonomous task execution capabilities, though specific autonomous decision-making details for individual applications are not fully specified in the source.
+What technology: The competition produced 15 agentic AI applications; related initiatives include the Omani language model "Maeen AI" with 2,400 users and 19,643 government quotas, smart assistants "Nadeem" and "Murshid" via WhatsApp, and integration with Oman Business platform at 80% completion for electronic integration.
+Sources:
+- Oman's digital economy contributes 9% of GDP — https://timesofoman.com/article/179475-omans-digital-economy-contributes-9-of-gdp
+
+### Civic Observatory (Italy, 2026-11-22)
+Organisation: Municipalities of Campobasso and Isernia
+Layer: Service design & UX, Government workflows
+Type: Deployment
+Summary: Civic Observatory is a free AI-based service launched in Campobasso and Isernia that automatically screens daily municipal documents, selects those with direct community impact, and emails subscribers a plain-language summary with a direct link to the original act. It translates complex administrative formulas into accessible Italian to help citizens understand local decisions on taxes, welfare, transport and schooling.
+Why it matters: It autonomously filters and translates bureaucratic municipal acts into clear, non-technical language without adding political commentary or interpretation. The service proactively organizes and synthesizes public information that is already available but often inaccessible due to technical jargon and volume. The AI system autonomously executes a daily workflow in which it screens all documents published by the local entities, selects only those with direct community impact, and sends subscribed users a synthesized summary in plain Italian via email without human initiation of each step. The source states it 'passa al setaccio tutti i documenti pubblicati... selezionando esclusivamente quelli che hanno un impatto diretto sulla collettività' and then 'invia gratuitamente via mail agli utenti iscritti un riepilogo sintetico'.
+What technology: The platform uses an artificial intelligence system to automatically scan, filter and summarize municipal documents published by local entities. It was developed by Matchme Srl in collaboration with Visionari Ets-Aps; no specific models or architectures are named.
+Sources:
+- L’Intelligenza Artificiale traduce le delibere di Campobasso e Isernia — https://www.primonumero.it/2026/11/lintelligenza-artificiale-traduce-le-delibere-comunali-nasce-osservatorio-civico-per-campobasso-e-isernia/1530916585/
 
 ### AI Future Lab (AI X LAB) and RDI Lab (United Arab Emirates, 2026-11-22)
 Organisation: General Directorate of Identity and Foreigners Affairs – Dubai (GDRFA Dubai)
@@ -101,11 +151,12 @@ Organisation: U.S. Government Accountability Office
 Layer: Cyber security, Agent governance, Policy & rule-making
 Type: Strategy
 Summary: The U.S. Government Accountability Office published report GAO-27-108458 assessing how generative AI magnifies cyberattacks and enhances federal cyber defense, noting the lack of widely accepted criteria for evaluating these offensive and defensive capabilities. It offers 16 policy options across four goals—guidance standards, research funding, lifecycle governance, and workforce expansion—to close governance gaps, improve testing, and address machine-speed threats against federal agencies and research computing centers. The report highlights both defensive applications and risks from autonomous AI-driven attacks, recommending safeguards such as human approval for consequential actions and predefined fallback procedures.
-Why it matters: The assessment pairs evidence of real-world AI-assisted cyberattacks with a structured menu of 16 specific policy options for legislative and executive action, distinguishing useful defensive applications from governance and testing challenges. It explicitly frames AI as a systemic force multiplier that compresses reaction times and addresses the emerging autonomy of agentic AI in cyber operations, proposing concrete safeguards such as ongoing validation, human approval for consequential actions, and rule-based fallbacks. The report cites a June 2026 incident in which multiple AI agents autonomously searched security research for attack techniques, mapped them to known cybersecurity frameworks, ran attacks in test environments, and refined evasion methods against security products with minimal human input. It further identifies agentic AI as capable of chaining multi-stage exploits, executing dynamic penetration workflows, and configuring automated evasion testing environments without direct human oversight, progressing from conversational assistance into autonomous agents executing dynamic exploitation scripts.
-What technology: The assessment covers commercial and open-weight generative models, proprietary vendor security algorithms, and open-source machine learning libraries used for phishing, deepfake creation, vulnerability scanning, and network traffic analysis across federal and academic networks. It recommends federal testing sandboxes, zero-trust architecture aligned with NIST SP 800-207, continuous model provenance tracking, and predefined rule-based or manual fallback tools to maintain critical security functions when AI fails or behaves inconsistently.
+Why it matters: The assessment pairs evidence of real-world AI-assisted cyberattacks with a structured menu of 16 specific policy options for legislative and executive action, distinguishing useful defensive applications from governance and testing challenges. It explicitly frames AI as a systemic force multiplier that compresses attack preparation from weeks to hours or less, and addresses the emergence of fully autonomous AI agents capable of conducting ransomware operations and multi-stage cyberattacks that persistently adapt to failures and evade detection over extended periods. The report cites a June 2026 incident in which multiple AI agents autonomously searched security research for attack techniques, mapped them to known cybersecurity frameworks, ran attacks in test environments, and refined evasion methods against security products with minimal human input. It further identifies agentic AI as capable of chaining multi-stage exploits, executing dynamic penetration workflows, and configuring automated evasion testing environments without direct human oversight; in one cited instance, an AI agent carried out a 'fully autonomous' ransomware operation using a large language model able to make demands of victims, adapt to failures, and analyze feedback to continue committing crimes.
+What technology: The assessment covers commercial and open-weight generative models, proprietary vendor security algorithms, and open-source machine learning libraries used for phishing, deepfake creation, vulnerability scanning, and network traffic analysis across federal and academic networks. Attackers are reportedly using commercially available AI tools and large language models to generate malicious code, harvest information, perform open-source intelligence collection, scan networks, and use supervised machine learning to identify vulnerabilities, enabling real-time tactic adjustment and evasion by mimicking legitimate traffic. It recommends federal testing sandboxes, zero-trust architecture aligned with NIST SP 800-207, continuous model provenance tracking, and predefined rule-based or manual fallback tools to maintain critical security functions when AI fails or behaves inconsistently.
 Sources:
 - GAO finds no widely accepted yardstick for generative AI’s cyber capabilities — https://superpowerdaily.com/posts/gao-finds-no-widely-accepted-yardstick-for-generative-ai-s-cyber-capabilities
 - GAO Report Examines How AI Magnifies Cyberattacks and Enhances Federal Cyber Defense — https://casrai.org/news/gao-report-ai-cybersecurity-cyberattacks-defense-2026
+- How Artificial Intelligence Is Making It Harder To Stop Cyberattacks — https://sg.news.yahoo.com/artificial-intelligence-making-harder-stop-015526534.html
 
 ### Digilocker Unified AI Agent (India, 2026-11-20)
 Organisation: Ministry of Electronics and Information Technology (Meity)
@@ -304,13 +355,14 @@ Sources:
 
 ### Singapore National AI Missions for Finance (Singapore, 2026-11-18)
 Organisation: Singapore Government
-Layer: Compliance & supervision, Agent governance
-Type: Deployment
-Summary: Singapore launched three national AI missions in the financial sector: a cross-bank trial using combined transaction data to detect financial crime, an initiative using synthetic data to improve credit access for SMEs and startups, and controlled trials of AI agents that autonomously execute payments when specified conditions are met. The Future of Finance Institute will coordinate partnerships, guidelines, and sector-wide testing.
-Why it matters: The programme introduces cross-institutional data sharing for real-time scam detection, synthetic-data-driven credit assessment for asset-poor businesses, and government-backed trials of autonomous payment agents operating under defined safeguards. The third mission tests AI agents that 'carry out financial transactions on behalf of individuals and businesses,' specifically with the ability to 'make payments automatically once specified conditions are met,' such as contractual payments after agreed terms have been fulfilled and verified, or purchases completed on behalf of users.
-What technology: AI systems analysing pooled transaction data across five banks to identify suspicious patterns; synthetic data environments for SME credit modelling; and AI agents integrated with identity verification, authorisation, and interoperability safeguards for conditional automatic payments.
+Layer: Compliance & supervision, Agent governance, Service design & UX, Government workflows
+Type: Deployment, Strategy
+Summary: Singapore's three national AI missions for the financial sector comprise: a cross-bank scam detection utility pooling transaction data from five banks to identify suspicious patterns; AI-powered SME credit assessment using synthetic data to uncover creditworthiness indicators conventional reviews miss; and controlled trials of autonomous AI agents executing payments when specified conditions are met, such as linking with purpose-bound money for automated contractual payments. The Future of Finance Institute will coordinate partnerships, guidelines, and sector-wide testing.
+Why it matters: The programme introduces cross-institutional data sharing for real-time fraud detection, synthetic-data-driven credit assessment for asset-poor businesses, and government-backed trials explicitly preparing financial infrastructure for autonomous AI agents executing transactions on behalf of users. The third mission tests 'autonomous AI agents capable of executing financial transactions on behalf of users,' with concrete capabilities including 'make payments automatically once specified conditions are met' and 'linking AI agents with purpose-bound money to trigger automated contractual payments' after agreed terms are fulfilled and verified.
+What technology: AI models analysing pooled transaction data across five banks; synthetic data environments for SME credit modelling; purpose-bound money integration; identity verification, authorisation, and interoperability safeguards. Proof-of-value underway with five banks; Design Study for Scam Detection Utility planned for early next year.
 Sources:
 - Singapore unveils AI missions to fight financial crime, boost SME financing — https://sbr.com.sg/news/singapore-unveils-ai-missions-fight-financial-crime-boost-sme-financing
+- DPM Gan announces 3 national AI missions for financial sector, amid new US semiconductor licensing rules — https://mustsharenews.com/dpm-gan-national-ai-missions-financial/amp/
 
 ### San José Municipal AI Upskilling Program (United States, 2026-11-17)
 Organisation: City of San José, California
@@ -558,6 +610,16 @@ Why it matters: An independent GAO review provides a rare look inside Pentagon A
 What technology: The source states only that the GAO examined ten active AI projects spanning target recognition, surveillance analysis, and tactical decision support, without naming specific models, platforms, or architectures.
 Sources:
 - Innovation Without Guardrails: The Pentagon’s AI Push and the Gap Between Promise and Practice — https://vocal.media/01/innovation-without-guardrails-the-pentagons-ai-push-and-the-gap-between-promise-and-practice
+
+### Amazon Ring autonomous home surveillance drone (United States, 2026-11-13)
+Organisation: US law enforcement agencies
+Layer: Compliance & supervision, Data & privacy
+Type: Deployment
+Summary: Amazon Ring has introduced an autonomous indoor surveillance drone that launches automatically from its charging station to fly preset patrol routes when triggered by alarms from Ring cameras or sensors, capturing 360-degree footage and sending it to users’ smartphones. The article notes that roughly 2,000 US authorities already collaborate with Amazon Ring, accessing footage from these privately installed devices to expand street-level and residential surveillance without deploying their own infrastructure.
+Why it matters: The device moves static home cameras into fully autonomous, mobile indoor patrols that physically navigate the home environment on their own when an alarm triggers, further blurring the boundary between private consumer tech and state-accessible surveillance infrastructure. The Ring drone independently decides to leave its charging station and execute an indoor control flight along a predetermined route when an alarm is triggered by a Ring camera, sensor or alarm system, then autonomously performs a 360-degree sweep to capture the environment and transmits the images to user smartphones without a human initiating each flight step.
+What technology: Indoor drone integrated into the broader Ring and Amazon video surveillance ecosystem; it operates based on preset flight routes and schedules and is triggered by existing Ring cameras, sensors or alarm systems.
+Sources:
+- Amazon Ring rüstet auf: Endlich autonome Drohnen für die Heimüberwachung! — https://netzpolitik.org/2026/amazon-ring-ruestet-auf-endlich-autonome-drohnen-fuer-die-heimueberwachung/
 
 ### DBS Agentic Credit Processing Architecture (Singapore, 2026-11-13)
 Organisation: DBS Bank
